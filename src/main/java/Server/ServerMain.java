@@ -10,6 +10,7 @@ import javax.xml.ws.Endpoint;
  */
 public class ServerMain {
     public static void main(String[] argv) {
+        //aaa
         ServerInit.Init();
         Object implementor = new CommonTran();
         String address = "http://localhost:9000/CommonTran";
