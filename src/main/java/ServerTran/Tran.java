@@ -2,26 +2,45 @@ package ServerTran;
 
 import Server.Com;
 import Server.Logger;
+import Server.Table.basic.DBAccess;
+import org.apache.ibatis.session.SqlSession;
+
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
  */
 public abstract class Tran {
+    public SqlSession sqlSession = null;
+
     public abstract boolean exec(TranObj tranObj);
 
     public boolean execDo(TranObj tranObj) {
-        if (false == exec(tranObj)) {
-            if (null == tranObj.CWDM_U || "".equals(tranObj.CWDM_U)) {
-                tranObj.CWDM_U = "COMERR";
-                tranObj.CWXX_U = "调用" + tranObj.JYM_UU + "交易时错误";
 
+        DBAccess dbAccess = new DBAccess();
+        try {
+            sqlSession = dbAccess.getSqlSession();
+            if (false == exec(tranObj)) {
+                if (null == tranObj.CWDM_U || "".equals(tranObj.CWDM_U)) {
+                    tranObj.CWDM_U = "COMERR";
+                    tranObj.CWXX_U = "调用" + tranObj.JYM_UU + "交易时错误";
+
+                } else {
+                    //执行后返回的tranobj中已存在错误信息
+                }
+                return false;
             } else {
-                //执行后返回的tranobj中已存在错误信息
+                tranObj.CWDM_U = "AAAAAA";
+                sqlSession.commit();
+                return true;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            tranObj.CWDM_U = "COMERR";
+            tranObj.CWXX_U = "调用" + tranObj.JYM_UU + "交易时错误";
             return false;
-        } else {
-            tranObj.CWDM_U = "AAAAAA";
-            return true;
+        } finally {
+            sqlSession.close();
         }
     }
 

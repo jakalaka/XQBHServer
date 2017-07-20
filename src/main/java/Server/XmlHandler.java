@@ -37,18 +37,5 @@ public class XmlHandler {
      * @param JYM_UU
      * @return
      */
-    public static boolean minusInfo(Map XMLMapIn,Map TranMapIn,String[] JYM_UU)
-    {
-        Map HeadMapIn=(Map) XMLMapIn.get("head");
-        TranMapIn=(Map)XMLMapIn.get("body");
-        JYM_UU[0]=((Map)XMLMapIn.get("head")).get("JYM_UU").toString();
-        /*
-        以下需增加对来报解析
-         */
-        String ZDBH_U=HeadMapIn.get("ZDBH_U").toString();
-        if (JCZDHFX.exec(ZDBH_U)==false)
-            return false;
 
-        return true;
-    }
 }

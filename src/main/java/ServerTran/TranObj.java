@@ -9,8 +9,8 @@ import java.util.Map;
  * Created by Administrator on 2017/7/4 0004.
  */
 public class TranObj {
-    public Map HeadMap = null;
-    public Map TranMap = null;
+    public Map<String ,String> HeadMap = null;
+    public Map<String,String> TranMap = null;
     String JYM_UU = null;
     public String CWDM_U=null;
     public String CWXX_U=null;
@@ -26,7 +26,8 @@ public class TranObj {
         以下添加拆报合法性检查如终端信息，终端校验码等
          */
         String ZDBH_U=HeadMap.get("ZDBH_U").toString();
-        if (JCZDHFX.exec(ZDBH_U)==false)
+        String ZDJYM_=HeadMap.get("ZDJYM_").toString();
+        if (JCZDHFX.exec(ZDBH_U,ZDJYM_)==false)
             return;
 
 
@@ -38,7 +39,10 @@ public class TranObj {
     }
 
     public String getHead(String Key) {
-        return HeadMap.get(Key).toString();
+        String result=HeadMap.get(Key).toString();
+        if(null==result)
+            result="";
+        return result;
     }
 
     public void setValue(String Key, String Value) {
@@ -46,7 +50,11 @@ public class TranObj {
     }
     public String getValue(String Key)
     {
-        return TranMap.get(Key).toString();
+
+        String result=TranMap.get(Key);
+        if (null==result)
+            result="";
+        return result;
     }
 
 
