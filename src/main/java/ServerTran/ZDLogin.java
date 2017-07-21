@@ -48,7 +48,7 @@ public class ZDLogin extends Tran {
         } else {
             runERR(tranObj, "LOG002");
             return false;
-        }
+        }aaaa
 
 
         return true;
