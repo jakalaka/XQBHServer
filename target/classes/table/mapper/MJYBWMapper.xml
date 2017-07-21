@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Server.Table.Mapper.MJYBWMapper" >
+  <resultMap id="BaseResultMap" type="Server.Table.Model.MJYBW" >
+    <id column="法人代码" property="法人代码" jdbcType="VARCHAR" />
+    <id column="前台日期" property="前台日期" jdbcType="DATE" />
+    <id column="前台流水" property="前台流水" jdbcType="VARCHAR" />
+    <result column="前台交易码" property="前台交易码" jdbcType="VARCHAR" />
+    <result column="后台日期" property="后台日期" jdbcType="DATE" />
+    <result column="后台流水" property="后台流水" jdbcType="VARCHAR" />
+    <result column="后台交易码" property="后台交易码" jdbcType="VARCHAR" />
+    <result column="交易状态" property="交易状态" jdbcType="VARCHAR" />
+    <result column="终端号" property="终端号" jdbcType="VARCHAR" />
+    <result column="IP地址" property="IP地址" jdbcType="VARCHAR" />
+    <result column="时间戳" property="时间戳" jdbcType="TIMESTAMP" />
+    <result column="记录状态" property="记录状态" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="Server.Table.Model.MJYBWWithBLOBs" extends="BaseResultMap" >
+    <result column="传入报文" property="传入报文" jdbcType="LONGVARBINARY" />
+    <result column="请求支付宝报文" property="请求支付宝报文" jdbcType="LONGVARBINARY" />
+    <result column="支付宝返回报文" property="支付宝返回报文" jdbcType="LONGVARBINARY" />
+    <result column="传出报文" property="传出报文" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    法人代码, 前台日期, 前台流水, 前台交易码, 后台日期, 后台流水, 后台交易码, 交易状态, 终端号, IP地址, 时间戳, 记录状态
+  </sql>
+  <sql id="Blob_Column_List" >
+    传入报文, 请求支付宝报文, 支付宝返回报文, 传出报文
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="Server.Table.Model.MJYBWExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mjybw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="Server.Table.Model.MJYBWExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mjybw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="Server.Table.Model.MJYBWKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mjybw
+    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
+      and 前台日期 = #{前台日期,jdbcType=DATE}
+      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Server.Table.Model.MJYBWKey" >
+    delete from mjybw
+    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
+      and 前台日期 = #{前台日期,jdbcType=DATE}
+      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="Server.Table.Model.MJYBWExample" >
+    delete from mjybw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
+    insert into mjybw (法人代码, 前台日期, 前台流水, 
+      前台交易码, 后台日期, 后台流水, 后台交易码, 
+      交易状态, 终端号, IP地址, 时间戳, 
+      记录状态, 传入报文, 请求支付宝报文, 
+      支付宝返回报文, 传出报文)
+    values (#{法人代码,jdbcType=VARCHAR}, #{前台日期,jdbcType=DATE}, #{前台流水,jdbcType=VARCHAR}, 
+      #{前台交易码,jdbcType=VARCHAR}, #{后台日期,jdbcType=DATE}, #{后台流水,jdbcType=VARCHAR}, #{后台交易码,jdbcType=VARCHAR}, 
+      #{交易状态,jdbcType=VARCHAR}, #{终端号,jdbcType=VARCHAR}, #{IP地址,jdbcType=VARCHAR}, #{时间戳,jdbcType=TIMESTAMP}, 
+      #{记录状态,jdbcType=VARCHAR}, #{传入报文,jdbcType=LONGVARBINARY}, #{请求支付宝报文,jdbcType=LONGVARBINARY}, 
+      #{支付宝返回报文,jdbcType=LONGVARBINARY}, #{传出报文,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
+    insert into mjybw
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="法人代码 != null" >
+        法人代码,
+      </if>
+      <if test="前台日期 != null" >
+        前台日期,
+      </if>
+      <if test="前台流水 != null" >
+        前台流水,
+      </if>
+      <if test="前台交易码 != null" >
+        前台交易码,
+      </if>
+      <if test="后台日期 != null" >
+        后台日期,
+      </if>
+      <if test="后台流水 != null" >
+        后台流水,
+      </if>
+      <if test="后台交易码 != null" >
+        后台交易码,
+      </if>
+      <if test="交易状态 != null" >
+        交易状态,
+      </if>
+      <if test="终端号 != null" >
+        终端号,
+      </if>
+      <if test="IP地址 != null" >
+        IP地址,
+      </if>
+      <if test="时间戳 != null" >
+        时间戳,
+      </if>
+      <if test="记录状态 != null" >
+        记录状态,
+      </if>
+      <if test="传入报文 != null" >
+        传入报文,
+      </if>
+      <if test="请求支付宝报文 != null" >
+        请求支付宝报文,
+      </if>
+      <if test="支付宝返回报文 != null" >
+        支付宝返回报文,
+      </if>
+      <if test="传出报文 != null" >
+        传出报文,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="法人代码 != null" >
+        #{法人代码,jdbcType=VARCHAR},
+      </if>
+      <if test="前台日期 != null" >
+        #{前台日期,jdbcType=DATE},
+      </if>
+      <if test="前台流水 != null" >
+        #{前台流水,jdbcType=VARCHAR},
+      </if>
+      <if test="前台交易码 != null" >
+        #{前台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="后台日期 != null" >
+        #{后台日期,jdbcType=DATE},
+      </if>
+      <if test="后台流水 != null" >
+        #{后台流水,jdbcType=VARCHAR},
+      </if>
+      <if test="后台交易码 != null" >
+        #{后台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="交易状态 != null" >
+        #{交易状态,jdbcType=VARCHAR},
+      </if>
+      <if test="终端号 != null" >
+        #{终端号,jdbcType=VARCHAR},
+      </if>
+      <if test="IP地址 != null" >
+        #{IP地址,jdbcType=VARCHAR},
+      </if>
+      <if test="时间戳 != null" >
+        #{时间戳,jdbcType=TIMESTAMP},
+      </if>
+      <if test="记录状态 != null" >
+        #{记录状态,jdbcType=VARCHAR},
+      </if>
+      <if test="传入报文 != null" >
+        #{传入报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="请求支付宝报文 != null" >
+        #{请求支付宝报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="支付宝返回报文 != null" >
+        #{支付宝返回报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="传出报文 != null" >
+        #{传出报文,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="Server.Table.Model.MJYBWExample" resultType="java.lang.Integer" >
+    select count(*) from mjybw
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mjybw
+    <set >
+      <if test="record.法人代码 != null" >
+        法人代码 = #{record.法人代码,jdbcType=VARCHAR},
+      </if>
+      <if test="record.前台日期 != null" >
+        前台日期 = #{record.前台日期,jdbcType=DATE},
+      </if>
+      <if test="record.前台流水 != null" >
+        前台流水 = #{record.前台流水,jdbcType=VARCHAR},
+      </if>
+      <if test="record.前台交易码 != null" >
+        前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="record.后台日期 != null" >
+        后台日期 = #{record.后台日期,jdbcType=DATE},
+      </if>
+      <if test="record.后台流水 != null" >
+        后台流水 = #{record.后台流水,jdbcType=VARCHAR},
+      </if>
+      <if test="record.后台交易码 != null" >
+        后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="record.交易状态 != null" >
+        交易状态 = #{record.交易状态,jdbcType=VARCHAR},
+      </if>
+      <if test="record.终端号 != null" >
+        终端号 = #{record.终端号,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IP地址 != null" >
+        IP地址 = #{record.IP地址,jdbcType=VARCHAR},
+      </if>
+      <if test="record.时间戳 != null" >
+        时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.记录状态 != null" >
+        记录状态 = #{record.记录状态,jdbcType=VARCHAR},
+      </if>
+      <if test="record.传入报文 != null" >
+        传入报文 = #{record.传入报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.请求支付宝报文 != null" >
+        请求支付宝报文 = #{record.请求支付宝报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.支付宝返回报文 != null" >
+        支付宝返回报文 = #{record.支付宝返回报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.传出报文 != null" >
+        传出报文 = #{record.传出报文,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update mjybw
+    set 法人代码 = #{record.法人代码,jdbcType=VARCHAR},
+      前台日期 = #{record.前台日期,jdbcType=DATE},
+      前台流水 = #{record.前台流水,jdbcType=VARCHAR},
+      前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
+      后台日期 = #{record.后台日期,jdbcType=DATE},
+      后台流水 = #{record.后台流水,jdbcType=VARCHAR},
+      后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
+      交易状态 = #{record.交易状态,jdbcType=VARCHAR},
+      终端号 = #{record.终端号,jdbcType=VARCHAR},
+      IP地址 = #{record.IP地址,jdbcType=VARCHAR},
+      时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
+      记录状态 = #{record.记录状态,jdbcType=VARCHAR},
+      传入报文 = #{record.传入报文,jdbcType=LONGVARBINARY},
+      请求支付宝报文 = #{record.请求支付宝报文,jdbcType=LONGVARBINARY},
+      支付宝返回报文 = #{record.支付宝返回报文,jdbcType=LONGVARBINARY},
+      传出报文 = #{record.传出报文,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mjybw
+    set 法人代码 = #{record.法人代码,jdbcType=VARCHAR},
+      前台日期 = #{record.前台日期,jdbcType=DATE},
+      前台流水 = #{record.前台流水,jdbcType=VARCHAR},
+      前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
+      后台日期 = #{record.后台日期,jdbcType=DATE},
+      后台流水 = #{record.后台流水,jdbcType=VARCHAR},
+      后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
+      交易状态 = #{record.交易状态,jdbcType=VARCHAR},
+      终端号 = #{record.终端号,jdbcType=VARCHAR},
+      IP地址 = #{record.IP地址,jdbcType=VARCHAR},
+      时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
+      记录状态 = #{record.记录状态,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
+    update mjybw
+    <set >
+      <if test="前台交易码 != null" >
+        前台交易码 = #{前台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="后台日期 != null" >
+        后台日期 = #{后台日期,jdbcType=DATE},
+      </if>
+      <if test="后台流水 != null" >
+        后台流水 = #{后台流水,jdbcType=VARCHAR},
+      </if>
+      <if test="后台交易码 != null" >
+        后台交易码 = #{后台交易码,jdbcType=VARCHAR},
+      </if>
+      <if test="交易状态 != null" >
+        交易状态 = #{交易状态,jdbcType=VARCHAR},
+      </if>
+      <if test="终端号 != null" >
+        终端号 = #{终端号,jdbcType=VARCHAR},
+      </if>
+      <if test="IP地址 != null" >
+        IP地址 = #{IP地址,jdbcType=VARCHAR},
+      </if>
+      <if test="时间戳 != null" >
+        时间戳 = #{时间戳,jdbcType=TIMESTAMP},
+      </if>
+      <if test="记录状态 != null" >
+        记录状态 = #{记录状态,jdbcType=VARCHAR},
+      </if>
+      <if test="传入报文 != null" >
+        传入报文 = #{传入报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="请求支付宝报文 != null" >
+        请求支付宝报文 = #{请求支付宝报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="支付宝返回报文 != null" >
+        支付宝返回报文 = #{支付宝返回报文,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="传出报文 != null" >
+        传出报文 = #{传出报文,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
+      and 前台日期 = #{前台日期,jdbcType=DATE}
+      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
+    update mjybw
+    set 前台交易码 = #{前台交易码,jdbcType=VARCHAR},
+      后台日期 = #{后台日期,jdbcType=DATE},
+      后台流水 = #{后台流水,jdbcType=VARCHAR},
+      后台交易码 = #{后台交易码,jdbcType=VARCHAR},
+      交易状态 = #{交易状态,jdbcType=VARCHAR},
+      终端号 = #{终端号,jdbcType=VARCHAR},
+      IP地址 = #{IP地址,jdbcType=VARCHAR},
+      时间戳 = #{时间戳,jdbcType=TIMESTAMP},
+      记录状态 = #{记录状态,jdbcType=VARCHAR},
+      传入报文 = #{传入报文,jdbcType=LONGVARBINARY},
+      请求支付宝报文 = #{请求支付宝报文,jdbcType=LONGVARBINARY},
+      支付宝返回报文 = #{支付宝返回报文,jdbcType=LONGVARBINARY},
+      传出报文 = #{传出报文,jdbcType=LONGVARBINARY}
+    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
+      and 前台日期 = #{前台日期,jdbcType=DATE}
+      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Server.Table.Model.MJYBW" >
+    update mjybw
+    set 前台交易码 = #{前台交易码,jdbcType=VARCHAR},
+      后台日期 = #{后台日期,jdbcType=DATE},
+      后台流水 = #{后台流水,jdbcType=VARCHAR},
+      后台交易码 = #{后台交易码,jdbcType=VARCHAR},
+      交易状态 = #{交易状态,jdbcType=VARCHAR},
+      终端号 = #{终端号,jdbcType=VARCHAR},
+      IP地址 = #{IP地址,jdbcType=VARCHAR},
+      时间戳 = #{时间戳,jdbcType=TIMESTAMP},
+      记录状态 = #{记录状态,jdbcType=VARCHAR}
+    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
+      and 前台日期 = #{前台日期,jdbcType=DATE}
+      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+  </update>
+</mapper>
