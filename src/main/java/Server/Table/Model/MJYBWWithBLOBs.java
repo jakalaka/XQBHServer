@@ -1,43 +1,43 @@
 package Server.Table.Model;
 
 public class MJYBWWithBLOBs extends MJYBW {
-    private byte[] 传入报文;
+    private byte[] CRBW_U;
 
-    private byte[] 请求支付宝报文;
+    private byte[] DSFSND;
 
-    private byte[] 支付宝返回报文;
+    private byte[] DSFRCV;
 
-    private byte[] 传出报文;
+    private byte[] CCBW_U;
 
-    public byte[] get传入报文() {
-        return 传入报文;
+    public byte[] getCRBW_U() {
+        return CRBW_U;
     }
 
-    public void set传入报文(byte[] 传入报文) {
-        this.传入报文 = 传入报文;
+    public void setCRBW_U(byte[] CRBW_U) {
+        this.CRBW_U = CRBW_U;
     }
 
-    public byte[] get请求支付宝报文() {
-        return 请求支付宝报文;
+    public byte[] getDSFSND() {
+        return DSFSND;
     }
 
-    public void set请求支付宝报文(byte[] 请求支付宝报文) {
-        this.请求支付宝报文 = 请求支付宝报文;
+    public void setDSFSND(byte[] DSFSND) {
+        this.DSFSND = DSFSND;
     }
 
-    public byte[] get支付宝返回报文() {
-        return 支付宝返回报文;
+    public byte[] getDSFRCV() {
+        return DSFRCV;
     }
 
-    public void set支付宝返回报文(byte[] 支付宝返回报文) {
-        this.支付宝返回报文 = 支付宝返回报文;
+    public void setDSFRCV(byte[] DSFRCV) {
+        this.DSFRCV = DSFRCV;
     }
 
-    public byte[] get传出报文() {
-        return 传出报文;
+    public byte[] getCCBW_U() {
+        return CCBW_U;
     }
 
-    public void set传出报文(byte[] 传出报文) {
-        this.传出报文 = 传出报文;
+    public void setCCBW_U(byte[] CCBW_U) {
+        this.CCBW_U = CCBW_U;
     }
 }

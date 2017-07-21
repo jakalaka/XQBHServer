@@ -32,18 +32,13 @@ public class ZDLogin extends Tran {
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setZDBH_U(ZDBH_U);
         dzdxxKey.setFRDM_U("9999");
+
         DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
-//        if()
-//        {
-//            runERR(tranObj,"LOG001");
-//            return false;
-//        }else
         if ("0".equals(dzdxx.getZDDLZT()) || "1".equals(dzdxx.getZDDLZT())) {
             dzdxx.setZDDLZT("1");
             dzdxx.setIP_UUU(IP_UUU);
-            Date date=new Date();
-            dzdxx.setSCDLRQ(date);
-            dzdxx.setSCDLSJ(date);
+            dzdxx.setSCDLRQ(tranObj.date);
+            dzdxx.setSCDLSJ(tranObj.date);
 
             dzdxxMapper.updateByPrimaryKey(dzdxx);
         } else {
@@ -55,8 +50,4 @@ public class ZDLogin extends Tran {
         return true;
     }
 
-//    public static void main(String[] args) {
-//        Map<String, String> test = new HashMap();
-//        String a = test.get("aa").toString();
-//    }
 }

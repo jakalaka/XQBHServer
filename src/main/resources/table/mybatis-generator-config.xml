@@ -68,7 +68,7 @@
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="MJYBW" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="MJYBW">
+               enableUpdateByExample="true" domainObjectName="MJYBW" enableInsert="true">
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="MJYMX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"

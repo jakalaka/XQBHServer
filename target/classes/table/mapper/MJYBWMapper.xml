@@ -2,24 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Server.Table.Mapper.MJYBWMapper" >
   <resultMap id="BaseResultMap" type="Server.Table.Model.MJYBW" >
-    <id column="法人代码" property="法人代码" jdbcType="VARCHAR" />
-    <id column="前台日期" property="前台日期" jdbcType="DATE" />
-    <id column="前台流水" property="前台流水" jdbcType="VARCHAR" />
-    <result column="前台交易码" property="前台交易码" jdbcType="VARCHAR" />
-    <result column="后台日期" property="后台日期" jdbcType="DATE" />
-    <result column="后台流水" property="后台流水" jdbcType="VARCHAR" />
-    <result column="后台交易码" property="后台交易码" jdbcType="VARCHAR" />
-    <result column="交易状态" property="交易状态" jdbcType="VARCHAR" />
-    <result column="终端号" property="终端号" jdbcType="VARCHAR" />
-    <result column="IP地址" property="IP地址" jdbcType="VARCHAR" />
-    <result column="时间戳" property="时间戳" jdbcType="TIMESTAMP" />
-    <result column="记录状态" property="记录状态" jdbcType="VARCHAR" />
+    <id column="FRDM_U" property="FRDM_U" jdbcType="VARCHAR" />
+    <id column="QTRQ_U" property="QTRQ_U" jdbcType="DATE" />
+    <id column="QTLS_U" property="QTLS_U" jdbcType="VARCHAR" />
+    <result column="HTRQ_U" property="HTRQ_U" jdbcType="DATE" />
+    <result column="HTLS_U" property="HTLS_U" jdbcType="VARCHAR" />
+    <result column="HTJYM_" property="HTJYM_" jdbcType="VARCHAR" />
+    <result column="DSFRQ_" property="DSFRQ_" jdbcType="DATE" />
+    <result column="DSFLS_" property="DSFLS_" jdbcType="VARCHAR" />
+    <result column="APIMC_" property="APIMC_" jdbcType="VARCHAR" />
+    <result column="CWDM_U" property="CWDM_U" jdbcType="VARCHAR" />
+    <result column="CWXX_U" property="CWXX_U" jdbcType="VARCHAR" />
+    <result column="ZDBH_U" property="ZDBH_U" jdbcType="VARCHAR" />
+    <result column="IP_UUU" property="IP_UUU" jdbcType="VARCHAR" />
+    <result column="SJC_UU" property="SJC_UU" jdbcType="TIMESTAMP" />
+    <result column="JLZT_U" property="JLZT_U" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="Server.Table.Model.MJYBWWithBLOBs" extends="BaseResultMap" >
-    <result column="传入报文" property="传入报文" jdbcType="LONGVARBINARY" />
-    <result column="请求支付宝报文" property="请求支付宝报文" jdbcType="LONGVARBINARY" />
-    <result column="支付宝返回报文" property="支付宝返回报文" jdbcType="LONGVARBINARY" />
-    <result column="传出报文" property="传出报文" jdbcType="LONGVARBINARY" />
+    <result column="CRBW_U" property="CRBW_U" jdbcType="LONGVARBINARY" />
+    <result column="DSFSND" property="DSFSND" jdbcType="LONGVARBINARY" />
+    <result column="DSFRCV" property="DSFRCV" jdbcType="LONGVARBINARY" />
+    <result column="CCBW_U" property="CCBW_U" jdbcType="LONGVARBINARY" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,10 +83,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    法人代码, 前台日期, 前台流水, 前台交易码, 后台日期, 后台流水, 后台交易码, 交易状态, 终端号, IP地址, 时间戳, 记录状态
+    FRDM_U, QTRQ_U, QTLS_U, HTRQ_U, HTLS_U, HTJYM_, DSFRQ_, DSFLS_, APIMC_, CWDM_U, CWXX_U, 
+    ZDBH_U, IP_UUU, SJC_UU, JLZT_U
   </sql>
   <sql id="Blob_Column_List" >
-    传入报文, 请求支付宝报文, 支付宝返回报文, 传出报文
+    CRBW_U, DSFSND, DSFRCV, CCBW_U
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="Server.Table.Model.MJYBWExample" >
     select
@@ -121,15 +125,15 @@
     ,
     <include refid="Blob_Column_List" />
     from mjybw
-    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
-      and 前台日期 = #{前台日期,jdbcType=DATE}
-      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="Server.Table.Model.MJYBWKey" >
     delete from mjybw
-    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
-      and 前台日期 = #{前台日期,jdbcType=DATE}
-      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="Server.Table.Model.MJYBWExample" >
     delete from mjybw
@@ -138,117 +142,139 @@
     </if>
   </delete>
   <insert id="insert" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
-    insert into mjybw (法人代码, 前台日期, 前台流水, 
-      前台交易码, 后台日期, 后台流水, 后台交易码, 
-      交易状态, 终端号, IP地址, 时间戳, 
-      记录状态, 传入报文, 请求支付宝报文, 
-      支付宝返回报文, 传出报文)
-    values (#{法人代码,jdbcType=VARCHAR}, #{前台日期,jdbcType=DATE}, #{前台流水,jdbcType=VARCHAR}, 
-      #{前台交易码,jdbcType=VARCHAR}, #{后台日期,jdbcType=DATE}, #{后台流水,jdbcType=VARCHAR}, #{后台交易码,jdbcType=VARCHAR}, 
-      #{交易状态,jdbcType=VARCHAR}, #{终端号,jdbcType=VARCHAR}, #{IP地址,jdbcType=VARCHAR}, #{时间戳,jdbcType=TIMESTAMP}, 
-      #{记录状态,jdbcType=VARCHAR}, #{传入报文,jdbcType=LONGVARBINARY}, #{请求支付宝报文,jdbcType=LONGVARBINARY}, 
-      #{支付宝返回报文,jdbcType=LONGVARBINARY}, #{传出报文,jdbcType=LONGVARBINARY})
+    insert into mjybw (FRDM_U, QTRQ_U, QTLS_U, 
+      HTRQ_U, HTLS_U, HTJYM_, 
+      DSFRQ_, DSFLS_, APIMC_, 
+      CWDM_U, CWXX_U, ZDBH_U, 
+      IP_UUU, SJC_UU, JLZT_U, 
+      CRBW_U, DSFSND, DSFRCV, 
+      CCBW_U)
+    values (#{FRDM_U,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
+      #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, #{HTJYM_,jdbcType=VARCHAR}, 
+      #{DSFRQ_,jdbcType=DATE}, #{DSFLS_,jdbcType=VARCHAR}, #{APIMC_,jdbcType=VARCHAR}, 
+      #{CWDM_U,jdbcType=VARCHAR}, #{CWXX_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
+      #{IP_UUU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR}, 
+      #{CRBW_U,jdbcType=LONGVARBINARY}, #{DSFSND,jdbcType=LONGVARBINARY}, #{DSFRCV,jdbcType=LONGVARBINARY}, 
+      #{CCBW_U,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
     insert into mjybw
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="法人代码 != null" >
-        法人代码,
+      <if test="FRDM_U != null" >
+        FRDM_U,
       </if>
-      <if test="前台日期 != null" >
-        前台日期,
+      <if test="QTRQ_U != null" >
+        QTRQ_U,
       </if>
-      <if test="前台流水 != null" >
-        前台流水,
+      <if test="QTLS_U != null" >
+        QTLS_U,
       </if>
-      <if test="前台交易码 != null" >
-        前台交易码,
+      <if test="HTRQ_U != null" >
+        HTRQ_U,
       </if>
-      <if test="后台日期 != null" >
-        后台日期,
+      <if test="HTLS_U != null" >
+        HTLS_U,
       </if>
-      <if test="后台流水 != null" >
-        后台流水,
+      <if test="HTJYM_ != null" >
+        HTJYM_,
       </if>
-      <if test="后台交易码 != null" >
-        后台交易码,
+      <if test="DSFRQ_ != null" >
+        DSFRQ_,
       </if>
-      <if test="交易状态 != null" >
-        交易状态,
+      <if test="DSFLS_ != null" >
+        DSFLS_,
       </if>
-      <if test="终端号 != null" >
-        终端号,
+      <if test="APIMC_ != null" >
+        APIMC_,
       </if>
-      <if test="IP地址 != null" >
-        IP地址,
+      <if test="CWDM_U != null" >
+        CWDM_U,
       </if>
-      <if test="时间戳 != null" >
-        时间戳,
+      <if test="CWXX_U != null" >
+        CWXX_U,
       </if>
-      <if test="记录状态 != null" >
-        记录状态,
+      <if test="ZDBH_U != null" >
+        ZDBH_U,
       </if>
-      <if test="传入报文 != null" >
-        传入报文,
+      <if test="IP_UUU != null" >
+        IP_UUU,
       </if>
-      <if test="请求支付宝报文 != null" >
-        请求支付宝报文,
+      <if test="SJC_UU != null" >
+        SJC_UU,
       </if>
-      <if test="支付宝返回报文 != null" >
-        支付宝返回报文,
+      <if test="JLZT_U != null" >
+        JLZT_U,
       </if>
-      <if test="传出报文 != null" >
-        传出报文,
+      <if test="CRBW_U != null" >
+        CRBW_U,
+      </if>
+      <if test="DSFSND != null" >
+        DSFSND,
+      </if>
+      <if test="DSFRCV != null" >
+        DSFRCV,
+      </if>
+      <if test="CCBW_U != null" >
+        CCBW_U,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="法人代码 != null" >
-        #{法人代码,jdbcType=VARCHAR},
+      <if test="FRDM_U != null" >
+        #{FRDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="前台日期 != null" >
-        #{前台日期,jdbcType=DATE},
+      <if test="QTRQ_U != null" >
+        #{QTRQ_U,jdbcType=DATE},
       </if>
-      <if test="前台流水 != null" >
-        #{前台流水,jdbcType=VARCHAR},
+      <if test="QTLS_U != null" >
+        #{QTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="前台交易码 != null" >
-        #{前台交易码,jdbcType=VARCHAR},
+      <if test="HTRQ_U != null" >
+        #{HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="后台日期 != null" >
-        #{后台日期,jdbcType=DATE},
+      <if test="HTLS_U != null" >
+        #{HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="后台流水 != null" >
-        #{后台流水,jdbcType=VARCHAR},
+      <if test="HTJYM_ != null" >
+        #{HTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="后台交易码 != null" >
-        #{后台交易码,jdbcType=VARCHAR},
+      <if test="DSFRQ_ != null" >
+        #{DSFRQ_,jdbcType=DATE},
       </if>
-      <if test="交易状态 != null" >
-        #{交易状态,jdbcType=VARCHAR},
+      <if test="DSFLS_ != null" >
+        #{DSFLS_,jdbcType=VARCHAR},
       </if>
-      <if test="终端号 != null" >
-        #{终端号,jdbcType=VARCHAR},
+      <if test="APIMC_ != null" >
+        #{APIMC_,jdbcType=VARCHAR},
       </if>
-      <if test="IP地址 != null" >
-        #{IP地址,jdbcType=VARCHAR},
+      <if test="CWDM_U != null" >
+        #{CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="时间戳 != null" >
-        #{时间戳,jdbcType=TIMESTAMP},
+      <if test="CWXX_U != null" >
+        #{CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="记录状态 != null" >
-        #{记录状态,jdbcType=VARCHAR},
+      <if test="ZDBH_U != null" >
+        #{ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="传入报文 != null" >
-        #{传入报文,jdbcType=LONGVARBINARY},
+      <if test="IP_UUU != null" >
+        #{IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="请求支付宝报文 != null" >
-        #{请求支付宝报文,jdbcType=LONGVARBINARY},
+      <if test="SJC_UU != null" >
+        #{SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="支付宝返回报文 != null" >
-        #{支付宝返回报文,jdbcType=LONGVARBINARY},
+      <if test="JLZT_U != null" >
+        #{JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="传出报文 != null" >
-        #{传出报文,jdbcType=LONGVARBINARY},
+      <if test="CRBW_U != null" >
+        #{CRBW_U,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="DSFSND != null" >
+        #{DSFSND,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="DSFRCV != null" >
+        #{DSFRCV,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="CCBW_U != null" >
+        #{CCBW_U,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
@@ -261,53 +287,62 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update mjybw
     <set >
-      <if test="record.法人代码 != null" >
-        法人代码 = #{record.法人代码,jdbcType=VARCHAR},
+      <if test="record.FRDM_U != null" >
+        FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.前台日期 != null" >
-        前台日期 = #{record.前台日期,jdbcType=DATE},
+      <if test="record.QTRQ_U != null" >
+        QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       </if>
-      <if test="record.前台流水 != null" >
-        前台流水 = #{record.前台流水,jdbcType=VARCHAR},
+      <if test="record.QTLS_U != null" >
+        QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.前台交易码 != null" >
-        前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
+      <if test="record.HTRQ_U != null" >
+        HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="record.后台日期 != null" >
-        后台日期 = #{record.后台日期,jdbcType=DATE},
+      <if test="record.HTLS_U != null" >
+        HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.后台流水 != null" >
-        后台流水 = #{record.后台流水,jdbcType=VARCHAR},
+      <if test="record.HTJYM_ != null" >
+        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="record.后台交易码 != null" >
-        后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
+      <if test="record.DSFRQ_ != null" >
+        DSFRQ_ = #{record.DSFRQ_,jdbcType=DATE},
       </if>
-      <if test="record.交易状态 != null" >
-        交易状态 = #{record.交易状态,jdbcType=VARCHAR},
+      <if test="record.DSFLS_ != null" >
+        DSFLS_ = #{record.DSFLS_,jdbcType=VARCHAR},
       </if>
-      <if test="record.终端号 != null" >
-        终端号 = #{record.终端号,jdbcType=VARCHAR},
+      <if test="record.APIMC_ != null" >
+        APIMC_ = #{record.APIMC_,jdbcType=VARCHAR},
       </if>
-      <if test="record.IP地址 != null" >
-        IP地址 = #{record.IP地址,jdbcType=VARCHAR},
+      <if test="record.CWDM_U != null" >
+        CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.时间戳 != null" >
-        时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
+      <if test="record.CWXX_U != null" >
+        CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.记录状态 != null" >
-        记录状态 = #{record.记录状态,jdbcType=VARCHAR},
+      <if test="record.ZDBH_U != null" >
+        ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.传入报文 != null" >
-        传入报文 = #{record.传入报文,jdbcType=LONGVARBINARY},
+      <if test="record.IP_UUU != null" >
+        IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="record.请求支付宝报文 != null" >
-        请求支付宝报文 = #{record.请求支付宝报文,jdbcType=LONGVARBINARY},
+      <if test="record.SJC_UU != null" >
+        SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.支付宝返回报文 != null" >
-        支付宝返回报文 = #{record.支付宝返回报文,jdbcType=LONGVARBINARY},
+      <if test="record.JLZT_U != null" >
+        JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.传出报文 != null" >
-        传出报文 = #{record.传出报文,jdbcType=LONGVARBINARY},
+      <if test="record.CRBW_U != null" >
+        CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.DSFSND != null" >
+        DSFSND = #{record.DSFSND,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.DSFRCV != null" >
+        DSFRCV = #{record.DSFRCV,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.CCBW_U != null" >
+        CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -316,40 +351,46 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update mjybw
-    set 法人代码 = #{record.法人代码,jdbcType=VARCHAR},
-      前台日期 = #{record.前台日期,jdbcType=DATE},
-      前台流水 = #{record.前台流水,jdbcType=VARCHAR},
-      前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
-      后台日期 = #{record.后台日期,jdbcType=DATE},
-      后台流水 = #{record.后台流水,jdbcType=VARCHAR},
-      后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
-      交易状态 = #{record.交易状态,jdbcType=VARCHAR},
-      终端号 = #{record.终端号,jdbcType=VARCHAR},
-      IP地址 = #{record.IP地址,jdbcType=VARCHAR},
-      时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
-      记录状态 = #{record.记录状态,jdbcType=VARCHAR},
-      传入报文 = #{record.传入报文,jdbcType=LONGVARBINARY},
-      请求支付宝报文 = #{record.请求支付宝报文,jdbcType=LONGVARBINARY},
-      支付宝返回报文 = #{record.支付宝返回报文,jdbcType=LONGVARBINARY},
-      传出报文 = #{record.传出报文,jdbcType=LONGVARBINARY}
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      DSFRQ_ = #{record.DSFRQ_,jdbcType=DATE},
+      DSFLS_ = #{record.DSFLS_,jdbcType=VARCHAR},
+      APIMC_ = #{record.APIMC_,jdbcType=VARCHAR},
+      CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
+      DSFSND = #{record.DSFSND,jdbcType=LONGVARBINARY},
+      DSFRCV = #{record.DSFRCV,jdbcType=LONGVARBINARY},
+      CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
     update mjybw
-    set 法人代码 = #{record.法人代码,jdbcType=VARCHAR},
-      前台日期 = #{record.前台日期,jdbcType=DATE},
-      前台流水 = #{record.前台流水,jdbcType=VARCHAR},
-      前台交易码 = #{record.前台交易码,jdbcType=VARCHAR},
-      后台日期 = #{record.后台日期,jdbcType=DATE},
-      后台流水 = #{record.后台流水,jdbcType=VARCHAR},
-      后台交易码 = #{record.后台交易码,jdbcType=VARCHAR},
-      交易状态 = #{record.交易状态,jdbcType=VARCHAR},
-      终端号 = #{record.终端号,jdbcType=VARCHAR},
-      IP地址 = #{record.IP地址,jdbcType=VARCHAR},
-      时间戳 = #{record.时间戳,jdbcType=TIMESTAMP},
-      记录状态 = #{record.记录状态,jdbcType=VARCHAR}
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      DSFRQ_ = #{record.DSFRQ_,jdbcType=DATE},
+      DSFLS_ = #{record.DSFLS_,jdbcType=VARCHAR},
+      APIMC_ = #{record.APIMC_,jdbcType=VARCHAR},
+      CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -357,82 +398,97 @@
   <update id="updateByPrimaryKeySelective" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
     update mjybw
     <set >
-      <if test="前台交易码 != null" >
-        前台交易码 = #{前台交易码,jdbcType=VARCHAR},
+      <if test="HTRQ_U != null" >
+        HTRQ_U = #{HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="后台日期 != null" >
-        后台日期 = #{后台日期,jdbcType=DATE},
+      <if test="HTLS_U != null" >
+        HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="后台流水 != null" >
-        后台流水 = #{后台流水,jdbcType=VARCHAR},
+      <if test="HTJYM_ != null" >
+        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="后台交易码 != null" >
-        后台交易码 = #{后台交易码,jdbcType=VARCHAR},
+      <if test="DSFRQ_ != null" >
+        DSFRQ_ = #{DSFRQ_,jdbcType=DATE},
       </if>
-      <if test="交易状态 != null" >
-        交易状态 = #{交易状态,jdbcType=VARCHAR},
+      <if test="DSFLS_ != null" >
+        DSFLS_ = #{DSFLS_,jdbcType=VARCHAR},
       </if>
-      <if test="终端号 != null" >
-        终端号 = #{终端号,jdbcType=VARCHAR},
+      <if test="APIMC_ != null" >
+        APIMC_ = #{APIMC_,jdbcType=VARCHAR},
       </if>
-      <if test="IP地址 != null" >
-        IP地址 = #{IP地址,jdbcType=VARCHAR},
+      <if test="CWDM_U != null" >
+        CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="时间戳 != null" >
-        时间戳 = #{时间戳,jdbcType=TIMESTAMP},
+      <if test="CWXX_U != null" >
+        CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="记录状态 != null" >
-        记录状态 = #{记录状态,jdbcType=VARCHAR},
+      <if test="ZDBH_U != null" >
+        ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="传入报文 != null" >
-        传入报文 = #{传入报文,jdbcType=LONGVARBINARY},
+      <if test="IP_UUU != null" >
+        IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="请求支付宝报文 != null" >
-        请求支付宝报文 = #{请求支付宝报文,jdbcType=LONGVARBINARY},
+      <if test="SJC_UU != null" >
+        SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="支付宝返回报文 != null" >
-        支付宝返回报文 = #{支付宝返回报文,jdbcType=LONGVARBINARY},
+      <if test="JLZT_U != null" >
+        JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="传出报文 != null" >
-        传出报文 = #{传出报文,jdbcType=LONGVARBINARY},
+      <if test="CRBW_U != null" >
+        CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="DSFSND != null" >
+        DSFSND = #{DSFSND,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="DSFRCV != null" >
+        DSFRCV = #{DSFRCV,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="CCBW_U != null" >
+        CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY},
       </if>
     </set>
-    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
-      and 前台日期 = #{前台日期,jdbcType=DATE}
-      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="Server.Table.Model.MJYBWWithBLOBs" >
     update mjybw
-    set 前台交易码 = #{前台交易码,jdbcType=VARCHAR},
-      后台日期 = #{后台日期,jdbcType=DATE},
-      后台流水 = #{后台流水,jdbcType=VARCHAR},
-      后台交易码 = #{后台交易码,jdbcType=VARCHAR},
-      交易状态 = #{交易状态,jdbcType=VARCHAR},
-      终端号 = #{终端号,jdbcType=VARCHAR},
-      IP地址 = #{IP地址,jdbcType=VARCHAR},
-      时间戳 = #{时间戳,jdbcType=TIMESTAMP},
-      记录状态 = #{记录状态,jdbcType=VARCHAR},
-      传入报文 = #{传入报文,jdbcType=LONGVARBINARY},
-      请求支付宝报文 = #{请求支付宝报文,jdbcType=LONGVARBINARY},
-      支付宝返回报文 = #{支付宝返回报文,jdbcType=LONGVARBINARY},
-      传出报文 = #{传出报文,jdbcType=LONGVARBINARY}
-    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
-      and 前台日期 = #{前台日期,jdbcType=DATE}
-      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+    set HTRQ_U = #{HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      DSFRQ_ = #{DSFRQ_,jdbcType=DATE},
+      DSFLS_ = #{DSFLS_,jdbcType=VARCHAR},
+      APIMC_ = #{APIMC_,jdbcType=VARCHAR},
+      CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
+      DSFSND = #{DSFSND,jdbcType=LONGVARBINARY},
+      DSFRCV = #{DSFRCV,jdbcType=LONGVARBINARY},
+      CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="Server.Table.Model.MJYBW" >
     update mjybw
-    set 前台交易码 = #{前台交易码,jdbcType=VARCHAR},
-      后台日期 = #{后台日期,jdbcType=DATE},
-      后台流水 = #{后台流水,jdbcType=VARCHAR},
-      后台交易码 = #{后台交易码,jdbcType=VARCHAR},
-      交易状态 = #{交易状态,jdbcType=VARCHAR},
-      终端号 = #{终端号,jdbcType=VARCHAR},
-      IP地址 = #{IP地址,jdbcType=VARCHAR},
-      时间戳 = #{时间戳,jdbcType=TIMESTAMP},
-      记录状态 = #{记录状态,jdbcType=VARCHAR}
-    where 法人代码 = #{法人代码,jdbcType=VARCHAR}
-      and 前台日期 = #{前台日期,jdbcType=DATE}
-      and 前台流水 = #{前台流水,jdbcType=VARCHAR}
+    set HTRQ_U = #{HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      DSFRQ_ = #{DSFRQ_,jdbcType=DATE},
+      DSFLS_ = #{DSFLS_,jdbcType=VARCHAR},
+      APIMC_ = #{APIMC_,jdbcType=VARCHAR},
+      CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
   </update>
 </mapper>

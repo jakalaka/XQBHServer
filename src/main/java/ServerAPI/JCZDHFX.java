@@ -7,6 +7,7 @@ import Server.Table.Model.CCPSXKey;
 import Server.Table.Model.DZDXX;
 import Server.Table.Model.DZDXXKey;
 import Server.Table.basic.DBAccess;
+import ServerTran.TranObj;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,31 +17,19 @@ import java.io.IOException;
  * Created by Administrator on 2017/7/4 0004.
  */
 public class JCZDHFX {
-    public static boolean exec(String ZDBH_U, String ZDJYM_) {
-        SqlSession sqlSession = null;
-        DBAccess dbAccess = new DBAccess();
-
-        try {
-            sqlSession = dbAccess.getSqlSession();
-            JCZDHFX jczdhfx = new JCZDHFX();
-            DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
-            DZDXXKey dzdxxKey = new DZDXXKey();
-            dzdxxKey.setFRDM_U("9999");
-            dzdxxKey.setZDBH_U(ZDBH_U);
-            DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
-            if (null == dzdxx)
-                return false;
-            if (!ZDJYM_.equals(dzdxx.getZDJYM_()))
-                return false;
-            if("2".equals(dzdxx.getZDDLZT()))
-                return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            sqlSession.close();
-        }
-
-
+    public static boolean exec(SqlSession sqlSession, String ZDBH_U, String ZDJYM_) throws IOException {
+        JCZDHFX jczdhfx = new JCZDHFX();
+        DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
+        DZDXXKey dzdxxKey = new DZDXXKey();
+        dzdxxKey.setFRDM_U("9999");
+        dzdxxKey.setZDBH_U(ZDBH_U);
+        DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+        if (null == dzdxx)
+            return false;
+        if (!ZDJYM_.equals(dzdxx.getZDJYM_()))
+            return false;
+        if ("2".equals(dzdxx.getZDDLZT()))
+            return false;
         return true;
     }
 

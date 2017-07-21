@@ -2,6 +2,7 @@ package ServerTran;
 
 import Server.Logger;
 import Server.XmlUtils;
+import ServerAPI.ComInit;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -17,9 +18,26 @@ public class CommonTran {
     @WebMethod
     public String Comtran(String XMLIn) {
         Logger.log("DEBUG", "XMLIn=" + XMLIn);
-        TranObj tranObj=new TranObj(XMLIn);
+        TranObj tranObj= new TranObj(XMLIn);
         if (false==tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR002");
+            return getOut(tranObj);
+        }
+
+        /*
+        公共检查
+         */
+        try {
+            if(false == ComInit.exec(tranObj))
+            {
+                Logger.log("DEBUG", "初始化失败");
+                Tran.runERR(tranObj,"ERR001");
+                return getOut(tranObj);
+            }
+        } catch (Exception e) {
+            Logger.log("DEBUG", e.toString());
+            Logger.log("DEBUG", "初始化失败");
+            Tran.runERR(tranObj,"ERR001");
             return getOut(tranObj);
         }
         Class c = null;

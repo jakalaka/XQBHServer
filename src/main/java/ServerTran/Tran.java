@@ -11,14 +11,13 @@ import java.io.IOException;
  * Created by Administrator on 2017/7/4 0004.
  */
 public abstract class Tran {
-    public  SqlSession sqlSession = null;
 
     public abstract boolean exec(TranObj tranObj);
-
+    public SqlSession sqlSession = null;
     public boolean execDo(TranObj tranObj) {
 
-        DBAccess dbAccess = new DBAccess();
         try {
+            DBAccess dbAccess = new DBAccess();
             sqlSession = dbAccess.getSqlSession();
             if (false == exec(tranObj)) {
                 if (null == tranObj.CWDM_U || "".equals(tranObj.CWDM_U)) {
@@ -40,7 +39,7 @@ public abstract class Tran {
             tranObj.CWXX_U = "调用" + tranObj.JYM_UU + "交易时错误";
             return false;
         } finally {
-            sqlSession.close();
+            //tmp tranObj.sqlSession.close();
         }
     }
 

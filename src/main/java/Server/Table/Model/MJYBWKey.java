@@ -3,33 +3,33 @@ package Server.Table.Model;
 import java.util.Date;
 
 public class MJYBWKey {
-    private String 法人代码;
+    private String FRDM_U;
 
-    private Date 前台日期;
+    private Date QTRQ_U;
 
-    private String 前台流水;
+    private String QTLS_U;
 
-    public String get法人代码() {
-        return 法人代码;
+    public String getFRDM_U() {
+        return FRDM_U;
     }
 
-    public void set法人代码(String 法人代码) {
-        this.法人代码 = 法人代码;
+    public void setFRDM_U(String FRDM_U) {
+        this.FRDM_U = FRDM_U;
     }
 
-    public Date get前台日期() {
-        return 前台日期;
+    public Date getQTRQ_U() {
+        return QTRQ_U;
     }
 
-    public void set前台日期(Date 前台日期) {
-        this.前台日期 = 前台日期;
+    public void setQTRQ_U(Date QTRQ_U) {
+        this.QTRQ_U = QTRQ_U;
     }
 
-    public String get前台流水() {
-        return 前台流水;
+    public String getQTLS_U() {
+        return QTLS_U;
     }
 
-    public void set前台流水(String 前台流水) {
-        this.前台流水 = 前台流水;
+    public void setQTLS_U(String QTLS_U) {
+        this.QTLS_U = QTLS_U;
     }
 }
