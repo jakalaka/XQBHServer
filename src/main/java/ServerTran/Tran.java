@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by Administrator on 2017/7/4 0004.
  */
 public abstract class Tran {
-    public SqlSession sqlSession = null;
+    public  SqlSession sqlSession = null;
 
     public abstract boolean exec(TranObj tranObj);
 

@@ -14,6 +14,8 @@ import java.util.Map;
  * Created by Administrator on 2017/7/4 0004.
  */
 public class ZDLogin extends Tran {
+
+
     @Override
     public boolean exec(TranObj tranObj) {
         /*
@@ -48,7 +50,7 @@ public class ZDLogin extends Tran {
         } else {
             runERR(tranObj, "LOG002");
             return false;
-        }aaaa
+        }
 
 
         return true;
