@@ -24,7 +24,6 @@ public class ZDLogin extends Tran {
         String ZDJYM_ = tranObj.getHead("ZDJYM_");
         String ZDBH_U = tranObj.getHead("ZDBH_U");
         String IP_UUU = tranObj.getHead("IP_UUU");
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd$HHmmss");//设置日期格式
 
         Logger.log("DEBUG", "ZDJYM_=" + ZDJYM_);
         Logger.log("DEBUG", "ZDBH_U=" + ZDBH_U);
