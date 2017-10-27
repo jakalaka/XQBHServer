@@ -75,6 +75,10 @@
                enableUpdateByExample="true" domainObjectName="MJYMX">
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="CXTCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true" domainObjectName="CXTCS">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>

@@ -16,7 +16,6 @@ import java.io.Reader;
 public class DBAccess {
     public SqlSession getSqlSession ()throws IOException{
         Reader reader= Resources.getResourceAsReader("table/Configuration.xml");
-
         SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(reader);
         SqlSession sqlSession=sqlSessionFactory.openSession();
         return sqlSession;

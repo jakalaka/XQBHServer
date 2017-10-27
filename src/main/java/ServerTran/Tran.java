@@ -1,11 +1,9 @@
 package ServerTran;
 
 import Server.Com;
-import Server.Logger;
+import Utils.log.Logger;
 import Server.Table.basic.DBAccess;
 import org.apache.ibatis.session.SqlSession;
-
-import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
@@ -15,10 +13,10 @@ public abstract class Tran {
     public abstract boolean exec(TranObj tranObj);
     public SqlSession sqlSession = null;
     public boolean execDo(TranObj tranObj) {
-
         try {
             DBAccess dbAccess = new DBAccess();
             sqlSession = dbAccess.getSqlSession();
+
             if (false == exec(tranObj)) {
                 if (null == tranObj.CWDM_U || "".equals(tranObj.CWDM_U)) {
                     tranObj.CWDM_U = "COMERR";

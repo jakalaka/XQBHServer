@@ -1,7 +1,8 @@
-package Server; /**
+package Utils.XML; /**
  * Created by Administrator on 2017/7/2 0002.
  */
 
+import Utils.log.Logger;
 import ServerTran.TranObj;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.DocumentException;

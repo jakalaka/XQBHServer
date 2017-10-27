@@ -8,6 +8,7 @@ import Server.Table.Model.DZDXX;
 import Server.Table.Model.DZDXXKey;
 import Server.Table.basic.DBAccess;
 import ServerTran.TranObj;
+import Utils.log.Logger;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.ibatis.session.SqlSession;
 
@@ -18,7 +19,7 @@ import java.io.IOException;
  */
 public class JCZDHFX {
     public static boolean exec(SqlSession sqlSession, String ZDBH_U, String ZDJYM_) throws IOException {
-        JCZDHFX jczdhfx = new JCZDHFX();
+        Logger.log("LOG_IO",">>>>>>>>>>>>>>>>");
         DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setFRDM_U("9999");
@@ -30,6 +31,7 @@ public class JCZDHFX {
             return false;
         if ("2".equals(dzdxx.getZDDLZT()))
             return false;
+        Logger.log("LOG_IO","<<<<<<<<<<<<<<<<<");
         return true;
     }
 

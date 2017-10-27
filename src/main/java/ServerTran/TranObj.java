@@ -1,9 +1,9 @@
 package ServerTran;
 
 import Server.Table.basic.DBAccess;
-import Server.XmlUtils;
 import ServerAPI.InsertMJYBW;
 import ServerAPI.JCZDHFX;
+import Utils.XML.XmlUtils;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;

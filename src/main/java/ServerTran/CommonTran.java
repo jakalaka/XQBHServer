@@ -1,7 +1,7 @@
 package ServerTran;
 
-import Server.Logger;
-import Server.XmlUtils;
+import Utils.XML.XmlUtils;
+import Utils.log.Logger;
 import ServerAPI.ComInit;
 
 import javax.jws.WebMethod;
@@ -67,7 +67,7 @@ public class CommonTran {
         return getOut(tranObj);
     }
     public String getOut(TranObj tranObj){
-        String reXml=XmlUtils.tranObj2XML(tranObj,"root");
+        String reXml= XmlUtils.tranObj2XML(tranObj,"root");
         Logger.log("DEBUG",reXml);
         return reXml;
     }

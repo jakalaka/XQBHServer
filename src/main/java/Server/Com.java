@@ -12,7 +12,7 @@ public class Com {
 
     /**
      * 日志等级
-     *
+     * SYS,ERR,IO,DEBUG
      */
     public static  String LOGLV="";
 

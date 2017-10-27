@@ -26,6 +26,7 @@
         <mapper resource="table/mapper/DZDXXMapper.xml"/>
         <mapper resource="table/mapper/MJYBWMapper.xml"/>
         <mapper resource="table/mapper/MJYMXMapper.xml"/>
+        <mapper resource="table/mapper/CXTCSMapper.xml"/>
     </mappers>
 
 </configuration>

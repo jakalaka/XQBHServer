@@ -1,4 +1,6 @@
-package Server;
+package Utils.PropertiesHandler;
+
+import Utils.log.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;

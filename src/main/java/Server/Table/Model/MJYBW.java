@@ -3,21 +3,15 @@ package Server.Table.Model;
 import java.util.Date;
 
 public class MJYBW extends MJYBWKey {
-    private Date HTRQ_U;
+    private String QTJYM_;
 
-    private String HTLS_U;
+    private Date JYRQ_U;
 
-    private String HTJYM_;
+    private String JYLS_U;
 
-    private Date DSFRQ_;
+    private String JYM_UU;
 
-    private String DSFLS_;
-
-    private String APIMC_;
-
-    private String CWDM_U;
-
-    private String CWXX_U;
+    private String JYZT_U;
 
     private String ZDBH_U;
 
@@ -27,68 +21,44 @@ public class MJYBW extends MJYBWKey {
 
     private String JLZT_U;
 
-    public Date getHTRQ_U() {
-        return HTRQ_U;
+    public String getQTJYM_() {
+        return QTJYM_;
     }
 
-    public void setHTRQ_U(Date HTRQ_U) {
-        this.HTRQ_U = HTRQ_U;
+    public void setQTJYM_(String QTJYM_) {
+        this.QTJYM_ = QTJYM_;
     }
 
-    public String getHTLS_U() {
-        return HTLS_U;
+    public Date getJYRQ_U() {
+        return JYRQ_U;
     }
 
-    public void setHTLS_U(String HTLS_U) {
-        this.HTLS_U = HTLS_U;
+    public void setJYRQ_U(Date JYRQ_U) {
+        this.JYRQ_U = JYRQ_U;
     }
 
-    public String getHTJYM_() {
-        return HTJYM_;
+    public String getJYLS_U() {
+        return JYLS_U;
     }
 
-    public void setHTJYM_(String HTJYM_) {
-        this.HTJYM_ = HTJYM_;
+    public void setJYLS_U(String JYLS_U) {
+        this.JYLS_U = JYLS_U;
     }
 
-    public Date getDSFRQ_() {
-        return DSFRQ_;
+    public String getJYM_UU() {
+        return JYM_UU;
     }
 
-    public void setDSFRQ_(Date DSFRQ_) {
-        this.DSFRQ_ = DSFRQ_;
+    public void setJYM_UU(String JYM_UU) {
+        this.JYM_UU = JYM_UU;
     }
 
-    public String getDSFLS_() {
-        return DSFLS_;
+    public String getJYZT_U() {
+        return JYZT_U;
     }
 
-    public void setDSFLS_(String DSFLS_) {
-        this.DSFLS_ = DSFLS_;
-    }
-
-    public String getAPIMC_() {
-        return APIMC_;
-    }
-
-    public void setAPIMC_(String APIMC_) {
-        this.APIMC_ = APIMC_;
-    }
-
-    public String getCWDM_U() {
-        return CWDM_U;
-    }
-
-    public void setCWDM_U(String CWDM_U) {
-        this.CWDM_U = CWDM_U;
-    }
-
-    public String getCWXX_U() {
-        return CWXX_U;
-    }
-
-    public void setCWXX_U(String CWXX_U) {
-        this.CWXX_U = CWXX_U;
+    public void setJYZT_U(String JYZT_U) {
+        this.JYZT_U = JYZT_U;
     }
 
     public String getZDBH_U() {

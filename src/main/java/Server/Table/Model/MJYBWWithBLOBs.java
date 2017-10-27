@@ -3,9 +3,9 @@ package Server.Table.Model;
 public class MJYBWWithBLOBs extends MJYBW {
     private byte[] CRBW_U;
 
-    private byte[] DSFSND;
+    private byte[] SFBWIN;
 
-    private byte[] DSFRCV;
+    private byte[] SFBWOT;
 
     private byte[] CCBW_U;
 
@@ -17,20 +17,20 @@ public class MJYBWWithBLOBs extends MJYBW {
         this.CRBW_U = CRBW_U;
     }
 
-    public byte[] getDSFSND() {
-        return DSFSND;
+    public byte[] getSFBWIN() {
+        return SFBWIN;
     }
 
-    public void setDSFSND(byte[] DSFSND) {
-        this.DSFSND = DSFSND;
+    public void setSFBWIN(byte[] SFBWIN) {
+        this.SFBWIN = SFBWIN;
     }
 
-    public byte[] getDSFRCV() {
-        return DSFRCV;
+    public byte[] getSFBWOT() {
+        return SFBWOT;
     }
 
-    public void setDSFRCV(byte[] DSFRCV) {
-        this.DSFRCV = DSFRCV;
+    public void setSFBWOT(byte[] SFBWOT) {
+        this.SFBWOT = SFBWOT;
     }
 
     public byte[] getCCBW_U() {
