@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Server/Com.class" afterPath="$PROJECT_DIR$/target/classes/Server/Com.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Server/ServerMain.class" afterPath="$PROJECT_DIR$/target/classes/Server/ServerMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerAPI/JCZDHFX.class" afterPath="$PROJECT_DIR$/target/classes/ServerAPI/JCZDHFX.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerTran/CommonTran.class" afterPath="$PROJECT_DIR$/target/classes/ServerTran/CommonTran.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerTran/Tran.class" afterPath="$PROJECT_DIR$/target/classes/ServerTran/Tran.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerTran/ZDLogin.class" afterPath="$PROJECT_DIR$/target/classes/ServerTran/ZDLogin.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -934,7 +928,7 @@
       <workItem from="1509117930686" duration="176000" />
       <workItem from="1509120396773" duration="922000" />
       <workItem from="1509121638998" duration="5018000" />
-      <workItem from="1509288142676" duration="120000" />
+      <workItem from="1509288142676" duration="242000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1020,11 +1014,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509288241246</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="~~">
+      <created>1509288384531</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1509288384531</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71014000" />
+    <option name="totallyTimeSpent" value="71136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -1212,6 +1213,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1330">
           <caret line="70" column="88" lean-forward="false" selection-start-line="70" selection-start-column="88" selection-end-line="70" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
