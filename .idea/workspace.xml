@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="~~">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Utils/log/LogUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/MJYBWMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/MJYMXMapper.xml" afterPath="" />
+    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Server/Com.class" afterPath="$PROJECT_DIR$/target/classes/Server/Com.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Server/ServerMain.class" afterPath="$PROJECT_DIR$/target/classes/Server/ServerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerAPI/JCZDHFX.class" afterPath="$PROJECT_DIR$/target/classes/ServerAPI/JCZDHFX.class" />
@@ -18,17 +9,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerTran/Tran.class" afterPath="$PROJECT_DIR$/target/classes/ServerTran/Tran.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ServerTran/ZDLogin.class" afterPath="$PROJECT_DIR$/target/classes/ServerTran/ZDLogin.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Server/Com.java" afterPath="$PROJECT_DIR$/src/main/java/Server/Com.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Server/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/Server/ServerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ServerAPI/JCZDHFX.java" afterPath="$PROJECT_DIR$/src/main/java/ServerAPI/JCZDHFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/CommonTran.java" afterPath="$PROJECT_DIR$/src/main/java/ServerTran/CommonTran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/Tran.java" afterPath="$PROJECT_DIR$/src/main/java/ServerTran/Tran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/ZDLogin.java" afterPath="$PROJECT_DIR$/src/main/java/ServerTran/ZDLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/PropertiesHandler/PropertiesReader.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/PropertiesHandler/PropertiesReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/XML/XmlUtils.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/XML/XmlUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/log/Logger.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/log/Logger.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/log/MyLogFormatter.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/log/MyLogHander.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,8 +54,8 @@
       <file leaf-file-name="Logger.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Utils/log/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
+            <state relative-caret-position="579">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -954,7 +934,7 @@
       <workItem from="1509117930686" duration="176000" />
       <workItem from="1509120396773" duration="922000" />
       <workItem from="1509121638998" duration="5018000" />
-      <workItem from="1509288142676" duration="61000" />
+      <workItem from="1509288142676" duration="120000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1033,11 +1013,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507034482671</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="~~">
+      <created>1509288241246</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1509288241246</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70955000" />
+    <option name="totallyTimeSpent" value="71014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -1272,6 +1259,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1397,8 +1385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Utils/log/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
+        <state relative-caret-position="579">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
