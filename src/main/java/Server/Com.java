@@ -16,6 +16,9 @@ public class Com {
      */
     public static  String LOGLV="";
 
+    public static final String getIn =">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+    public static final String getOut ="<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+    public static  long tmpCount =0;
     /**
      * 获取后台流水=？？？
      * @return

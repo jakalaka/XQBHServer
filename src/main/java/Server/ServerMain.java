@@ -14,7 +14,7 @@ public class ServerMain {
         //aaa
          if (false==ServerInit.Init())
          {
-             Logger.log("LOG_ERR","ServerInit Fail!!!");
+             Logger.log("LOG_SYS","ServerInit Fail!!!");
              return;
          }
 

@@ -22,7 +22,7 @@ public class PropertiesReader {
         Properties propertie;
         FileInputStream inputFile;
         if (!file.exists()) {
-            Logger.log("ERR", "file not found");
+            Logger.log("LOG_SYS", "file not found");
             return null;
         }
 
@@ -33,10 +33,10 @@ public class PropertiesReader {
 //            propertie.loadFromXML(inputFile);//读取XML文件
             inputFile.close();
         } catch (FileNotFoundException ex) {
-            Logger.log("ERR", "文件无法找到");
+            Logger.log("LOG_SYS", "文件无法找到");
             ex.printStackTrace();
         } catch (IOException ex) {
-            Logger.log("ERR", "读取文件失败");
+            Logger.log("LOG_SYS", "读取文件失败");
             ex.printStackTrace();
         }
 

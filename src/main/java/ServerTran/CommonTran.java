@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 public class CommonTran {
     @WebMethod
     public String Comtran(String XMLIn) {
-        Logger.log("DEBUG", "XMLIn=" + XMLIn);
+        Logger.log("LOG_IO", "XMLIn=" + XMLIn);
         TranObj tranObj= new TranObj(XMLIn);
         if (false==tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR002");
@@ -30,19 +30,19 @@ public class CommonTran {
         try {
             if(false == ComInit.exec(tranObj))
             {
-                Logger.log("DEBUG", "初始化失败");
+                Logger.log("LOG_SYS", "初始化失败");
                 Tran.runERR(tranObj,"ERR001");
                 return getOut(tranObj);
             }
         } catch (Exception e) {
-            Logger.log("DEBUG", e.toString());
-            Logger.log("DEBUG", "初始化失败");
+            Logger.log("LOG_SYS", e.toString());
+            Logger.log("LOG_SYS", "初始化失败");
             Tran.runERR(tranObj,"ERR001");
             return getOut(tranObj);
         }
         Class c = null;
         boolean callRe = false;
-        Logger.log("DEBUG", "JYM_UU=" + tranObj.JYM_UU);
+        Logger.log("LOG_IO", "JYM_UU=" + tranObj.JYM_UU);
         try {
             c = Class.forName("ServerTran." + tranObj.JYM_UU);
             Object obj = c.newInstance();
@@ -61,15 +61,15 @@ public class CommonTran {
         }
         if(false==callRe)
         {
-            Logger.log("ERR","Call ERR");
+            Logger.log("LOG_ERR","Call ERR");
         }
 
         return getOut(tranObj);
     }
     public String getOut(TranObj tranObj){
-        String reXml= XmlUtils.tranObj2XML(tranObj,"root");
-        Logger.log("DEBUG",reXml);
-        return reXml;
+        String XMLOut= XmlUtils.tranObj2XML(tranObj,"root");
+        Logger.log("LOG_IO","XMLOut"+XMLOut+"\n\n\n");
+        return XMLOut;
     }
 
 

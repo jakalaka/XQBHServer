@@ -87,7 +87,7 @@ public class XmlUtils {
         try {
             doc = DocumentHelper.parseText(xml);
         } catch (DocumentException e) {
-            Logger.log("ERR","XML转化成DOC时出错");
+            Logger.log("LOG_ERR","XML转化成DOC时出错");
             e.printStackTrace();
         }
         Element body = (Element) doc.selectSingleNode("/" + rootElement);

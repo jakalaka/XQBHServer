@@ -1,5 +1,6 @@
 package ServerAPI;
 
+import Server.Com;
 import Server.Table.Mapper.CCPSXMapper;
 import Server.Table.Mapper.DZDXXMapper;
 import Server.Table.Model.CCPSX;
@@ -19,7 +20,9 @@ import java.io.IOException;
  */
 public class JCZDHFX {
     public static boolean exec(SqlSession sqlSession, String ZDBH_U, String ZDJYM_) throws IOException {
-        Logger.log("LOG_IO",">>>>>>>>>>>>>>>>");
+        Logger.log("LOG_IO", Com.getIn);
+        Logger.log("LOG_IO","ZDBH_U="+ZDBH_U);
+        Logger.log("LOG_IO","ZDJYM_="+ZDJYM_);
         DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setFRDM_U("9999");
@@ -31,7 +34,7 @@ public class JCZDHFX {
             return false;
         if ("2".equals(dzdxx.getZDDLZT()))
             return false;
-        Logger.log("LOG_IO","<<<<<<<<<<<<<<<<<");
+        Logger.log("LOG_IO",Com.getOut);
         return true;
     }
 

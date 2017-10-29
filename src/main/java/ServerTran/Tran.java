@@ -44,6 +44,6 @@ public abstract class Tran {
     public static void runERR(TranObj tranObj, String CWDM_U) {
         tranObj.CWDM_U = CWDM_U;
         tranObj.CWXX_U = Com.ERRMap.get(CWDM_U);
-        Logger.log("DEBUG", "tranObj.CWDM_U=" + tranObj.CWDM_U + "  tranObj.CWXX_U" + tranObj.CWXX_U);
+        Logger.log("LOG_ERR", "tranObj.CWDM_U=" + tranObj.CWDM_U + "  tranObj.CWXX_U" + tranObj.CWXX_U);
     }
 }

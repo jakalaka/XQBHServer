@@ -1,5 +1,6 @@
 package ServerTran;
 
+import Server.Com;
 import Utils.log.Logger;
 import Server.Table.Mapper.DZDXXMapper;
 import Server.Table.Model.DZDXX;
@@ -19,9 +20,9 @@ public class ZDLogin extends Tran {
         String ZDJYM_ = tranObj.getHead("ZDJYM_");
         String ZDBH_U = tranObj.getHead("ZDBH_U");
         String IP_UUU = tranObj.getHead("IP_UUU");
-
-        Logger.log("DEBUG", "ZDJYM_=" + ZDJYM_);
-        Logger.log("DEBUG", "ZDBH_U=" + ZDBH_U);
+        Logger.log("LOG_IO", Com.getIn);
+        Logger.log("LOG_IO", "ZDJYM_=" + ZDJYM_);
+        Logger.log("LOG_IO", "ZDBH_U=" + ZDBH_U);
 
 
         DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
@@ -42,8 +43,9 @@ public class ZDLogin extends Tran {
             runERR(tranObj, "LOG002");
             return false;
         }
-
-
+        Com.tmpCount++;
+        System.out.println(Com.tmpCount);
+        Logger.log("LOG_IO", Com.getOut);
         return true;
     }
 
