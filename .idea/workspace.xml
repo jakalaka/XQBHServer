@@ -7,160 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/XQBHServer_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/resources/log4j.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CXTCSMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/MJYBWMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/table/mapper/MJYMXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Com.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/ServerInit.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/ServerMain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/CCPSXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/CSHSXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/CZDSXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/DKHXXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/DSHXXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/DZDXXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/MJYBWMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Mapper/MJYMXMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CCPSXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CSHSXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/CZDSXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DKHXXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DSHXXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/DZDXXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBW.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYBWWithBLOBs.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMXExample$Criteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMXExample$Criterion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMXExample$GeneratedCriteria.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMXExample.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/Model/MJYMXKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Server/Table/basic/DBAccess.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ServerAPI/JCZDHFX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ServerTran/CommonTran.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ServerTran/Tran.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ServerTran/TranObj.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ServerTran/ZDLogin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/errmsg.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/sysInfo.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/Configuration.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/MJYBWMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mapper/MJYMXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/table/mybatis-generator-config.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XQBHServer.iml" afterPath="$PROJECT_DIR$/XQBHServer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Com.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Com.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/ServerInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/CCPSXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CCPSXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/CSHSXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CSHSXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/CXTCSMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CXTCSMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/CZDSXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CZDSXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/DKHXXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DKHXXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/DSHXXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DSHXXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/DZDXXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DZDXXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/MJYBWMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MJYBWMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Mapper/MJYMXMapper.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MJYMXMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CCPSX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CCPSXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CCPSXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CSHSX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CSHSXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CSHSXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CXTCS.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CXTCSExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CXTCSKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CZDSX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CZDSXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/CZDSXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DKHXX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DKHXXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DKHXXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DSHXX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DSHXXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DSHXXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DZDXX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DZDXXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/DZDXXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYBW.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBW.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYBWExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYBWKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYBWWithBLOBs.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWWithBLOBs.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYMX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYMXExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMXExample.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/Model/MJYMXKey.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMXKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Server/Table/basic/DBAccess.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/basic/DBAccess.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerAPI/ComInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/ComInit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerAPI/InsertMJYBW.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBW.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerAPI/JCZDHFX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/JCZDHFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/CommonTran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/Tran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/TranObj.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/TranObj.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ServerTran/ZDLogin.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ZDLogin.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/PropertiesHandler/PropertiesReader.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/PropertiesHandler/PropertiesReader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/XML/XmlHandler.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/XML/XmlUtils.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/log/Logger.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Utils/log/MyLogHander.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/MyLogHander.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/errmsg.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/src/resources/log4j.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/sysInfo.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/sysInfo.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/table/Configuration.xml" afterPath="$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/table/mybatis-generator-config.xml" afterPath="$PROJECT_DIR$/src/main/java/resources/table/mybatis-generator-config.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1117,7 +964,7 @@
       <workItem from="1509634104027" duration="10000" />
       <workItem from="1509637401704" duration="939000" />
       <workItem from="1509717076591" duration="322000" />
-      <workItem from="1509717656464" duration="10276000" />
+      <workItem from="1509717656464" duration="10354000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1217,11 +1064,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509288395861</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="~~">
+      <created>1509728070742</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1509728070742</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85484000" />
+    <option name="totallyTimeSpent" value="85562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
