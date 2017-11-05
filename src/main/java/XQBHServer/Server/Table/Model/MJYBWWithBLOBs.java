@@ -3,9 +3,9 @@ package XQBHServer.Server.Table.Model;
 public class MJYBWWithBLOBs extends MJYBW {
     private byte[] CRBW_U;
 
-    private byte[] SFBWIN;
+    private byte[] SFQQBW;
 
-    private byte[] SFBWOT;
+    private byte[] SFFHBW;
 
     private byte[] CCBW_U;
 
@@ -17,20 +17,20 @@ public class MJYBWWithBLOBs extends MJYBW {
         this.CRBW_U = CRBW_U;
     }
 
-    public byte[] getSFBWIN() {
-        return SFBWIN;
+    public byte[] getSFQQBW() {
+        return SFQQBW;
     }
 
-    public void setSFBWIN(byte[] SFBWIN) {
-        this.SFBWIN = SFBWIN;
+    public void setSFQQBW(byte[] SFQQBW) {
+        this.SFQQBW = SFQQBW;
     }
 
-    public byte[] getSFBWOT() {
-        return SFBWOT;
+    public byte[] getSFFHBW() {
+        return SFFHBW;
     }
 
-    public void setSFBWOT(byte[] SFBWOT) {
-        this.SFBWOT = SFBWOT;
+    public void setSFFHBW(byte[] SFFHBW) {
+        this.SFFHBW = SFFHBW;
     }
 
     public byte[] getCCBW_U() {

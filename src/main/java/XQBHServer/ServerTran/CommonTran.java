@@ -44,7 +44,7 @@ public class CommonTran {
         boolean callRe = false;
         Logger.log("LOG_IO", "JYM_UU=" + tranObj.JYM_UU);
         try {
-            c = Class.forName("ServerTran." + tranObj.JYM_UU);
+            c = Class.forName("XQBHServer.ServerTran." + tranObj.JYM_UU);
             Object obj = c.newInstance();
             Method m = obj.getClass().getMethod("execDo", TranObj.class);
             callRe = (Boolean) m.invoke(obj,tranObj);

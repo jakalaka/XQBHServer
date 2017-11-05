@@ -50,7 +50,7 @@ public class Logger {
 
         while (log.getHandlers().length > 0)
         {
-            System.out.println(log.getHandlers().length);
+            //System.out.println(log.getHandlers().length);
             log.removeHandler(log.getHandlers()[0]);
         }
         for(Handler handler : log.getHandlers()) {

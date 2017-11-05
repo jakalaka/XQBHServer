@@ -313,6 +313,76 @@ public class CXTCSExample {
             addCriterion("VALUE_ not between", value1, value2, "VALUE_");
             return (Criteria) this;
         }
+
+        public Criteria andJLZT_UIsNull() {
+            addCriterion("JLZT_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UIsNotNull() {
+            addCriterion("JLZT_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UEqualTo(String value) {
+            addCriterion("JLZT_U =", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UNotEqualTo(String value) {
+            addCriterion("JLZT_U <>", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UGreaterThan(String value) {
+            addCriterion("JLZT_U >", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UGreaterThanOrEqualTo(String value) {
+            addCriterion("JLZT_U >=", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_ULessThan(String value) {
+            addCriterion("JLZT_U <", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_ULessThanOrEqualTo(String value) {
+            addCriterion("JLZT_U <=", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_ULike(String value) {
+            addCriterion("JLZT_U like", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UNotLike(String value) {
+            addCriterion("JLZT_U not like", value, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UIn(List<String> values) {
+            addCriterion("JLZT_U in", values, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UNotIn(List<String> values) {
+            addCriterion("JLZT_U not in", values, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UBetween(String value1, String value2) {
+            addCriterion("JLZT_U between", value1, value2, "JLZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andJLZT_UNotBetween(String value1, String value2) {
+            addCriterion("JLZT_U not between", value1, value2, "JLZT_U");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

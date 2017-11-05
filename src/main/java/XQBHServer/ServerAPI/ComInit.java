@@ -18,7 +18,7 @@ public class ComInit {
         String ZDBH_U = tranObj.HeadMap.get("ZDBH_U").toString();
         String ZDJYM_ = tranObj.HeadMap.get("ZDJYM_").toString();
         if (false== JCZDHFX.exec(sqlSession, ZDBH_U, ZDJYM_))
-            return false;
+            return returnFalse(sqlSession);
 
         /*
         插入交易报文
@@ -26,6 +26,14 @@ public class ComInit {
         if(false == InsertMJYBW.exec(sqlSession,tranObj.HeadMap))
             return false;
 
+        sqlSession.commit();
+        sqlSession.close();
         return true;
+
+    }
+    public static boolean returnFalse( SqlSession sqlSession){
+        sqlSession.rollback();
+        sqlSession.close();
+        return false;
     }
 }

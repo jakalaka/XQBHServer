@@ -5,11 +5,17 @@ import java.util.Date;
 public class MJYBW extends MJYBWKey {
     private String QTJYM_;
 
-    private Date JYRQ_U;
+    private Date HTRQ_U;
 
-    private String JYLS_U;
+    private String HTLS_U;
 
-    private String JYM_UU;
+    private String HTJYM_;
+
+    private Date SFRQ_U;
+
+    private String SFLS_U;
+
+    private String SFJYM_;
 
     private String JYZT_U;
 
@@ -29,28 +35,52 @@ public class MJYBW extends MJYBWKey {
         this.QTJYM_ = QTJYM_;
     }
 
-    public Date getJYRQ_U() {
-        return JYRQ_U;
+    public Date getHTRQ_U() {
+        return HTRQ_U;
     }
 
-    public void setJYRQ_U(Date JYRQ_U) {
-        this.JYRQ_U = JYRQ_U;
+    public void setHTRQ_U(Date HTRQ_U) {
+        this.HTRQ_U = HTRQ_U;
     }
 
-    public String getJYLS_U() {
-        return JYLS_U;
+    public String getHTLS_U() {
+        return HTLS_U;
     }
 
-    public void setJYLS_U(String JYLS_U) {
-        this.JYLS_U = JYLS_U;
+    public void setHTLS_U(String HTLS_U) {
+        this.HTLS_U = HTLS_U;
     }
 
-    public String getJYM_UU() {
-        return JYM_UU;
+    public String getHTJYM_() {
+        return HTJYM_;
     }
 
-    public void setJYM_UU(String JYM_UU) {
-        this.JYM_UU = JYM_UU;
+    public void setHTJYM_(String HTJYM_) {
+        this.HTJYM_ = HTJYM_;
+    }
+
+    public Date getSFRQ_U() {
+        return SFRQ_U;
+    }
+
+    public void setSFRQ_U(Date SFRQ_U) {
+        this.SFRQ_U = SFRQ_U;
+    }
+
+    public String getSFLS_U() {
+        return SFLS_U;
+    }
+
+    public void setSFLS_U(String SFLS_U) {
+        this.SFLS_U = SFLS_U;
+    }
+
+    public String getSFJYM_() {
+        return SFJYM_;
+    }
+
+    public void setSFJYM_(String SFJYM_) {
+        this.SFJYM_ = SFJYM_;
     }
 
     public String getJYZT_U() {

@@ -19,12 +19,20 @@ public class InsertMJYBW {
         String rqTmp = HeadMap.get("QTRQ_U") + HeadMap.get("QTSJ_U");
         Date date = formatter.parse(rqTmp);
         MJYBWMapper mjybwMapper = sqlSession.getMapper(MJYBWMapper.class);
-        DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
         MJYBW mjybw = new MJYBW();
         MJYBWWithBLOBs mjybwWithBLOBs = new MJYBWWithBLOBs();
         mjybwWithBLOBs.setFRDM_U("9999");
         mjybwWithBLOBs.setQTLS_U(HeadMap.get("QTLS_U"));
         mjybwWithBLOBs.setQTRQ_U(date);
+        mjybwWithBLOBs.setQTJYM_(HeadMap.get("QTJYM_"));
+        mjybwWithBLOBs.setHTJYM_(HeadMap.get("HTJYM_"));
+
+
+        mjybwWithBLOBs.setJYZT_U("0");//0-初始   1-成功  2-失败  r-冲正
+        mjybwWithBLOBs.setZDBH_U(HeadMap.get("ZDBH_U"));
+        mjybwWithBLOBs.setIP_UUU(HeadMap.get("IP_UUU"));
+        mjybwWithBLOBs.setJLZT_U("0");
+        mjybwMapper.insert(mjybwWithBLOBs);
 
 
         return true;

@@ -20,7 +20,7 @@ public class TranObj {
         Map XMLMapIn = (Map) XmlUtils.XML2map(XMLIn, "root");
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
-        JYM_UU = HeadMap.get("JYM_UU").toString();
+        JYM_UU = HeadMap.get("HTJYM_").toString();
         date = new Date();
         buildSUCCESS = true;
     }

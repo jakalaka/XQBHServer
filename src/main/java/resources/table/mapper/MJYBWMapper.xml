@@ -6,9 +6,12 @@
     <id column="QTRQ_U" property="QTRQ_U" jdbcType="DATE" />
     <id column="QTLS_U" property="QTLS_U" jdbcType="VARCHAR" />
     <result column="QTJYM_" property="QTJYM_" jdbcType="VARCHAR" />
-    <result column="JYRQ_U" property="JYRQ_U" jdbcType="DATE" />
-    <result column="JYLS_U" property="JYLS_U" jdbcType="VARCHAR" />
-    <result column="JYM_UU" property="JYM_UU" jdbcType="VARCHAR" />
+    <result column="HTRQ_U" property="HTRQ_U" jdbcType="DATE" />
+    <result column="HTLS_U" property="HTLS_U" jdbcType="VARCHAR" />
+    <result column="HTJYM_" property="HTJYM_" jdbcType="VARCHAR" />
+    <result column="SFRQ_U" property="SFRQ_U" jdbcType="DATE" />
+    <result column="SFLS_U" property="SFLS_U" jdbcType="VARCHAR" />
+    <result column="SFJYM_" property="SFJYM_" jdbcType="VARCHAR" />
     <result column="JYZT_U" property="JYZT_U" jdbcType="VARCHAR" />
     <result column="ZDBH_U" property="ZDBH_U" jdbcType="VARCHAR" />
     <result column="IP_UUU" property="IP_UUU" jdbcType="VARCHAR" />
@@ -17,8 +20,8 @@
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" extends="BaseResultMap" >
     <result column="CRBW_U" property="CRBW_U" jdbcType="LONGVARBINARY" />
-    <result column="SFBWIN" property="SFBWIN" jdbcType="LONGVARBINARY" />
-    <result column="SFBWOT" property="SFBWOT" jdbcType="LONGVARBINARY" />
+    <result column="SFQQBW" property="SFQQBW" jdbcType="LONGVARBINARY" />
+    <result column="SFFHBW" property="SFFHBW" jdbcType="LONGVARBINARY" />
     <result column="CCBW_U" property="CCBW_U" jdbcType="LONGVARBINARY" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -80,11 +83,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    FRDM_U, QTRQ_U, QTLS_U, QTJYM_, JYRQ_U, JYLS_U, JYM_UU, JYZT_U, ZDBH_U, IP_UUU, SJC_UU, 
-    JLZT_U
+    FRDM_U, QTRQ_U, QTLS_U, QTJYM_, HTRQ_U, HTLS_U, HTJYM_, SFRQ_U, SFLS_U, SFJYM_, JYZT_U, 
+    ZDBH_U, IP_UUU, SJC_UU, JLZT_U
   </sql>
   <sql id="Blob_Column_List" >
-    CRBW_U, SFBWIN, SFBWOT, CCBW_U
+    CRBW_U, SFQQBW, SFFHBW, CCBW_U
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" >
     select
@@ -140,16 +143,18 @@
   </delete>
   <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
     insert into mjybw (FRDM_U, QTRQ_U, QTLS_U, 
-      QTJYM_, JYRQ_U, JYLS_U, 
-      JYM_UU, JYZT_U, ZDBH_U, 
+      QTJYM_, HTRQ_U, HTLS_U, 
+      HTJYM_, SFRQ_U, SFLS_U, 
+      SFJYM_, JYZT_U, ZDBH_U, 
       IP_UUU, SJC_UU, JLZT_U, 
-      CRBW_U, SFBWIN, SFBWOT, 
+      CRBW_U, SFQQBW, SFFHBW, 
       CCBW_U)
     values (#{FRDM_U,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
-      #{QTJYM_,jdbcType=VARCHAR}, #{JYRQ_U,jdbcType=DATE}, #{JYLS_U,jdbcType=VARCHAR}, 
-      #{JYM_UU,jdbcType=VARCHAR}, #{JYZT_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
+      #{QTJYM_,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
+      #{HTJYM_,jdbcType=VARCHAR}, #{SFRQ_U,jdbcType=DATE}, #{SFLS_U,jdbcType=VARCHAR}, 
+      #{SFJYM_,jdbcType=VARCHAR}, #{JYZT_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
       #{IP_UUU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR}, 
-      #{CRBW_U,jdbcType=LONGVARBINARY}, #{SFBWIN,jdbcType=LONGVARBINARY}, #{SFBWOT,jdbcType=LONGVARBINARY}, 
+      #{CRBW_U,jdbcType=LONGVARBINARY}, #{SFQQBW,jdbcType=LONGVARBINARY}, #{SFFHBW,jdbcType=LONGVARBINARY}, 
       #{CCBW_U,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
@@ -167,14 +172,23 @@
       <if test="QTJYM_ != null" >
         QTJYM_,
       </if>
-      <if test="JYRQ_U != null" >
-        JYRQ_U,
+      <if test="HTRQ_U != null" >
+        HTRQ_U,
       </if>
-      <if test="JYLS_U != null" >
-        JYLS_U,
+      <if test="HTLS_U != null" >
+        HTLS_U,
       </if>
-      <if test="JYM_UU != null" >
-        JYM_UU,
+      <if test="HTJYM_ != null" >
+        HTJYM_,
+      </if>
+      <if test="SFRQ_U != null" >
+        SFRQ_U,
+      </if>
+      <if test="SFLS_U != null" >
+        SFLS_U,
+      </if>
+      <if test="SFJYM_ != null" >
+        SFJYM_,
       </if>
       <if test="JYZT_U != null" >
         JYZT_U,
@@ -194,11 +208,11 @@
       <if test="CRBW_U != null" >
         CRBW_U,
       </if>
-      <if test="SFBWIN != null" >
-        SFBWIN,
+      <if test="SFQQBW != null" >
+        SFQQBW,
       </if>
-      <if test="SFBWOT != null" >
-        SFBWOT,
+      <if test="SFFHBW != null" >
+        SFFHBW,
       </if>
       <if test="CCBW_U != null" >
         CCBW_U,
@@ -217,14 +231,23 @@
       <if test="QTJYM_ != null" >
         #{QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="JYRQ_U != null" >
-        #{JYRQ_U,jdbcType=DATE},
+      <if test="HTRQ_U != null" >
+        #{HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="JYLS_U != null" >
-        #{JYLS_U,jdbcType=VARCHAR},
+      <if test="HTLS_U != null" >
+        #{HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="JYM_UU != null" >
-        #{JYM_UU,jdbcType=VARCHAR},
+      <if test="HTJYM_ != null" >
+        #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null" >
+        #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="SFLS_U != null" >
+        #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFJYM_ != null" >
+        #{SFJYM_,jdbcType=VARCHAR},
       </if>
       <if test="JYZT_U != null" >
         #{JYZT_U,jdbcType=VARCHAR},
@@ -244,11 +267,11 @@
       <if test="CRBW_U != null" >
         #{CRBW_U,jdbcType=LONGVARBINARY},
       </if>
-      <if test="SFBWIN != null" >
-        #{SFBWIN,jdbcType=LONGVARBINARY},
+      <if test="SFQQBW != null" >
+        #{SFQQBW,jdbcType=LONGVARBINARY},
       </if>
-      <if test="SFBWOT != null" >
-        #{SFBWOT,jdbcType=LONGVARBINARY},
+      <if test="SFFHBW != null" >
+        #{SFFHBW,jdbcType=LONGVARBINARY},
       </if>
       <if test="CCBW_U != null" >
         #{CCBW_U,jdbcType=LONGVARBINARY},
@@ -276,14 +299,23 @@
       <if test="record.QTJYM_ != null" >
         QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="record.JYRQ_U != null" >
-        JYRQ_U = #{record.JYRQ_U,jdbcType=DATE},
+      <if test="record.HTRQ_U != null" >
+        HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="record.JYLS_U != null" >
-        JYLS_U = #{record.JYLS_U,jdbcType=VARCHAR},
+      <if test="record.HTLS_U != null" >
+        HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.JYM_UU != null" >
-        JYM_UU = #{record.JYM_UU,jdbcType=VARCHAR},
+      <if test="record.HTJYM_ != null" >
+        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFRQ_U != null" >
+        SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.SFLS_U != null" >
+        SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFJYM_ != null" >
+        SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
       </if>
       <if test="record.JYZT_U != null" >
         JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
@@ -303,11 +335,11 @@
       <if test="record.CRBW_U != null" >
         CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
       </if>
-      <if test="record.SFBWIN != null" >
-        SFBWIN = #{record.SFBWIN,jdbcType=LONGVARBINARY},
+      <if test="record.SFQQBW != null" >
+        SFQQBW = #{record.SFQQBW,jdbcType=LONGVARBINARY},
       </if>
-      <if test="record.SFBWOT != null" >
-        SFBWOT = #{record.SFBWOT,jdbcType=LONGVARBINARY},
+      <if test="record.SFFHBW != null" >
+        SFFHBW = #{record.SFFHBW,jdbcType=LONGVARBINARY},
       </if>
       <if test="record.CCBW_U != null" >
         CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY},
@@ -323,17 +355,20 @@
       QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
       QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
-      JYRQ_U = #{record.JYRQ_U,jdbcType=DATE},
-      JYLS_U = #{record.JYLS_U,jdbcType=VARCHAR},
-      JYM_UU = #{record.JYM_UU,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
       JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
       ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
       JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
       CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
-      SFBWIN = #{record.SFBWIN,jdbcType=LONGVARBINARY},
-      SFBWOT = #{record.SFBWOT,jdbcType=LONGVARBINARY},
+      SFQQBW = #{record.SFQQBW,jdbcType=LONGVARBINARY},
+      SFFHBW = #{record.SFFHBW,jdbcType=LONGVARBINARY},
       CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -345,9 +380,12 @@
       QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
       QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
-      JYRQ_U = #{record.JYRQ_U,jdbcType=DATE},
-      JYLS_U = #{record.JYLS_U,jdbcType=VARCHAR},
-      JYM_UU = #{record.JYM_UU,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
       JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
       ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
@@ -363,14 +401,23 @@
       <if test="QTJYM_ != null" >
         QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="JYRQ_U != null" >
-        JYRQ_U = #{JYRQ_U,jdbcType=DATE},
+      <if test="HTRQ_U != null" >
+        HTRQ_U = #{HTRQ_U,jdbcType=DATE},
       </if>
-      <if test="JYLS_U != null" >
-        JYLS_U = #{JYLS_U,jdbcType=VARCHAR},
+      <if test="HTLS_U != null" >
+        HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="JYM_UU != null" >
-        JYM_UU = #{JYM_UU,jdbcType=VARCHAR},
+      <if test="HTJYM_ != null" >
+        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null" >
+        SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="SFLS_U != null" >
+        SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFJYM_ != null" >
+        SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
       </if>
       <if test="JYZT_U != null" >
         JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
@@ -390,11 +437,11 @@
       <if test="CRBW_U != null" >
         CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
       </if>
-      <if test="SFBWIN != null" >
-        SFBWIN = #{SFBWIN,jdbcType=LONGVARBINARY},
+      <if test="SFQQBW != null" >
+        SFQQBW = #{SFQQBW,jdbcType=LONGVARBINARY},
       </if>
-      <if test="SFBWOT != null" >
-        SFBWOT = #{SFBWOT,jdbcType=LONGVARBINARY},
+      <if test="SFFHBW != null" >
+        SFFHBW = #{SFFHBW,jdbcType=LONGVARBINARY},
       </if>
       <if test="CCBW_U != null" >
         CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY},
@@ -407,17 +454,20 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
     update mjybw
     set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
-      JYRQ_U = #{JYRQ_U,jdbcType=DATE},
-      JYLS_U = #{JYLS_U,jdbcType=VARCHAR},
-      JYM_UU = #{JYM_UU,jdbcType=VARCHAR},
+      HTRQ_U = #{HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
       JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
       ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
       SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
       JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
       CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
-      SFBWIN = #{SFBWIN,jdbcType=LONGVARBINARY},
-      SFBWOT = #{SFBWOT,jdbcType=LONGVARBINARY},
+      SFQQBW = #{SFQQBW,jdbcType=LONGVARBINARY},
+      SFFHBW = #{SFFHBW,jdbcType=LONGVARBINARY},
       CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY}
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
@@ -426,9 +476,12 @@
   <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBW" >
     update mjybw
     set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
-      JYRQ_U = #{JYRQ_U,jdbcType=DATE},
-      JYLS_U = #{JYLS_U,jdbcType=VARCHAR},
-      JYM_UU = #{JYM_UU,jdbcType=VARCHAR},
+      HTRQ_U = #{HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
       JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
       ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{IP_UUU,jdbcType=VARCHAR},

@@ -20,7 +20,7 @@ public class ServerMain {
          }
 
         Object implementor = new CommonTran();
-        String address = "http://localhost:9000/CommonTran";
+        String address = "http://127.0.0.1:9000/CommonTran";
         Endpoint.publish(address, implementor);
 
         Logger.log("LOG_SYS","Server start successful!!!");
