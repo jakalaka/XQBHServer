@@ -51,7 +51,7 @@ public class PropertiesReader {
         while (enum1.hasMoreElements()) {
             String strKey = (String) enum1.nextElement();
             String strValue = pps.getProperty(strKey);
-//                System.out.println(strKey + "=" +strValue);
+//                Logger.log("LOG_DEBUG",strKey + "=" +strValue);
             map.put(strKey, strValue);
         }
 
@@ -59,6 +59,6 @@ public class PropertiesReader {
     }
 
 //    public static void main(String[] args) {
-//        System.out.println(readAll(new File("resources/errmsg.properties")));
+//        Logger.log("LOG_DEBUG",readAll(new File("resources/errmsg.properties")));
 //    }
 }

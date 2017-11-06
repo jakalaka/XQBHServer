@@ -42,15 +42,15 @@ public class JCZDHFX {
 //        dzdxxKey.setZDBH_U(ZDBH_U);
 //        DZDXX dzdxx=dzdxxMapper.selectByPrimaryKey(dzdxxKey);
 //        if (null==dzdxx) {
-//            System.out.println("err1");
+//            Logger.log("LOG_DEBUG","err1");
 //            return;
 //        }
 //        if (!ZDJYM_.equals(dzdxx.getZDJYM_())) {
-//            System.out.println("err2");
+//            Logger.log("LOG_DEBUG","err2");
 //            return;
 //        }
-//        System.out.println("ZDBH_U="+ZDBH_U);
-//        System.out.println("ZDJYM_="+ZDJYM_);
+//        Logger.log("LOG_DEBUG","ZDBH_U="+ZDBH_U);
+//        Logger.log("LOG_DEBUG","ZDJYM_="+ZDJYM_);
 //
 //    }
 

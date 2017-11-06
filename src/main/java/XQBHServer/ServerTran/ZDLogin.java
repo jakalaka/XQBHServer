@@ -44,8 +44,9 @@ public class ZDLogin extends Tran {
             runERR(tranObj, "LOG002");
             return false;
         }
+        tranObj.TranMap.put("re","哈哈哈");
         Com.tmpCount++;
-        System.out.println(Com.tmpCount);
+        Logger.log("LOG_DEBUG",""+Com.tmpCount);
         Logger.log("LOG_IO", Com.getOut);
         return true;
     }

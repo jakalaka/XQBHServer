@@ -49,6 +49,6 @@ public class Com {
     }
 
 //    public static void main(String[] args) {
-//        System.out.println();
+//        Logger.log("LOG_DEBUG",);
 //    }
 }

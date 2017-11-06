@@ -50,7 +50,7 @@ public class Logger {
 
         while (log.getHandlers().length > 0)
         {
-            //System.out.println(log.getHandlers().length);
+            //Logger.log("LOG_DEBUG",log.getHandlers().length);
             log.removeHandler(log.getHandlers()[0]);
         }
         for(Handler handler : log.getHandlers()) {
@@ -78,7 +78,9 @@ public class Logger {
                 Thread.currentThread().getStackTrace()[2].getLineNumber(),
                 LogLV
         });
-        consoleHandler.setLevel(Level.WARNING);//console阀门 需实时调整
+        //consoleHandler.setLevel(Level.WARNING);//console阀门 需实时调整
+        consoleHandler.setLevel(Level.CONFIG);//console阀门 暂时为DEBUG
+        consoleHandler.setFormatter(myLogHander);
         log.addHandler(consoleHandler);
 
         log.log(lr);
@@ -116,8 +118,8 @@ public class Logger {
 
             File file = new File(tmplogFilePath.toString());
             if (file.exists() && file.isFile()) {
-//                System.out.println(file);
-//                System.out.println(file.length()+Msg);
+//                Logger.log("LOG_DEBUG",file);
+//                Logger.log("LOG_DEBUG",file.length()+Msg);
                 if (10240000 < file.length()+Msg.length()+miss) {
                     XH++;
 
