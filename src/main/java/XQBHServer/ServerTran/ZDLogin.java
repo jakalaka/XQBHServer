@@ -26,7 +26,7 @@ public class ZDLogin extends Tran {
         Logger.log("LOG_IO", "ZDBH_U=" + ZDBH_U);
 
 
-        DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
+        DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setZDBH_U(ZDBH_U);
         dzdxxKey.setFRDM_U("9999");

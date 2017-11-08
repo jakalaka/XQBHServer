@@ -1,7 +1,11 @@
 package XQBHServer.ServerTran;
 
+import XQBHServer.Server.Com;
 import XQBHServer.Utils.XML.XmlUtils;
+import XQBHServer.Utils.log.Logger;
+import org.apache.ibatis.session.SqlSession;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -16,12 +20,19 @@ public class TranObj {
     public String CWXX_U = null;
     public boolean buildSUCCESS = false;
     Date date;
+    public SqlSession sqlSession=null;
     public TranObj(String XMLIn)  {
         Map XMLMapIn = (Map) XmlUtils.XML2map(XMLIn, "root");
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
         JYM_UU = HeadMap.get("HTJYM_").toString();
         date = new Date();
+        try {
+            sqlSession= Com.dbAccess.getSqlSession();
+        } catch (IOException e) {
+            Logger.log("LOG_SYS","获取sqlsession错误!!!");
+            return;
+        }
         buildSUCCESS = true;
     }
 

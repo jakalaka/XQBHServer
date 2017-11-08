@@ -32,7 +32,7 @@ public class CommonTran {
             {
                 Logger.log("LOG_SYS", "初始化失败");
                 Tran.runERR(tranObj,"ERR001");
-                return getOut(tranObj);
+                //return getOut(tranObj);
             }
         } catch (Exception e) {
             Logger.log("LOG_SYS", e.toString());
@@ -63,11 +63,12 @@ public class CommonTran {
         {
             Logger.log("LOG_ERR","Call ERR");
         }
-
         return getOut(tranObj);
     }
-    public String getOut(TranObj tranObj){
-        String XMLOut= XmlUtils.tranObj2XML(tranObj,"root");
+    public static String getOut(TranObj tranObj){
+        String XMLOut= "";
+        XMLOut=XmlUtils.tranObj2XML(tranObj,"root");
+        tranObj.sqlSession.close();
         Logger.log("LOG_IO","XMLOut"+XMLOut+"\n\n\n");
         return XMLOut;
     }

@@ -1,5 +1,7 @@
 package XQBHServer.Server;
 
+import XQBHServer.Server.Table.basic.DBAccess;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -19,6 +21,7 @@ public class Com {
     public static final String getIn =">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     public static final String getOut ="<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     public static  long tmpCount =0;
+    public static DBAccess dbAccess = new DBAccess();
     /**
      * 获取后台流水=？？？
      * @return

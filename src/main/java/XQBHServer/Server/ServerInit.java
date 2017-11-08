@@ -24,9 +24,9 @@ public class ServerInit {
         /*
         尝试连接数据库
          */
-        DBAccess dbAccess = new DBAccess();
+
         try {
-            sqlSession = dbAccess.getSqlSession();
+            sqlSession = Com.dbAccess.getSqlSession();
 
             DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
             DZDXXKey dzdxxKey = new DZDXXKey();

@@ -10,24 +10,23 @@ import org.apache.ibatis.session.SqlSession;
  */
 public class ComInit {
     public static boolean exec(TranObj tranObj) throws Exception {
-        DBAccess dbAccess=new DBAccess();
-        SqlSession sqlSession=dbAccess.getSqlSession();
+
+
         /*
         以下添加拆报合法性检查如终端信息，终端校验码等
          */
         String ZDBH_U = tranObj.HeadMap.get("ZDBH_U").toString();
         String ZDJYM_ = tranObj.HeadMap.get("ZDJYM_").toString();
-        if (false== JCZDHFX.exec(sqlSession, ZDBH_U, ZDJYM_))
-            return returnFalse(sqlSession);
+        if (false== JCZDHFX.exec(tranObj.sqlSession, ZDBH_U, ZDJYM_))
+            return returnFalse(tranObj.sqlSession);
 
         /*
         插入交易报文
          */
-        if(false == InsertMJYBW.exec(sqlSession,tranObj.HeadMap))
+        if(false == InsertMJYBW.exec(tranObj.sqlSession,tranObj.HeadMap))
             return false;
 
-        sqlSession.commit();
-        sqlSession.close();
+        tranObj.sqlSession.commit();
         return true;
 
     }

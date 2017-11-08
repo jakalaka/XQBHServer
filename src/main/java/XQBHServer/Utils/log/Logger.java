@@ -1,5 +1,6 @@
 package XQBHServer.Utils.log;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -45,6 +46,7 @@ public class Logger {
             fileHandler.setFormatter(myLogHander);
         }
 
+
         fileHandler.setLevel(Level.FINEST);//文件阀门  需实时调整
 
 
@@ -82,6 +84,7 @@ public class Logger {
         consoleHandler.setLevel(Level.CONFIG);//console阀门 暂时为DEBUG
         consoleHandler.setFormatter(myLogHander);
         log.addHandler(consoleHandler);
+        fileHandler.close();
 
         log.log(lr);
     }

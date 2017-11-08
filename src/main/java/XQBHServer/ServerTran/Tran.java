@@ -11,16 +11,15 @@ import org.apache.ibatis.session.SqlSession;
 public abstract class Tran {
 
     public abstract boolean exec(TranObj tranObj);
-    public SqlSession sqlSession = null;
     public boolean execDo(TranObj tranObj) {
         try {
-            DBAccess dbAccess = new DBAccess();
-            sqlSession = dbAccess.getSqlSession();
+            tranObj.sqlSession = Com.dbAccess.getSqlSession();
 
             if (false == exec(tranObj)) {
                 if (null == tranObj.CWDM_U || "".equals(tranObj.CWDM_U)) {
                     tranObj.CWDM_U = "COMERR";
                     tranObj.CWXX_U = "调用" + tranObj.JYM_UU + "交易时错误";
+                    tranObj.sqlSession.rollback();
 
                 } else {
                     //执行后返回的tranobj中已存在错误信息
@@ -28,7 +27,7 @@ public abstract class Tran {
                 return false;
             } else {
                 tranObj.CWDM_U = "AAAAAA";
-                sqlSession.commit();
+                tranObj.sqlSession.commit();
                 return true;
             }
         } catch (Exception e) {
