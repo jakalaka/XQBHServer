@@ -1,6 +1,7 @@
 package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
+import XQBHServer.ServerAPI.GetLogInfo;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
@@ -15,25 +16,37 @@ import java.util.Map;
 public class TranObj {
     public Map<String, String> HeadMap = null;
     public Map<String, String> TranMap = null;
-    String JYM_UU = null;
     public String CWDM_U = null;
     public String CWXX_U = null;
     public boolean buildSUCCESS = false;
     Date date;
-    public SqlSession sqlSession=null;
-    public TranObj(String XMLIn)  {
+    public SqlSession sqlSession = null;
+
+    public StringBuilder filePrinter = null;
+    public String flLogLV=null;
+    public String logPath=null;
+
+    public TranObj(String XMLIn) {
+        filePrinter = new StringBuilder();
         Map XMLMapIn = (Map) XmlUtils.XML2map(XMLIn, "root");
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
-        JYM_UU = HeadMap.get("HTJYM_").toString();
         date = new Date();
         try {
-            sqlSession= Com.dbAccess.getSqlSession();
+            sqlSession = Com.dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.log("LOG_SYS","获取sqlsession错误!!!");
+            e.printStackTrace();
             return;
         }
+
+
         buildSUCCESS = true;
+
+        try {//获取日志等级 必须先获取所以写到这里
+            GetLogInfo.exec(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void writeHead(String Key, String Value) {

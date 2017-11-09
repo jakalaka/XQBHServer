@@ -17,12 +17,16 @@ import java.lang.reflect.Method;
 public class CommonTran {
     @WebMethod
     public String Comtran(String XMLIn) {
-        Logger.log("LOG_IO", "XMLIn=" + XMLIn);
+
         TranObj tranObj= new TranObj(XMLIn);
         if (false==tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR002");
             return getOut(tranObj);
         }
+
+        Logger.log(tranObj,"LOG_IO","flLogLV = ["+tranObj.flLogLV+"] ");
+        Logger.log(tranObj,"LOG_IO", "XMLIn=" + XMLIn);
+
 
         /*
         公共检查
@@ -30,21 +34,21 @@ public class CommonTran {
         try {
             if(false == ComInit.exec(tranObj))
             {
-                Logger.log("LOG_SYS", "初始化失败");
+                Logger.log(tranObj,"LOG_SYS", "初始化失败");
                 Tran.runERR(tranObj,"ERR001");
-                //return getOut(tranObj);
+                return getOut(tranObj);
             }
         } catch (Exception e) {
-            Logger.log("LOG_SYS", e.toString());
-            Logger.log("LOG_SYS", "初始化失败");
+            Logger.log(tranObj,"LOG_SYS", e.toString());
+            Logger.log(tranObj,"LOG_SYS", "初始化失败");
             Tran.runERR(tranObj,"ERR001");
             return getOut(tranObj);
         }
         Class c = null;
         boolean callRe = false;
-        Logger.log("LOG_IO", "JYM_UU=" + tranObj.JYM_UU);
+        Logger.log(tranObj,"LOG_IO", "JYM_UU=" + tranObj.getHead("HTJYM_"));
         try {
-            c = Class.forName("XQBHServer.ServerTran." + tranObj.JYM_UU);
+            c = Class.forName("XQBHServer.ServerTran." + tranObj.getHead("HTJYM_"));
             Object obj = c.newInstance();
             Method m = obj.getClass().getMethod("execDo", TranObj.class);
             callRe = (Boolean) m.invoke(obj,tranObj);
@@ -61,15 +65,18 @@ public class CommonTran {
         }
         if(false==callRe)
         {
-            Logger.log("LOG_ERR","Call ERR");
+            Logger.log(tranObj,"LOG_ERR","Call ERR");
         }
         return getOut(tranObj);
     }
     public static String getOut(TranObj tranObj){
         String XMLOut= "";
         XMLOut=XmlUtils.tranObj2XML(tranObj,"root");
-        tranObj.sqlSession.close();
-        Logger.log("LOG_IO","XMLOut"+XMLOut+"\n\n\n");
+        if (null!=tranObj.sqlSession)
+            tranObj.sqlSession.close();
+
+        Logger.log(tranObj,"LOG_IO","XMLOut"+XMLOut+"\n\n\n");
+        Logger.writte(tranObj);
         return XMLOut;
     }
 

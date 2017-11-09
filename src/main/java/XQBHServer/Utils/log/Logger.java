@@ -1,97 +1,159 @@
 package XQBHServer.Utils.log;
 
+import XQBHServer.ServerTran.TranObj;
+
 import java.io.Console;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
+import java.util.Locale;
 import java.util.logging.*;
-
 
 public class Logger {
     private static final String LOG_FOLDER_NAME = "Log";
 
     private static final String LOG_FILE_SUFFIX = ".log";
+
+    private static final int miss = 128;
     static int XH = 0;
+
     private static final MyLogHander myLogHander = new MyLogHander();
-    private static final int miss=128;
-    public static FileHandler fileHandler=null;
-    public static String path="";
+    public static FileHandler fileHandler = null;
+    public static String path = "";
     private static ConsoleHandler consoleHandler;
-    static{
+
+    static {
 
         consoleHandler = new ConsoleHandler();
 
 
     }
 
-    public static void log(String LogLV, String Msg) {
+    private static final DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss.SSS");
 
-    java.util.logging.Logger log = java.util.logging.Logger.getLogger("myLogger");
-        log.setUseParentHandlers(false);
-        log.setLevel(Level.FINEST);  //总阀门
+    public static void log(TranObj tranObj, String LogLV, String Msg) {
 
-        String pathtmp = getLogPath(Msg);
-        if(!path.equals(pathtmp))
-        {
-            if (fileHandler!=null)
-                fileHandler.close();
-            path=pathtmp;
-            try {
-                fileHandler = new FileHandler(path, true);
-            } catch (IOException e) {
-                e.printStackTrace();
+        StringBuilder builder = new StringBuilder();
+        builder.append(df.format(new Date())).append("-");
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        builder.append("[").append(LogLV).append("]-");
+        builder.append(Msg);
+        builder.append("\n");
+
+
+        if ("SYS".equals(tranObj.flLogLV) && "LOG_SYS".equals(LogLV)) {
+            tranObj.filePrinter.append(builder);
+        } else if ("ERR".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        } else if ("IO".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV) || "LOG_IO".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        } else if ("DEBUG".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV) || "LOG_IO".equals(LogLV) || "LOG_DEBUG".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        }
+        if ("LOG_SYS".equals(LogLV)||"LOG_ERR".equals(LogLV))
+            sysLog(Msg,Thread.currentThread().getStackTrace()[2].getClassName(),Thread.currentThread().getStackTrace()[2].getMethodName(),Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+
+
+    }
+
+    public static void writte(TranObj tranObj) {
+
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH) + 1;
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        StringBuffer logFilePath = new StringBuffer();
+        logFilePath.append(LOG_FOLDER_NAME);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(year);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(month);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(day);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(tranObj.getHead("HTJYM_"));
+
+        File dir = new File(logFilePath.toString());
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        StringBuffer tmplogFilePath = new StringBuffer();
+        int XH = 1;
+        while (true) {
+            tmplogFilePath.delete(0, tmplogFilePath.length());
+            tmplogFilePath.append(logFilePath.toString());
+            tmplogFilePath.append(File.separatorChar);
+            tmplogFilePath.append(tranObj.getHead("HTJYM_"));
+            tmplogFilePath.append("_");
+            tmplogFilePath.append(XH);
+            tmplogFilePath.append(LOG_FILE_SUFFIX);
+
+            File file = new File(tmplogFilePath.toString());
+            if (file.exists() && file.isFile()) {
+                if (10240000 < file.length() + tranObj.filePrinter.toString().length() + miss) {
+                    XH++;
+                } else
+                    break;
+            } else {
+                break;
             }
-            fileHandler.setFormatter(myLogHander);
         }
 
-
-        fileHandler.setLevel(Level.FINEST);//文件阀门  需实时调整
-
-
-        while (log.getHandlers().length > 0)
-        {
-            //Logger.log("LOG_DEBUG",log.getHandlers().length);
-            log.removeHandler(log.getHandlers()[0]);
-        }
-        for(Handler handler : log.getHandlers()) {
-            log.removeHandler(handler);
+        try {
+            FileWriter fw=new FileWriter(tmplogFilePath.toString(),true);
+            fw.write(tranObj.filePrinter.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        log.addHandler(fileHandler);
+        return;
+    }
 
 
-        LogRecord lr;//log的等级
-        if("LOG_SYS".equals(LogLV))
-          lr = new LogRecord(Level.SEVERE, Msg);
-        else if("LOG_ERR".equals(LogLV))
-            lr = new LogRecord(Level.WARNING, Msg);
-        else if("LOG_IO".equals(LogLV))
-            lr = new LogRecord(Level.INFO, Msg);
-        else if("LOG_DEBUG".equals(LogLV))
-            lr = new LogRecord(Level.CONFIG, Msg);
-        else
-            lr = new LogRecord(Level.ALL, Msg);
+    public static void sysLog(String Msg) {
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        stringBuilder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString()),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(stringBuilder.toString());
 
+    }
+    public static void sysLog(String Msg,String ClassName,String MethodName,int LineNumber) {
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(ClassName).append(".");
+        stringBuilder.append(MethodName).append(":" + LineNumber+ "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString()),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        lr.setParameters(new Object[]{Thread.currentThread().getStackTrace()[2].getClassName(),
-                Thread.currentThread().getStackTrace()[2].getMethodName(),
-                Thread.currentThread().getStackTrace()[2].getLineNumber(),
-                LogLV
-        });
-        //consoleHandler.setLevel(Level.WARNING);//console阀门 需实时调整
-        consoleHandler.setLevel(Level.CONFIG);//console阀门 暂时为DEBUG
-        consoleHandler.setFormatter(myLogHander);
-        log.addHandler(consoleHandler);
-        fileHandler.close();
-
-        log.log(lr);
     }
 
     private static String getLogPath(String Msg) {
         Calendar now = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         int year = now.get(Calendar.YEAR);
         int month = now.get(Calendar.MONTH) + 1;
         int day = now.get(Calendar.DAY_OF_MONTH);
@@ -114,16 +176,14 @@ public class Logger {
             tmplogFilePath.delete(0, tmplogFilePath.length());
             tmplogFilePath.append(logFilePath.toString());
             tmplogFilePath.append(File.separatorChar);
-            tmplogFilePath.append(sdf.format(new Date()));
+            tmplogFilePath.append("SYSRun");
             tmplogFilePath.append("_");
             tmplogFilePath.append(XH);
             tmplogFilePath.append(LOG_FILE_SUFFIX);
 
             File file = new File(tmplogFilePath.toString());
             if (file.exists() && file.isFile()) {
-//                Logger.log("LOG_DEBUG",file);
-//                Logger.log("LOG_DEBUG",file.length()+Msg);
-                if (10240000 < file.length()+Msg.length()+miss) {
+                if (10240000 < file.length() + Msg.length() + miss) {
                     XH++;
 
                 } else
@@ -133,10 +193,11 @@ public class Logger {
             }
         }
         logFilePath.append(File.separatorChar);
-        logFilePath.append(sdf.format(new Date()));
+        logFilePath.append("SYSRun");
         logFilePath.append("_");
         logFilePath.append(XH);
         logFilePath.append(LOG_FILE_SUFFIX);
         return logFilePath.toString();
     }
+
 }

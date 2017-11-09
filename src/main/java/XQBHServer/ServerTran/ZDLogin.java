@@ -21,9 +21,10 @@ public class ZDLogin extends Tran {
         String ZDJYM_ = tranObj.getHead("ZDJYM_");
         String ZDBH_U = tranObj.getHead("ZDBH_U");
         String IP_UUU = tranObj.getHead("IP_UUU");
-        Logger.log("LOG_IO", Com.getIn);
-        Logger.log("LOG_IO", "ZDJYM_=" + ZDJYM_);
-        Logger.log("LOG_IO", "ZDBH_U=" + ZDBH_U);
+        Logger.log(tranObj,"LOG_IO", Com.getIn);
+        Logger.log(tranObj,"LOG_IO", "ZDJYM_=" + ZDJYM_);
+        Logger.log(tranObj,"LOG_IO", "ZDBH_U=" + ZDBH_U);
+
 
 
         DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
@@ -46,8 +47,8 @@ public class ZDLogin extends Tran {
         }
         tranObj.TranMap.put("re","哈哈哈");
         Com.tmpCount++;
-        Logger.log("LOG_DEBUG",""+Com.tmpCount);
-        Logger.log("LOG_IO", Com.getOut);
+        Logger.log(tranObj,"LOG_DEBUG",""+Com.tmpCount);
+        Logger.log(tranObj,"LOG_IO", Com.getOut);
         return true;
     }
 

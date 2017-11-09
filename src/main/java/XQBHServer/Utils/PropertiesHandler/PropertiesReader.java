@@ -19,7 +19,7 @@ public class PropertiesReader {
         Properties propertie;
         FileInputStream inputFile;
         if (!file.exists()) {
-            Logger.log("LOG_SYS", "file not found");
+            Logger.sysLog( "file not found");
             return null;
         }
 
@@ -30,10 +30,10 @@ public class PropertiesReader {
 //            propertie.loadFromXML(inputFile);//读取XML文件
             inputFile.close();
         } catch (FileNotFoundException ex) {
-            Logger.log("LOG_SYS", "文件无法找到");
+            Logger.sysLog("文件无法找到");
             ex.printStackTrace();
         } catch (IOException ex) {
-            Logger.log("LOG_SYS", "读取文件失败");
+            Logger.sysLog("读取文件失败");
             ex.printStackTrace();
         }
 
@@ -51,7 +51,7 @@ public class PropertiesReader {
         while (enum1.hasMoreElements()) {
             String strKey = (String) enum1.nextElement();
             String strValue = pps.getProperty(strKey);
-//                Logger.log("LOG_DEBUG",strKey + "=" +strValue);
+//                Logger.log(tranObj,"LOG_DEBUG",strKey + "=" +strValue);
             map.put(strKey, strValue);
         }
 
@@ -59,6 +59,6 @@ public class PropertiesReader {
     }
 
 //    public static void main(String[] args) {
-//        Logger.log("LOG_DEBUG",readAll(new File("resources/errmsg.properties")));
+//        Logger.log(tranObj,"LOG_DEBUG",readAll(new File("resources/errmsg.properties")));
 //    }
 }

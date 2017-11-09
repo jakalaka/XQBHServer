@@ -52,6 +52,6 @@ public class Com {
     }
 
 //    public static void main(String[] args) {
-//        Logger.log("LOG_DEBUG",);
+//        Logger.log(tranObj,"LOG_DEBUG",);
 //    }
 }

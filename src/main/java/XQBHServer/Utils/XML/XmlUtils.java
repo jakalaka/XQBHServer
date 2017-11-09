@@ -87,7 +87,6 @@ public class XmlUtils {
         try {
             doc = DocumentHelper.parseText(xml);
         } catch (DocumentException e) {
-            Logger.log("LOG_ERR","XML转化成DOC时出错");
             e.printStackTrace();
         }
         Element body = (Element) doc.selectSingleNode("/" + rootElement);
@@ -144,9 +143,9 @@ public class XmlUtils {
         head.put("JYM_UU","1231");
         a.put("head",head);
         String re= map2XML(a,"root");
-        Logger.log("LOG_DEBUG",re);
+        Logger.sysLog(re);
         Map out=null;
         out= XML2map(re,"root");
-        Logger.log("LOG_DEBUG",((Map)out.get("head")).get("JYM_UU")+"");
+        Logger.sysLog(((Map)out.get("head")).get("JYM_UU")+"");
     }
 }

@@ -4,6 +4,7 @@ import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.DZDXX;
 import XQBHServer.Server.Table.Model.DZDXXKey;
 import XQBHServer.Server.Table.basic.DBAccess;
+import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.File;
@@ -34,6 +35,8 @@ public class ServerInit {
             dzdxxKey.setFRDM_U("9999");
             DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
         } catch (Exception e) {
+            Logger.sysLog("aaa");
+            Logger.sysLog(e.toString());
             e.printStackTrace();
             return false;
         }
@@ -46,7 +49,7 @@ public class ServerInit {
 //            Com.LOGLV = LOGLV;
 //        if (!"DEBUG".equals(LOGLV)&&!"ERR".equals(LOGLV)&&!"SYS".equals(LOGLV)&&!"IO".equals(LOGLV))
 //        {
-//            Logger.log("LOG_SYS","日志等级错误:"+LOGLV);
+//            Logger.log(tranObj,"LOG_SYS","日志等级错误:"+LOGLV);
 //            return false;
 //        }
         InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");

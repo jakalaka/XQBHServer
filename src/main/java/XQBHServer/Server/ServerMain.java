@@ -17,7 +17,7 @@ public class ServerMain {
         //aaa
          if (false== ServerInit.Init())
          {
-             Logger.log("LOG_SYS","ServerInit Fail!!!");
+             Logger.sysLog("ServerInit Fail!!!");
              return;
          }
          String ip="";
@@ -28,10 +28,10 @@ public class ServerMain {
         }
         Object implementor = new CommonTran();
         String address = "http://"+ip+":9000/CommonTran";
-        Logger.log("LOG_SYS","address:"+address);
+        Logger.sysLog("address:"+address);
         Endpoint.publish(address, implementor);
 
-        Logger.log("LOG_SYS","Server start successful!!!");
+        Logger.sysLog("Server start successful!!!");
     
     }
 }
