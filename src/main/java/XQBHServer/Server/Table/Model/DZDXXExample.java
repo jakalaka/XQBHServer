@@ -968,123 +968,123 @@ public class DZDXXExample {
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSIsNull() {
-            addCriterion("LJXSGS is null");
+        public Criteria andSCJYRQIsNull() {
+            addCriterion("SCJYRQ is null");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSIsNotNull() {
-            addCriterion("LJXSGS is not null");
+        public Criteria andSCJYRQIsNotNull() {
+            addCriterion("SCJYRQ is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSEqualTo(Integer value) {
-            addCriterion("LJXSGS =", value, "LJXSGS");
+        public Criteria andSCJYRQEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ =", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSNotEqualTo(Integer value) {
-            addCriterion("LJXSGS <>", value, "LJXSGS");
+        public Criteria andSCJYRQNotEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <>", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSGreaterThan(Integer value) {
-            addCriterion("LJXSGS >", value, "LJXSGS");
+        public Criteria andSCJYRQGreaterThan(Date value) {
+            addCriterionForJDBCDate("SCJYRQ >", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSGreaterThanOrEqualTo(Integer value) {
-            addCriterion("LJXSGS >=", value, "LJXSGS");
+        public Criteria andSCJYRQGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ >=", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSLessThan(Integer value) {
-            addCriterion("LJXSGS <", value, "LJXSGS");
+        public Criteria andSCJYRQLessThan(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSLessThanOrEqualTo(Integer value) {
-            addCriterion("LJXSGS <=", value, "LJXSGS");
+        public Criteria andSCJYRQLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <=", value, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSIn(List<Integer> values) {
-            addCriterion("LJXSGS in", values, "LJXSGS");
+        public Criteria andSCJYRQIn(List<Date> values) {
+            addCriterionForJDBCDate("SCJYRQ in", values, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSNotIn(List<Integer> values) {
-            addCriterion("LJXSGS not in", values, "LJXSGS");
+        public Criteria andSCJYRQNotIn(List<Date> values) {
+            addCriterionForJDBCDate("SCJYRQ not in", values, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSBetween(Integer value1, Integer value2) {
-            addCriterion("LJXSGS between", value1, value2, "LJXSGS");
+        public Criteria andSCJYRQBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCJYRQ between", value1, value2, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSGSNotBetween(Integer value1, Integer value2) {
-            addCriterion("LJXSGS not between", value1, value2, "LJXSGS");
+        public Criteria andSCJYRQNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCJYRQ not between", value1, value2, "SCJYRQ");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_IsNull() {
-            addCriterion("LJXSE_ is null");
+        public Criteria andSCLSXHIsNull() {
+            addCriterion("SCLSXH is null");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_IsNotNull() {
-            addCriterion("LJXSE_ is not null");
+        public Criteria andSCLSXHIsNotNull() {
+            addCriterion("SCLSXH is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_EqualTo(Long value) {
-            addCriterion("LJXSE_ =", value, "LJXSE_");
+        public Criteria andSCLSXHEqualTo(Integer value) {
+            addCriterion("SCLSXH =", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_NotEqualTo(Long value) {
-            addCriterion("LJXSE_ <>", value, "LJXSE_");
+        public Criteria andSCLSXHNotEqualTo(Integer value) {
+            addCriterion("SCLSXH <>", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_GreaterThan(Long value) {
-            addCriterion("LJXSE_ >", value, "LJXSE_");
+        public Criteria andSCLSXHGreaterThan(Integer value) {
+            addCriterion("SCLSXH >", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_GreaterThanOrEqualTo(Long value) {
-            addCriterion("LJXSE_ >=", value, "LJXSE_");
+        public Criteria andSCLSXHGreaterThanOrEqualTo(Integer value) {
+            addCriterion("SCLSXH >=", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_LessThan(Long value) {
-            addCriterion("LJXSE_ <", value, "LJXSE_");
+        public Criteria andSCLSXHLessThan(Integer value) {
+            addCriterion("SCLSXH <", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_LessThanOrEqualTo(Long value) {
-            addCriterion("LJXSE_ <=", value, "LJXSE_");
+        public Criteria andSCLSXHLessThanOrEqualTo(Integer value) {
+            addCriterion("SCLSXH <=", value, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_In(List<Long> values) {
-            addCriterion("LJXSE_ in", values, "LJXSE_");
+        public Criteria andSCLSXHIn(List<Integer> values) {
+            addCriterion("SCLSXH in", values, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_NotIn(List<Long> values) {
-            addCriterion("LJXSE_ not in", values, "LJXSE_");
+        public Criteria andSCLSXHNotIn(List<Integer> values) {
+            addCriterion("SCLSXH not in", values, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_Between(Long value1, Long value2) {
-            addCriterion("LJXSE_ between", value1, value2, "LJXSE_");
+        public Criteria andSCLSXHBetween(Integer value1, Integer value2) {
+            addCriterion("SCLSXH between", value1, value2, "SCLSXH");
             return (Criteria) this;
         }
 
-        public Criteria andLJXSE_NotBetween(Long value1, Long value2) {
-            addCriterion("LJXSE_ not between", value1, value2, "LJXSE_");
+        public Criteria andSCLSXHNotBetween(Integer value1, Integer value2) {
+            addCriterion("SCLSXH not between", value1, value2, "SCLSXH");
             return (Criteria) this;
         }
 

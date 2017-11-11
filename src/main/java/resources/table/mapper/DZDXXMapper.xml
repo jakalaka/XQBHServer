@@ -14,8 +14,8 @@
     <result column="IP_UUU" property="IP_UUU" jdbcType="VARCHAR" />
     <result column="SCDLRQ" property="SCDLRQ" jdbcType="DATE" />
     <result column="SCDLSJ" property="SCDLSJ" jdbcType="TIME" />
-    <result column="LJXSGS" property="LJXSGS" jdbcType="INTEGER" />
-    <result column="LJXSE_" property="LJXSE_" jdbcType="DECIMAL" />
+    <result column="SCJYRQ" property="SCJYRQ" jdbcType="DATE" />
+    <result column="SCLSXH" property="SCLSXH" jdbcType="INTEGER" />
     <result column="CJRQ_U" property="CJRQ_U" jdbcType="DATE" />
     <result column="CJSJ_U" property="CJSJ_U" jdbcType="TIME" />
     <result column="CJR_UU" property="CJR_UU" jdbcType="VARCHAR" />
@@ -85,7 +85,7 @@
   </sql>
   <sql id="Base_Column_List" >
     FRDM_U, ZDBH_U, ZDLXBH, CPBH_U, SHBH_U, ZDZT_U, XCSFRQ, ZDJYM_, ZDDLZT, IP_UUU, SCDLRQ, 
-    SCDLSJ, LJXSGS, LJXSE_, CJRQ_U, CJSJ_U, CJR_UU, WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, JLZT_U
+    SCDLSJ, SCJYRQ, SCLSXH, CJRQ_U, CJSJ_U, CJR_UU, WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, JLZT_U
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="XQBHServer.Server.Table.Model.DZDXXExample" >
     select
@@ -123,15 +123,15 @@
     insert into dzdxx (FRDM_U, ZDBH_U, ZDLXBH, 
       CPBH_U, SHBH_U, ZDZT_U, 
       XCSFRQ, ZDJYM_, ZDDLZT, 
-      IP_UUU, SCDLRQ, SCDLSJ, LJXSGS, 
-      LJXSE_, CJRQ_U, CJSJ_U, CJR_UU, 
+      IP_UUU, SCDLRQ, SCDLSJ, SCJYRQ, 
+      SCLSXH, CJRQ_U, CJSJ_U, CJR_UU, 
       WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, 
       JLZT_U)
     values (#{FRDM_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, #{ZDLXBH,jdbcType=VARCHAR}, 
       #{CPBH_U,jdbcType=VARCHAR}, #{SHBH_U,jdbcType=VARCHAR}, #{ZDZT_U,jdbcType=VARCHAR}, 
       #{XCSFRQ,jdbcType=DATE}, #{ZDJYM_,jdbcType=VARCHAR}, #{ZDDLZT,jdbcType=VARCHAR}, 
-      #{IP_UUU,jdbcType=VARCHAR}, #{SCDLRQ,jdbcType=DATE}, #{SCDLSJ,jdbcType=TIME}, #{LJXSGS,jdbcType=INTEGER}, 
-      #{LJXSE_,jdbcType=DECIMAL}, #{CJRQ_U,jdbcType=DATE}, #{CJSJ_U,jdbcType=TIME}, #{CJR_UU,jdbcType=VARCHAR}, 
+      #{IP_UUU,jdbcType=VARCHAR}, #{SCDLRQ,jdbcType=DATE}, #{SCDLSJ,jdbcType=TIME}, #{SCJYRQ,jdbcType=DATE}, 
+      #{SCLSXH,jdbcType=INTEGER}, #{CJRQ_U,jdbcType=DATE}, #{CJSJ_U,jdbcType=TIME}, #{CJR_UU,jdbcType=VARCHAR}, 
       #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, 
       #{JLZT_U,jdbcType=VARCHAR})
   </insert>
@@ -174,11 +174,11 @@
       <if test="SCDLSJ != null" >
         SCDLSJ,
       </if>
-      <if test="LJXSGS != null" >
-        LJXSGS,
+      <if test="SCJYRQ != null" >
+        SCJYRQ,
       </if>
-      <if test="LJXSE_ != null" >
-        LJXSE_,
+      <if test="SCLSXH != null" >
+        SCLSXH,
       </if>
       <if test="CJRQ_U != null" >
         CJRQ_U,
@@ -242,11 +242,11 @@
       <if test="SCDLSJ != null" >
         #{SCDLSJ,jdbcType=TIME},
       </if>
-      <if test="LJXSGS != null" >
-        #{LJXSGS,jdbcType=INTEGER},
+      <if test="SCJYRQ != null" >
+        #{SCJYRQ,jdbcType=DATE},
       </if>
-      <if test="LJXSE_ != null" >
-        #{LJXSE_,jdbcType=DECIMAL},
+      <if test="SCLSXH != null" >
+        #{SCLSXH,jdbcType=INTEGER},
       </if>
       <if test="CJRQ_U != null" >
         #{CJRQ_U,jdbcType=DATE},
@@ -319,11 +319,11 @@
       <if test="record.SCDLSJ != null" >
         SCDLSJ = #{record.SCDLSJ,jdbcType=TIME},
       </if>
-      <if test="record.LJXSGS != null" >
-        LJXSGS = #{record.LJXSGS,jdbcType=INTEGER},
+      <if test="record.SCJYRQ != null" >
+        SCJYRQ = #{record.SCJYRQ,jdbcType=DATE},
       </if>
-      <if test="record.LJXSE_ != null" >
-        LJXSE_ = #{record.LJXSE_,jdbcType=DECIMAL},
+      <if test="record.SCLSXH != null" >
+        SCLSXH = #{record.SCLSXH,jdbcType=INTEGER},
       </if>
       <if test="record.CJRQ_U != null" >
         CJRQ_U = #{record.CJRQ_U,jdbcType=DATE},
@@ -368,8 +368,8 @@
       IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       SCDLRQ = #{record.SCDLRQ,jdbcType=DATE},
       SCDLSJ = #{record.SCDLSJ,jdbcType=TIME},
-      LJXSGS = #{record.LJXSGS,jdbcType=INTEGER},
-      LJXSE_ = #{record.LJXSE_,jdbcType=DECIMAL},
+      SCJYRQ = #{record.SCJYRQ,jdbcType=DATE},
+      SCLSXH = #{record.SCLSXH,jdbcType=INTEGER},
       CJRQ_U = #{record.CJRQ_U,jdbcType=DATE},
       CJSJ_U = #{record.CJSJ_U,jdbcType=TIME},
       CJR_UU = #{record.CJR_UU,jdbcType=VARCHAR},
@@ -415,11 +415,11 @@
       <if test="SCDLSJ != null" >
         SCDLSJ = #{SCDLSJ,jdbcType=TIME},
       </if>
-      <if test="LJXSGS != null" >
-        LJXSGS = #{LJXSGS,jdbcType=INTEGER},
+      <if test="SCJYRQ != null" >
+        SCJYRQ = #{SCJYRQ,jdbcType=DATE},
       </if>
-      <if test="LJXSE_ != null" >
-        LJXSE_ = #{LJXSE_,jdbcType=DECIMAL},
+      <if test="SCLSXH != null" >
+        SCLSXH = #{SCLSXH,jdbcType=INTEGER},
       </if>
       <if test="CJRQ_U != null" >
         CJRQ_U = #{CJRQ_U,jdbcType=DATE},
@@ -461,8 +461,8 @@
       IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
       SCDLRQ = #{SCDLRQ,jdbcType=DATE},
       SCDLSJ = #{SCDLSJ,jdbcType=TIME},
-      LJXSGS = #{LJXSGS,jdbcType=INTEGER},
-      LJXSE_ = #{LJXSE_,jdbcType=DECIMAL},
+      SCJYRQ = #{SCJYRQ,jdbcType=DATE},
+      SCLSXH = #{SCLSXH,jdbcType=INTEGER},
       CJRQ_U = #{CJRQ_U,jdbcType=DATE},
       CJSJ_U = #{CJSJ_U,jdbcType=TIME},
       CJR_UU = #{CJR_UU,jdbcType=VARCHAR},

@@ -1,6 +1,12 @@
 package XQBHServer.Server;
 
+import XQBHServer.Server.Table.Mapper.DZDXXMapper;
+import XQBHServer.Server.Table.Model.DZDXX;
+import XQBHServer.Server.Table.Model.DZDXXKey;
 import XQBHServer.Server.Table.basic.DBAccess;
+import XQBHServer.ServerTran.TranObj;
+import XQBHServer.Utils.log.Logger;
+import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,9 +32,42 @@ public class Com {
      * 获取后台流水=？？？
      * @return
      */
-    public static String getHTLS(){
-        String HTLS_U="";
-        return HTLS_U;
+    public static boolean getHTLS(TranObj tranObj){
+        Logger.log(tranObj,"LOG_IO", Com.getIn);
+        int iSCLSXH=0;
+        String sZDBH_U=tranObj.getHead("ZDBH_U");
+        String sHTLS_U=tranObj.getHead("HTLS_U");
+        if (null==sHTLS_U||"".equals(sHTLS_U)) {
+            DZDXXMapper dzdxxMapper=tranObj.sqlSession.getMapper(DZDXXMapper.class);
+            DZDXXKey dzdxxKey=new DZDXXKey();
+            dzdxxKey.setZDBH_U(sZDBH_U);
+            dzdxxKey.setFRDM_U("9999");
+            DZDXX dzdxx=dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+            Date dSCJYRQ=dzdxx.getSCJYRQ();
+            if (DateUtils.isSameDay(dSCJYRQ,tranObj.date)) {
+                iSCLSXH=dzdxx.getSCLSXH();
+                if (iSCLSXH>0)
+                    iSCLSXH++;
+                else
+                    iSCLSXH=1;
+                dzdxx.setSCLSXH(iSCLSXH);
+            }
+            else {
+                iSCLSXH=1;
+                dzdxx.setSCJYRQ(tranObj.date);
+                dzdxx.setSCLSXH(iSCLSXH);
+
+            }
+            dzdxxMapper.updateByPrimaryKey(dzdxx);
+            tranObj.setHead("HTLS_U","S"+sZDBH_U+String.format("%05d", iSCLSXH));
+            Logger.log(tranObj, "LOG_IO", "后台流水[" + tranObj.getHead("HTLS_U") + "]");
+        }
+        else
+            Logger.log(tranObj,"LOG_IO", "已经生成后台流水["+sHTLS_U+"],不再重复生成");
+
+
+        Logger.log(tranObj,"LOG_IO", Com.getOut);
+        return true;
     }
     /**
      * 获取后台机器日期

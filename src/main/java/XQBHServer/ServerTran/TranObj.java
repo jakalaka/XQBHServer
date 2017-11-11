@@ -16,15 +16,13 @@ import java.util.Map;
 public class TranObj {
     public Map<String, String> HeadMap = null;
     public Map<String, String> TranMap = null;
-    public String CWDM_U = null;
-    public String CWXX_U = null;
+
     public boolean buildSUCCESS = false;
-    Date date;
+    public Date date;
     public SqlSession sqlSession = null;
 
     public StringBuilder filePrinter = null;
     public String flLogLV=null;
-    public String logPath=null;
 
     public TranObj(String XMLIn) {
         filePrinter = new StringBuilder();
@@ -49,14 +47,14 @@ public class TranObj {
         }
     }
 
-    public void writeHead(String Key, String Value) {
+    public void setHead(String Key, String Value) {
         HeadMap.put(Key, Value);
     }
 
     public String getHead(String Key) {
+        if (null==HeadMap.get(Key))
+            return "";
         String result = HeadMap.get(Key).toString();
-        if (null == result)
-            result = "";
         return result;
     }
 
@@ -65,10 +63,9 @@ public class TranObj {
     }
 
     public String getValue(String Key) {
-
-        String result = TranMap.get(Key);
-        if (null == result)
-            result = "";
+        if (null==TranMap.get(Key))
+            return "";
+        String result = TranMap.get(Key);;
         return result;
     }
 

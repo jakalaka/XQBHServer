@@ -32,8 +32,7 @@ public class XmlUtils {
     }
     public static String tranObj2XML(TranObj tranObj, String rootElement) {
         Map XMLMap=new HashMap();
-        tranObj.HeadMap.put("CWDM_U",tranObj.CWDM_U);
-        tranObj.HeadMap.put("CWXX_U",tranObj.CWXX_U);
+
 
         XMLMap.put("head",tranObj.HeadMap);
         XMLMap.put("body",tranObj.TranMap);

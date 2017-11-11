@@ -25,6 +25,9 @@ public class ZDLogin extends Tran {
         Logger.log(tranObj,"LOG_IO", "ZDJYM_=" + ZDJYM_);
         Logger.log(tranObj,"LOG_IO", "ZDBH_U=" + ZDBH_U);
 
+//        if (Com.getHTLS(tranObj)==false)
+//            return false;
+
 
 
         DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);

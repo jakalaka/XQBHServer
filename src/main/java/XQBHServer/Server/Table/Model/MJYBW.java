@@ -19,6 +19,10 @@ public class MJYBW extends MJYBWKey {
 
     private String JYZT_U;
 
+    private String CWDM_U;
+
+    private String CWXX_U;
+
     private String ZDBH_U;
 
     private String IP_UUU;
@@ -89,6 +93,22 @@ public class MJYBW extends MJYBWKey {
 
     public void setJYZT_U(String JYZT_U) {
         this.JYZT_U = JYZT_U;
+    }
+
+    public String getCWDM_U() {
+        return CWDM_U;
+    }
+
+    public void setCWDM_U(String CWDM_U) {
+        this.CWDM_U = CWDM_U;
+    }
+
+    public String getCWXX_U() {
+        return CWXX_U;
+    }
+
+    public void setCWXX_U(String CWXX_U) {
+        this.CWXX_U = CWXX_U;
     }
 
     public String getZDBH_U() {

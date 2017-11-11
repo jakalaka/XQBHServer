@@ -23,9 +23,9 @@ public class DZDXX extends DZDXXKey {
 
     private Date SCDLSJ;
 
-    private Integer LJXSGS;
+    private Date SCJYRQ;
 
-    private Long LJXSE_;
+    private Integer SCLSXH;
 
     private Date CJRQ_U;
 
@@ -123,20 +123,20 @@ public class DZDXX extends DZDXXKey {
         this.SCDLSJ = SCDLSJ;
     }
 
-    public Integer getLJXSGS() {
-        return LJXSGS;
+    public Date getSCJYRQ() {
+        return SCJYRQ;
     }
 
-    public void setLJXSGS(Integer LJXSGS) {
-        this.LJXSGS = LJXSGS;
+    public void setSCJYRQ(Date SCJYRQ) {
+        this.SCJYRQ = SCJYRQ;
     }
 
-    public Long getLJXSE_() {
-        return LJXSE_;
+    public Integer getSCLSXH() {
+        return SCLSXH;
     }
 
-    public void setLJXSE_(Long LJXSE_) {
-        this.LJXSE_ = LJXSE_;
+    public void setSCLSXH(Integer SCLSXH) {
+        this.SCLSXH = SCLSXH;
     }
 
     public Date getCJRQ_U() {

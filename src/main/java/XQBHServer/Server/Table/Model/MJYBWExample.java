@@ -872,6 +872,146 @@ public class MJYBWExample {
             return (Criteria) this;
         }
 
+        public Criteria andCWDM_UIsNull() {
+            addCriterion("CWDM_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UIsNotNull() {
+            addCriterion("CWDM_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UEqualTo(String value) {
+            addCriterion("CWDM_U =", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UNotEqualTo(String value) {
+            addCriterion("CWDM_U <>", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UGreaterThan(String value) {
+            addCriterion("CWDM_U >", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UGreaterThanOrEqualTo(String value) {
+            addCriterion("CWDM_U >=", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_ULessThan(String value) {
+            addCriterion("CWDM_U <", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_ULessThanOrEqualTo(String value) {
+            addCriterion("CWDM_U <=", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_ULike(String value) {
+            addCriterion("CWDM_U like", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UNotLike(String value) {
+            addCriterion("CWDM_U not like", value, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UIn(List<String> values) {
+            addCriterion("CWDM_U in", values, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UNotIn(List<String> values) {
+            addCriterion("CWDM_U not in", values, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UBetween(String value1, String value2) {
+            addCriterion("CWDM_U between", value1, value2, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWDM_UNotBetween(String value1, String value2) {
+            addCriterion("CWDM_U not between", value1, value2, "CWDM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UIsNull() {
+            addCriterion("CWXX_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UIsNotNull() {
+            addCriterion("CWXX_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UEqualTo(String value) {
+            addCriterion("CWXX_U =", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UNotEqualTo(String value) {
+            addCriterion("CWXX_U <>", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UGreaterThan(String value) {
+            addCriterion("CWXX_U >", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UGreaterThanOrEqualTo(String value) {
+            addCriterion("CWXX_U >=", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_ULessThan(String value) {
+            addCriterion("CWXX_U <", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_ULessThanOrEqualTo(String value) {
+            addCriterion("CWXX_U <=", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_ULike(String value) {
+            addCriterion("CWXX_U like", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UNotLike(String value) {
+            addCriterion("CWXX_U not like", value, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UIn(List<String> values) {
+            addCriterion("CWXX_U in", values, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UNotIn(List<String> values) {
+            addCriterion("CWXX_U not in", values, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UBetween(String value1, String value2) {
+            addCriterion("CWXX_U between", value1, value2, "CWXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andCWXX_UNotBetween(String value1, String value2) {
+            addCriterion("CWXX_U not between", value1, value2, "CWXX_U");
+            return (Criteria) this;
+        }
+
         public Criteria andZDBH_UIsNull() {
             addCriterion("ZDBH_U is null");
             return (Criteria) this;

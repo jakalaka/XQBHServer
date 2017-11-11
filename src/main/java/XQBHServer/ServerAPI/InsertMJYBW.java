@@ -16,11 +16,10 @@ import java.util.Map;
  */
 public class InsertMJYBW {
     public static boolean exec(TranObj tranObj) throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-        String rqTmp = tranObj.getHead("QTRQ_U") + tranObj.getHead("QTSJ_U") ;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        String rqTmp = tranObj.getHead("QTRQ_U") ;
         Date date = formatter.parse(rqTmp);
         MJYBWMapper mjybwMapper = tranObj.sqlSession.getMapper(MJYBWMapper.class);
-        MJYBW mjybw = new MJYBW();
         MJYBWWithBLOBs mjybwWithBLOBs = new MJYBWWithBLOBs();
         mjybwWithBLOBs.setFRDM_U("9999");
         mjybwWithBLOBs.setQTLS_U(tranObj.getHead("QTLS_U"));
