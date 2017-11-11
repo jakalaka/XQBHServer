@@ -7,64 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="~~">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/UpdateMJYBW.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CCPSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CSHSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CXTCSMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CZDSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DKHXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DSHXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DZDXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MJYBWMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MJYMXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCS.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBW.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWWithBLOBs.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYMXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CXTCSMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MJYBWMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MJYMXMapper.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Com.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Com.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/ComInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/ComInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBW.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBW.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/TranObj.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/TranObj.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ZDLogin.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ZDLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -409,58 +352,6 @@
             <path>
               <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="10" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="10" type="462c0819:PsiDirectoryNode" />
-              <item name="ZDLogin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="ZDLogin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
@@ -1241,7 +1132,7 @@
       <workItem from="1510063645728" duration="4230000" />
       <workItem from="1510114350597" duration="16230000" />
       <workItem from="1510234767417" duration="10441000" />
-      <workItem from="1510322247900" duration="17964000" />
+      <workItem from="1510322247900" duration="19347000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1390,15 +1281,21 @@
       <option name="project" value="LOCAL" />
       <updated>1510245574483</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="~~">
+      <created>1510389697802</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1510389697802</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159339000" />
+    <option name="totallyTimeSpent" value="160722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.351752" sideWeight="0.52292264" order="1" side_tool="true" content_ui="tabs" />
@@ -1421,7 +1318,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.351752" sideWeight="0.47707736" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38108882" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38108882" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1574,6 +1471,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9519">
           <caret line="561" column="31" lean-forward="false" selection-start-line="561" selection-start-column="31" selection-end-line="561" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1723,7 +1621,7 @@
         <state relative-caret-position="351">
           <caret line="28" column="64" lean-forward="false" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
