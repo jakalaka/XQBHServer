@@ -1,0 +1,90 @@
+2017/11/12 02:25:52.662-[XQBHServer.Server.ServerMain.main:31]-address:http://192.168.31.62:9000/CommonTran
+2017/11/12 02:25:54.012-[XQBHServer.Server.ServerMain.main:34]-Server start successful!!!
+2017/11/12 04:50:27.684-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100002' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100002' for key 'PRIMARY'
+2017/11/12 04:50:27.685-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 04:50:27.686-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 04:51:02.630-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100003' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100003' for key 'PRIMARY'
+2017/11/12 04:51:02.631-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 04:51:02.632-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 04:52:24.784-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100004' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100004' for key 'PRIMARY'
+2017/11/12 04:52:24.785-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 04:52:24.786-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:27:18.928-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100005' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100005' for key 'PRIMARY'
+2017/11/12 07:27:18.929-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:27:18.930-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:28:12.691-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100006' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100006' for key 'PRIMARY'
+2017/11/12 07:28:12.693-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:28:12.694-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:29:34.687-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100007' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100007' for key 'PRIMARY'
+2017/11/12 07:29:34.688-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:29:34.690-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:30:14.023-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100008' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100008' for key 'PRIMARY'
+2017/11/12 07:30:14.024-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:30:14.025-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:31:59.205-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100009' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100009' for key 'PRIMARY'
+2017/11/12 07:31:59.206-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:31:59.207-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:33:15.311-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100010' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100010' for key 'PRIMARY'
+2017/11/12 07:33:15.312-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:33:15.313-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:37:22.799-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100011' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100011' for key 'PRIMARY'
+2017/11/12 07:37:22.800-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:37:22.801-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
+2017/11/12 07:46:42.996-[XQBHServer.ServerAPI.ComInit.exec:37]-org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100012' for key 'PRIMARY'
+### The error may involve XQBHServer.Server.Table.Mapper.MJYBWMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into mjybw (FRDM_U, QTRQ_U, QTLS_U,        QTJYM_, HTRQ_U, HTLS_U,        HTJYM_, SFRQ_U, SFLS_U,        SFJYM_, JYZT_U, CWDM_U,        CWXX_U, ZDBH_U, IP_UUU,        SJC_UU, JLZT_U, CRBW_U,        SFQQBW, SFFHBW, CCBW_U       )     values (?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?,        ?, ?, ?       )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '9999-2017-11-12-CZD0000000100012' for key 'PRIMARY'
+2017/11/12 07:46:42.998-[XQBHServer.ServerTran.Tran.runERR:50]-rollback  tranObj.CWDM_U=  tranObj.CWXX_U插入报文表失败
+2017/11/12 07:46:42.999-[XQBHServer.ServerTran.CommonTran.Comtran:37]-初始化失败
