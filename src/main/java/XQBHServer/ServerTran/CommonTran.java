@@ -78,7 +78,7 @@ public class CommonTran {
             tranObj.sqlSession.commit();
         }
         String XMLOut = "";
-        XMLOut = XmlUtils.tranObj2XML(tranObj, "root");
+        XMLOut = XmlUtils.tranObj2XML(tranObj);
         if (null != tranObj.sqlSession)
             tranObj.sqlSession.close();
 

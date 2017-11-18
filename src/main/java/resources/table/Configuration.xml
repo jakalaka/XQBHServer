@@ -21,12 +21,13 @@
         <mapper resource="resources/table/mapper/CCPSXMapper.xml"/>
         <mapper resource="resources/table/mapper/CSHSXMapper.xml"/>
         <mapper resource="resources/table/mapper/CZDSXMapper.xml"/>
+        <mapper resource="resources/table/mapper/CXTCSMapper.xml"/>
+        <mapper resource="resources/table/mapper/DSHZHMapper.xml"/>
         <mapper resource="resources/table/mapper/DKHXXMapper.xml"/>
         <mapper resource="resources/table/mapper/DSHXXMapper.xml"/>
         <mapper resource="resources/table/mapper/DZDXXMapper.xml"/>
         <mapper resource="resources/table/mapper/MJYBWMapper.xml"/>
         <mapper resource="resources/table/mapper/MJYMXMapper.xml"/>
-        <mapper resource="resources/table/mapper/CXTCSMapper.xml"/>
     </mappers>
 
 </configuration>

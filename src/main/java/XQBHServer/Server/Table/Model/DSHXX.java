@@ -1,5 +1,6 @@
 package XQBHServer.Server.Table.Model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class DSHXX extends DSHXXKey {
@@ -15,23 +16,13 @@ public class DSHXX extends DSHXXKey {
 
     private String KHMC_U;
 
-    private String ZFBH_U;
-
-    private String SHPID_;
-
-    private String SHKEY_;
-
     private String ZZJGDM;
 
     private String GLRXM_;
 
     private String GLRDH_;
 
-    private Long DQYE_U;
-
-    private Integer LJXSGS;
-
-    private Long LJXSE_;
+    private BigDecimal DQYE_U;
 
     private Date CJRQ_U;
 
@@ -97,30 +88,6 @@ public class DSHXX extends DSHXXKey {
         this.KHMC_U = KHMC_U;
     }
 
-    public String getZFBH_U() {
-        return ZFBH_U;
-    }
-
-    public void setZFBH_U(String ZFBH_U) {
-        this.ZFBH_U = ZFBH_U;
-    }
-
-    public String getSHPID_() {
-        return SHPID_;
-    }
-
-    public void setSHPID_(String SHPID_) {
-        this.SHPID_ = SHPID_;
-    }
-
-    public String getSHKEY_() {
-        return SHKEY_;
-    }
-
-    public void setSHKEY_(String SHKEY_) {
-        this.SHKEY_ = SHKEY_;
-    }
-
     public String getZZJGDM() {
         return ZZJGDM;
     }
@@ -145,28 +112,12 @@ public class DSHXX extends DSHXXKey {
         this.GLRDH_ = GLRDH_;
     }
 
-    public Long getDQYE_U() {
+    public BigDecimal getDQYE_U() {
         return DQYE_U;
     }
 
-    public void setDQYE_U(Long DQYE_U) {
+    public void setDQYE_U(BigDecimal DQYE_U) {
         this.DQYE_U = DQYE_U;
-    }
-
-    public Integer getLJXSGS() {
-        return LJXSGS;
-    }
-
-    public void setLJXSGS(Integer LJXSGS) {
-        this.LJXSGS = LJXSGS;
-    }
-
-    public Long getLJXSE_() {
-        return LJXSE_;
-    }
-
-    public void setLJXSE_(Long LJXSE_) {
-        this.LJXSE_ = LJXSE_;
     }
 
     public Date getCJRQ_U() {

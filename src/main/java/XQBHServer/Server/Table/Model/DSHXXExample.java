@@ -1,5 +1,6 @@
 package XQBHServer.Server.Table.Model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -718,216 +719,6 @@ public class DSHXXExample {
             return (Criteria) this;
         }
 
-        public Criteria andZFBH_UIsNull() {
-            addCriterion("ZFBH_U is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UIsNotNull() {
-            addCriterion("ZFBH_U is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UEqualTo(String value) {
-            addCriterion("ZFBH_U =", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UNotEqualTo(String value) {
-            addCriterion("ZFBH_U <>", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UGreaterThan(String value) {
-            addCriterion("ZFBH_U >", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UGreaterThanOrEqualTo(String value) {
-            addCriterion("ZFBH_U >=", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_ULessThan(String value) {
-            addCriterion("ZFBH_U <", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_ULessThanOrEqualTo(String value) {
-            addCriterion("ZFBH_U <=", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_ULike(String value) {
-            addCriterion("ZFBH_U like", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UNotLike(String value) {
-            addCriterion("ZFBH_U not like", value, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UIn(List<String> values) {
-            addCriterion("ZFBH_U in", values, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UNotIn(List<String> values) {
-            addCriterion("ZFBH_U not in", values, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UBetween(String value1, String value2) {
-            addCriterion("ZFBH_U between", value1, value2, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andZFBH_UNotBetween(String value1, String value2) {
-            addCriterion("ZFBH_U not between", value1, value2, "ZFBH_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_IsNull() {
-            addCriterion("SHPID_ is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_IsNotNull() {
-            addCriterion("SHPID_ is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_EqualTo(String value) {
-            addCriterion("SHPID_ =", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_NotEqualTo(String value) {
-            addCriterion("SHPID_ <>", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_GreaterThan(String value) {
-            addCriterion("SHPID_ >", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_GreaterThanOrEqualTo(String value) {
-            addCriterion("SHPID_ >=", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_LessThan(String value) {
-            addCriterion("SHPID_ <", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_LessThanOrEqualTo(String value) {
-            addCriterion("SHPID_ <=", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_Like(String value) {
-            addCriterion("SHPID_ like", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_NotLike(String value) {
-            addCriterion("SHPID_ not like", value, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_In(List<String> values) {
-            addCriterion("SHPID_ in", values, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_NotIn(List<String> values) {
-            addCriterion("SHPID_ not in", values, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_Between(String value1, String value2) {
-            addCriterion("SHPID_ between", value1, value2, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHPID_NotBetween(String value1, String value2) {
-            addCriterion("SHPID_ not between", value1, value2, "SHPID_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_IsNull() {
-            addCriterion("SHKEY_ is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_IsNotNull() {
-            addCriterion("SHKEY_ is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_EqualTo(String value) {
-            addCriterion("SHKEY_ =", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_NotEqualTo(String value) {
-            addCriterion("SHKEY_ <>", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_GreaterThan(String value) {
-            addCriterion("SHKEY_ >", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_GreaterThanOrEqualTo(String value) {
-            addCriterion("SHKEY_ >=", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_LessThan(String value) {
-            addCriterion("SHKEY_ <", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_LessThanOrEqualTo(String value) {
-            addCriterion("SHKEY_ <=", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_Like(String value) {
-            addCriterion("SHKEY_ like", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_NotLike(String value) {
-            addCriterion("SHKEY_ not like", value, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_In(List<String> values) {
-            addCriterion("SHKEY_ in", values, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_NotIn(List<String> values) {
-            addCriterion("SHKEY_ not in", values, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_Between(String value1, String value2) {
-            addCriterion("SHKEY_ between", value1, value2, "SHKEY_");
-            return (Criteria) this;
-        }
-
-        public Criteria andSHKEY_NotBetween(String value1, String value2) {
-            addCriterion("SHKEY_ not between", value1, value2, "SHKEY_");
-            return (Criteria) this;
-        }
-
         public Criteria andZZJGDMIsNull() {
             addCriterion("ZZJGDM is null");
             return (Criteria) this;
@@ -1148,173 +939,53 @@ public class DSHXXExample {
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UEqualTo(Long value) {
+        public Criteria andDQYE_UEqualTo(BigDecimal value) {
             addCriterion("DQYE_U =", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UNotEqualTo(Long value) {
+        public Criteria andDQYE_UNotEqualTo(BigDecimal value) {
             addCriterion("DQYE_U <>", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UGreaterThan(Long value) {
+        public Criteria andDQYE_UGreaterThan(BigDecimal value) {
             addCriterion("DQYE_U >", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UGreaterThanOrEqualTo(Long value) {
+        public Criteria andDQYE_UGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("DQYE_U >=", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_ULessThan(Long value) {
+        public Criteria andDQYE_ULessThan(BigDecimal value) {
             addCriterion("DQYE_U <", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_ULessThanOrEqualTo(Long value) {
+        public Criteria andDQYE_ULessThanOrEqualTo(BigDecimal value) {
             addCriterion("DQYE_U <=", value, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UIn(List<Long> values) {
+        public Criteria andDQYE_UIn(List<BigDecimal> values) {
             addCriterion("DQYE_U in", values, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UNotIn(List<Long> values) {
+        public Criteria andDQYE_UNotIn(List<BigDecimal> values) {
             addCriterion("DQYE_U not in", values, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UBetween(Long value1, Long value2) {
+        public Criteria andDQYE_UBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("DQYE_U between", value1, value2, "DQYE_U");
             return (Criteria) this;
         }
 
-        public Criteria andDQYE_UNotBetween(Long value1, Long value2) {
+        public Criteria andDQYE_UNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("DQYE_U not between", value1, value2, "DQYE_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSIsNull() {
-            addCriterion("LJXSGS is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSIsNotNull() {
-            addCriterion("LJXSGS is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSEqualTo(Integer value) {
-            addCriterion("LJXSGS =", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSNotEqualTo(Integer value) {
-            addCriterion("LJXSGS <>", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSGreaterThan(Integer value) {
-            addCriterion("LJXSGS >", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSGreaterThanOrEqualTo(Integer value) {
-            addCriterion("LJXSGS >=", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSLessThan(Integer value) {
-            addCriterion("LJXSGS <", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSLessThanOrEqualTo(Integer value) {
-            addCriterion("LJXSGS <=", value, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSIn(List<Integer> values) {
-            addCriterion("LJXSGS in", values, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSNotIn(List<Integer> values) {
-            addCriterion("LJXSGS not in", values, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSBetween(Integer value1, Integer value2) {
-            addCriterion("LJXSGS between", value1, value2, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSGSNotBetween(Integer value1, Integer value2) {
-            addCriterion("LJXSGS not between", value1, value2, "LJXSGS");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_IsNull() {
-            addCriterion("LJXSE_ is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_IsNotNull() {
-            addCriterion("LJXSE_ is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_EqualTo(Long value) {
-            addCriterion("LJXSE_ =", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_NotEqualTo(Long value) {
-            addCriterion("LJXSE_ <>", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_GreaterThan(Long value) {
-            addCriterion("LJXSE_ >", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_GreaterThanOrEqualTo(Long value) {
-            addCriterion("LJXSE_ >=", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_LessThan(Long value) {
-            addCriterion("LJXSE_ <", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_LessThanOrEqualTo(Long value) {
-            addCriterion("LJXSE_ <=", value, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_In(List<Long> values) {
-            addCriterion("LJXSE_ in", values, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_NotIn(List<Long> values) {
-            addCriterion("LJXSE_ not in", values, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_Between(Long value1, Long value2) {
-            addCriterion("LJXSE_ between", value1, value2, "LJXSE_");
-            return (Criteria) this;
-        }
-
-        public Criteria andLJXSE_NotBetween(Long value1, Long value2) {
-            addCriterion("LJXSE_ not between", value1, value2, "LJXSE_");
             return (Criteria) this;
         }
 

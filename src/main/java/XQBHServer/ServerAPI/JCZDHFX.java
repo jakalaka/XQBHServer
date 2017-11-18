@@ -32,6 +32,7 @@ public class JCZDHFX {
             return false;
         if ("2".equals(dzdxx.getZDDLZT()))
             return false;
+        tranObj.setHead("SHBH_U",dzdxx.getSHBH_U());
         Logger.log(tranObj,"LOG_IO", Com.getOut);
         return true;
     }

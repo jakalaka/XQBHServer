@@ -55,6 +55,10 @@
                enableUpdateByExample="true" domainObjectName="CZDSX">
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="CXTCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true" domainObjectName="CXTCS">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
         <table tableName="DKHXX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true" domainObjectName="DKHXX">
             <property name="useActualColumnNames" value="true"/>
@@ -67,6 +71,10 @@
                enableUpdateByExample="true" domainObjectName="DZDXX">
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="DSHZH" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true" domainObjectName="DSHZH">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
         <table tableName="MJYBW" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true" domainObjectName="MJYBW" enableInsert="true">
             <property name="useActualColumnNames" value="true"/>
@@ -75,10 +83,7 @@
                enableUpdateByExample="true" domainObjectName="MJYMX">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CXTCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CXTCS">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+
 
     </context>
 </generatorConfiguration>

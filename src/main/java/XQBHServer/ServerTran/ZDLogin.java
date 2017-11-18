@@ -6,6 +6,7 @@ import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.DZDXX;
 import XQBHServer.Server.Table.Model.DZDXXKey;
 import XQBHServer.Utils.log.Logger;
+import com.alibaba.fastjson.util.TypeUtils;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
@@ -25,11 +26,7 @@ public class ZDLogin extends Tran {
         Logger.log(tranObj,"LOG_IO", "ZDJYM_=" + ZDJYM_);
         Logger.log(tranObj,"LOG_IO", "ZDBH_U=" + ZDBH_U);
 
-//        if (Com.getHTLS(tranObj)==false)
-//            return false;
-
-
-
+        /*==================================codeBegin=====================================*/
         DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setZDBH_U(ZDBH_U);
@@ -51,8 +48,9 @@ public class ZDLogin extends Tran {
         tranObj.TranMap.put("re","哈哈哈");
         Com.tmpCount++;
         Logger.log(tranObj,"LOG_DEBUG",""+Com.tmpCount);
+         /*==================================codeEnd=====================================*/
+
         Logger.log(tranObj,"LOG_IO", Com.getOut);
         return true;
     }
-
 }

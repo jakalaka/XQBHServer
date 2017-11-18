@@ -4,9 +4,12 @@ import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.GetLogInfo;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.util.TypeUtils;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 
@@ -14,8 +17,8 @@ import java.util.Map;
  * Created by Administrator on 2017/7/4 0004.
  */
 public class TranObj {
-    public Map<String, String> HeadMap = null;
-    public Map<String, String> TranMap = null;
+    public Map<String, Object> HeadMap = null;
+    public Map<String, Object> TranMap = null;
 
     public boolean buildSUCCESS = false;
     public Date date;
@@ -26,7 +29,7 @@ public class TranObj {
 
     public TranObj(String XMLIn) {
         filePrinter = new StringBuilder();
-        Map XMLMapIn = (Map) XmlUtils.XML2map(XMLIn, "root");
+        Map XMLMapIn =  XmlUtils.XML2map(XMLIn);
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
         date = new Date();
@@ -58,16 +61,45 @@ public class TranObj {
         return result;
     }
 
-    public void setValue(String Key, String Value) {
-        TranMap.put(Key, Value);
+    public void setValue(String Key, Object value) {
+        TranMap.put(Key, value);
     }
 
-    public String getValue(String Key) {
-        if (null==TranMap.get(Key))
-            return "";
-        String result = TranMap.get(Key);;
-        return result;
+    public BigDecimal getBigDecimal(String sKey) {
+        Object result = TranMap.get(sKey);
+        if (null==result)
+            return TypeUtils.castToBigDecimal(0);
+        return  TypeUtils.castToBigDecimal( TranMap.get(sKey));
     }
-
+    public Long getLong(String sKey) {
+        Object result = TranMap.get(sKey);
+        if (null==result)
+            return TypeUtils.castToLong(0);
+        return TypeUtils.castToLong(result);
+    }
+    public String getString(String sKey) {
+        Object result = TranMap.get(sKey);
+        if (null==result)
+            return TypeUtils.castToString("");
+        return TypeUtils.castToString(result);
+    }
+    public  String getGridString(String sGridName,int iIndex,String sKey) {
+        Object object=TranMap.get(sGridName);
+        if (null==object)
+            return null;
+        return  TypeUtils.castToString(((Map)((JSONArray)object).get(iIndex)).get(sKey));
+    }
+    public  Long getGridLong(String sGridName,int iIndex,String sKey) {
+        Object object=TranMap.get(sGridName);
+        if (null==object)
+            return TypeUtils.castToLong(0);
+        return  TypeUtils.castToLong(((Map)((JSONArray)object).get(iIndex)).get(sKey));
+    }
+    public BigDecimal getGridBigDecimal(String sGridName, int iIndex, String sKey) {
+        Object object=TranMap.get(sGridName);
+        if (null==object)
+            return TypeUtils.castToBigDecimal(0);
+        return  TypeUtils.castToBigDecimal(((Map)((JSONArray)object).get(iIndex)).get(sKey));
+    }
 
 }
