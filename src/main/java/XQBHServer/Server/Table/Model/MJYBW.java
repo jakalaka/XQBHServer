@@ -17,6 +17,10 @@ public class MJYBW extends MJYBWKey {
 
     private String SFJYM_;
 
+    private String SFXYM_;
+
+    private String SFYCM_;
+
     private String JYZT_U;
 
     private String CWDM_U;
@@ -85,6 +89,22 @@ public class MJYBW extends MJYBWKey {
 
     public void setSFJYM_(String SFJYM_) {
         this.SFJYM_ = SFJYM_;
+    }
+
+    public String getSFXYM_() {
+        return SFXYM_;
+    }
+
+    public void setSFXYM_(String SFXYM_) {
+        this.SFXYM_ = SFXYM_;
+    }
+
+    public String getSFYCM_() {
+        return SFYCM_;
+    }
+
+    public void setSFYCM_(String SFYCM_) {
+        this.SFYCM_ = SFYCM_;
     }
 
     public String getJYZT_U() {

@@ -9,7 +9,7 @@ import XQBHServer.ServerTran.TranObj;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UpdateMJYBW {
+public class UpdateMJYBWAfterTran {
     public static boolean exec(TranObj tranObj) throws Exception {
         String sQTRQ_U=tranObj.getHead("QTRQ_U");
         String sQTLS_U=tranObj.getHead("QTLS_U");
@@ -22,11 +22,15 @@ public class UpdateMJYBW {
         mjybwKey.setQTRQ_U(date);
 
         MJYBWWithBLOBs mjybwWithBLOBs=mjybwMapper.selectByPrimaryKey(mjybwKey);
-        mjybwWithBLOBs.setJYZT_U("1");
+        if (tranObj.unknownFlg)
+            mjybwWithBLOBs.setJYZT_U("2");
+        else
+            mjybwWithBLOBs.setJYZT_U("1");
         mjybwWithBLOBs.setCWDM_U(tranObj.getHead("CWDM_U"));
         mjybwWithBLOBs.setCWXX_U(tranObj.getHead("CWXX_U"));
         mjybwWithBLOBs.setHTLS_U(tranObj.getHead("HTLS_U"));
         mjybwWithBLOBs.setHTRQ_U(formatter.parse(tranObj.getHead("HTRQ_U")));
+        mjybwWithBLOBs.setCCBW_U(tranObj.bwOut.getBytes("GBK"));//非要GBK才能看到中文，艹
 
         mjybwMapper.updateByPrimaryKeySelective(mjybwWithBLOBs);
         return true;

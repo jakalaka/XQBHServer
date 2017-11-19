@@ -802,6 +802,146 @@ public class MJYBWExample {
             return (Criteria) this;
         }
 
+        public Criteria andSFXYM_IsNull() {
+            addCriterion("SFXYM_ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_IsNotNull() {
+            addCriterion("SFXYM_ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_EqualTo(String value) {
+            addCriterion("SFXYM_ =", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_NotEqualTo(String value) {
+            addCriterion("SFXYM_ <>", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_GreaterThan(String value) {
+            addCriterion("SFXYM_ >", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_GreaterThanOrEqualTo(String value) {
+            addCriterion("SFXYM_ >=", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_LessThan(String value) {
+            addCriterion("SFXYM_ <", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_LessThanOrEqualTo(String value) {
+            addCriterion("SFXYM_ <=", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_Like(String value) {
+            addCriterion("SFXYM_ like", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_NotLike(String value) {
+            addCriterion("SFXYM_ not like", value, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_In(List<String> values) {
+            addCriterion("SFXYM_ in", values, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_NotIn(List<String> values) {
+            addCriterion("SFXYM_ not in", values, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_Between(String value1, String value2) {
+            addCriterion("SFXYM_ between", value1, value2, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFXYM_NotBetween(String value1, String value2) {
+            addCriterion("SFXYM_ not between", value1, value2, "SFXYM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_IsNull() {
+            addCriterion("SFYCM_ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_IsNotNull() {
+            addCriterion("SFYCM_ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_EqualTo(String value) {
+            addCriterion("SFYCM_ =", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_NotEqualTo(String value) {
+            addCriterion("SFYCM_ <>", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_GreaterThan(String value) {
+            addCriterion("SFYCM_ >", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_GreaterThanOrEqualTo(String value) {
+            addCriterion("SFYCM_ >=", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_LessThan(String value) {
+            addCriterion("SFYCM_ <", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_LessThanOrEqualTo(String value) {
+            addCriterion("SFYCM_ <=", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_Like(String value) {
+            addCriterion("SFYCM_ like", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_NotLike(String value) {
+            addCriterion("SFYCM_ not like", value, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_In(List<String> values) {
+            addCriterion("SFYCM_ in", values, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_NotIn(List<String> values) {
+            addCriterion("SFYCM_ not in", values, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_Between(String value1, String value2) {
+            addCriterion("SFYCM_ between", value1, value2, "SFYCM_");
+            return (Criteria) this;
+        }
+
+        public Criteria andSFYCM_NotBetween(String value1, String value2) {
+            addCriterion("SFYCM_ not between", value1, value2, "SFYCM_");
+            return (Criteria) this;
+        }
+
         public Criteria andJYZT_UIsNull() {
             addCriterion("JYZT_U is null");
             return (Criteria) this;

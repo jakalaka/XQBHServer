@@ -26,8 +26,12 @@ public class TranObj {
 
     public StringBuilder filePrinter = null;
     public String flLogLV=null;
+    public String bwIn;
+    public String bwOut;
+    public boolean unknownFlg;
 
     public TranObj(String XMLIn) {
+        bwIn=XMLIn;
         filePrinter = new StringBuilder();
         Map XMLMapIn =  XmlUtils.XML2map(XMLIn);
         HeadMap = (Map) XMLMapIn.get("head");
@@ -39,7 +43,7 @@ public class TranObj {
             e.printStackTrace();
             return;
         }
-
+        unknownFlg=false;
 
         buildSUCCESS = true;
 

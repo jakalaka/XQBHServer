@@ -1,7 +1,7 @@
 package XQBHServer.ServerTran;
 
 import XQBHServer.ServerAPI.ComInit;
-import XQBHServer.ServerAPI.UpdateMJYBW;
+import XQBHServer.ServerAPI.UpdateMJYBWAfterTran;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
@@ -67,21 +67,22 @@ public class CommonTran {
     }
 
     public static String getOut(TranObj tranObj) {
+        String XMLOut = "";
+        XMLOut = XmlUtils.tranObj2XML(tranObj);
+        tranObj.bwOut=XMLOut;
         boolean updateMJYBW = !"ERR006".equals(tranObj.getHead("CWDM_U"));
         if (updateMJYBW) {
             try {
-                UpdateMJYBW.exec(tranObj);
+                UpdateMJYBWAfterTran.exec(tranObj);
             } catch (Exception e) {
                 Logger.log(tranObj, "LOG_SYS", "更新交易报文表出错");
                 Tran.runERR(tranObj, "ERR005");
             }
             tranObj.sqlSession.commit();
         }
-        String XMLOut = "";
-        XMLOut = XmlUtils.tranObj2XML(tranObj);
+
         if (null != tranObj.sqlSession)
             tranObj.sqlSession.close();
-
         Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
         return XMLOut;

@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2017/7/21 0021.
  */
-public class InsertMJYBW {
+public class InsertMJYBWBeforeTran {
     public static boolean exec(TranObj tranObj) throws Exception {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         String rqTmp = tranObj.getHead("QTRQ_U") ;
@@ -32,6 +32,7 @@ public class InsertMJYBW {
         mjybwWithBLOBs.setZDBH_U(tranObj.getHead("ZDBH_U"));
         mjybwWithBLOBs.setIP_UUU(tranObj.getHead("IP_UUU"));
         mjybwWithBLOBs.setJLZT_U("0");
+        mjybwWithBLOBs.setCRBW_U(tranObj.bwIn.getBytes("GBK"));
         mjybwMapper.insert(mjybwWithBLOBs);
 
 

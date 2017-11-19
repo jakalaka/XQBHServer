@@ -1,13 +1,9 @@
 package XQBHServer.ServerAPI;
 
 
-import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
-import org.apache.ibatis.session.SqlSession;
-import sun.rmi.runtime.Log;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -29,7 +25,7 @@ public class ComInit {
         插入交易报文
          */
         try {
-            if(true != InsertMJYBW.exec(tranObj)) {
+            if(true != InsertMJYBWBeforeTran.exec(tranObj)) {
                 Tran.runERR(tranObj,"ERR006");
                 return false;
             }

@@ -12,6 +12,8 @@
     <result column="SFRQ_U" property="SFRQ_U" jdbcType="DATE" />
     <result column="SFLS_U" property="SFLS_U" jdbcType="VARCHAR" />
     <result column="SFJYM_" property="SFJYM_" jdbcType="VARCHAR" />
+    <result column="SFXYM_" property="SFXYM_" jdbcType="VARCHAR" />
+    <result column="SFYCM_" property="SFYCM_" jdbcType="VARCHAR" />
     <result column="JYZT_U" property="JYZT_U" jdbcType="VARCHAR" />
     <result column="CWDM_U" property="CWDM_U" jdbcType="VARCHAR" />
     <result column="CWXX_U" property="CWXX_U" jdbcType="VARCHAR" />
@@ -85,8 +87,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    FRDM_U, QTRQ_U, QTLS_U, QTJYM_, HTRQ_U, HTLS_U, HTJYM_, SFRQ_U, SFLS_U, SFJYM_, JYZT_U, 
-    CWDM_U, CWXX_U, ZDBH_U, IP_UUU, SJC_UU, JLZT_U
+    FRDM_U, QTRQ_U, QTLS_U, QTJYM_, HTRQ_U, HTLS_U, HTJYM_, SFRQ_U, SFLS_U, SFJYM_, SFXYM_, 
+    SFYCM_, JYZT_U, CWDM_U, CWXX_U, ZDBH_U, IP_UUU, SJC_UU, JLZT_U
   </sql>
   <sql id="Blob_Column_List" >
     CRBW_U, SFQQBW, SFFHBW, CCBW_U
@@ -147,19 +149,19 @@
     insert into mjybw (FRDM_U, QTRQ_U, QTLS_U, 
       QTJYM_, HTRQ_U, HTLS_U, 
       HTJYM_, SFRQ_U, SFLS_U, 
-      SFJYM_, JYZT_U, CWDM_U, 
-      CWXX_U, ZDBH_U, IP_UUU, 
-      SJC_UU, JLZT_U, CRBW_U, 
-      SFQQBW, SFFHBW, CCBW_U
-      )
+      SFJYM_, SFXYM_, SFYCM_, 
+      JYZT_U, CWDM_U, CWXX_U, 
+      ZDBH_U, IP_UUU, SJC_UU, 
+      JLZT_U, CRBW_U, SFQQBW, 
+      SFFHBW, CCBW_U)
     values (#{FRDM_U,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
       #{QTJYM_,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
       #{HTJYM_,jdbcType=VARCHAR}, #{SFRQ_U,jdbcType=DATE}, #{SFLS_U,jdbcType=VARCHAR}, 
-      #{SFJYM_,jdbcType=VARCHAR}, #{JYZT_U,jdbcType=VARCHAR}, #{CWDM_U,jdbcType=VARCHAR}, 
-      #{CWXX_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, #{IP_UUU,jdbcType=VARCHAR}, 
-      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR}, #{CRBW_U,jdbcType=LONGVARBINARY}, 
-      #{SFQQBW,jdbcType=LONGVARBINARY}, #{SFFHBW,jdbcType=LONGVARBINARY}, #{CCBW_U,jdbcType=LONGVARBINARY}
-      )
+      #{SFJYM_,jdbcType=VARCHAR}, #{SFXYM_,jdbcType=VARCHAR}, #{SFYCM_,jdbcType=VARCHAR}, 
+      #{JYZT_U,jdbcType=VARCHAR}, #{CWDM_U,jdbcType=VARCHAR}, #{CWXX_U,jdbcType=VARCHAR}, 
+      #{ZDBH_U,jdbcType=VARCHAR}, #{IP_UUU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, 
+      #{JLZT_U,jdbcType=VARCHAR}, #{CRBW_U,jdbcType=LONGVARBINARY}, #{SFQQBW,jdbcType=LONGVARBINARY}, 
+      #{SFFHBW,jdbcType=LONGVARBINARY}, #{CCBW_U,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
     insert into mjybw
@@ -193,6 +195,12 @@
       </if>
       <if test="SFJYM_ != null" >
         SFJYM_,
+      </if>
+      <if test="SFXYM_ != null" >
+        SFXYM_,
+      </if>
+      <if test="SFYCM_ != null" >
+        SFYCM_,
       </if>
       <if test="JYZT_U != null" >
         JYZT_U,
@@ -258,6 +266,12 @@
       </if>
       <if test="SFJYM_ != null" >
         #{SFJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFXYM_ != null" >
+        #{SFXYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFYCM_ != null" >
+        #{SFYCM_,jdbcType=VARCHAR},
       </if>
       <if test="JYZT_U != null" >
         #{JYZT_U,jdbcType=VARCHAR},
@@ -333,6 +347,12 @@
       <if test="record.SFJYM_ != null" >
         SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
       </if>
+      <if test="record.SFXYM_ != null" >
+        SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFYCM_ != null" >
+        SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
+      </if>
       <if test="record.JYZT_U != null" >
         JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
       </if>
@@ -383,6 +403,8 @@
       SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
       SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
       SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
+      SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
+      SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
       JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
       CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
       CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
@@ -410,6 +432,8 @@
       SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
       SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
       SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
+      SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
+      SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
       JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
       CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
       CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
@@ -444,6 +468,12 @@
       </if>
       <if test="SFJYM_ != null" >
         SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFXYM_ != null" >
+        SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFYCM_ != null" >
+        SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
       </if>
       <if test="JYZT_U != null" >
         JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
@@ -492,6 +522,8 @@
       SFRQ_U = #{SFRQ_U,jdbcType=DATE},
       SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
       SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
+      SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
+      SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
       JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
       CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
       CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
@@ -516,6 +548,8 @@
       SFRQ_U = #{SFRQ_U,jdbcType=DATE},
       SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
       SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
+      SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
+      SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
       JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
       CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
       CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
