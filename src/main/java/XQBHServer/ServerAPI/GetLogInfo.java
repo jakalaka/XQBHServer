@@ -11,14 +11,14 @@ import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
- * åªåšåˆæ³•æ€§æŸ¥è¯¢
+ * Ö»×öºÏ·¨ĞÔ²éÑ¯
  */
 public class GetLogInfo {
     /**
      * @param tranObj
      * @return
      * @throws IOException
-     * ä¸»è¦å¤„ç†LOGçš„åˆå§‹åŒ–
+     * Ö÷Òª´¦ÀíLOGµÄ³õÊ¼»¯
      */
     public static boolean exec(TranObj tranObj) throws IOException {
 
@@ -39,7 +39,7 @@ public class GetLogInfo {
         else if("DEBUG".equals(cxtcs.getVALUE_()))
             tranObj.flLogLV="DEBUG";
         else {
-            //æŸ¥å‡ºæœ‰é—®é¢˜ï¼Œå¦‚ä½•å¤„ç†ï¼Ÿ
+            //²é³öÓĞÎÊÌâ£¬ÈçºÎ´¦Àí£¿
             tranObj.flLogLV="DEBUG";
         }
 

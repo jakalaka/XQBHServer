@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
  */
 public class ComInit {
     public static boolean exec(TranObj tranObj)  {
-        //æŠ¥æ–‡å¤´æ ¼å¼åŒ–
+        //±¨ÎÄÍ·¸ñÊ½»¯
         tranObj.setHead("HTLS_U","");
         tranObj.setHead("HTRQ_U","");
         tranObj.setHead("CWDM_U","");
@@ -22,7 +22,7 @@ public class ComInit {
         tranObj.setHead("HTRQ_U",new SimpleDateFormat("yyyyMMdd").format(tranObj.date));
 
         /*
-        æ’å…¥äº¤æ˜“æŠ¥æ–‡
+        ²åÈë½»Ò×±¨ÎÄ
          */
         try {
             if(true != InsertMJYBWBeforeTran.exec(tranObj)) {
@@ -34,11 +34,10 @@ public class ComInit {
             Tran.runERR(tranObj,"ERR006");
             return false;
         }
-        tranObj.sqlSession.commit();
 
 
         /*
-        ä»¥ä¸‹æ·»åŠ æ‹†æŠ¥åˆæ³•æ€§æ£€æŸ¥å¦‚ç»ˆç«¯ä¿¡æ¯ï¼Œç»ˆç«¯æ ¡éªŒç ç­‰
+        ÒÔÏÂÌí¼Ó²ğ±¨ºÏ·¨ĞÔ¼ì²éÈçÖÕ¶ËĞÅÏ¢£¬ÖÕ¶ËĞ£ÑéÂëµÈ
          */
 
         try {
@@ -54,7 +53,7 @@ public class ComInit {
 
 
         /*
-        è·å–æ—¥å¿—ç­‰çº§
+        »ñÈ¡ÈÕÖ¾µÈ¼¶
          */
 
 

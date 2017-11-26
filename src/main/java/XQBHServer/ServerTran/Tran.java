@@ -19,11 +19,11 @@ public abstract class Tran {
             if (false == exec(tranObj)) {
                 if (null == tranObj.getHead("CWDM_U") || "".equals(tranObj.getHead("CWDM_U"))) {
                     tranObj.setHead("CWDM_U", "COMERR");
-                    tranObj.setHead("CWXX_U", "è°ƒç”¨" + tranObj.getHead("HTJYM_") + "äº¤æ˜“æ—¶é”™è¯¯");
+                    tranObj.setHead("CWXX_U", "µ÷ÓÃ" + tranObj.getHead("HTJYM_") + "½»Ò×Ê±´íÎó");
 //                    tranObj.sqlSession.rollback();
 
                 } else {
-                    //æ‰§è¡Œåè¿”å›çš„tranobjä¸­å·²å­˜åœ¨é”™è¯¯ä¿¡æ¯
+                    //Ö´ĞĞºó·µ»ØµÄtranobjÖĞÒÑ´æÔÚ´íÎóĞÅÏ¢
                 }
                 return false;
             } else {
@@ -34,7 +34,7 @@ public abstract class Tran {
         } catch (Exception e) {
             e.printStackTrace();
             tranObj.setHead("CWDM_U", "COMERR");
-            tranObj.setHead("CWXX_U", "è°ƒç”¨" + tranObj.getHead("HTJYM_") + "äº¤æ˜“æ—¶é”™è¯¯");
+            tranObj.setHead("CWXX_U", "µ÷ÓÃ" + tranObj.getHead("HTJYM_") + "½»Ò×Ê±´íÎó");
 //            tranObj.sqlSession.rollback();
             return false;
         } finally {

@@ -17,7 +17,7 @@ public class ZDLogin extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
         /*
-        ç­¾åˆ°ä»æŠ¥æ–‡å¤´ä¸­æ‰¾ä¿¡æ¯
+        Ç©µ½´Ó±¨ÎÄÍ·ÖĞÕÒĞÅÏ¢
          */
         String ZDJYM_ = tranObj.getHead("ZDJYM_");
         String ZDBH_U = tranObj.getHead("ZDBH_U");
@@ -45,7 +45,7 @@ public class ZDLogin extends Tran {
             runERR(tranObj, "LOG002");
             return false;
         }
-        tranObj.TranMap.put("re","å“ˆå“ˆå“ˆ");
+        tranObj.TranMap.put("re","¹ş¹ş¹ş");
         Com.tmpCount++;
         Logger.log(tranObj,"LOG_DEBUG",""+Com.tmpCount);
          /*==================================codeEnd=====================================*/

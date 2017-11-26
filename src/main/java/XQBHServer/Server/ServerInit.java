@@ -23,7 +23,7 @@ public class ServerInit {
 
         SqlSession sqlSession;
         /*
-        å°è¯•è¿æ¥æ•°æ®åº“
+        ³¢ÊÔÁ¬½ÓÊı¾İ¿â
          */
 
         try {
@@ -42,14 +42,14 @@ public class ServerInit {
         }
 
         /*
-        ä»userInfoä¸­è·å–ç›¸å…³é…ç½®ä¿¡æ¯
+        ´ÓuserInfoÖĞ»ñÈ¡Ïà¹ØÅäÖÃĞÅÏ¢
          */
 //        String LOGLV = readKeyFromXML(new File("src/main/resources/sysInfo.properties"), "LOGLV");
 //        if (!"".equals(LOGLV) && LOGLV != null)
 //            Com.LOGLV = LOGLV;
 //        if (!"DEBUG".equals(LOGLV)&&!"ERR".equals(LOGLV)&&!"SYS".equals(LOGLV)&&!"IO".equals(LOGLV))
 //        {
-//            Logger.log(tranObj,"LOG_SYS","æ—¥å¿—ç­‰çº§é”™è¯¯:"+LOGLV);
+//            Logger.log(tranObj,"LOG_SYS","ÈÕÖ¾µÈ¼¶´íÎó:"+LOGLV);
 //            return false;
 //        }
         InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");

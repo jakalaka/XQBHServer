@@ -19,53 +19,53 @@ public class Com {
     public static Map<String, String> ERRMap;
 
     /**
-     * æ—¥å¿—ç­‰çº§
+     * ÈÕÖ¾µÈ¼¶
      * SYS,ERR,IO,DEBUG
      */
     public static String LOGLV = "";
 
     /**
-     * æ¥å£æ¥å…¥æ ‡å¿—
+     * ½Ó¿Ú½ÓÈë±êÖ¾
      */
     public static final String getIn = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     /**
-     * æ¥å£é€€å‡ºæ ‡å¿—
+     * ½Ó¿ÚÍË³ö±êÖ¾
      */
     public static final String getOut = "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     /**
-     * ä¸´æ—¶ç”¨äºå‹åŠ›æµ‹è¯•è®°å½•ç¬”æ•°
+     * ÁÙÊ±ÓÃÓÚÑ¹Á¦²âÊÔ¼ÇÂ¼±ÊÊı
      */
     public static long tmpCount = 0;
     /**
-     * æ•°æ®åº“DBAccess
+     * Êı¾İ¿âDBAccess
      */
     public static DBAccess dbAccess = new DBAccess();
 
 
     /**
-     * æ”¯ä»˜å®ç½‘å…³
+     * Ö§¸¶±¦Íø¹Ø
      */
     public static String alipayGateway = "https://openapi.alipaydev.com/gateway.do";
 
     /**
-     * æ”¯ä»˜å®APPID
+     * Ö§¸¶±¦APPID
      */
     public static String alipayAppid = "2016080500173689";
 
     /**
-     * æ”¯ä»˜å®ç§é’¥
+     * Ö§¸¶±¦Ë½Ô¿
      */
     public static String alipayPrivateKey = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClV7IkP/AOnHD+rL/+sAZjsowKXCSiLAKXILoIO/TrDYChNbmxrEZ3AsGwshRIUre332khPWfcKG04rwVns6RnYj4A6BaJ2WwrPHnA0NllKXCzq0RrPxaTFltlcXQm2funbIJjxCwlHXrJzzzi7dAsu1QIf5EYQbELN/dHIAtarZge8fbAsBkkqYD3xSMuZq0K0kmhybCqSWjYFFfvlWVyR+7i4K3dPiUeC69OHdhfsaP+BtKoPgtlXxtQN/H4yn88oIdL05nXwqLVrqCr53UVXssbnZ0iwTw5X8r6/RYdMSGOAo8aQPmtsP8HBfT0Y0xFVjODo2FfYmtFXjCsYtBDAgMBAAECggEAd8bTshbvXGZQJO4YF/SEbGzHrimaEDE5nymCGrz0a+LYL/CvmNpoIYbJsasPrmTd2kHp8r59IqvWk52WmM02Z/5vVFDNIwdyqM+ik9+33OTsU/vaEKcfP2aOxyotLofzGhItUwClyi1U6iVKwkns6Lq74XwoLB5KlwnwBIJeN00nji3jacUOahZPn8472In5dtM+PqKtm6vJFVYpfwtTKoxblmpOqsTTSAqx50o3Y/ilVxvZo1f34xo+gXkGQ/i4NH8qRgg+L/FOG4VKAATDP72l8tpjUOxpbkuzhattP6MBCeY+RWg+9xlt174zqkGB19HBSJorqicgYXaqnLghwQKBgQDbzHf01vvU5tGGBmaOVrjWvhqvfE1W9CEpQWUGH576Vc3IwxUuMqA6ed4t8N51THYAVNh6kcDwQoBNSdBERabwQoxVaazzEhtnLOgzZPP5PE04GfeWdlzglUDH5iIzB1sa07gKSUNrsTP6PlR+f/ijdVX/eCaFBOJawoN8jqU3GwKBgQDAkydTYUzzeJfY1Mfh1ACmhT7EmvHFBnNIO01Ls65z90YG9sLHcQ1wD6p8ag8O93PBFP8729AbW157vdmgu0abWc35Nznuyg5Xpq+p4N9oPTqyYuaBS7NaDU5YghBBC0QWk22RMuCsCP8CO4Z1LgKA0RpcPIQ8YEQA2VmtvDEV+QKBgBn382hDCifiSXj7QpyolFgSx9ZZ6k1OtKhKKKRrkf3jq1d/7P2zT4j5Iw3semwDZ6GsZJM+qzv3r27yPKAEVq/mPOxOeveQ+RncjWadE9IrlLf/IWhufZSvLaMwhnPe952YzBKzCzsrCYgUWylC915gm5N+X5axuAifGKfbtptnAoGADxp7dxqmgmHu5t6pXpjWBDlnFtxgIefDmuKryUgqYoX+RAWOeT3wo91WrbNTwwS9W2NeMT+oLr0Xx/S34NdPTlfYw7cFIClQvqcgF96/JtnGhL8k/PcG9gUdI+vvgmpzyKF/cmffHx8FgRNSFFarc5byzlEgvet+6eIiGnIsF2ECgYEAvaBB3ncRzXHFaBRD6k/VSzJEA+BWEeD0gplBMATRSieofwIEi9gunD9+DAkc3WIrXEMvCMaAtasjcx2Z/HHEwuPm+T1otyJZZJWVLQrUs8mcG3xLOoYx6XTtooT1q6kdOCa5d5qVQ2IOWQzCdG2y44t2TNgDkP3Xvo960sXCfeY=";
 
     /*
-     * æ”¯ä»˜å®å…¬é’¥
+     * Ö§¸¶±¦¹«Ô¿
      */
     public static  String alipayPulicKey="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtm13QopHlAfSUtMkRHy/fUt+sV0dFaLJXyX5y2j/Ic/YxctgrrzkHt5eL5KTrPFKvhue7t/cEV+adblAcw1JWVRjci9xu7LMRgU+qeKqSowr3VYZKLpQJTlJsULEFsDn5b6DQyX7xPB4CpIGtnHizqCthwvKP/P5e0rYDcqsU4Ccmn1/DAxboV/tFpz/UO7kMA6G8tCtUKwn8tNITEQd6r2DWjidg3tNtg4WbvjxtzCU43HnvREqonDnO6R+InSP+9VBMqz+5b0QcQ71ql0GpS8ecZhhGrZRTTJqowxtZ2Grs44dAzP4G514LC2+3Z8+LeWbsB6Mk3an0AhpUbGXcQIDAQAB";
 
 
     public static  String alipaySys_service_provider_id="";
     /**
-     * è·å–åå°æµæ°´=S+10ä½ç»ˆç«¯ç¼–å·+5ä½åºå·
+     * »ñÈ¡ºóÌ¨Á÷Ë®=S+10Î»ÖÕ¶Ë±àºÅ+5Î»ĞòºÅ
      *
      * @return
      */
@@ -96,9 +96,9 @@ public class Com {
             }
             dzdxxMapper.updateByPrimaryKey(dzdxx);
             tranObj.setHead("HTLS_U", "S" + sZDBH_U + String.format("%05d", iSCLSXH));
-            Logger.log(tranObj, "LOG_IO", "åå°æµæ°´[" + tranObj.getHead("HTLS_U") + "]");
+            Logger.log(tranObj, "LOG_IO", "ºóÌ¨Á÷Ë®[" + tranObj.getHead("HTLS_U") + "]");
         } else
-            Logger.log(tranObj, "LOG_IO", "å·²ç»ç”Ÿæˆåå°æµæ°´[" + sHTLS_U + "],ä¸å†é‡å¤ç”Ÿæˆ");
+            Logger.log(tranObj, "LOG_IO", "ÒÑ¾­Éú³ÉºóÌ¨Á÷Ë®[" + sHTLS_U + "],²»ÔÙÖØ¸´Éú³É");
 
 
         Logger.log(tranObj, "LOG_IO", Com.getOut);
@@ -106,25 +106,25 @@ public class Com {
     }
 
     /**
-     * è·å–åå°æœºå™¨æ—¥æœŸ
+     * »ñÈ¡ºóÌ¨»úÆ÷ÈÕÆÚ
      *
      * @return
      */
     public static String getDate() {
         String Date = "";
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");//è®¾ç½®æ—¥æœŸæ ¼å¼
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");//ÉèÖÃÈÕÆÚ¸ñÊ½
         Date = df.format(new Date());
         return Date;
     }
 
     /**
-     * è·å–åå°æœºå™¨æ—¶é—´
+     * »ñÈ¡ºóÌ¨»úÆ÷Ê±¼ä
      *
      * @return
      */
     public static String getTime() {
         String Time = "";
-        SimpleDateFormat df = new SimpleDateFormat("HHmmss");//è®¾ç½®æ—¥æœŸæ ¼å¼
+        SimpleDateFormat df = new SimpleDateFormat("HHmmss");//ÉèÖÃÈÕÆÚ¸ñÊ½
         Time = df.format(new Date());
         return Time;
     }

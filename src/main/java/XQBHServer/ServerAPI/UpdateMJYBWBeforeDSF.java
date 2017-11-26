@@ -22,17 +22,17 @@ public class UpdateMJYBWBeforeDSF {
         String sQTLS_U = tranObj.getHead("QTLS_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = formatter.parse(sQTRQ_U);
-        MJYBWMapper mjybwMapper = tranObj.sqlSession.getMapper(MJYBWMapper.class);
+        MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
         MJYBWKey mjybwKey = new MJYBWKey();
         mjybwKey.setFRDM_U("9999");
         mjybwKey.setQTLS_U(sQTLS_U);
         mjybwKey.setQTRQ_U(date);
         MJYBWWithBLOBs mjybwWithBLOBs = mjybwMapper.selectByPrimaryKey(mjybwKey);
-        mjybwWithBLOBs.setSFQQBW(sSFQQBW.getBytes("GBK"));//ÈùûË¶ÅGBKÊâçËÉΩÁúãÂà∞‰∏≠ÊñáÔºåËâπ
+        mjybwWithBLOBs.setSFQQBW(sSFQQBW.getBytes("GBK"));//∑«“™GBK≤≈ƒ‹ø¥µΩ÷–Œƒ£¨‹≥
         mjybwWithBLOBs.setSFLS_U(request.getTextParams().get("out_trade_no"));
-        mjybwWithBLOBs.setJYZT_U("2");//ÂÖàÁΩÆ‰∏∫2
+        mjybwWithBLOBs.setJYZT_U("2");//œ»÷√Œ™2
         mjybwMapper.updateByPrimaryKeySelective(mjybwWithBLOBs);
-        tranObj.sqlSession.commit();
+        tranObj.sqlSession_BW.commit();
         Logger.log(tranObj,"LOG_IO", Com.getOut);
         return true;
     }

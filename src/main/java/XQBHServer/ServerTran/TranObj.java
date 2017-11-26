@@ -23,12 +23,14 @@ public class TranObj {
     public boolean buildSUCCESS = false;
     public Date date;
     public SqlSession sqlSession = null;
+    public SqlSession sqlSession_BW = null;
 
     public StringBuilder filePrinter = null;
     public String flLogLV=null;
     public String bwIn;
     public String bwOut;
     public boolean unknownFlg;
+
 
     public TranObj(String XMLIn) {
         bwIn=XMLIn;
@@ -39,6 +41,7 @@ public class TranObj {
         date = new Date();
         try {
             sqlSession = Com.dbAccess.getSqlSession();
+            sqlSession_BW=Com.dbAccess.getSqlSession();
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -47,7 +50,7 @@ public class TranObj {
 
         buildSUCCESS = true;
 
-        try {//è·å–æ—¥å¿—ç­‰çº§ å¿…é¡»å…ˆè·å–æ‰€ä»¥å†™åˆ°è¿™é‡Œ
+        try {//»ñÈ¡ÈÕÖ¾µÈ¼¶ ±ØĞëÏÈ»ñÈ¡ËùÒÔĞ´µ½ÕâÀï
             GetLogInfo.exec(this);
         } catch (IOException e) {
             e.printStackTrace();

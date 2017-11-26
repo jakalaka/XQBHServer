@@ -12,7 +12,7 @@ import java.util.Properties;
  * Created by Administrator on 2017/7/1 0001.
  */
 public class PropertiesReader {
-    private static final String encode = "UTF-8";//æ–‡ä»¶çš„ç¼–ç æ ¼å¼
+    private static final String encode = "GBK";//ÎÄ¼şµÄ±àÂë¸ñÊ½
     private static Properties pps = new Properties();
 
     public static String readKeyFromXML(File file, String Key) {
@@ -27,13 +27,13 @@ public class PropertiesReader {
         try {
             inputFile = new FileInputStream(file);
             propertie.load(inputFile);
-//            propertie.loadFromXML(inputFile);//è¯»å–XMLæ–‡ä»¶
+//            propertie.loadFromXML(inputFile);//¶ÁÈ¡XMLÎÄ¼ş
             inputFile.close();
         } catch (FileNotFoundException ex) {
-            Logger.sysLog("æ–‡ä»¶æ— æ³•æ‰¾åˆ°");
+            Logger.sysLog("ÎÄ¼şÎŞ·¨ÕÒµ½");
             ex.printStackTrace();
         } catch (IOException ex) {
-            Logger.sysLog("è¯»å–æ–‡ä»¶å¤±è´¥");
+            Logger.sysLog("¶ÁÈ¡ÎÄ¼şÊ§°Ü");
             ex.printStackTrace();
         }
 
@@ -47,7 +47,7 @@ public class PropertiesReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Enumeration enum1 = pps.propertyNames();//å¾—åˆ°é…ç½®æ–‡ä»¶çš„åå­—
+        Enumeration enum1 = pps.propertyNames();//µÃµ½ÅäÖÃÎÄ¼şµÄÃû×Ö
         while (enum1.hasMoreElements()) {
             String strKey = (String) enum1.nextElement();
             String strValue = pps.getProperty(strKey);

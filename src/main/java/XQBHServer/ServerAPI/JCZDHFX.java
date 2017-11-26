@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
- * åªåšåˆæ³•æ€§æŸ¥è¯¢
+ * Ö»×öºÏ·¨ĞÔ²éÑ¯
  */
 public class JCZDHFX {
     public static boolean exec(TranObj tranObj) throws IOException {

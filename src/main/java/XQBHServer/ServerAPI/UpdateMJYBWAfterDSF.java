@@ -22,17 +22,17 @@ public class UpdateMJYBWAfterDSF {
         String sQTLS_U = tranObj.getHead("QTLS_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = formatter.parse(sQTRQ_U);
-        MJYBWMapper mjybwMapper = tranObj.sqlSession.getMapper(MJYBWMapper.class);
+        MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
         MJYBWKey mjybwKey = new MJYBWKey();
         mjybwKey.setFRDM_U("9999");
         mjybwKey.setQTLS_U(sQTLS_U);
         mjybwKey.setQTRQ_U(date);
         MJYBWWithBLOBs mjybwWithBLOBs = mjybwMapper.selectByPrimaryKey(mjybwKey);
-        mjybwWithBLOBs.setSFFHBW(sSFFHBW.getBytes("GBK"));//闈炶GBK鎵嶈兘鐪嬪埌涓枃锛岃壒
+        mjybwWithBLOBs.setSFFHBW(sSFFHBW.getBytes("GBK"));//非要GBK才能看到中文，艹
         mjybwWithBLOBs.setSFXYM_(response.getCode());
         mjybwWithBLOBs.setSFYCM_(response.getSubCode());
         mjybwMapper.updateByPrimaryKeySelective(mjybwWithBLOBs);
-        tranObj.sqlSession.commit();
+        tranObj.sqlSession_BW.commit();
         Logger.log(tranObj,"LOG_IO", Com.getOut);
 
         return true;

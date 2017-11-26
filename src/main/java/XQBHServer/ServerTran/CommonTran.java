@@ -30,11 +30,11 @@ public class CommonTran {
 
 
         /*
-        å…¬å…±æ£€æŸ¥
+        ¹«¹²¼ì²é
          */
 
         if (true != ComInit.exec(tranObj)) {
-            Logger.log(tranObj, "LOG_SYS", "åˆå§‹åŒ–å¤±è´¥");
+            Logger.log(tranObj, "LOG_SYS", "³õÊ¼»¯Ê§°Ü");
             if ("".equals(tranObj.getHead("CWDM_U")))
                 Tran.runERR(tranObj, "ERR001");
             return getOut(tranObj);
@@ -75,15 +75,16 @@ public class CommonTran {
             try {
                 UpdateMJYBWAfterTran.exec(tranObj);
             } catch (Exception e) {
-                Logger.log(tranObj, "LOG_SYS", "æ›´æ–°äº¤æ˜“æŠ¥æ–‡è¡¨å‡ºé”™");
+                Logger.log(tranObj, "LOG_SYS", "¸üĞÂ½»Ò×±¨ÎÄ±í³ö´í");
                 Tran.runERR(tranObj, "ERR005");
             }
-            tranObj.sqlSession.commit();
         }
 
-        if (null != tranObj.sqlSession)
+        if (null != tranObj.sqlSession) {
+            tranObj.sqlSession.commit();
             tranObj.sqlSession.close();
-        Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
+        }
+            Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
         return XMLOut;
     }

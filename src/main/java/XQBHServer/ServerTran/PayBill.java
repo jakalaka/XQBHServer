@@ -87,26 +87,26 @@ public class PayBill extends Tran {
         String timeout_express = "";
         String ZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
 
-        AlipayClient alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "utf-8", Com.alipayPulicKey, "RSA2");
+        AlipayClient alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizContent("{" +
-                "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//æˆ‘çš„æµæ°´
+                "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//ÎÒµÄÁ÷Ë®
                 "\"scene\":\"bar_code\"," +
-                "\"auth_code\":\"" + sQRCODE + "\"," + //ä»˜æ¬¾ç 
+                "\"auth_code\":\"" + sQRCODE + "\"," + //¸¶¿îÂë
                 "\"product_code\":\"FACE_TO_FACE_PAYMENT\"," +
                 "\"subject\":\"" + dshxx.getSHMC_U() + "\"," +
-                "\"buyer_id\":\"" + sQRCODE + "\"," + //ä»˜æ¬¾ç 
+                "\"buyer_id\":\"" + sQRCODE + "\"," + //¸¶¿îÂë
                 "\"seller_id\":\"" + dshzh.getZFZH_U() + "\"," +
                 "\"total_amount\":" + bJYJE_U + "," +
                 "\"discountable_amount\":0," +
-                "\"body\":\"" + "è®¢å•æè¿°" + "\"," +
+                "\"body\":\"" + "¶©µ¥ÃèÊö" + "\"," +
                 "\"goods_detail\":[{" +
                 "\"goods_id\":\"" + sSPMC_U + "\"," +
                 "\"goods_name\":\"" + sSPMC_U + "\"," +
                 "\"quantity\":" + 1 + "," +
                 "\"price\":" + bJYJE_U + "," +
                 "\"goods_category\":\"" + goods_category + "\"," +
-                "\"body\":\"" + "å•†å“æè¿°" + "\"," +
+                "\"body\":\"" + "ÉÌÆ·ÃèÊö" + "\"," +
                 "\"show_url\":\"" + show_url + "\"" +
                 "}]," +
                 "\"operator_id\":\"" + sZDBH_U + "\"," +
@@ -119,7 +119,7 @@ public class PayBill extends Tran {
                 "}");
 
         AlipayTradePayResponse response = null;
-        try {//æ›´æ–°æŠ¥æ–‡è¡¨
+        try {//¸üĞÂ±¨ÎÄ±í
             UpdateMJYBWBeforeDSF.exec(tranObj, request);
         } catch (Exception e) {
             runERR(tranObj, "ZF0005");
@@ -128,66 +128,66 @@ public class PayBill extends Tran {
         try {
             response = alipayClient.execute(request);
         } catch (Exception e) {
-            //æ ‡è®°ä¸ºæœªçŸ¥äº¤æ˜“
+            //±ê¼ÇÎªÎ´Öª½»Ò×
             tranObj.unknownFlg = true;
             Logger.log(tranObj, "LOG_ERR", e.toString());
             runERR(tranObj, "ZF0004");
             return false;
         }
-        try {//å®Œæˆäº¤æ˜“æ›´æ–°æŠ¥æ–‡è¡¨
+        try {//Íê³É½»Ò×¸üĞÂ±¨ÎÄ±í
             UpdateMJYBWAfterDSF.exec(tranObj, response);
         } catch (Exception e) {
-            //æ ‡è®°ä¸ºæœªçŸ¥äº¤æ˜“
+            //±ê¼ÇÎªÎ´Öª½»Ò×
             tranObj.unknownFlg = true;
             runERR(tranObj, "ZF0006");
             return false;
         }
 
         if (response.isSuccess()) {
-            Logger.log(tranObj, "LOG_DEBUG", "è°ƒç”¨è®°è´¦æˆåŠŸ");
+            Logger.log(tranObj, "LOG_DEBUG", "µ÷ÓÃ¼ÇÕË³É¹¦");
         } else {
-            if (response.getSubCode().contains("INVALID_PARAMETER")) {//å‚æ•°é”™è¯¯ï¼Œç«‹å³åœæ­¢æ‰€æœ‰äº¤æ˜“ç­‰å¾…ç¡®è®¤
+            if (response.getSubCode().contains("INVALID_PARAMETER")) {//²ÎÊı´íÎó£¬Á¢¼´Í£Ö¹ËùÓĞ½»Ò×µÈ´ıÈ·ÈÏ
 
                 tranObj.sqlSession.rollback();
                 cxtcs.setVALUE_("0");
                 cxtcsMapper.updateByPrimaryKey(cxtcs);
                 tranObj.sqlSession.commit();
             } else if ("20000".equals(response.getCode()) || "isp.unknow-error".equals(response.getSubCode()) || "ACQ.SYSTEM_ERROR".equals(response.getSubCode())) {
-                //æŸ¥è¯¢ä¸€æ¬¡ï¼Œå¤±è´¥åˆ™ç›´æ¥è¿”å›
+                //²éÑ¯Ò»´Î£¬Ê§°ÜÔòÖ±½Ó·µ»Ø
                 AlipayTradeQueryRequest queryRequest = new AlipayTradeQueryRequest();
                 queryRequest.setBizContent("{" +
-                        "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//æˆ‘çš„æµæ°´
+                        "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//ÎÒµÄÁ÷Ë®
                         "\"trade_no\":\"\"" +
                         "}");
                 AlipayTradeQueryResponse queryResponse = null;
                 try {
                     queryResponse = alipayClient.execute(queryRequest);
                 } catch (Exception e) {
-                    //æ ‡è®°ä¸ºæœªçŸ¥äº¤æ˜“
+                    //±ê¼ÇÎªÎ´Öª½»Ò×
                     tranObj.unknownFlg = true;
                     Logger.log(tranObj, "LOG_ERR", e.toString());
                     runERR(tranObj, "ZF0004");
                     return false;
                 }
                 if (queryResponse.isSuccess()) {
-                    Logger.log(tranObj, "LOG_DEBUG", "è°ƒç”¨æŸ¥è¯¢æˆåŠŸ");
+                    Logger.log(tranObj, "LOG_DEBUG", "µ÷ÓÃ²éÑ¯³É¹¦");
                 } else {
                     Logger.log(tranObj, "LOG_ERR", request.getBizContent());
                     Logger.log(tranObj, "LOG_ERR", response.getBody());
                     if (queryResponse.getSubCode().contains("TRADE_NOT_EXIST")) {
-                        Logger.log(tranObj, "LOG_ERR", "è°ƒç”¨æŸ¥è¯¢æ— è®°è´¦ä¿¡æ¯");
+                        Logger.log(tranObj, "LOG_ERR", "µ÷ÓÃ²éÑ¯ÎŞ¼ÇÕËĞÅÏ¢");
                         runERR(tranObj, "ZF0002");
                         return false;
                     } else {
-                        //æ ‡è®°ä¸ºæœªçŸ¥äº¤æ˜“
+                        //±ê¼ÇÎªÎ´Öª½»Ò×
                         tranObj.unknownFlg = true;
-                        Logger.log(tranObj, "LOG_ERR", "è°ƒç”¨æŸ¥è¯¢å¤±è´¥");
+                        Logger.log(tranObj, "LOG_ERR", "µ÷ÓÃ²éÑ¯Ê§°Ü");
                         runERR(tranObj, "ZF0002");
                         return false;
                     }
                 }
                 if ("TRADE_SUCCESS".equals(queryResponse.getTradeStatus())) {
-                    Logger.log(tranObj, "LOG_IO", "è®°è´¦çŠ¶æ€æœªçŸ¥ï¼Œé€šè¿‡æŸ¥è¯¢å¾—çŸ¥è¯¥ç¬”äº¤æ˜“æˆåŠŸ");
+                    Logger.log(tranObj, "LOG_IO", "¼ÇÕË×´Ì¬Î´Öª£¬Í¨¹ı²éÑ¯µÃÖª¸Ã±Ê½»Ò×³É¹¦");
                     Logger.log(tranObj, "LOG_IO", Com.getOut);
                     return true;
                 } else {
@@ -195,7 +195,7 @@ public class PayBill extends Tran {
                     return false;
                 }
             } else {
-                Logger.log(tranObj, "LOG_ERR", "è°ƒç”¨è®°è´¦å¤±è´¥");
+                Logger.log(tranObj, "LOG_ERR", "µ÷ÓÃ¼ÇÕËÊ§°Ü");
                 runERR(tranObj, "ZF0002");
                 return false;
             }

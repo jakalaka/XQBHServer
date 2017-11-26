@@ -15,7 +15,7 @@ public class UpdateMJYBWAfterTran {
         String sQTLS_U=tranObj.getHead("QTLS_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = formatter.parse(sQTRQ_U);
-        MJYBWMapper mjybwMapper=tranObj.sqlSession.getMapper(MJYBWMapper.class);
+        MJYBWMapper mjybwMapper=tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
         MJYBWKey mjybwKey=new MJYBWKey();
         mjybwKey.setFRDM_U("9999");
         mjybwKey.setQTLS_U(sQTLS_U);
@@ -30,9 +30,11 @@ public class UpdateMJYBWAfterTran {
         mjybwWithBLOBs.setCWXX_U(tranObj.getHead("CWXX_U"));
         mjybwWithBLOBs.setHTLS_U(tranObj.getHead("HTLS_U"));
         mjybwWithBLOBs.setHTRQ_U(formatter.parse(tranObj.getHead("HTRQ_U")));
-        mjybwWithBLOBs.setCCBW_U(tranObj.bwOut.getBytes("GBK"));//闈炶GBK鎵嶈兘鐪嬪埌涓枃锛岃壒
-
+        mjybwWithBLOBs.setCCBW_U(tranObj.bwOut.getBytes("GBK"));//非要GBK才能看到中文，艹
         mjybwMapper.updateByPrimaryKeySelective(mjybwWithBLOBs);
+        tranObj.sqlSession_BW.commit();
+        tranObj.sqlSession_BW.close();
+
         return true;
     }
 }
