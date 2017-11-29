@@ -15,6 +15,7 @@ import com.alipay.api.request.AlipayTradePayRequest;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradePayResponse;
 import com.alipay.api.response.AlipayTradeQueryResponse;
+import sun.rmi.runtime.Log;
 
 import java.math.BigDecimal;
 
@@ -86,8 +87,16 @@ public class PayBill extends Tran {
         String show_url = "";
         String timeout_express = "";
         String ZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
-
-        AlipayClient alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        AlipayClient alipayClient;
+        String seller_id=dshzh.getZFZH_U();
+        if("1".equals(tranObj.getHead("CSBZ_U")))//测试 数据写死
+        {
+            alipayClient = new DefaultAlipayClient(Com.alipayGateway_cs, Com.alipayAppid_cs, Com.alipayPrivateKey_cs, "json", "GBK", Com.alipayPulicKey_cs, "RSA2");
+            seller_id="2088102170074235";
+            Logger.log(tranObj,"LOG_DEBUG","本交易为测试交易TTTTTT");
+        }else {
+            alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        }
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizContent("{" +
                 "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//我的流水
@@ -96,7 +105,7 @@ public class PayBill extends Tran {
                 "\"product_code\":\"FACE_TO_FACE_PAYMENT\"," +
                 "\"subject\":\"" + dshxx.getSHMC_U() + "\"," +
                 "\"buyer_id\":\"" + sQRCODE + "\"," + //付款码
-                "\"seller_id\":\"" + dshzh.getZFZH_U() + "\"," +
+                "\"seller_id\":\"" + seller_id + "\"," +
                 "\"total_amount\":" + bJYJE_U + "," +
                 "\"discountable_amount\":0," +
                 "\"body\":\"" + "订单描述" + "\"," +
