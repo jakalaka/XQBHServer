@@ -35,7 +35,6 @@ public class ComInit {
             return false;
         }
 
-
         /*
         以下添加拆报合法性检查如终端信息，终端校验码等
          */
@@ -50,7 +49,6 @@ public class ComInit {
             Tran.runERR(tranObj,"ERR002");
             return false;
         }
-
 
         /*
         获取日志等级

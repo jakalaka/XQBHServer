@@ -18,7 +18,6 @@ import java.lang.reflect.Method;
 public class CommonTran {
     @WebMethod
     public String Comtran(String XMLIn) {
-
         TranObj tranObj = new TranObj(XMLIn);
         if (false == tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR003");
