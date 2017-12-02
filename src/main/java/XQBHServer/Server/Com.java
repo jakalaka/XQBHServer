@@ -4,6 +4,7 @@ import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.DZDXX;
 import XQBHServer.Server.Table.Model.DZDXXKey;
 import XQBHServer.Server.Table.basic.DBAccess;
+import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
 import org.apache.commons.lang3.time.DateUtils;
@@ -60,9 +61,7 @@ public class Com {
     /*
      * 支付宝公钥
      */
-    public static final  String alipayPulicKey="??";
-
-
+    public static final String alipayPulicKey = "??";
 
 
     /**
@@ -83,12 +82,11 @@ public class Com {
     /*
      * 支付宝公钥_测试专用
      */
-    public static final String alipayPulicKey_cs="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtm13QopHlAfSUtMkRHy/fUt+sV0dFaLJXyX5y2j/Ic/YxctgrrzkHt5eL5KTrPFKvhue7t/cEV+adblAcw1JWVRjci9xu7LMRgU+qeKqSowr3VYZKLpQJTlJsULEFsDn5b6DQyX7xPB4CpIGtnHizqCthwvKP/P5e0rYDcqsU4Ccmn1/DAxboV/tFpz/UO7kMA6G8tCtUKwn8tNITEQd6r2DWjidg3tNtg4WbvjxtzCU43HnvREqonDnO6R+InSP+9VBMqz+5b0QcQ71ql0GpS8ecZhhGrZRTTJqowxtZ2Grs44dAzP4G514LC2+3Z8+LeWbsB6Mk3an0AhpUbGXcQIDAQAB";
+    public static final String alipayPulicKey_cs = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtm13QopHlAfSUtMkRHy/fUt+sV0dFaLJXyX5y2j/Ic/YxctgrrzkHt5eL5KTrPFKvhue7t/cEV+adblAcw1JWVRjci9xu7LMRgU+qeKqSowr3VYZKLpQJTlJsULEFsDn5b6DQyX7xPB4CpIGtnHizqCthwvKP/P5e0rYDcqsU4Ccmn1/DAxboV/tFpz/UO7kMA6G8tCtUKwn8tNITEQd6r2DWjidg3tNtg4WbvjxtzCU43HnvREqonDnO6R+InSP+9VBMqz+5b0QcQ71ql0GpS8ecZhhGrZRTTJqowxtZ2Grs44dAzP4G514LC2+3Z8+LeWbsB6Mk3an0AhpUbGXcQIDAQAB";
 
 
+    public static final String alipaySys_service_provider_id = "";
 
-
-    public static final String alipaySys_service_provider_id="";
     /**
      * 获取后台流水=S+10位终端编号+5位序号
      *
@@ -104,7 +102,14 @@ public class Com {
             DZDXXKey dzdxxKey = new DZDXXKey();
             dzdxxKey.setZDBH_U(sZDBH_U);
             dzdxxKey.setFRDM_U("9999");
-            DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+            DZDXX dzdxx=null;
+            try {
+                dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+            } catch (Exception e) {
+                Logger.logException(tranObj, "LOG_ERR", e);
+                Tran.runERR(tranObj, "SQLSEL");
+                return false;
+            }
             Date dSCJYRQ = dzdxx.getSCJYRQ();
             if (DateUtils.isSameDay(dSCJYRQ, tranObj.date)) {
                 iSCLSXH = dzdxx.getSCLSXH();
@@ -119,8 +124,15 @@ public class Com {
                 dzdxx.setSCLSXH(iSCLSXH);
 
             }
-            dzdxxMapper.updateByPrimaryKey(dzdxx);
-            tranObj.setHead("HTLS_U", "S" + sZDBH_U + String.format("%05d", iSCLSXH));
+            try {
+                dzdxxMapper.updateByPrimaryKey(dzdxx);
+            }catch (Exception e)
+            {
+                Logger.logException(tranObj, "LOG_ERR", e);
+                Tran.runERR(tranObj, "SQLUPD");
+                return false;
+            }
+            tranObj.setHead("HTLS_U", "S" + sZDBH_U + String.format("%07d", iSCLSXH));
             Logger.log(tranObj, "LOG_IO", "后台流水[" + tranObj.getHead("HTLS_U") + "]");
         } else
             Logger.log(tranObj, "LOG_IO", "已经生成后台流水[" + sHTLS_U + "],不再重复生成");

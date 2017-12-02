@@ -22,9 +22,9 @@ public class ZDLogin extends Tran {
         String ZDJYM_ = tranObj.getHead("ZDJYM_");
         String ZDBH_U = tranObj.getHead("ZDBH_U");
         String IP_UUU = tranObj.getHead("IP_UUU");
-        Logger.log(tranObj,"LOG_IO", Com.getIn);
-        Logger.log(tranObj,"LOG_IO", "ZDJYM_=" + ZDJYM_);
-        Logger.log(tranObj,"LOG_IO", "ZDBH_U=" + ZDBH_U);
+        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", "ZDJYM_=" + ZDJYM_);
+        Logger.log(tranObj, "LOG_IO", "ZDBH_U=" + ZDBH_U);
 
         /*==================================codeBegin=====================================*/
         DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
@@ -32,7 +32,14 @@ public class ZDLogin extends Tran {
         dzdxxKey.setZDBH_U(ZDBH_U);
         dzdxxKey.setFRDM_U("9999");
 
-        DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+        DZDXX dzdxx = null;
+        try {
+            dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+        } catch (Exception e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
 
         if ("0".equals(dzdxx.getZDDLZT()) || "1".equals(dzdxx.getZDDLZT())) {
             dzdxx.setZDDLZT("1");
@@ -45,12 +52,12 @@ public class ZDLogin extends Tran {
             runERR(tranObj, "LOG002");
             return false;
         }
-        tranObj.TranMap.put("re","込込込");
+        tranObj.TranMap.put("re", "込込込");
         Com.tmpCount++;
-        Logger.log(tranObj,"LOG_DEBUG",""+Com.tmpCount);
+        Logger.log(tranObj, "LOG_DEBUG", "" + Com.tmpCount);
          /*==================================codeEnd=====================================*/
 
-        Logger.log(tranObj,"LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.getOut);
         return true;
     }
 }

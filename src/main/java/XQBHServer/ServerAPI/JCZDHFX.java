@@ -4,6 +4,7 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.DZDXX;
 import XQBHServer.Server.Table.Model.DZDXXKey;
+import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
@@ -16,24 +17,31 @@ import java.io.IOException;
  */
 public class JCZDHFX {
     public static boolean exec(TranObj tranObj) throws IOException {
-        Logger.log(tranObj,"LOG_IO", Com.getIn);
-        String sZDBH_U=tranObj.getHead("ZDBH_U");
-        String sZDJYM_=tranObj.getHead("ZDJYM_");
-        Logger.log(tranObj,"LOG_IO","sZDBH_U="+sZDBH_U);
-        Logger.log(tranObj,"LOG_IO","sZDJYM_="+sZDJYM_);
+        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        String sZDBH_U = tranObj.getHead("ZDBH_U");
+        String sZDJYM_ = tranObj.getHead("ZDJYM_");
+        Logger.log(tranObj, "LOG_IO", "sZDBH_U=" + sZDBH_U);
+        Logger.log(tranObj, "LOG_IO", "sZDJYM_=" + sZDJYM_);
         DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
         DZDXXKey dzdxxKey = new DZDXXKey();
         dzdxxKey.setFRDM_U("9999");
         dzdxxKey.setZDBH_U(sZDBH_U);
-        DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+        DZDXX dzdxx=null;
+        try {
+            dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+        } catch (Exception e) {
+            Logger.logException(tranObj,"LOG_ERR",e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
         if (null == dzdxx)
             return false;
         if (!sZDJYM_.equals(dzdxx.getZDJYM_()))
             return false;
         if ("2".equals(dzdxx.getZDDLZT()))
             return false;
-        tranObj.setHead("SHBH_U",dzdxx.getSHBH_U());
-        Logger.log(tranObj,"LOG_IO", Com.getOut);
+        tranObj.setHead("SHBH_U", dzdxx.getSHBH_U());
+        Logger.log(tranObj, "LOG_IO", Com.getOut);
         return true;
     }
 

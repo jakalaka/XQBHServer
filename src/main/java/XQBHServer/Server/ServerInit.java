@@ -7,10 +7,7 @@ import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
-import java.io.File;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 
@@ -35,9 +32,7 @@ public class ServerInit {
             dzdxxKey.setFRDM_U("9999");
             DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
         } catch (Exception e) {
-            Logger.sysLog("aaa");
-            Logger.sysLog(e.toString());
-            e.printStackTrace();
+            Logger.sysLogException(e);
             return false;
         }
 

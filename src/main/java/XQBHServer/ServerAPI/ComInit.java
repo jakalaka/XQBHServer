@@ -24,16 +24,11 @@ public class ComInit {
         /*
         插入交易报文
          */
-        try {
             if(true != InsertMJYBWBeforeTran.exec(tranObj)) {
                 Tran.runERR(tranObj,"ERR006");
                 return false;
             }
-        } catch (Exception e) {
-            Logger.log(tranObj,"LOG_ERR",e.toString());
-            Tran.runERR(tranObj,"ERR006");
-            return false;
-        }
+
 
         /*
         以下添加拆报合法性检查如终端信息，终端校验码等

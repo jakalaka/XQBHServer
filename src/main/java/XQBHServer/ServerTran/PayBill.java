@@ -43,7 +43,15 @@ public class PayBill extends Tran {
         CXTCSKey cxtcsKey = new CXTCSKey();
         cxtcsKey.setKEY_UU("ALLOWPAY");
         cxtcsKey.setFRDM_U("9999");
-        CXTCS cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
+        CXTCS cxtcs = null;
+        try {
+            cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
+
+        } catch (Exception e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
         if (null == cxtcs || !"1".equals(cxtcs.getVALUE_())) {
             runERR(tranObj, "SYSPAY");
             return false;
@@ -57,7 +65,14 @@ public class PayBill extends Tran {
         DSHXXKey dshxxKey = new DSHXXKey();
         dshxxKey.setSHBH_U(sSHBH_U);
         dshxxKey.setFRDM_U("9999");
-        DSHXX dshxx = dzdxxMapper.selectByPrimaryKey(dshxxKey);
+        DSHXX dshxx = null;
+        try {
+            dshxx = dzdxxMapper.selectByPrimaryKey(dshxxKey);
+        } catch (Exception e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
         if (null == dshxx) {
             runERR(tranObj, "SH0001");
             return false;
@@ -77,7 +92,14 @@ public class PayBill extends Tran {
         dshzhKey.setFRDM_U("9999");
         dshzhKey.setSHBH_U(dshxx.getSHBH_U());
         dshzhKey.setZFZHLX(sZFZHLX);
-        DSHZH dshzh = dshzhMapper.selectByPrimaryKey(dshzhKey);
+        DSHZH dshzh = null;
+        try {
+            dshzh = dshzhMapper.selectByPrimaryKey(dshzhKey);
+        } catch (Exception e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
         if (null == dshzh) {
             runERR(tranObj, "ZF0001", sZFZHLX);
             return false;
@@ -88,13 +110,13 @@ public class PayBill extends Tran {
         String timeout_express = "";
         String ZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
         AlipayClient alipayClient;
-        String seller_id=dshzh.getZFZH_U();
-        if("1".equals(tranObj.getHead("CSBZ_U")))//测试 数据写死
+        String seller_id = dshzh.getZFZH_U();
+        if ("1".equals(tranObj.getHead("CSBZ_U")))//测试 数据写死
         {
             alipayClient = new DefaultAlipayClient(Com.alipayGateway_cs, Com.alipayAppid_cs, Com.alipayPrivateKey_cs, "json", "GBK", Com.alipayPulicKey_cs, "RSA2");
-            seller_id="2088102170074235";
-            Logger.log(tranObj,"LOG_DEBUG","本交易为测试交易TTTTTT");
-        }else {
+            seller_id = "2088102170074235";
+            Logger.log(tranObj, "LOG_DEBUG", "本交易为测试交易TTTTTT");
+        } else {
             alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
         }
         AlipayTradePayRequest request = new AlipayTradePayRequest();
@@ -128,9 +150,7 @@ public class PayBill extends Tran {
                 "}");
 
         AlipayTradePayResponse response = null;
-        try {//更新报文表
-            UpdateMJYBWBeforeDSF.exec(tranObj, request);
-        } catch (Exception e) {
+        if (true != UpdateMJYBWBeforeDSF.exec(tranObj, request)) {
             runERR(tranObj, "ZF0005");
             return false;
         }
@@ -139,18 +159,18 @@ public class PayBill extends Tran {
         } catch (Exception e) {
             //标记为未知交易
             tranObj.unknownFlg = true;
-            Logger.log(tranObj, "LOG_ERR", e.toString());
+            Logger.logException(tranObj, "LOG_ERR", e);
             runERR(tranObj, "ZF0004");
             return false;
         }
-        try {//完成交易更新报文表
-            UpdateMJYBWAfterDSF.exec(tranObj, response);
-        } catch (Exception e) {
+        if (true != UpdateMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表
+        {
             //标记为未知交易
             tranObj.unknownFlg = true;
             runERR(tranObj, "ZF0006");
             return false;
         }
+
 
         if (response.isSuccess()) {
             Logger.log(tranObj, "LOG_DEBUG", "调用记账成功");
@@ -174,7 +194,7 @@ public class PayBill extends Tran {
                 } catch (Exception e) {
                     //标记为未知交易
                     tranObj.unknownFlg = true;
-                    Logger.log(tranObj, "LOG_ERR", e.toString());
+                    Logger.logException(tranObj, "LOG_ERR", e);
                     runERR(tranObj, "ZF0004");
                     return false;
                 }

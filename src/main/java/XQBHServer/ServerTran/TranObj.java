@@ -43,7 +43,7 @@ public class TranObj {
             sqlSession = Com.dbAccess.getSqlSession();
             sqlSession_BW = Com.dbAccess.getSqlSession();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.sysLogException( e);
             return;
         }
         unknownFlg = false;

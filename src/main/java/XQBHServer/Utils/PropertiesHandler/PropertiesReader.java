@@ -31,10 +31,12 @@ public class PropertiesReader {
             inputFile.close();
         } catch (FileNotFoundException ex) {
             Logger.sysLog("文件无法找到");
-            ex.printStackTrace();
+            Logger.sysLogException(ex);
+
+
         } catch (IOException ex) {
             Logger.sysLog("读取文件失败");
-            ex.printStackTrace();
+            Logger.sysLogException(ex);
         }
 
         return propertie.getProperty(Key);
@@ -45,7 +47,7 @@ public class PropertiesReader {
         try {
             pps.load(inputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.sysLogException(e);
         }
         Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
         while (enum1.hasMoreElements()) {

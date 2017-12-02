@@ -22,11 +22,12 @@ public class ServerMain {
          }
          String ip="172.18.38.19";
 //        String ip="127.0.0.1";
-        try {
-            ip= InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ip= InetAddress.getLocalHost().getHostAddress();
+//        } catch (UnknownHostException e) {
+//            Logger.sysLogException(e);
+//            return;
+//        }
         Object implementor = new CommonTran();
         String address = "http://"+ip+":9000/CommonTran";
         Logger.sysLog("address:"+address);

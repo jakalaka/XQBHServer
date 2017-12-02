@@ -48,6 +48,7 @@ public class CommonTran {
             Method m = obj.getClass().getMethod("execDo", TranObj.class);
             callRe = (Boolean) m.invoke(obj, tranObj);
         } catch (InstantiationException e) {
+
             Tran.runERR(tranObj, "SYSERR");
         } catch (InvocationTargetException e) {
             Tran.runERR(tranObj, "SYSERR");
@@ -68,12 +69,11 @@ public class CommonTran {
     public static String getOut(TranObj tranObj) {
         String XMLOut = "";
         XMLOut = XmlUtils.tranObj2XML(tranObj);
-        tranObj.bwOut=XMLOut;
+        tranObj.bwOut = XMLOut;
         boolean updateMJYBW = !"ERR006".equals(tranObj.getHead("CWDM_U"));
         if (updateMJYBW) {
-            try {
-                UpdateMJYBWAfterTran.exec(tranObj);
-            } catch (Exception e) {
+
+            if (true != UpdateMJYBWAfterTran.exec(tranObj)) {
                 Logger.log(tranObj, "LOG_SYS", "更新交易报文表出错");
                 Tran.runERR(tranObj, "ERR005");
             }
@@ -83,7 +83,7 @@ public class CommonTran {
             tranObj.sqlSession.commit();
             tranObj.sqlSession.close();
         }
-            Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
+        Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
         return XMLOut;
     }
