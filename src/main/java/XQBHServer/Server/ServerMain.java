@@ -20,8 +20,8 @@ public class ServerMain {
              Logger.sysLog("ServerInit Fail!!!");
              return;
          }
-//         String ip="172.18.38.19";
-        String ip="127.0.0.1";
+         String ip="172.18.38.19";
+//        String ip="127.0.0.1";
         try {
             ip= InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {

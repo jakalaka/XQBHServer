@@ -17,7 +17,8 @@
         </commentGenerator>
 
         <!-- !!!! Database Configurations !!!! -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/db_xqbhserver" userId="root" password="rootkf"/>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://119.23.250.79:3306/db_xqbhserver" userId="xqbh" password="xqbhkf"/>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/db_xqbhserver" userId="xqbh" password="xqbhkf"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>

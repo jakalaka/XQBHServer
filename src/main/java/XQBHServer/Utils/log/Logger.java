@@ -2,10 +2,7 @@ package XQBHServer.Utils.log;
 
 import XQBHServer.ServerTran.TranObj;
 
-import java.io.Console;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,6 +34,37 @@ public class Logger {
     private static final DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss.SSS");
 
     public static void log(TranObj tranObj, String LogLV, String Msg) {
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(df.format(new Date())).append("-");
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        builder.append("[").append(LogLV).append("]-");
+        builder.append(Msg);
+        builder.append("\n");
+
+
+        if ("SYS".equals(tranObj.flLogLV) && "LOG_SYS".equals(LogLV)) {
+            tranObj.filePrinter.append(builder);
+        } else if ("ERR".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        } else if ("IO".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV) || "LOG_IO".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        } else if ("DEBUG".equals(tranObj.flLogLV) && ("LOG_SYS".equals(LogLV) || "LOG_ERR".equals(LogLV) || "LOG_IO".equals(LogLV) || "LOG_DEBUG".equals(LogLV))) {
+            tranObj.filePrinter.append(builder);
+        }
+        if ("LOG_SYS".equals(LogLV)||"LOG_ERR".equals(LogLV))
+            sysLog(Msg,Thread.currentThread().getStackTrace()[2].getClassName(),Thread.currentThread().getStackTrace()[2].getMethodName(),Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+
+
+    }
+    public static void logException(TranObj tranObj, String LogLV, Exception exception) {
+
+        StringWriter sw = new StringWriter();
+        exception.printStackTrace(new PrintWriter(sw, true));
+
+        String Msg=sw.toString();
 
         StringBuilder builder = new StringBuilder();
         builder.append(df.format(new Date())).append("-");

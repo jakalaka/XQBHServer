@@ -4,6 +4,7 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Model.CXTCS;
 import XQBHServer.Server.Table.Model.CXTCSKey;
+import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
 
@@ -20,13 +21,22 @@ public class GetLogInfo {
      * @throws IOException
      * 主要处理LOG的初始化
      */
-    public static boolean exec(TranObj tranObj) throws IOException {
+    public static boolean exec(TranObj tranObj)  {
 
         CXTCSMapper cxtcsMapper = tranObj.sqlSession.getMapper(CXTCSMapper.class);
         CXTCSKey cxtcsKey = new CXTCSKey();
         cxtcsKey.setFRDM_U("9999");
         cxtcsKey.setKEY_UU("flLogLV");
-        CXTCS cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
+        CXTCS cxtcs=null;
+
+        try{
+            cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
+        }catch (Exception e)
+        {
+            Logger.logException(tranObj,"LOG_ERR",e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
         if (null == cxtcs) {
             tranObj.flLogLV="DEBUG";
         }
