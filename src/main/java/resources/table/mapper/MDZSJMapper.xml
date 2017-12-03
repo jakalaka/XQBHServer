@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XQBHServer.Server.Table.Mapper.MDZSJMapper">
+  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.MDZSJ">
+    <id column="FRDM_U" jdbcType="VARCHAR" property="FRDM_U" />
+    <id column="HTRQ_U" jdbcType="DATE" property="HTRQ_U" />
+    <id column="HTLS_U" jdbcType="VARCHAR" property="HTLS_U" />
+    <result column="JYSJ_U" jdbcType="TIME" property="JYSJ_U" />
+    <result column="HTJYM_" jdbcType="VARCHAR" property="HTJYM_" />
+    <result column="JYLX_U" jdbcType="VARCHAR" property="JYLX_U" />
+    <result column="JYJE_U" jdbcType="DECIMAL" property="JYJE_U" />
+    <result column="SHBH_U" jdbcType="VARCHAR" property="SHBH_U" />
+    <result column="ZDBH_U" jdbcType="VARCHAR" property="ZDBH_U" />
+    <result column="ZFZHLX" jdbcType="VARCHAR" property="ZFZHLX" />
+    <result column="SFDDH_" jdbcType="VARCHAR" property="SFDDH_" />
+    <result column="SFLS_U" jdbcType="VARCHAR" property="SFLS_U" />
+    <result column="SFRQ_U" jdbcType="DATE" property="SFRQ_U" />
+    <result column="FKRID_" jdbcType="VARCHAR" property="FKRID_" />
+    <result column="FKRZH_" jdbcType="VARCHAR" property="FKRZH_" />
+    <result column="QTRQ_U" jdbcType="DATE" property="QTRQ_U" />
+    <result column="QTLS_U" jdbcType="VARCHAR" property="QTLS_U" />
+    <result column="QTJYM_" jdbcType="VARCHAR" property="QTJYM_" />
+    <result column="JYZT_U" jdbcType="VARCHAR" property="JYZT_U" />
+    <result column="WHRQ_U" jdbcType="DATE" property="WHRQ_U" />
+    <result column="WHSJ_U" jdbcType="TIME" property="WHSJ_U" />
+    <result column="WHR_UU" jdbcType="VARCHAR" property="WHR_UU" />
+    <result column="SJC_UU" jdbcType="TIMESTAMP" property="SJC_UU" />
+    <result column="JLZT_U" jdbcType="VARCHAR" property="JLZT_U" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FRDM_U, HTRQ_U, HTLS_U, JYSJ_U, HTJYM_, JYLX_U, JYJE_U, SHBH_U, ZDBH_U, ZFZHLX, SFDDH_, 
+    SFLS_U, SFRQ_U, FKRID_, FKRZH_, QTRQ_U, QTLS_U, QTJYM_, JYZT_U, WHRQ_U, WHSJ_U, WHR_UU, 
+    SJC_UU, JLZT_U
+  </sql>
+  <select id="selectByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mdzsj
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJKey">
+    delete from mdzsj
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample">
+    delete from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    insert into mdzsj (FRDM_U, HTRQ_U, HTLS_U, 
+      JYSJ_U, HTJYM_, JYLX_U, 
+      JYJE_U, SHBH_U, ZDBH_U, 
+      ZFZHLX, SFDDH_, SFLS_U, 
+      SFRQ_U, FKRID_, FKRZH_, 
+      QTRQ_U, QTLS_U, QTJYM_, 
+      JYZT_U, WHRQ_U, WHSJ_U, WHR_UU, 
+      SJC_UU, JLZT_U)
+    values (#{FRDM_U,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
+      #{JYSJ_U,jdbcType=TIME}, #{HTJYM_,jdbcType=VARCHAR}, #{JYLX_U,jdbcType=VARCHAR}, 
+      #{JYJE_U,jdbcType=DECIMAL}, #{SHBH_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
+      #{ZFZHLX,jdbcType=VARCHAR}, #{SFDDH_,jdbcType=VARCHAR}, #{SFLS_U,jdbcType=VARCHAR}, 
+      #{SFRQ_U,jdbcType=DATE}, #{FKRID_,jdbcType=VARCHAR}, #{FKRZH_,jdbcType=VARCHAR}, 
+      #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, #{QTJYM_,jdbcType=VARCHAR}, 
+      #{JYZT_U,jdbcType=VARCHAR}, #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, 
+      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    insert into mdzsj
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        FRDM_U,
+      </if>
+      <if test="HTRQ_U != null">
+        HTRQ_U,
+      </if>
+      <if test="HTLS_U != null">
+        HTLS_U,
+      </if>
+      <if test="JYSJ_U != null">
+        JYSJ_U,
+      </if>
+      <if test="HTJYM_ != null">
+        HTJYM_,
+      </if>
+      <if test="JYLX_U != null">
+        JYLX_U,
+      </if>
+      <if test="JYJE_U != null">
+        JYJE_U,
+      </if>
+      <if test="SHBH_U != null">
+        SHBH_U,
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U,
+      </if>
+      <if test="ZFZHLX != null">
+        ZFZHLX,
+      </if>
+      <if test="SFDDH_ != null">
+        SFDDH_,
+      </if>
+      <if test="SFLS_U != null">
+        SFLS_U,
+      </if>
+      <if test="SFRQ_U != null">
+        SFRQ_U,
+      </if>
+      <if test="FKRID_ != null">
+        FKRID_,
+      </if>
+      <if test="FKRZH_ != null">
+        FKRZH_,
+      </if>
+      <if test="QTRQ_U != null">
+        QTRQ_U,
+      </if>
+      <if test="QTLS_U != null">
+        QTLS_U,
+      </if>
+      <if test="QTJYM_ != null">
+        QTJYM_,
+      </if>
+      <if test="JYZT_U != null">
+        JYZT_U,
+      </if>
+      <if test="WHRQ_U != null">
+        WHRQ_U,
+      </if>
+      <if test="WHSJ_U != null">
+        WHSJ_U,
+      </if>
+      <if test="WHR_UU != null">
+        WHR_UU,
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU,
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        #{FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="HTRQ_U != null">
+        #{HTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="HTLS_U != null">
+        #{HTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYSJ_U != null">
+        #{JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="HTJYM_ != null">
+        #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYLX_U != null">
+        #{JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYJE_U != null">
+        #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="SHBH_U != null">
+        #{SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZFZHLX != null">
+        #{ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="SFDDH_ != null">
+        #{SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFLS_U != null">
+        #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null">
+        #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="FKRID_ != null">
+        #{FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="FKRZH_ != null">
+        #{FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="QTRQ_U != null">
+        #{QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="QTLS_U != null">
+        #{QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="QTJYM_ != null">
+        #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYZT_U != null">
+        #{JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null">
+        #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null">
+        #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null">
+        #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample" resultType="java.lang.Integer">
+    select count(*) from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mdzsj
+    <set>
+      <if test="record.FRDM_U != null">
+        FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.HTRQ_U != null">
+        HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.HTLS_U != null">
+        HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYSJ_U != null">
+        JYSJ_U = #{record.JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="record.HTJYM_ != null">
+        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYLX_U != null">
+        JYLX_U = #{record.JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYJE_U != null">
+        JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="record.SHBH_U != null">
+        SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZDBH_U != null">
+        ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZFZHLX != null">
+        ZFZHLX = #{record.ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFDDH_ != null">
+        SFDDH_ = #{record.SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFLS_U != null">
+        SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFRQ_U != null">
+        SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.FKRID_ != null">
+        FKRID_ = #{record.FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.FKRZH_ != null">
+        FKRZH_ = #{record.FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.QTRQ_U != null">
+        QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.QTLS_U != null">
+        QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.QTJYM_ != null">
+        QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYZT_U != null">
+        JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.WHRQ_U != null">
+        WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.WHSJ_U != null">
+        WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="record.WHR_UU != null">
+        WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SJC_UU != null">
+        SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.JLZT_U != null">
+        JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mdzsj
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      JYSJ_U = #{record.JYSJ_U,jdbcType=TIME},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      JYLX_U = #{record.JYLX_U,jdbcType=VARCHAR},
+      JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
+      SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      ZFZHLX = #{record.ZFZHLX,jdbcType=VARCHAR},
+      SFDDH_ = #{record.SFDDH_,jdbcType=VARCHAR},
+      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      FKRID_ = #{record.FKRID_,jdbcType=VARCHAR},
+      FKRZH_ = #{record.FKRZH_,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    update mdzsj
+    <set>
+      <if test="JYSJ_U != null">
+        JYSJ_U = #{JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="HTJYM_ != null">
+        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYLX_U != null">
+        JYLX_U = #{JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYJE_U != null">
+        JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="SHBH_U != null">
+        SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZFZHLX != null">
+        ZFZHLX = #{ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="SFDDH_ != null">
+        SFDDH_ = #{SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFLS_U != null">
+        SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null">
+        SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="FKRID_ != null">
+        FKRID_ = #{FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="FKRZH_ != null">
+        FKRZH_ = #{FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="QTRQ_U != null">
+        QTRQ_U = #{QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="QTLS_U != null">
+        QTLS_U = #{QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="QTJYM_ != null">
+        QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYZT_U != null">
+        JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null">
+        WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null">
+        WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null">
+        WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    update mdzsj
+    set JYSJ_U = #{JYSJ_U,jdbcType=TIME},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      JYLX_U = #{JYLX_U,jdbcType=VARCHAR},
+      JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      ZFZHLX = #{ZFZHLX,jdbcType=VARCHAR},
+      SFDDH_ = #{SFDDH_,jdbcType=VARCHAR},
+      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      FKRID_ = #{FKRID_,jdbcType=VARCHAR},
+      FKRZH_ = #{FKRZH_,jdbcType=VARCHAR},
+      QTRQ_U = #{QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{QTLS_U,jdbcType=VARCHAR},
+      QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.MDZSJ">
+    <id column="FRDM_U" jdbcType="VARCHAR" property="FRDM_U" />
+    <id column="HTRQ_U" jdbcType="DATE" property="HTRQ_U" />
+    <id column="HTLS_U" jdbcType="VARCHAR" property="HTLS_U" />
+    <result column="JYSJ_U" jdbcType="TIME" property="JYSJ_U" />
+    <result column="HTJYM_" jdbcType="VARCHAR" property="HTJYM_" />
+    <result column="JYLX_U" jdbcType="VARCHAR" property="JYLX_U" />
+    <result column="JYJE_U" jdbcType="DECIMAL" property="JYJE_U" />
+    <result column="SHBH_U" jdbcType="VARCHAR" property="SHBH_U" />
+    <result column="ZDBH_U" jdbcType="VARCHAR" property="ZDBH_U" />
+    <result column="ZFZHLX" jdbcType="VARCHAR" property="ZFZHLX" />
+    <result column="SFDDH_" jdbcType="VARCHAR" property="SFDDH_" />
+    <result column="SFLS_U" jdbcType="VARCHAR" property="SFLS_U" />
+    <result column="SFRQ_U" jdbcType="DATE" property="SFRQ_U" />
+    <result column="FKRID_" jdbcType="VARCHAR" property="FKRID_" />
+    <result column="FKRZH_" jdbcType="VARCHAR" property="FKRZH_" />
+    <result column="QTRQ_U" jdbcType="DATE" property="QTRQ_U" />
+    <result column="QTLS_U" jdbcType="VARCHAR" property="QTLS_U" />
+    <result column="QTJYM_" jdbcType="VARCHAR" property="QTJYM_" />
+    <result column="JYZT_U" jdbcType="VARCHAR" property="JYZT_U" />
+    <result column="WHRQ_U" jdbcType="DATE" property="WHRQ_U" />
+    <result column="WHSJ_U" jdbcType="TIME" property="WHSJ_U" />
+    <result column="WHR_UU" jdbcType="VARCHAR" property="WHR_UU" />
+    <result column="SJC_UU" jdbcType="TIMESTAMP" property="SJC_UU" />
+    <result column="JLZT_U" jdbcType="VARCHAR" property="JLZT_U" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FRDM_U, HTRQ_U, HTLS_U, JYSJ_U, HTJYM_, JYLX_U, JYJE_U, SHBH_U, ZDBH_U, ZFZHLX, SFDDH_, 
+    SFLS_U, SFRQ_U, FKRID_, FKRZH_, QTRQ_U, QTLS_U, QTJYM_, JYZT_U, WHRQ_U, WHSJ_U, WHR_UU, 
+    SJC_UU, JLZT_U
+  </sql>
+  <select id="selectByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mdzsj
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJKey">
+    delete from mdzsj
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample">
+    delete from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    insert into mdzsj (FRDM_U, HTRQ_U, HTLS_U, 
+      JYSJ_U, HTJYM_, JYLX_U, 
+      JYJE_U, SHBH_U, ZDBH_U, 
+      ZFZHLX, SFDDH_, SFLS_U, 
+      SFRQ_U, FKRID_, FKRZH_, 
+      QTRQ_U, QTLS_U, QTJYM_, 
+      JYZT_U, WHRQ_U, WHSJ_U, WHR_UU, 
+      SJC_UU, JLZT_U)
+    values (#{FRDM_U,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
+      #{JYSJ_U,jdbcType=TIME}, #{HTJYM_,jdbcType=VARCHAR}, #{JYLX_U,jdbcType=VARCHAR}, 
+      #{JYJE_U,jdbcType=DECIMAL}, #{SHBH_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
+      #{ZFZHLX,jdbcType=VARCHAR}, #{SFDDH_,jdbcType=VARCHAR}, #{SFLS_U,jdbcType=VARCHAR}, 
+      #{SFRQ_U,jdbcType=DATE}, #{FKRID_,jdbcType=VARCHAR}, #{FKRZH_,jdbcType=VARCHAR}, 
+      #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, #{QTJYM_,jdbcType=VARCHAR}, 
+      #{JYZT_U,jdbcType=VARCHAR}, #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, 
+      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    insert into mdzsj
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        FRDM_U,
+      </if>
+      <if test="HTRQ_U != null">
+        HTRQ_U,
+      </if>
+      <if test="HTLS_U != null">
+        HTLS_U,
+      </if>
+      <if test="JYSJ_U != null">
+        JYSJ_U,
+      </if>
+      <if test="HTJYM_ != null">
+        HTJYM_,
+      </if>
+      <if test="JYLX_U != null">
+        JYLX_U,
+      </if>
+      <if test="JYJE_U != null">
+        JYJE_U,
+      </if>
+      <if test="SHBH_U != null">
+        SHBH_U,
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U,
+      </if>
+      <if test="ZFZHLX != null">
+        ZFZHLX,
+      </if>
+      <if test="SFDDH_ != null">
+        SFDDH_,
+      </if>
+      <if test="SFLS_U != null">
+        SFLS_U,
+      </if>
+      <if test="SFRQ_U != null">
+        SFRQ_U,
+      </if>
+      <if test="FKRID_ != null">
+        FKRID_,
+      </if>
+      <if test="FKRZH_ != null">
+        FKRZH_,
+      </if>
+      <if test="QTRQ_U != null">
+        QTRQ_U,
+      </if>
+      <if test="QTLS_U != null">
+        QTLS_U,
+      </if>
+      <if test="QTJYM_ != null">
+        QTJYM_,
+      </if>
+      <if test="JYZT_U != null">
+        JYZT_U,
+      </if>
+      <if test="WHRQ_U != null">
+        WHRQ_U,
+      </if>
+      <if test="WHSJ_U != null">
+        WHSJ_U,
+      </if>
+      <if test="WHR_UU != null">
+        WHR_UU,
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU,
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        #{FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="HTRQ_U != null">
+        #{HTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="HTLS_U != null">
+        #{HTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYSJ_U != null">
+        #{JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="HTJYM_ != null">
+        #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYLX_U != null">
+        #{JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYJE_U != null">
+        #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="SHBH_U != null">
+        #{SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZFZHLX != null">
+        #{ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="SFDDH_ != null">
+        #{SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFLS_U != null">
+        #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null">
+        #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="FKRID_ != null">
+        #{FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="FKRZH_ != null">
+        #{FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="QTRQ_U != null">
+        #{QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="QTLS_U != null">
+        #{QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="QTJYM_ != null">
+        #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYZT_U != null">
+        #{JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null">
+        #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null">
+        #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null">
+        #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.MDZSJExample" resultType="java.lang.Integer">
+    select count(*) from mdzsj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mdzsj
+    <set>
+      <if test="record.FRDM_U != null">
+        FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.HTRQ_U != null">
+        HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.HTLS_U != null">
+        HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYSJ_U != null">
+        JYSJ_U = #{record.JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="record.HTJYM_ != null">
+        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYLX_U != null">
+        JYLX_U = #{record.JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYJE_U != null">
+        JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="record.SHBH_U != null">
+        SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZDBH_U != null">
+        ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZFZHLX != null">
+        ZFZHLX = #{record.ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFDDH_ != null">
+        SFDDH_ = #{record.SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFLS_U != null">
+        SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SFRQ_U != null">
+        SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.FKRID_ != null">
+        FKRID_ = #{record.FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.FKRZH_ != null">
+        FKRZH_ = #{record.FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.QTRQ_U != null">
+        QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.QTLS_U != null">
+        QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.QTJYM_ != null">
+        QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.JYZT_U != null">
+        JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.WHRQ_U != null">
+        WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.WHSJ_U != null">
+        WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="record.WHR_UU != null">
+        WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SJC_UU != null">
+        SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.JLZT_U != null">
+        JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mdzsj
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      JYSJ_U = #{record.JYSJ_U,jdbcType=TIME},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      JYLX_U = #{record.JYLX_U,jdbcType=VARCHAR},
+      JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
+      SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      ZFZHLX = #{record.ZFZHLX,jdbcType=VARCHAR},
+      SFDDH_ = #{record.SFDDH_,jdbcType=VARCHAR},
+      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
+      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
+      FKRID_ = #{record.FKRID_,jdbcType=VARCHAR},
+      FKRZH_ = #{record.FKRZH_,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    update mdzsj
+    <set>
+      <if test="JYSJ_U != null">
+        JYSJ_U = #{JYSJ_U,jdbcType=TIME},
+      </if>
+      <if test="HTJYM_ != null">
+        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYLX_U != null">
+        JYLX_U = #{JYLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="JYJE_U != null">
+        JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="SHBH_U != null">
+        SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZFZHLX != null">
+        ZFZHLX = #{ZFZHLX,jdbcType=VARCHAR},
+      </if>
+      <if test="SFDDH_ != null">
+        SFDDH_ = #{SFDDH_,jdbcType=VARCHAR},
+      </if>
+      <if test="SFLS_U != null">
+        SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="SFRQ_U != null">
+        SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      </if>
+      <if test="FKRID_ != null">
+        FKRID_ = #{FKRID_,jdbcType=VARCHAR},
+      </if>
+      <if test="FKRZH_ != null">
+        FKRZH_ = #{FKRZH_,jdbcType=VARCHAR},
+      </if>
+      <if test="QTRQ_U != null">
+        QTRQ_U = #{QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="QTLS_U != null">
+        QTLS_U = #{QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="QTJYM_ != null">
+        QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="JYZT_U != null">
+        JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null">
+        WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null">
+        WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null">
+        WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MDZSJ">
+    update mdzsj
+    set JYSJ_U = #{JYSJ_U,jdbcType=TIME},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      JYLX_U = #{JYLX_U,jdbcType=VARCHAR},
+      JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      ZFZHLX = #{ZFZHLX,jdbcType=VARCHAR},
+      SFDDH_ = #{SFDDH_,jdbcType=VARCHAR},
+      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
+      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
+      FKRID_ = #{FKRID_,jdbcType=VARCHAR},
+      FKRZH_ = #{FKRZH_,jdbcType=VARCHAR},
+      QTRQ_U = #{QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{QTLS_U,jdbcType=VARCHAR},
+      QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and HTRQ_U = #{HTRQ_U,jdbcType=DATE}
+      and HTLS_U = #{HTLS_U,jdbcType=VARCHAR}
+  </update>
+</mapper>
