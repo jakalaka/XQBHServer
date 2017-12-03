@@ -9,6 +9,8 @@ public class MJYBWKey {
 
     private String QTLS_U;
 
+    private Integer XH_UUU;
+
     public String getFRDM_U() {
         return FRDM_U;
     }
@@ -31,5 +33,13 @@ public class MJYBWKey {
 
     public void setQTLS_U(String QTLS_U) {
         this.QTLS_U = QTLS_U;
+    }
+
+    public Integer getXH_UUU() {
+        return XH_UUU;
+    }
+
+    public void setXH_UUU(Integer XH_UUU) {
+        this.XH_UUU = XH_UUU;
     }
 }

@@ -1,52 +1,44 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="XQBHServer.Server.Table.Mapper.MJYBWMapper" >
-  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.MJYBW" >
-    <id column="FRDM_U" property="FRDM_U" jdbcType="VARCHAR" />
-    <id column="QTRQ_U" property="QTRQ_U" jdbcType="DATE" />
-    <id column="QTLS_U" property="QTLS_U" jdbcType="VARCHAR" />
-    <result column="QTJYM_" property="QTJYM_" jdbcType="VARCHAR" />
-    <result column="HTRQ_U" property="HTRQ_U" jdbcType="DATE" />
-    <result column="HTLS_U" property="HTLS_U" jdbcType="VARCHAR" />
-    <result column="HTJYM_" property="HTJYM_" jdbcType="VARCHAR" />
-    <result column="SFRQ_U" property="SFRQ_U" jdbcType="DATE" />
-    <result column="SFLS_U" property="SFLS_U" jdbcType="VARCHAR" />
-    <result column="SFJYM_" property="SFJYM_" jdbcType="VARCHAR" />
-    <result column="SFXYM_" property="SFXYM_" jdbcType="VARCHAR" />
-    <result column="SFYCM_" property="SFYCM_" jdbcType="VARCHAR" />
-    <result column="JYZT_U" property="JYZT_U" jdbcType="VARCHAR" />
-    <result column="CWDM_U" property="CWDM_U" jdbcType="VARCHAR" />
-    <result column="CWXX_U" property="CWXX_U" jdbcType="VARCHAR" />
-    <result column="ZDBH_U" property="ZDBH_U" jdbcType="VARCHAR" />
-    <result column="IP_UUU" property="IP_UUU" jdbcType="VARCHAR" />
-    <result column="SJC_UU" property="SJC_UU" jdbcType="TIMESTAMP" />
-    <result column="JLZT_U" property="JLZT_U" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XQBHServer.Server.Table.Mapper.MJYBWMapper">
+  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.MJYBW">
+    <id column="FRDM_U" jdbcType="VARCHAR" property="FRDM_U" />
+    <id column="QTRQ_U" jdbcType="DATE" property="QTRQ_U" />
+    <id column="QTLS_U" jdbcType="VARCHAR" property="QTLS_U" />
+    <id column="XH_UUU" jdbcType="INTEGER" property="XH_UUU" />
+    <result column="QTJYM_" jdbcType="VARCHAR" property="QTJYM_" />
+    <result column="DYJYM_" jdbcType="VARCHAR" property="DYJYM_" />
+    <result column="BWLX_U" jdbcType="VARCHAR" property="BWLX_U" />
+    <result column="CWDM_U" jdbcType="VARCHAR" property="CWDM_U" />
+    <result column="ZCWDM_" jdbcType="VARCHAR" property="ZCWDM_" />
+    <result column="CWXX_U" jdbcType="VARCHAR" property="CWXX_U" />
+    <result column="ZDBH_U" jdbcType="VARCHAR" property="ZDBH_U" />
+    <result column="IP_UUU" jdbcType="VARCHAR" property="IP_UUU" />
+    <result column="SJC_UU" jdbcType="TIMESTAMP" property="SJC_UU" />
+    <result column="JLZT_U" jdbcType="VARCHAR" property="JLZT_U" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" extends="BaseResultMap" >
-    <result column="CRBW_U" property="CRBW_U" jdbcType="LONGVARBINARY" />
-    <result column="SFQQBW" property="SFQQBW" jdbcType="LONGVARBINARY" />
-    <result column="SFFHBW" property="SFFHBW" jdbcType="LONGVARBINARY" />
-    <result column="CCBW_U" property="CCBW_U" jdbcType="LONGVARBINARY" />
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="XQBHServer.Server.Table.Model.MJYBW">
+    <result column="BW_UUU" jdbcType="LONGVARBINARY" property="BW_UUU" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -57,25 +49,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -86,44 +78,44 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    FRDM_U, QTRQ_U, QTLS_U, QTJYM_, HTRQ_U, HTLS_U, HTJYM_, SFRQ_U, SFLS_U, SFJYM_, SFXYM_, 
-    SFYCM_, JYZT_U, CWDM_U, CWXX_U, ZDBH_U, IP_UUU, SJC_UU, JLZT_U
+  <sql id="Base_Column_List">
+    FRDM_U, QTRQ_U, QTLS_U, XH_UUU, QTJYM_, DYJYM_, BWLX_U, CWDM_U, ZCWDM_, CWXX_U, ZDBH_U, 
+    IP_UUU, SJC_UU, JLZT_U
   </sql>
-  <sql id="Blob_Column_List" >
-    CRBW_U, SFQQBW, SFFHBW, CCBW_U
+  <sql id="Blob_Column_List">
+    BW_UUU
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" >
+  <select id="selectByExampleWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultMap="ResultMapWithBLOBs">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from mjybw
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" >
+  <select id="selectByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from mjybw
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWKey" >
+  <select id="selectByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBWKey" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -132,426 +124,299 @@
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
       and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBWKey" >
+  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBWKey">
     delete from mjybw
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
       and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" >
+  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample">
     delete from mjybw
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
+  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MJYBW">
     insert into mjybw (FRDM_U, QTRQ_U, QTLS_U, 
-      QTJYM_, HTRQ_U, HTLS_U, 
-      HTJYM_, SFRQ_U, SFLS_U, 
-      SFJYM_, SFXYM_, SFYCM_, 
-      JYZT_U, CWDM_U, CWXX_U, 
-      ZDBH_U, IP_UUU, SJC_UU, 
-      JLZT_U, CRBW_U, SFQQBW, 
-      SFFHBW, CCBW_U)
+      XH_UUU, QTJYM_, DYJYM_, 
+      BWLX_U, CWDM_U, ZCWDM_, 
+      CWXX_U, ZDBH_U, IP_UUU, 
+      SJC_UU, JLZT_U, BW_UUU
+      )
     values (#{FRDM_U,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
-      #{QTJYM_,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
-      #{HTJYM_,jdbcType=VARCHAR}, #{SFRQ_U,jdbcType=DATE}, #{SFLS_U,jdbcType=VARCHAR}, 
-      #{SFJYM_,jdbcType=VARCHAR}, #{SFXYM_,jdbcType=VARCHAR}, #{SFYCM_,jdbcType=VARCHAR}, 
-      #{JYZT_U,jdbcType=VARCHAR}, #{CWDM_U,jdbcType=VARCHAR}, #{CWXX_U,jdbcType=VARCHAR}, 
-      #{ZDBH_U,jdbcType=VARCHAR}, #{IP_UUU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, 
-      #{JLZT_U,jdbcType=VARCHAR}, #{CRBW_U,jdbcType=LONGVARBINARY}, #{SFQQBW,jdbcType=LONGVARBINARY}, 
-      #{SFFHBW,jdbcType=LONGVARBINARY}, #{CCBW_U,jdbcType=LONGVARBINARY})
+      #{XH_UUU,jdbcType=INTEGER}, #{QTJYM_,jdbcType=VARCHAR}, #{DYJYM_,jdbcType=VARCHAR}, 
+      #{BWLX_U,jdbcType=VARCHAR}, #{CWDM_U,jdbcType=VARCHAR}, #{ZCWDM_,jdbcType=VARCHAR}, 
+      #{CWXX_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, #{IP_UUU,jdbcType=VARCHAR}, 
+      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR}, #{BW_UUU,jdbcType=LONGVARBINARY}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
+  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MJYBW">
     insert into mjybw
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="FRDM_U != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
         FRDM_U,
       </if>
-      <if test="QTRQ_U != null" >
+      <if test="QTRQ_U != null">
         QTRQ_U,
       </if>
-      <if test="QTLS_U != null" >
+      <if test="QTLS_U != null">
         QTLS_U,
       </if>
-      <if test="QTJYM_ != null" >
+      <if test="XH_UUU != null">
+        XH_UUU,
+      </if>
+      <if test="QTJYM_ != null">
         QTJYM_,
       </if>
-      <if test="HTRQ_U != null" >
-        HTRQ_U,
+      <if test="DYJYM_ != null">
+        DYJYM_,
       </if>
-      <if test="HTLS_U != null" >
-        HTLS_U,
+      <if test="BWLX_U != null">
+        BWLX_U,
       </if>
-      <if test="HTJYM_ != null" >
-        HTJYM_,
-      </if>
-      <if test="SFRQ_U != null" >
-        SFRQ_U,
-      </if>
-      <if test="SFLS_U != null" >
-        SFLS_U,
-      </if>
-      <if test="SFJYM_ != null" >
-        SFJYM_,
-      </if>
-      <if test="SFXYM_ != null" >
-        SFXYM_,
-      </if>
-      <if test="SFYCM_ != null" >
-        SFYCM_,
-      </if>
-      <if test="JYZT_U != null" >
-        JYZT_U,
-      </if>
-      <if test="CWDM_U != null" >
+      <if test="CWDM_U != null">
         CWDM_U,
       </if>
-      <if test="CWXX_U != null" >
+      <if test="ZCWDM_ != null">
+        ZCWDM_,
+      </if>
+      <if test="CWXX_U != null">
         CWXX_U,
       </if>
-      <if test="ZDBH_U != null" >
+      <if test="ZDBH_U != null">
         ZDBH_U,
       </if>
-      <if test="IP_UUU != null" >
+      <if test="IP_UUU != null">
         IP_UUU,
       </if>
-      <if test="SJC_UU != null" >
+      <if test="SJC_UU != null">
         SJC_UU,
       </if>
-      <if test="JLZT_U != null" >
+      <if test="JLZT_U != null">
         JLZT_U,
       </if>
-      <if test="CRBW_U != null" >
-        CRBW_U,
-      </if>
-      <if test="SFQQBW != null" >
-        SFQQBW,
-      </if>
-      <if test="SFFHBW != null" >
-        SFFHBW,
-      </if>
-      <if test="CCBW_U != null" >
-        CCBW_U,
+      <if test="BW_UUU != null">
+        BW_UUU,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="FRDM_U != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
         #{FRDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="QTRQ_U != null" >
+      <if test="QTRQ_U != null">
         #{QTRQ_U,jdbcType=DATE},
       </if>
-      <if test="QTLS_U != null" >
+      <if test="QTLS_U != null">
         #{QTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="QTJYM_ != null" >
+      <if test="XH_UUU != null">
+        #{XH_UUU,jdbcType=INTEGER},
+      </if>
+      <if test="QTJYM_ != null">
         #{QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="HTRQ_U != null" >
-        #{HTRQ_U,jdbcType=DATE},
+      <if test="DYJYM_ != null">
+        #{DYJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="HTLS_U != null" >
-        #{HTLS_U,jdbcType=VARCHAR},
+      <if test="BWLX_U != null">
+        #{BWLX_U,jdbcType=VARCHAR},
       </if>
-      <if test="HTJYM_ != null" >
-        #{HTJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFRQ_U != null" >
-        #{SFRQ_U,jdbcType=DATE},
-      </if>
-      <if test="SFLS_U != null" >
-        #{SFLS_U,jdbcType=VARCHAR},
-      </if>
-      <if test="SFJYM_ != null" >
-        #{SFJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFXYM_ != null" >
-        #{SFXYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFYCM_ != null" >
-        #{SFYCM_,jdbcType=VARCHAR},
-      </if>
-      <if test="JYZT_U != null" >
-        #{JYZT_U,jdbcType=VARCHAR},
-      </if>
-      <if test="CWDM_U != null" >
+      <if test="CWDM_U != null">
         #{CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="CWXX_U != null" >
+      <if test="ZCWDM_ != null">
+        #{ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="CWXX_U != null">
         #{CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="ZDBH_U != null" >
+      <if test="ZDBH_U != null">
         #{ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="IP_UUU != null" >
+      <if test="IP_UUU != null">
         #{IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="SJC_UU != null" >
+      <if test="SJC_UU != null">
         #{SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="JLZT_U != null" >
+      <if test="JLZT_U != null">
         #{JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="CRBW_U != null" >
-        #{CRBW_U,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="SFQQBW != null" >
-        #{SFQQBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="SFFHBW != null" >
-        #{SFFHBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="CCBW_U != null" >
-        #{CCBW_U,jdbcType=LONGVARBINARY},
+      <if test="BW_UUU != null">
+        #{BW_UUU,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultType="java.lang.Integer">
     select count(*) from mjybw
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update mjybw
-    <set >
-      <if test="record.FRDM_U != null" >
+    <set>
+      <if test="record.FRDM_U != null">
         FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.QTRQ_U != null" >
+      <if test="record.QTRQ_U != null">
         QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       </if>
-      <if test="record.QTLS_U != null" >
+      <if test="record.QTLS_U != null">
         QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.QTJYM_ != null" >
+      <if test="record.XH_UUU != null">
+        XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
+      </if>
+      <if test="record.QTJYM_ != null">
         QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="record.HTRQ_U != null" >
-        HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
+      <if test="record.DYJYM_ != null">
+        DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="record.HTLS_U != null" >
-        HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
+      <if test="record.BWLX_U != null">
+        BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.HTJYM_ != null" >
-        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="record.SFRQ_U != null" >
-        SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
-      </if>
-      <if test="record.SFLS_U != null" >
-        SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
-      </if>
-      <if test="record.SFJYM_ != null" >
-        SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="record.SFXYM_ != null" >
-        SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="record.SFYCM_ != null" >
-        SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
-      </if>
-      <if test="record.JYZT_U != null" >
-        JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
-      </if>
-      <if test="record.CWDM_U != null" >
+      <if test="record.CWDM_U != null">
         CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.CWXX_U != null" >
+      <if test="record.ZCWDM_ != null">
+        ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CWXX_U != null">
         CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.ZDBH_U != null" >
+      <if test="record.ZDBH_U != null">
         ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.IP_UUU != null" >
+      <if test="record.IP_UUU != null">
         IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="record.SJC_UU != null" >
+      <if test="record.SJC_UU != null">
         SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.JLZT_U != null" >
+      <if test="record.JLZT_U != null">
         JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="record.CRBW_U != null" >
-        CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="record.SFQQBW != null" >
-        SFQQBW = #{record.SFQQBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="record.SFFHBW != null" >
-        SFFHBW = #{record.SFFHBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="record.CCBW_U != null" >
-        CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY},
+      <if test="record.BW_UUU != null">
+        BW_UUU = #{record.BW_UUU,jdbcType=LONGVARBINARY},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
+  <update id="updateByExampleWithBLOBs" parameterType="map">
     update mjybw
     set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
       QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
       QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
-      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
-      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
-      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
-      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
-      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
-      SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
-      SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
-      SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
-      JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
       CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
       CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
       ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
       JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
-      CRBW_U = #{record.CRBW_U,jdbcType=LONGVARBINARY},
-      SFQQBW = #{record.SFQQBW,jdbcType=LONGVARBINARY},
-      SFFHBW = #{record.SFFHBW,jdbcType=LONGVARBINARY},
-      CCBW_U = #{record.CCBW_U,jdbcType=LONGVARBINARY}
-    <if test="_parameter != null" >
+      BW_UUU = #{record.BW_UUU,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update mjybw
     set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
       QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
       QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
       QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
-      HTRQ_U = #{record.HTRQ_U,jdbcType=DATE},
-      HTLS_U = #{record.HTLS_U,jdbcType=VARCHAR},
-      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
-      SFRQ_U = #{record.SFRQ_U,jdbcType=DATE},
-      SFLS_U = #{record.SFLS_U,jdbcType=VARCHAR},
-      SFJYM_ = #{record.SFJYM_,jdbcType=VARCHAR},
-      SFXYM_ = #{record.SFXYM_,jdbcType=VARCHAR},
-      SFYCM_ = #{record.SFYCM_,jdbcType=VARCHAR},
-      JYZT_U = #{record.JYZT_U,jdbcType=VARCHAR},
+      DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
       CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
       CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
       ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
       SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
       JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.MJYBW">
     update mjybw
-    <set >
-      <if test="QTJYM_ != null" >
+    <set>
+      <if test="QTJYM_ != null">
         QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="HTRQ_U != null" >
-        HTRQ_U = #{HTRQ_U,jdbcType=DATE},
+      <if test="DYJYM_ != null">
+        DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
       </if>
-      <if test="HTLS_U != null" >
-        HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
+      <if test="BWLX_U != null">
+        BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
       </if>
-      <if test="HTJYM_ != null" >
-        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFRQ_U != null" >
-        SFRQ_U = #{SFRQ_U,jdbcType=DATE},
-      </if>
-      <if test="SFLS_U != null" >
-        SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
-      </if>
-      <if test="SFJYM_ != null" >
-        SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFXYM_ != null" >
-        SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
-      </if>
-      <if test="SFYCM_ != null" >
-        SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
-      </if>
-      <if test="JYZT_U != null" >
-        JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
-      </if>
-      <if test="CWDM_U != null" >
+      <if test="CWDM_U != null">
         CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
       </if>
-      <if test="CWXX_U != null" >
+      <if test="ZCWDM_ != null">
+        ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="CWXX_U != null">
         CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
       </if>
-      <if test="ZDBH_U != null" >
+      <if test="ZDBH_U != null">
         ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       </if>
-      <if test="IP_UUU != null" >
+      <if test="IP_UUU != null">
         IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
       </if>
-      <if test="SJC_UU != null" >
+      <if test="SJC_UU != null">
         SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
       </if>
-      <if test="JLZT_U != null" >
+      <if test="JLZT_U != null">
         JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
       </if>
-      <if test="CRBW_U != null" >
-        CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="SFQQBW != null" >
-        SFQQBW = #{SFQQBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="SFFHBW != null" >
-        SFFHBW = #{SFFHBW,jdbcType=LONGVARBINARY},
-      </if>
-      <if test="CCBW_U != null" >
-        CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY},
+      <if test="BW_UUU != null">
+        BW_UUU = #{BW_UUU,jdbcType=LONGVARBINARY},
       </if>
     </set>
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
       and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBW">
     update mjybw
     set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
-      HTRQ_U = #{HTRQ_U,jdbcType=DATE},
-      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
-      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
-      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
-      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
-      SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
-      SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
-      SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
-      JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
       CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
       CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
       ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
       SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
       JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
-      CRBW_U = #{CRBW_U,jdbcType=LONGVARBINARY},
-      SFQQBW = #{SFQQBW,jdbcType=LONGVARBINARY},
-      SFFHBW = #{SFFHBW,jdbcType=LONGVARBINARY},
-      CCBW_U = #{CCBW_U,jdbcType=LONGVARBINARY}
+      BW_UUU = #{BW_UUU,jdbcType=LONGVARBINARY}
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
       and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBW" >
+  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBW">
     update mjybw
     set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
-      HTRQ_U = #{HTRQ_U,jdbcType=DATE},
-      HTLS_U = #{HTLS_U,jdbcType=VARCHAR},
-      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
-      SFRQ_U = #{SFRQ_U,jdbcType=DATE},
-      SFLS_U = #{SFLS_U,jdbcType=VARCHAR},
-      SFJYM_ = #{SFJYM_,jdbcType=VARCHAR},
-      SFXYM_ = #{SFXYM_,jdbcType=VARCHAR},
-      SFYCM_ = #{SFYCM_,jdbcType=VARCHAR},
-      JYZT_U = #{JYZT_U,jdbcType=VARCHAR},
+      DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
       CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
       CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
       ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
@@ -560,5 +425,432 @@
     where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
       and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
       and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.MJYBW">
+    <id column="FRDM_U" jdbcType="VARCHAR" property="FRDM_U" />
+    <id column="QTRQ_U" jdbcType="DATE" property="QTRQ_U" />
+    <id column="QTLS_U" jdbcType="VARCHAR" property="QTLS_U" />
+    <id column="XH_UUU" jdbcType="INTEGER" property="XH_UUU" />
+    <result column="QTJYM_" jdbcType="VARCHAR" property="QTJYM_" />
+    <result column="DYJYM_" jdbcType="VARCHAR" property="DYJYM_" />
+    <result column="BWLX_U" jdbcType="VARCHAR" property="BWLX_U" />
+    <result column="CWDM_U" jdbcType="VARCHAR" property="CWDM_U" />
+    <result column="ZCWDM_" jdbcType="VARCHAR" property="ZCWDM_" />
+    <result column="CWXX_U" jdbcType="VARCHAR" property="CWXX_U" />
+    <result column="ZDBH_U" jdbcType="VARCHAR" property="ZDBH_U" />
+    <result column="IP_UUU" jdbcType="VARCHAR" property="IP_UUU" />
+    <result column="SJC_UU" jdbcType="TIMESTAMP" property="SJC_UU" />
+    <result column="JLZT_U" jdbcType="VARCHAR" property="JLZT_U" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="XQBHServer.Server.Table.Model.MJYBW">
+    <result column="BW_UUU" jdbcType="LONGVARBINARY" property="BW_UUU" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FRDM_U, QTRQ_U, QTLS_U, XH_UUU, QTJYM_, DYJYM_, BWLX_U, CWDM_U, ZCWDM_, CWXX_U, ZDBH_U, 
+    IP_UUU, SJC_UU, JLZT_U
+  </sql>
+  <sql id="Blob_Column_List">
+    BW_UUU
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mjybw
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mjybw
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBWKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mjybw
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBWKey">
+    delete from mjybw
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample">
+    delete from mjybw
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MJYBW">
+    insert into mjybw (FRDM_U, QTRQ_U, QTLS_U, 
+      XH_UUU, QTJYM_, DYJYM_, 
+      BWLX_U, CWDM_U, ZCWDM_, 
+      CWXX_U, ZDBH_U, IP_UUU, 
+      SJC_UU, JLZT_U, BW_UUU
+      )
+    values (#{FRDM_U,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
+      #{XH_UUU,jdbcType=INTEGER}, #{QTJYM_,jdbcType=VARCHAR}, #{DYJYM_,jdbcType=VARCHAR}, 
+      #{BWLX_U,jdbcType=VARCHAR}, #{CWDM_U,jdbcType=VARCHAR}, #{ZCWDM_,jdbcType=VARCHAR}, 
+      #{CWXX_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, #{IP_UUU,jdbcType=VARCHAR}, 
+      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR}, #{BW_UUU,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MJYBW">
+    insert into mjybw
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        FRDM_U,
+      </if>
+      <if test="QTRQ_U != null">
+        QTRQ_U,
+      </if>
+      <if test="QTLS_U != null">
+        QTLS_U,
+      </if>
+      <if test="XH_UUU != null">
+        XH_UUU,
+      </if>
+      <if test="QTJYM_ != null">
+        QTJYM_,
+      </if>
+      <if test="DYJYM_ != null">
+        DYJYM_,
+      </if>
+      <if test="BWLX_U != null">
+        BWLX_U,
+      </if>
+      <if test="CWDM_U != null">
+        CWDM_U,
+      </if>
+      <if test="ZCWDM_ != null">
+        ZCWDM_,
+      </if>
+      <if test="CWXX_U != null">
+        CWXX_U,
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U,
+      </if>
+      <if test="IP_UUU != null">
+        IP_UUU,
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU,
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U,
+      </if>
+      <if test="BW_UUU != null">
+        BW_UUU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FRDM_U != null">
+        #{FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="QTRQ_U != null">
+        #{QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="QTLS_U != null">
+        #{QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="XH_UUU != null">
+        #{XH_UUU,jdbcType=INTEGER},
+      </if>
+      <if test="QTJYM_ != null">
+        #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="DYJYM_ != null">
+        #{DYJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="BWLX_U != null">
+        #{BWLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="CWDM_U != null">
+        #{CWDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZCWDM_ != null">
+        #{ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="CWXX_U != null">
+        #{CWXX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="IP_UUU != null">
+        #{IP_UUU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="BW_UUU != null">
+        #{BW_UUU,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.MJYBWExample" resultType="java.lang.Integer">
+    select count(*) from mjybw
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mjybw
+    <set>
+      <if test="record.FRDM_U != null">
+        FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.QTRQ_U != null">
+        QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.QTLS_U != null">
+        QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.XH_UUU != null">
+        XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
+      </if>
+      <if test="record.QTJYM_ != null">
+        QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.DYJYM_ != null">
+        DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.BWLX_U != null">
+        BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CWDM_U != null">
+        CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZCWDM_ != null">
+        ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CWXX_U != null">
+        CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ZDBH_U != null">
+        ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IP_UUU != null">
+        IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SJC_UU != null">
+        SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.JLZT_U != null">
+        JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.BW_UUU != null">
+        BW_UUU = #{record.BW_UUU,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mjybw
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
+      QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
+      CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
+      CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      BW_UUU = #{record.BW_UUU,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mjybw
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      QTRQ_U = #{record.QTRQ_U,jdbcType=DATE},
+      QTLS_U = #{record.QTLS_U,jdbcType=VARCHAR},
+      XH_UUU = #{record.XH_UUU,jdbcType=INTEGER},
+      QTJYM_ = #{record.QTJYM_,jdbcType=VARCHAR},
+      DYJYM_ = #{record.DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{record.BWLX_U,jdbcType=VARCHAR},
+      CWDM_U = #{record.CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{record.ZCWDM_,jdbcType=VARCHAR},
+      CWXX_U = #{record.CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{record.IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.MJYBW">
+    update mjybw
+    <set>
+      <if test="QTJYM_ != null">
+        QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="DYJYM_ != null">
+        DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="BWLX_U != null">
+        BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="CWDM_U != null">
+        CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZCWDM_ != null">
+        ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
+      </if>
+      <if test="CWXX_U != null">
+        CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
+      </if>
+      <if test="ZDBH_U != null">
+        ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      </if>
+      <if test="IP_UUU != null">
+        IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null">
+        SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null">
+        JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+      <if test="BW_UUU != null">
+        BW_UUU = #{BW_UUU,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="XQBHServer.Server.Table.Model.MJYBW">
+    update mjybw
+    set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
+      CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
+      CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      BW_UUU = #{BW_UUU,jdbcType=LONGVARBINARY}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.MJYBW">
+    update mjybw
+    set QTJYM_ = #{QTJYM_,jdbcType=VARCHAR},
+      DYJYM_ = #{DYJYM_,jdbcType=VARCHAR},
+      BWLX_U = #{BWLX_U,jdbcType=VARCHAR},
+      CWDM_U = #{CWDM_U,jdbcType=VARCHAR},
+      ZCWDM_ = #{ZCWDM_,jdbcType=VARCHAR},
+      CWXX_U = #{CWXX_U,jdbcType=VARCHAR},
+      ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
+      IP_UUU = #{IP_UUU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and QTRQ_U = #{QTRQ_U,jdbcType=DATE}
+      and QTLS_U = #{QTLS_U,jdbcType=VARCHAR}
+      and XH_UUU = #{XH_UUU,jdbcType=INTEGER}
   </update>
 </mapper>

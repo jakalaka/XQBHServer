@@ -4,21 +4,36 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Mapper.DSHXXMapper;
 import XQBHServer.Server.Table.Mapper.DSHZHMapper;
+import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
-import XQBHServer.ServerAPI.UpdateMJYBWAfterDSF;
-import XQBHServer.ServerAPI.UpdateMJYBWBeforeDSF;
+import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
+import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePayRequest;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradePayResponse;
 import com.alipay.api.response.AlipayTradeQueryResponse;
-import sun.rmi.runtime.Log;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+/*
+支付功能，正常扣款返回AAAAAA，10003返回ZFWAIT，其他则为支付失败
+20000时自动调用1次查询，如还是未知，则交易状态为u
+登记对账数据表
+交易状态JYZT_U
+1-完成
+w-等待用户支付
+c-关闭
+x-撤销
+t-退货
+u-未知
+客户端调用，如为ZFWAIT，则需要调用ZFBQuery查询并更新对账数据状态
+ */
 public class PayBill extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
@@ -39,6 +54,18 @@ public class PayBill extends Tran {
         Logger.log(tranObj, "LOG_IO", "sSPMC_U=" + sSPMC_U);
         Logger.log(tranObj, "LOG_IO", "bJYJE_U=" + bJYJE_U);
         /*==================================codeBegin=====================================*/
+        String sZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
+        String rqTmp = tranObj.getHead("QTRQ_U");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date dQTRQ_U = null;
+        try {
+            dQTRQ_U = formatter.parse(rqTmp);
+        } catch (ParseException e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "TIMEER");
+            return false;
+        }
+        //============================检查系统支付合法性============================
         CXTCSMapper cxtcsMapper = tranObj.sqlSession.getMapper(CXTCSMapper.class);
         CXTCSKey cxtcsKey = new CXTCSKey();
         cxtcsKey.setKEY_UU("ALLOWPAY");
@@ -52,15 +79,16 @@ public class PayBill extends Tran {
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
-        if (null == cxtcs || !"1".equals(cxtcs.getVALUE_())) {
+        if (null == cxtcs || !"1".equals(cxtcs.getVALUE_())) {//系统穿参错误，需人工将系统置为正常
             runERR(tranObj, "SYSPAY");
             return false;
         }
 
-
+        //=================================生成流水============================
         if (Com.getHTLS(tranObj) == false)
             return false;
 
+        //==============================查询商户信息合法性=========================
         DSHXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
         DSHXXKey dshxxKey = new DSHXXKey();
         dshxxKey.setSHBH_U(sSHBH_U);
@@ -86,7 +114,7 @@ public class PayBill extends Tran {
             return false;
         }
 
-
+        //==============================查询商户收款账号=======================
         DSHZHMapper dshzhMapper = tranObj.sqlSession.getMapper(DSHZHMapper.class);
         DSHZHKey dshzhKey = new DSHZHKey();
         dshzhKey.setFRDM_U("9999");
@@ -105,10 +133,43 @@ public class PayBill extends Tran {
             return false;
         }
 
+        //=============================插入对账数据表===========================
+        MDZSJ mdzsj=new MDZSJ();
+        MDZSJMapper mdzsjMapper=tranObj.sqlSession.getMapper(MDZSJMapper.class);
+        mdzsj.setFRDM_U("9999");
+        mdzsj.setHTRQ_U(tranObj.date);
+        mdzsj.setHTLS_U(tranObj.getHead("HTLS_U"));
+        mdzsj.setJYSJ_U(tranObj.date);
+        mdzsj.setHTJYM_(tranObj.getHead("HTJYM_"));
+        mdzsj.setJYLX_U("0");
+        mdzsj.setJYJE_U(bJYJE_U);
+        mdzsj.setSHBH_U(sSHBH_U);
+        mdzsj.setZDBH_U(sZDBH_U);
+        mdzsj.setZFZHLX(sZFZHLX);
+        mdzsj.setSFDDH_(null);//交易成功后更新
+        mdzsj.setSFLS_U(sZFBLS_);
+        mdzsj.setSFRQ_U(null);//交易成功后更新
+        mdzsj.setFKRID_(null);//交易成功后更新
+        mdzsj.setFKRZH_(null);//交易成功后更新
+        mdzsj.setQTRQ_U(dQTRQ_U);
+        mdzsj.setQTLS_U(tranObj.getHead("QTLS_U"));
+        mdzsj.setQTJYM_(tranObj.getHead("QTJYM_"));
+        mdzsj.setJYZT_U("u");
+        mdzsj.setJLZT_U("0");
+        try {
+            mdzsjMapper.insert(mdzsj);
+        }catch (Exception e)
+        {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLINS");
+            return false;
+        }
+
+
+        //===============================组织收款================================
         String goods_category = "";
         String show_url = "";
         String timeout_express = "";
-        String ZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
         AlipayClient alipayClient;
         String seller_id = dshzh.getZFZH_U();
         if ("1".equals(tranObj.getHead("CSBZ_U")))//测试 数据写死
@@ -121,7 +182,7 @@ public class PayBill extends Tran {
         }
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizContent("{" +
-                "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//我的流水
+                "\"out_trade_no\":\"" + sZFBLS_ + "\"," +//我的流水
                 "\"scene\":\"bar_code\"," +
                 "\"auth_code\":\"" + sQRCODE + "\"," + //付款码
                 "\"product_code\":\"FACE_TO_FACE_PAYMENT\"," +
@@ -150,7 +211,7 @@ public class PayBill extends Tran {
                 "}");
 
         AlipayTradePayResponse response = null;
-        if (true != UpdateMJYBWBeforeDSF.exec(tranObj, request)) {
+        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request)) {
             runERR(tranObj, "ZF0005");
             return false;
         }
@@ -163,14 +224,18 @@ public class PayBill extends Tran {
             runERR(tranObj, "ZF0004");
             return false;
         }
-        if (true != UpdateMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表
+//        if (true != InsertMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表
+//        {
+//            //标记为未知交易
+//            tranObj.unknownFlg = true;
+//            runERR(tranObj, "ZF0006");
+//            return false;
+//        }
+        if (true != InsertMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表，直接插入，报错不返回
         {
             //标记为未知交易
-            tranObj.unknownFlg = true;
-            runERR(tranObj, "ZF0006");
-            return false;
+            Logger.log(tranObj, "LOG_ERR", "上完第三方插入报文失败");
         }
-
 
         if (response.isSuccess()) {
             Logger.log(tranObj, "LOG_DEBUG", "调用记账成功");
@@ -185,7 +250,7 @@ public class PayBill extends Tran {
                 //查询一次，失败则直接返回
                 AlipayTradeQueryRequest queryRequest = new AlipayTradeQueryRequest();
                 queryRequest.setBizContent("{" +
-                        "\"out_trade_no\":\"" + ZFBLS_ + "\"," +//我的流水
+                        "\"out_trade_no\":\"" + sZFBLS_ + "\"," +//我的流水
                         "\"trade_no\":\"\"" +
                         "}");
                 AlipayTradeQueryResponse queryResponse = null;
@@ -217,8 +282,6 @@ public class PayBill extends Tran {
                 }
                 if ("TRADE_SUCCESS".equals(queryResponse.getTradeStatus())) {
                     Logger.log(tranObj, "LOG_IO", "记账状态未知，通过查询得知该笔交易成功");
-                    Logger.log(tranObj, "LOG_IO", Com.getOut);
-                    return true;
                 } else {
                     runERR(tranObj, "ZF0002");
                     return false;
@@ -228,11 +291,10 @@ public class PayBill extends Tran {
                 runERR(tranObj, "ZF0002");
                 return false;
             }
-
         }
         Logger.log(tranObj, "LOG_DEBUG", "response.getCode()=" + response.getCode());
         if ("10003".equals(response.getCode())) {
-            runERR(tranObj, "ZFWAIT");
+            runERR(tranObj, "ZFWAIT");//前端做一个轮循
             return false;
         }else if (!"10000".equals(response.getCode())) {
             runERR(tranObj, "ZF0003");

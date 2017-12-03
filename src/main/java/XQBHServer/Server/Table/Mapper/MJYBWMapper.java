@@ -3,7 +3,6 @@ package XQBHServer.Server.Table.Mapper;
 import XQBHServer.Server.Table.Model.MJYBW;
 import XQBHServer.Server.Table.Model.MJYBWExample;
 import XQBHServer.Server.Table.Model.MJYBWKey;
-import XQBHServer.Server.Table.Model.MJYBWWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,25 +13,25 @@ public interface MJYBWMapper {
 
     int deleteByPrimaryKey(MJYBWKey key);
 
-    int insert(MJYBWWithBLOBs record);
+    int insert(MJYBW record);
 
-    int insertSelective(MJYBWWithBLOBs record);
+    int insertSelective(MJYBW record);
 
-    List<MJYBWWithBLOBs> selectByExampleWithBLOBs(MJYBWExample example);
+    List<MJYBW> selectByExampleWithBLOBs(MJYBWExample example);
 
     List<MJYBW> selectByExample(MJYBWExample example);
 
-    MJYBWWithBLOBs selectByPrimaryKey(MJYBWKey key);
+    MJYBW selectByPrimaryKey(MJYBWKey key);
 
-    int updateByExampleSelective(@Param("record") MJYBWWithBLOBs record, @Param("example") MJYBWExample example);
+    int updateByExampleSelective(@Param("record") MJYBW record, @Param("example") MJYBWExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") MJYBWWithBLOBs record, @Param("example") MJYBWExample example);
+    int updateByExampleWithBLOBs(@Param("record") MJYBW record, @Param("example") MJYBWExample example);
 
     int updateByExample(@Param("record") MJYBW record, @Param("example") MJYBWExample example);
 
-    int updateByPrimaryKeySelective(MJYBWWithBLOBs record);
+    int updateByPrimaryKeySelective(MJYBW record);
 
-    int updateByPrimaryKeyWithBLOBs(MJYBWWithBLOBs record);
+    int updateByPrimaryKeyWithBLOBs(MJYBW record);
 
     int updateByPrimaryKey(MJYBW record);
 }

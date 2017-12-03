@@ -14,15 +14,15 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-public class UpdateMJYBWBeforeDSF {
+/*
+暂时写死为支付宝，到时候在加微信
+ */
+public class InsertMJYBWBeforeDSF {
     public static boolean exec(TranObj tranObj, AlipayTradePayRequest request) {
         Logger.log(tranObj,"LOG_IO", Com.getIn);
         String sSFQQBW=request.getBizContent();
         Logger.log(tranObj, "LOG_IO", "sSFQQBW=" + sSFQQBW);
-
         String sQTRQ_U = tranObj.getHead("QTRQ_U");
-        String sQTLS_U = tranObj.getHead("QTLS_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = null;
         try {
@@ -33,37 +33,31 @@ public class UpdateMJYBWBeforeDSF {
             return false;
         }
         MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
-        MJYBWKey mjybwKey = new MJYBWKey();
-        mjybwKey.setFRDM_U("9999");
-        mjybwKey.setQTLS_U(sQTLS_U);
-        mjybwKey.setQTRQ_U(date);
-        MJYBWWithBLOBs mjybwWithBLOBs=null;
+        MJYBWWithBLOBs mjybwWithBLOBs=new MJYBWWithBLOBs();
+        mjybwWithBLOBs.setFRDM_U("9999");
+        mjybwWithBLOBs.setQTRQ_U(date);
+        mjybwWithBLOBs.setQTLS_U(tranObj.getHead("QTLS_U"));
+        mjybwWithBLOBs.setXH_UUU(tranObj.iBWXH);
+        mjybwWithBLOBs.setQTJYM_(tranObj.getHead("QTJYM_"));
+        mjybwWithBLOBs.setDYJYM_(tranObj.getHead("HTJYM_"));
+        mjybwWithBLOBs.setBWLX_U("ZO");
         try {
-            mjybwWithBLOBs = mjybwMapper.selectByPrimaryKey(mjybwKey);
-        }catch (Exception e)
-        {
-            Logger.logException(tranObj,"LOG_ERR",e);
-            Tran.runERR(tranObj, "SQLSEL");
-            return false;
-        }
-        try {
-            mjybwWithBLOBs.setSFQQBW(sSFQQBW.getBytes("GBK"));//非要GBK才能看到中文，艹
+            mjybwWithBLOBs.setBW_UUU(sSFQQBW.getBytes("GBK"));//非要GBK才能看到中文，艹
         } catch (UnsupportedEncodingException e) {
             Logger.logException(tranObj,"LOG_ERR",e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-        mjybwWithBLOBs.setSFLS_U(request.getTextParams().get("out_trade_no"));
-        mjybwWithBLOBs.setJYZT_U("2");//先置为2
         try {
-            mjybwMapper.updateByPrimaryKeySelective(mjybwWithBLOBs);
+            mjybwMapper.insert(mjybwWithBLOBs);
         }catch (Exception e)
         {
-            Logger.logException(tranObj,"LOG_ERR",e);
-            Tran.runERR(tranObj, "SQLUPD");
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-        tranObj.sqlSession_BW.commit();
+//        tranObj.sqlSession_BW.commit();
+        tranObj.iBWXH++;
         Logger.log(tranObj,"LOG_IO", Com.getOut);
         return true;
     }

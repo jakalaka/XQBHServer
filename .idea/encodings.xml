@@ -5,11 +5,11 @@
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/ComInit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/GetLogInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWAfterDSF.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWAfterTran.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWBeforeDSF.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWBeforeTran.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/JCZDHFX.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/UpdateMJYBWAfterDSF.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/UpdateMJYBWAfterTran.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/UpdateMJYBWBeforeDSF.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/PayBill.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" charset="GBK" />

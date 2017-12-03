@@ -5,25 +5,13 @@ import java.util.Date;
 public class MJYBW extends MJYBWKey {
     private String QTJYM_;
 
-    private Date HTRQ_U;
+    private String DYJYM_;
 
-    private String HTLS_U;
-
-    private String HTJYM_;
-
-    private Date SFRQ_U;
-
-    private String SFLS_U;
-
-    private String SFJYM_;
-
-    private String SFXYM_;
-
-    private String SFYCM_;
-
-    private String JYZT_U;
+    private String BWLX_U;
 
     private String CWDM_U;
+
+    private String ZCWDM_;
 
     private String CWXX_U;
 
@@ -35,6 +23,8 @@ public class MJYBW extends MJYBWKey {
 
     private String JLZT_U;
 
+    private byte[] BW_UUU;
+
     public String getQTJYM_() {
         return QTJYM_;
     }
@@ -43,76 +33,20 @@ public class MJYBW extends MJYBWKey {
         this.QTJYM_ = QTJYM_;
     }
 
-    public Date getHTRQ_U() {
-        return HTRQ_U;
+    public String getDYJYM_() {
+        return DYJYM_;
     }
 
-    public void setHTRQ_U(Date HTRQ_U) {
-        this.HTRQ_U = HTRQ_U;
+    public void setDYJYM_(String DYJYM_) {
+        this.DYJYM_ = DYJYM_;
     }
 
-    public String getHTLS_U() {
-        return HTLS_U;
+    public String getBWLX_U() {
+        return BWLX_U;
     }
 
-    public void setHTLS_U(String HTLS_U) {
-        this.HTLS_U = HTLS_U;
-    }
-
-    public String getHTJYM_() {
-        return HTJYM_;
-    }
-
-    public void setHTJYM_(String HTJYM_) {
-        this.HTJYM_ = HTJYM_;
-    }
-
-    public Date getSFRQ_U() {
-        return SFRQ_U;
-    }
-
-    public void setSFRQ_U(Date SFRQ_U) {
-        this.SFRQ_U = SFRQ_U;
-    }
-
-    public String getSFLS_U() {
-        return SFLS_U;
-    }
-
-    public void setSFLS_U(String SFLS_U) {
-        this.SFLS_U = SFLS_U;
-    }
-
-    public String getSFJYM_() {
-        return SFJYM_;
-    }
-
-    public void setSFJYM_(String SFJYM_) {
-        this.SFJYM_ = SFJYM_;
-    }
-
-    public String getSFXYM_() {
-        return SFXYM_;
-    }
-
-    public void setSFXYM_(String SFXYM_) {
-        this.SFXYM_ = SFXYM_;
-    }
-
-    public String getSFYCM_() {
-        return SFYCM_;
-    }
-
-    public void setSFYCM_(String SFYCM_) {
-        this.SFYCM_ = SFYCM_;
-    }
-
-    public String getJYZT_U() {
-        return JYZT_U;
-    }
-
-    public void setJYZT_U(String JYZT_U) {
-        this.JYZT_U = JYZT_U;
+    public void setBWLX_U(String BWLX_U) {
+        this.BWLX_U = BWLX_U;
     }
 
     public String getCWDM_U() {
@@ -121,6 +55,14 @@ public class MJYBW extends MJYBWKey {
 
     public void setCWDM_U(String CWDM_U) {
         this.CWDM_U = CWDM_U;
+    }
+
+    public String getZCWDM_() {
+        return ZCWDM_;
+    }
+
+    public void setZCWDM_(String ZCWDM_) {
+        this.ZCWDM_ = ZCWDM_;
     }
 
     public String getCWXX_U() {
@@ -161,5 +103,13 @@ public class MJYBW extends MJYBWKey {
 
     public void setJLZT_U(String JLZT_U) {
         this.JLZT_U = JLZT_U;
+    }
+
+    public byte[] getBW_UUU() {
+        return BW_UUU;
+    }
+
+    public void setBW_UUU(byte[] BW_UUU) {
+        this.BW_UUU = BW_UUU;
     }
 }

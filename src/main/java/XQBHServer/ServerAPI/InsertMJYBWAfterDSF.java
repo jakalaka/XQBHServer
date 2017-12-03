@@ -1,36 +1,34 @@
 package XQBHServer.ServerAPI;
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Mapper.MJYBWMapper;
-import XQBHServer.Server.Table.Model.MJYBW;
+import XQBHServer.Server.Table.Model.MJYBWKey;
 import XQBHServer.Server.Table.Model.MJYBWWithBLOBs;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
+import com.alipay.api.response.AlipayTradePayResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
-/**
- * Created by Administrator on 2017/7/21 0021.
- */
 /*
 暂时写死为支付宝，到时候在加微信
  */
-public class InsertMJYBWBeforeTran {
-    public static boolean exec(TranObj tranObj) {
+public class InsertMJYBWAfterDSF {
+    public static boolean exec(TranObj tranObj, AlipayTradePayResponse response) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
+        String sSFFHBW = response.getBody();
+        Logger.log(tranObj, "LOG_IO", "sSFFHBW=" + sSFFHBW);
 
+        String sQTRQ_U = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        String rqTmp = tranObj.getHead("QTRQ_U");
         Date date = null;
         try {
-            date = formatter.parse(rqTmp);
+            date = formatter.parse(sQTRQ_U);
         } catch (ParseException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "TIMEER");
@@ -44,20 +42,18 @@ public class InsertMJYBWBeforeTran {
         mjybwWithBLOBs.setXH_UUU(tranObj.iBWXH);
         mjybwWithBLOBs.setQTJYM_(tranObj.getHead("QTJYM_"));
         mjybwWithBLOBs.setDYJYM_(tranObj.getHead("HTJYM_"));
+        mjybwWithBLOBs.setBWLX_U("ZO");
 
-        mjybwWithBLOBs.setBWLX_U("CI");
         try {
-            mjybwWithBLOBs.setBW_UUU(tranObj.bwIn.getBytes("GBK"));
+            mjybwWithBLOBs.setBW_UUU(sSFFHBW.getBytes("GBK"));//非要GBK才能看到中文，艹
         } catch (UnsupportedEncodingException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-
-
-        mjybwWithBLOBs.setZDBH_U(tranObj.getHead("ZDBH_U"));
-        mjybwWithBLOBs.setIP_UUU(tranObj.getHead("IP_UUU"));
-        mjybwWithBLOBs.setJLZT_U("0");
+        mjybwWithBLOBs.setCWDM_U(response.getCode());
+        mjybwWithBLOBs.setZCWDM_(response.getSubCode());
+        mjybwWithBLOBs.setCWXX_U(response.getSubMsg());
         try {
             mjybwMapper.insert(mjybwWithBLOBs);
         } catch (Exception e) {
@@ -68,6 +64,7 @@ public class InsertMJYBWBeforeTran {
 //        tranObj.sqlSession_BW.commit();
         tranObj.iBWXH++;
         Logger.log(tranObj, "LOG_IO", Com.getOut);
+
         return true;
     }
 }

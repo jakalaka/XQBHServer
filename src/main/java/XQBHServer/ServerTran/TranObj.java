@@ -30,9 +30,10 @@ public class TranObj {
     public String bwIn;
     public String bwOut;
     public boolean unknownFlg;
-
+    public int iBWXH = 0;
 
     public TranObj(String XMLIn) {
+        iBWXH = 0;
         bwIn = XMLIn;
         filePrinter = new StringBuilder();
         Map XMLMapIn = XmlUtils.XML2map(XMLIn);
@@ -43,14 +44,14 @@ public class TranObj {
             sqlSession = Com.dbAccess.getSqlSession();
             sqlSession_BW = Com.dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.sysLogException( e);
+            Logger.sysLogException(e);
             return;
         }
         unknownFlg = false;
 
 
         if (true != GetLogInfo.exec(this)) {
-            Logger.log(this,"LOG_ERR","获取日志等级失败");
+            Logger.log(this, "LOG_ERR", "获取日志等级失败");
             return;
         }
         buildSUCCESS = true;

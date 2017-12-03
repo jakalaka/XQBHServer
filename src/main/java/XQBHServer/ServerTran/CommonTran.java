@@ -2,7 +2,7 @@ package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
-import XQBHServer.ServerAPI.UpdateMJYBWAfterTran;
+import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
 import XQBHServer.Utils.RSA.RSASignature;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
@@ -79,7 +79,7 @@ public class CommonTran {
         } catch (ClassNotFoundException e) {
             Tran.runERR(tranObj, "ERR007");
         }
-        if (true != callRe) {
+        if (true != callRe&&!tranObj.unknownFlg) {//不知状态的交易，需人工对账
             tranObj.sqlSession.rollback();
             Logger.log(tranObj, "LOG_ERR", "Call ERR");
         }
@@ -90,14 +90,15 @@ public class CommonTran {
         String XMLOut = "";
         XMLOut = XmlUtils.tranObj2XML(tranObj);
         tranObj.bwOut = XMLOut;
-        boolean updateMJYBW = !"ERR006".equals(tranObj.getHead("CWDM_U"));
-        if (updateMJYBW) {
-
-            if (true != UpdateMJYBWAfterTran.exec(tranObj)) {
-                Logger.log(tranObj, "LOG_SYS", "更新交易报文表出错");
-                Tran.runERR(tranObj, "ERR005");
-            }
-        }
+//        boolean updateMJYBW = !"ERR006".equals(tranObj.getHead("CWDM_U"));
+//        if (updateMJYBW) {
+//
+//            if (true != InsertMJYBWAfterTran.exec(tranObj)) {
+//                Logger.log(tranObj, "LOG_SYS", "更新交易报文表出错");
+//                Tran.runERR(tranObj, "ERR005");
+//            }
+//        }
+        InsertMJYBWAfterTran.exec(tranObj);//直接插入
 
         if (null != tranObj.sqlSession) {
             tranObj.sqlSession.commit();
