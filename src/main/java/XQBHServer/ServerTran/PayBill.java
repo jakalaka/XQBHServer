@@ -231,7 +231,10 @@ public class PayBill extends Tran {
 
         }
         Logger.log(tranObj, "LOG_DEBUG", "response.getCode()=" + response.getCode());
-        if (!"10000".equals(response.getCode())) {
+        if ("10003".equals(response.getCode())) {
+            runERR(tranObj, "ZFWAIT");
+            return false;
+        }else if (!"10000".equals(response.getCode())) {
             runERR(tranObj, "ZF0003");
             return false;
         }

@@ -1,7 +1,9 @@
 package XQBHServer.ServerTran;
 
+import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
 import XQBHServer.ServerAPI.UpdateMJYBWAfterTran;
+import XQBHServer.Utils.RSA.RSASignature;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
@@ -18,6 +20,24 @@ import java.lang.reflect.Method;
 public class CommonTran {
     @WebMethod
     public String Comtran(String XMLIn) {
+        //验签名
+        String []str=XMLIn.split("sign=");
+        try {
+            if (true!=RSASignature.doCheck(str[0], str[1], Com.upPublicKey))
+            {
+                Logger.sysLog(XMLIn);
+                Logger.sysLog("报文验签失败!!!");
+                return "非法报文";
+            }else {
+                XMLIn=str[0];
+            }
+        }catch (Exception e)
+        {
+            Logger.sysLog(XMLIn);
+            Logger.sysLogException(e);
+            return "非法报文";
+        }
+
         TranObj tranObj = new TranObj(XMLIn);
         if (false == tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR003");
@@ -85,6 +105,12 @@ public class CommonTran {
         }
         Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
+
+        /*
+        加签名
+         */
+        String signstr= RSASignature.sign(XMLOut,Com.rePrivatebKey);
+        XMLOut=XMLOut+"sign="+signstr;
         return XMLOut;
     }
 
