@@ -3,8 +3,6 @@ package XQBHServer.ServerAPI;
 import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.MJYBWMapper;
 import XQBHServer.Server.Table.Model.MJYBW;
-import XQBHServer.Server.Table.Model.MJYBWKey;
-import XQBHServer.Server.Table.Model.MJYBWWithBLOBs;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;

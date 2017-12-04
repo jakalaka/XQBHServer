@@ -4,7 +4,6 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Mapper.MJYBWMapper;
 import XQBHServer.Server.Table.Model.MJYBW;
-import XQBHServer.Server.Table.Model.MJYBWWithBLOBs;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
@@ -37,17 +36,17 @@ public class InsertMJYBWBeforeTran {
             return false;
         }
         MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
-        MJYBWWithBLOBs mjybwWithBLOBs = new MJYBWWithBLOBs();
-        mjybwWithBLOBs.setFRDM_U("9999");
-        mjybwWithBLOBs.setQTRQ_U(date);
-        mjybwWithBLOBs.setQTLS_U(tranObj.getHead("QTLS_U"));
-        mjybwWithBLOBs.setXH_UUU(tranObj.iBWXH);
-        mjybwWithBLOBs.setQTJYM_(tranObj.getHead("QTJYM_"));
-        mjybwWithBLOBs.setDYJYM_(tranObj.getHead("HTJYM_"));
+        MJYBW mjybw = new MJYBW();
+        mjybw.setFRDM_U("9999");
+        mjybw.setQTRQ_U(date);
+        mjybw.setQTLS_U(tranObj.getHead("QTLS_U"));
+        mjybw.setXH_UUU(tranObj.iBWXH);
+        mjybw.setQTJYM_(tranObj.getHead("QTJYM_"));
+        mjybw.setDYJYM_(tranObj.getHead("HTJYM_"));
 
-        mjybwWithBLOBs.setBWLX_U("CI");
+        mjybw.setBWLX_U("CI");
         try {
-            mjybwWithBLOBs.setBW_UUU(tranObj.bwIn.getBytes("GBK"));
+            mjybw.setBW_UUU(tranObj.bwIn.getBytes("GBK"));
         } catch (UnsupportedEncodingException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
@@ -55,11 +54,11 @@ public class InsertMJYBWBeforeTran {
         }
 
 
-        mjybwWithBLOBs.setZDBH_U(tranObj.getHead("ZDBH_U"));
-        mjybwWithBLOBs.setIP_UUU(tranObj.getHead("IP_UUU"));
-        mjybwWithBLOBs.setJLZT_U("0");
+        mjybw.setZDBH_U(tranObj.getHead("ZDBH_U"));
+        mjybw.setIP_UUU(tranObj.getHead("IP_UUU"));
+        mjybw.setJLZT_U("0");
         try {
-            mjybwMapper.insert(mjybwWithBLOBs);
+            mjybwMapper.insert(mjybw);
         } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");

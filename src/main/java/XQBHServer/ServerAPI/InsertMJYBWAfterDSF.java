@@ -2,8 +2,7 @@ package XQBHServer.ServerAPI;
 
 import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.MJYBWMapper;
-import XQBHServer.Server.Table.Model.MJYBWKey;
-import XQBHServer.Server.Table.Model.MJYBWWithBLOBs;
+import XQBHServer.Server.Table.Model.MJYBW;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
@@ -35,27 +34,36 @@ public class InsertMJYBWAfterDSF {
             return false;
         }
         MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
-        MJYBWWithBLOBs mjybwWithBLOBs = new MJYBWWithBLOBs();
-        mjybwWithBLOBs.setFRDM_U("9999");
-        mjybwWithBLOBs.setQTRQ_U(date);
-        mjybwWithBLOBs.setQTLS_U(tranObj.getHead("QTLS_U"));
-        mjybwWithBLOBs.setXH_UUU(tranObj.iBWXH);
-        mjybwWithBLOBs.setQTJYM_(tranObj.getHead("QTJYM_"));
-        mjybwWithBLOBs.setDYJYM_(tranObj.getHead("HTJYM_"));
-        mjybwWithBLOBs.setBWLX_U("ZO");
+        MJYBW mjybw = new MJYBW();
+        mjybw.setFRDM_U("9999");
+        mjybw.setQTRQ_U(date);
+        mjybw.setQTLS_U(tranObj.getHead("QTLS_U"));
+        mjybw.setXH_UUU(tranObj.iBWXH);
+        mjybw.setQTJYM_(tranObj.getHead("QTJYM_"));
+        mjybw.setDYJYM_(tranObj.getHead("HTJYM_"));
+        mjybw.setBWLX_U("ZI");
 
         try {
-            mjybwWithBLOBs.setBW_UUU(sSFFHBW.getBytes("GBK"));//非要GBK才能看到中文，艹
+            mjybw.setBW_UUU(sSFFHBW.getBytes("GBK"));//非要GBK才能看到中文，艹
         } catch (UnsupportedEncodingException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-        mjybwWithBLOBs.setCWDM_U(response.getCode());
-        mjybwWithBLOBs.setZCWDM_(response.getSubCode());
-        mjybwWithBLOBs.setCWXX_U(response.getSubMsg());
+        mjybw.setCWDM_U(response.getCode());
+        mjybw.setZCWDM_(response.getSubCode());
+        mjybw.setCWXX_U(response.getSubMsg());
+        if("1".equals(tranObj.getHead("CSBZ_U")))
+        {
+            mjybw.setIP_UUU(Com.alipayGateway_cs);
+        }else {
+            mjybw.setIP_UUU(Com.alipayGateway);
+        }
+
+        mjybw.setZDBH_U(tranObj.getHead("ZDBH_U"));
+        mjybw.setJLZT_U("0");
         try {
-            mjybwMapper.insert(mjybwWithBLOBs);
+            mjybwMapper.insert(mjybw);
         } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");

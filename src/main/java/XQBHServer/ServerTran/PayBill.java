@@ -54,7 +54,6 @@ public class PayBill extends Tran {
         Logger.log(tranObj, "LOG_IO", "sSPMC_U=" + sSPMC_U);
         Logger.log(tranObj, "LOG_IO", "bJYJE_U=" + bJYJE_U);
         /*==================================codeBegin=====================================*/
-        String sZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
         String rqTmp = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date dQTRQ_U = null;
@@ -87,6 +86,7 @@ public class PayBill extends Tran {
         //=================================生成流水============================
         if (Com.getHTLS(tranObj) == false)
             return false;
+        String sZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
 
         //==============================查询商户信息合法性=========================
         DSHXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
@@ -146,8 +146,8 @@ public class PayBill extends Tran {
         mdzsj.setSHBH_U(sSHBH_U);
         mdzsj.setZDBH_U(sZDBH_U);
         mdzsj.setZFZHLX(sZFZHLX);
-        mdzsj.setSFDDH_(null);//交易成功后更新
-        mdzsj.setSFLS_U(sZFBLS_);
+        mdzsj.setSFDDH_(sZFBLS_);
+        mdzsj.setSFLS_U(null);//交易成功后更新
         mdzsj.setSFRQ_U(null);//交易成功后更新
         mdzsj.setFKRID_(null);//交易成功后更新
         mdzsj.setFKRZH_(null);//交易成功后更新
@@ -302,6 +302,17 @@ public class PayBill extends Tran {
         }
 
 
+        mdzsj.setSFLS_U(response.getTradeNo());
+        mdzsj.setSFRQ_U(response.getGmtPayment());
+        mdzsj.setFKRID_(response.getBuyerUserId());
+        mdzsj.setFKRZH_(response.getBuyerLogonId());
+        mdzsj.setJYZT_U("1");
+        try {
+            mdzsjMapper.updateByPrimaryKey(mdzsj);
+        }catch (Exception e)
+        {
+            //不操作，认为成功，需人工核对状态为u的情况
+        }
 
 
         /*==================================codeEnd=====================================*/

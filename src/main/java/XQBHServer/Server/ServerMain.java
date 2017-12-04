@@ -21,7 +21,7 @@ public class ServerMain {
              return;
          }
 //         String ip="172.18.38.19";
-        String ip="192.168.31.42";
+        String ip="192.168.31.62";
 //        try {
 //            ip= InetAddress.getLocalHost().getHostAddress();
 //        } catch (UnknownHostException e) {
