@@ -5,26 +5,15 @@ import XQBHServer.Server.ServerInit;
 import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
-import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradeCancelRequest;
-import com.alipay.api.request.AlipayTradeCloseRequest;
-import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradeCancelResponse;
-import com.alipay.api.response.AlipayTradeCloseResponse;
-import com.alipay.api.response.AlipayTradeQueryResponse;
-import org.apache.ibatis.session.SqlSession;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -82,8 +71,6 @@ public class AlipayCancel extends Tran {
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
-        System.out.println(mdzsjList.size());
-        System.out.println(dateLimit);
 
         AlipayClient alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
@@ -171,17 +158,7 @@ public class AlipayCancel extends Tran {
             Logger.sysLog("ServerInit Fail!!!");
             return;
         }
-        Map XMLMapIn = new HashMap();
-        Map head = new HashMap();
-        head.put("ZDBH_U", "SVR00001");
-        head.put("ZDJYM_", "SERVER");
-        head.put("HTJYM_", "AlipayCancel");
-        head.put("QTRQ_U", Com.getDate());
-        head.put("QTLS_U", Com.getSYSQTLS());
-        XMLMapIn.put("head", head);
-        String XMLIn = XmlUtils.map2XML(XMLMapIn);
-        SystemTran systemTran = new SystemTran();
-        systemTran.SystemTran(XMLIn);
+
     }
 
 

@@ -34,7 +34,7 @@ t-退货
 u-未知
 客户端调用，如为ZFWAIT，则需要调用ZFBQuery查询并更新对账数据状态
  */
-public class AliPayBill extends Tran {
+public class AlipayPay extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);

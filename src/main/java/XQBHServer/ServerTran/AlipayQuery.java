@@ -79,7 +79,7 @@ public class AlipayQuery extends Tran {
         try {
             response = alipayClient.execute(request);
         } catch (AlipayApiException e) {
-            Logger.sysLogException(e);
+            Logger.logException(tranObj, "LOG_ERR", e);
             runERR(tranObj, "ZF0004");
             return false;
         }
@@ -89,29 +89,37 @@ public class AlipayQuery extends Tran {
             Logger.log(tranObj, "LOG_ERR", "上完第三方插入报文失败");
         }
         if (response.isSuccess()) {
-            System.out.println("response.getTradeStatus()=" + response.getTradeStatus());
+            Logger.log(tranObj, "LOG_DEBUG", "response.getTradeStatus()=" + response.getTradeStatus());
 
-            if ("w".equals(mdzsj.getJYZT_U())) {
                 if ("TRADE_CLOSED".equals(response.getTradeStatus())) {
-                    mdzsj.setJYZT_U("c");
-                    try {
-                        mdzsjMapper.updateByPrimaryKey(mdzsj);
-                    } catch (Exception e) {
-                        Logger.sysLogException(e);
-                        runERR(tranObj, "SQLUPD");
-                        return false;
+                    if ("w".equals(mdzsj.getJYZT_U())) {
+                        mdzsj.setJYZT_U("c");
+                        try {
+                            mdzsjMapper.updateByPrimaryKey(mdzsj);
+                        } catch (Exception e) {
+                            Logger.sysLogException(e);
+                            runERR(tranObj, "SQLUPD");
+                            return false;
+                        }
+                        tranObj.commitFlg = true;
                     }
-                    tranObj.commitFlg = true;
                     runERR(tranObj, "ZF0008");
                     return false;
                 } else if ("TRADE_SUCCESS".equals(response.getTradeStatus()) || "TRADE_FINISHED".equals(response.getTradeStatus())) {
-                    mdzsj.setJYZT_U("1");
-                    try {
-                        mdzsjMapper.updateByPrimaryKey(mdzsj);
-                    } catch (Exception e) {
-                        Logger.sysLogException(e);
-                        runERR(tranObj, "SQLUPD");
-                        return false;
+                    if ("w".equals(mdzsj.getJYZT_U())) {
+                        mdzsj.setJYZT_U("1");
+                        mdzsj.setSFLS_U(response.getTradeNo());
+                        mdzsj.setSFRQ_U(response.getSendPayDate());
+                        mdzsj.setFKRID_(response.getBuyerUserId());
+                        mdzsj.setFKRZH_(response.getBuyerLogonId());
+                        try {
+                            mdzsjMapper.updateByPrimaryKey(mdzsj);
+                        } catch (Exception e) {
+                            Logger.sysLogException(e);
+                            runERR(tranObj, "SQLUPD");
+                            return false;
+                        }
+
                     }
                 } else if ("WAIT_BUYER_PAY".equals(response.getTradeStatus())) {
                     runERR(tranObj, "ZFWAIT");
@@ -120,7 +128,7 @@ public class AlipayQuery extends Tran {
                     runERR(tranObj, "ZFILEG", response.getTradeStatus());
                     return false;
                 }
-            }
+
         } else {
             if ("ACQ.SYSTEM_ERROR".equals(response.getSubCode())) {
                 runERR(tranObj, "ZFSYSE");
@@ -150,8 +158,8 @@ public class AlipayQuery extends Tran {
         head.put("QTLS_U", Com.getSYSQTLS());
         XMLMapIn.put("head", head);
         Map body = new HashMap();
-        body.put("YHTLS_", "SZD0000010000008");
-        body.put("YHTRQ_", "20171209");
+        body.put("YHTLS_", "SZD0000010001006");
+        body.put("YHTRQ_", "20171210");
         XMLMapIn.put("body", body);
         String XMLIn = XmlUtils.map2XML(XMLMapIn);
         SystemTran systemTran = new SystemTran();

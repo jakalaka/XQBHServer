@@ -155,7 +155,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"SYSRun"),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -177,7 +177,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"SYSRun"),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -202,7 +202,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"SYSRun"),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -223,7 +223,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getTimerLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"Timer"),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -232,7 +232,51 @@ public class Logger {
 
     }
 
-    private static String getSysLogPath(String Msg) {
+
+    /**
+     * @param Msg
+     * 用于临时任务日志打印，如平台重启通知、平台暂停通知
+     */
+    public static void tmpLog(String Msg) {
+        System.out.println(Msg);
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        stringBuilder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"Tmp"),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void tmpLogException(Exception exception) {
+        StringWriter sw = new StringWriter();
+        exception.printStackTrace(new PrintWriter(sw, true));
+        String Msg=sw.toString();
+
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        stringBuilder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"Tmp"),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(stringBuilder.toString());
+
+    }
+
+    private static String getLogPath(String Msg, String LogName) {
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
         int month = now.get(Calendar.MONTH) + 1;
@@ -256,7 +300,7 @@ public class Logger {
             tmplogFilePath.delete(0, tmplogFilePath.length());
             tmplogFilePath.append(logFilePath.toString());
             tmplogFilePath.append(File.separatorChar);
-            tmplogFilePath.append("SYSRun");
+            tmplogFilePath.append(LogName);
             tmplogFilePath.append("_");
             tmplogFilePath.append(XH);
             tmplogFilePath.append(LOG_FILE_SUFFIX);
@@ -273,60 +317,13 @@ public class Logger {
             }
         }
         logFilePath.append(File.separatorChar);
-        logFilePath.append("SYSRun");
+        logFilePath.append(LogName);
+//        logFilePath.append("SYSRun");
         logFilePath.append("_");
         logFilePath.append(XH);
         logFilePath.append(LOG_FILE_SUFFIX);
         return logFilePath.toString();
     }
 
-
-    private static String getTimerLogPath(String Msg) {
-        Calendar now = Calendar.getInstance();
-        int year = now.get(Calendar.YEAR);
-        int month = now.get(Calendar.MONTH) + 1;
-        int day = now.get(Calendar.DAY_OF_MONTH);
-        StringBuffer logFilePath = new StringBuffer();
-        logFilePath.append(LOG_FOLDER_NAME);
-        logFilePath.append(File.separatorChar);
-        logFilePath.append(year);
-        logFilePath.append(File.separatorChar);
-        logFilePath.append(month);
-        logFilePath.append(File.separatorChar);
-        logFilePath.append(day);
-
-        File dir = new File(logFilePath.toString());
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        StringBuffer tmplogFilePath = new StringBuffer();
-
-        while (true) {
-            tmplogFilePath.delete(0, tmplogFilePath.length());
-            tmplogFilePath.append(logFilePath.toString());
-            tmplogFilePath.append(File.separatorChar);
-            tmplogFilePath.append("Timer");
-            tmplogFilePath.append("_");
-            tmplogFilePath.append(XH);
-            tmplogFilePath.append(LOG_FILE_SUFFIX);
-
-            File file = new File(tmplogFilePath.toString());
-            if (file.exists() && file.isFile()) {
-                if (10240000 < file.length() + Msg.length() + miss) {
-                    XH++;
-
-                } else
-                    break;
-            } else {
-                break;
-            }
-        }
-        logFilePath.append(File.separatorChar);
-        logFilePath.append("Timer");
-        logFilePath.append("_");
-        logFilePath.append(XH);
-        logFilePath.append(LOG_FILE_SUFFIX);
-        return logFilePath.toString();
-    }
 
 }
