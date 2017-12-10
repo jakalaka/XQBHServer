@@ -6,6 +6,7 @@ import XQBHServer.Server.Table.Model.MJYBW;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
+import com.alipay.api.AlipayResponse;
 import com.alipay.api.response.AlipayTradePayResponse;
 import org.apache.ibatis.session.SqlSession;
 
@@ -18,7 +19,7 @@ import java.util.Date;
 暂时写死为支付宝，到时候在加微信
  */
 public class InsertMJYBWAfterDSF {
-    public static boolean exec(TranObj tranObj, AlipayTradePayResponse response) {
+    public static boolean exec(TranObj tranObj, AlipayResponse response) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
         String sSFFHBW = response.getBody();
         Logger.log(tranObj, "LOG_IO", "sSFFHBW=" + sSFFHBW);
@@ -53,12 +54,9 @@ public class InsertMJYBWAfterDSF {
         mjybw.setCWDM_U(response.getCode());
         mjybw.setZCWDM_(response.getSubCode());
         mjybw.setCWXX_U(response.getSubMsg());
-        if("1".equals(tranObj.getHead("CSBZ_U")))
-        {
-            mjybw.setIP_UUU(Com.alipayGateway_cs);
-        }else {
-            mjybw.setIP_UUU(Com.alipayGateway);
-        }
+
+        mjybw.setIP_UUU(Com.alipayGateway);
+
 
         mjybw.setZDBH_U(tranObj.getHead("ZDBH_U"));
         mjybw.setJLZT_U("0");

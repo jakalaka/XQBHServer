@@ -1,14 +1,10 @@
 package XQBHServer.ServerTran;
 
-import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
 import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
-import XQBHServer.Utils.RSA.RSASignature;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -16,28 +12,8 @@ import java.lang.reflect.Method;
 /**
  * Created by Administrator on 2017/7/2 0002.
  */
-@WebService()
-public class CommonTran {
-    @WebMethod
-    public String Comtran(String XMLIn) {
-        //验签名
-        String []str=XMLIn.split("sign=");
-        try {
-            if (true!=RSASignature.doCheck(str[0], str[1], Com.upPublicKey))
-            {
-                Logger.sysLog(XMLIn);
-                Logger.sysLog("报文验签失败!!!");
-                return "非法报文";
-            }else {
-                XMLIn=str[0];
-            }
-        }catch (Exception e)
-        {
-            Logger.sysLog(XMLIn);
-            Logger.sysLogException(e);
-            return "非法报文";
-        }
-
+public class SystemTran {
+    public String SystemTran(String XMLIn) {
         TranObj tranObj = new TranObj(XMLIn);
         if (false == tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR003");
@@ -79,7 +55,7 @@ public class CommonTran {
         } catch (ClassNotFoundException e) {
             Tran.runERR(tranObj, "ERR007");
         }
-        if (true != callRe&&!tranObj.commitFlg ) {//不知状态的交易，需人工对账
+        if (true != callRe&&!tranObj.commitFlg) {//不知状态的交易，需人工对账
             tranObj.sqlSession.rollback();
             Logger.log(tranObj, "LOG_ERR", "Call ERR");
         }
@@ -90,14 +66,7 @@ public class CommonTran {
         String XMLOut = "";
         XMLOut = XmlUtils.tranObj2XML(tranObj);
         tranObj.bwOut = XMLOut;
-//        boolean updateMJYBW = !"ERR006".equals(tranObj.getHead("CWDM_U"));
-//        if (updateMJYBW) {
-//
-//            if (true != InsertMJYBWAfterTran.exec(tranObj)) {
-//                Logger.log(tranObj, "LOG_SYS", "更新交易报文表出错");
-//                Tran.runERR(tranObj, "ERR005");
-//            }
-//        }
+
         InsertMJYBWAfterTran.exec(tranObj);//直接插入
 
         if (null != tranObj.sqlSession) {
@@ -107,11 +76,6 @@ public class CommonTran {
         Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
 
-        /*
-        加签名
-         */
-        String signstr= RSASignature.sign(XMLOut,Com.rePrivatebKey);
-        XMLOut=XMLOut+"sign="+signstr;
         return XMLOut;
     }
 

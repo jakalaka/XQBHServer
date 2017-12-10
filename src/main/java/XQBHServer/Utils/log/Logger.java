@@ -7,8 +7,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Formatter;
-import java.util.Locale;
 import java.util.logging.*;
 
 public class Logger {
@@ -157,7 +155,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -166,6 +164,11 @@ public class Logger {
         System.out.println(stringBuilder.toString());
 
     }
+
+    /**
+     * @param Msg
+     * 用于简单的SYSLOG打日志
+     */
     public static void sysLog(String Msg) {
         StringBuilder stringBuilder=new StringBuilder();
         stringBuilder.append(df.format(new Date())).append("-");
@@ -174,7 +177,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -183,6 +186,14 @@ public class Logger {
         System.out.println(stringBuilder.toString());
 
     }
+
+    /**
+     * @param Msg
+     * @param ClassName
+     * @param MethodName
+     * @param LineNumber
+     * 用于通用的交易报错后再SYSLOG中打出日志
+     */
     public static void sysLog(String Msg,String ClassName,String MethodName,int LineNumber) {
         StringBuilder stringBuilder=new StringBuilder();
         stringBuilder.append(df.format(new Date())).append("-");
@@ -191,7 +202,7 @@ public class Logger {
         stringBuilder.append(Msg);
         stringBuilder.append("\n");
         try {
-            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString()),true);
+            FileWriter fw=new FileWriter(getSysLogPath(stringBuilder.toString()),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {
@@ -200,7 +211,28 @@ public class Logger {
 
     }
 
-    private static String getLogPath(String Msg) {
+    /**
+     * @param Msg
+     * 用于简单的SYSLOG打日志
+     */
+    public static void timerLog(String Msg) {
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        stringBuilder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getTimerLogPath(stringBuilder.toString()),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static String getSysLogPath(String Msg) {
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
         int month = now.get(Calendar.MONTH) + 1;
@@ -242,6 +274,55 @@ public class Logger {
         }
         logFilePath.append(File.separatorChar);
         logFilePath.append("SYSRun");
+        logFilePath.append("_");
+        logFilePath.append(XH);
+        logFilePath.append(LOG_FILE_SUFFIX);
+        return logFilePath.toString();
+    }
+
+
+    private static String getTimerLogPath(String Msg) {
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH) + 1;
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        StringBuffer logFilePath = new StringBuffer();
+        logFilePath.append(LOG_FOLDER_NAME);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(year);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(month);
+        logFilePath.append(File.separatorChar);
+        logFilePath.append(day);
+
+        File dir = new File(logFilePath.toString());
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        StringBuffer tmplogFilePath = new StringBuffer();
+
+        while (true) {
+            tmplogFilePath.delete(0, tmplogFilePath.length());
+            tmplogFilePath.append(logFilePath.toString());
+            tmplogFilePath.append(File.separatorChar);
+            tmplogFilePath.append("Timer");
+            tmplogFilePath.append("_");
+            tmplogFilePath.append(XH);
+            tmplogFilePath.append(LOG_FILE_SUFFIX);
+
+            File file = new File(tmplogFilePath.toString());
+            if (file.exists() && file.isFile()) {
+                if (10240000 < file.length() + Msg.length() + miss) {
+                    XH++;
+
+                } else
+                    break;
+            } else {
+                break;
+            }
+        }
+        logFilePath.append(File.separatorChar);
+        logFilePath.append("Timer");
         logFilePath.append("_");
         logFilePath.append(XH);
         logFilePath.append(LOG_FILE_SUFFIX);

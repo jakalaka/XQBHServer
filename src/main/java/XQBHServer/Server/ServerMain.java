@@ -6,8 +6,6 @@ import XQBHServer.ServerTran.CommonTran;
 import XQBHServer.Utils.log.Logger;
 
 import javax.xml.ws.Endpoint;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
  * Created by Administrator on 2017/6/29 0029.
@@ -34,6 +32,7 @@ public class ServerMain {
         Endpoint.publish(address, implementor);
 
         Logger.sysLog("Server start successful!!!");
-    
+
+
     }
 }

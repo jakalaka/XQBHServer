@@ -34,7 +34,7 @@ t-退货
 u-未知
 客户端调用，如为ZFWAIT，则需要调用ZFBQuery查询并更新对账数据状态
  */
-public class PayBill extends Tran {
+public class AliPayBill extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
@@ -134,8 +134,8 @@ public class PayBill extends Tran {
         }
 
         //=============================插入对账数据表===========================
-        MDZSJ mdzsj=new MDZSJ();
-        MDZSJMapper mdzsjMapper=tranObj.sqlSession.getMapper(MDZSJMapper.class);
+        MDZSJ mdzsj = new MDZSJ();
+        MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
         mdzsj.setFRDM_U("9999");
         mdzsj.setHTRQ_U(tranObj.date);
         mdzsj.setHTLS_U(tranObj.getHead("HTLS_U"));
@@ -158,8 +158,7 @@ public class PayBill extends Tran {
         mdzsj.setJLZT_U("0");
         try {
             mdzsjMapper.insert(mdzsj);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
@@ -172,14 +171,9 @@ public class PayBill extends Tran {
         String timeout_express = "";
         AlipayClient alipayClient;
         String seller_id = dshzh.getZFZH_U();
-        if ("1".equals(tranObj.getHead("CSBZ_U")))//测试 数据写死
-        {
-            alipayClient = new DefaultAlipayClient(Com.alipayGateway_cs, Com.alipayAppid_cs, Com.alipayPrivateKey_cs, "json", "GBK", Com.alipayPulicKey_cs, "RSA2");
-            seller_id = "2088102170074235";
-            Logger.log(tranObj, "LOG_DEBUG", "本交易为测试交易TTTTTT");
-        } else {
-            alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
-        }
+
+        alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizContent("{" +
                 "\"out_trade_no\":\"" + sZFBLS_ + "\"," +//我的流水
@@ -211,7 +205,7 @@ public class PayBill extends Tran {
                 "}");
 
         AlipayTradePayResponse response = null;
-        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request)) {
+        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request.getBizContent())) {
             runERR(tranObj, "ZF0005");
             return false;
         }
@@ -219,7 +213,7 @@ public class PayBill extends Tran {
             response = alipayClient.execute(request);
         } catch (Exception e) {
             //标记为未知交易
-            tranObj.unknownFlg = true;
+            tranObj.commitFlg = true;
             Logger.logException(tranObj, "LOG_ERR", e);
             runERR(tranObj, "ZF0004");
             return false;
@@ -227,7 +221,7 @@ public class PayBill extends Tran {
 //        if (true != InsertMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表
 //        {
 //            //标记为未知交易
-//            tranObj.unknownFlg = true;
+//            tranObj.commitFlg = true;
 //            runERR(tranObj, "ZF0006");
 //            return false;
 //        }
@@ -244,7 +238,13 @@ public class PayBill extends Tran {
 
                 tranObj.sqlSession.rollback();
                 cxtcs.setVALUE_("0");
-                cxtcsMapper.updateByPrimaryKey(cxtcs);
+                try {
+                    cxtcsMapper.updateByPrimaryKey(cxtcs);
+                } catch (Exception e) {
+                    Logger.logException(tranObj, "LOG_ERR", e);
+                    runERR(tranObj, "SQLUPD");
+                    return false;
+                }
                 tranObj.sqlSession.commit();
             } else if ("20000".equals(response.getCode()) || "isp.unknow-error".equals(response.getSubCode()) || "ACQ.SYSTEM_ERROR".equals(response.getSubCode())) {
                 //查询一次，失败则直接返回
@@ -258,7 +258,7 @@ public class PayBill extends Tran {
                     queryResponse = alipayClient.execute(queryRequest);
                 } catch (Exception e) {
                     //标记为未知交易
-                    tranObj.unknownFlg = true;
+                    tranObj.commitFlg = true;
                     Logger.logException(tranObj, "LOG_ERR", e);
                     runERR(tranObj, "ZF0004");
                     return false;
@@ -274,7 +274,7 @@ public class PayBill extends Tran {
                         return false;
                     } else {
                         //标记为未知交易
-                        tranObj.unknownFlg = true;
+                        tranObj.commitFlg = true;
                         Logger.log(tranObj, "LOG_ERR", "调用查询失败");
                         runERR(tranObj, "ZF0002");
                         return false;
@@ -294,9 +294,17 @@ public class PayBill extends Tran {
         }
         Logger.log(tranObj, "LOG_DEBUG", "response.getCode()=" + response.getCode());
         if ("10003".equals(response.getCode())) {
+            mdzsj.setJYZT_U("w");
+            try {
+                mdzsjMapper.updateByPrimaryKey(mdzsj);
+            }catch (Exception e)
+            {
+                Logger.sysLogException(e);
+            }
             runERR(tranObj, "ZFWAIT");//前端做一个轮循
+            tranObj.commitFlg=true;
             return false;
-        }else if (!"10000".equals(response.getCode())) {
+        } else if (!"10000".equals(response.getCode())) {
             runERR(tranObj, "ZF0003");
             return false;
         }
@@ -307,12 +315,15 @@ public class PayBill extends Tran {
         mdzsj.setFKRID_(response.getBuyerUserId());
         mdzsj.setFKRZH_(response.getBuyerLogonId());
         mdzsj.setJYZT_U("1");
+
         try {
             mdzsjMapper.updateByPrimaryKey(mdzsj);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             //不操作，认为成功，需人工核对状态为u的情况
+            Logger.sysLogException(e);
         }
+
+
 
 
         /*==================================codeEnd=====================================*/

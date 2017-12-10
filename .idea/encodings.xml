@@ -10,8 +10,8 @@
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWBeforeDSF.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWBeforeTran.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/JCZDHFX.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AliPayBill.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/PayBill.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/TranObj.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ZDLogin.java" charset="GBK" />

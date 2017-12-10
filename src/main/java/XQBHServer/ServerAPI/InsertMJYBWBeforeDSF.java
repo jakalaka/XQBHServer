@@ -13,13 +13,13 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /*
 暂时写死为支付宝，到时候在加微信
  */
 public class InsertMJYBWBeforeDSF {
-    public static boolean exec(TranObj tranObj, AlipayTradePayRequest request) {
-        Logger.log(tranObj,"LOG_IO", Com.getIn);
-        String sSFQQBW=request.getBizContent();
+    public static boolean exec(TranObj tranObj, String sSFQQBW) {
+        Logger.log(tranObj, "LOG_IO", Com.getIn);
         Logger.log(tranObj, "LOG_IO", "sSFQQBW=" + sSFQQBW);
         String sQTRQ_U = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -27,12 +27,12 @@ public class InsertMJYBWBeforeDSF {
         try {
             date = formatter.parse(sQTRQ_U);
         } catch (ParseException e) {
-            Logger.logException(tranObj,"LOG_ERR",e);
+            Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "TIMEER");
             return false;
         }
         MJYBWMapper mjybwMapper = tranObj.sqlSession_BW.getMapper(MJYBWMapper.class);
-        MJYBW mjybw=new MJYBW();
+        MJYBW mjybw = new MJYBW();
         mjybw.setFRDM_U("9999");
         mjybw.setQTRQ_U(date);
         mjybw.setQTLS_U(tranObj.getHead("QTLS_U"));
@@ -44,31 +44,27 @@ public class InsertMJYBWBeforeDSF {
         try {
             mjybw.setBW_UUU(sSFQQBW.getBytes("GBK"));//非要GBK才能看到中文，艹
         } catch (UnsupportedEncodingException e) {
-            Logger.logException(tranObj,"LOG_ERR",e);
+            Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
 
-        if("1".equals(tranObj.getHead("CSBZ_U")))
-        {
-            mjybw.setIP_UUU(Com.alipayGateway_cs);
-        }else {
-            mjybw.setIP_UUU(Com.alipayGateway);
-        }
+
+        mjybw.setIP_UUU(Com.alipayGateway);
+
         mjybw.setZDBH_U(tranObj.getHead("ZDBH_U"));
         mjybw.setJLZT_U("0");
 
         try {
             mjybwMapper.insert(mjybw);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
 //        tranObj.sqlSession_BW.commit();
         tranObj.iBWXH++;
-        Logger.log(tranObj,"LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.getOut);
         return true;
     }
 }

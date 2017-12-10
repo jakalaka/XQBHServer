@@ -29,7 +29,7 @@ public class TranObj {
     public String flLogLV = null;
     public String bwIn;
     public String bwOut;
-    public boolean unknownFlg;
+    public boolean commitFlg;
     public int iBWXH = 0;
 
     public TranObj(String XMLIn) {
@@ -47,7 +47,7 @@ public class TranObj {
             Logger.sysLogException(e);
             return;
         }
-        unknownFlg = false;
+        commitFlg = false;
 
 
         if (true != GetLogInfo.exec(this)) {
