@@ -7,19 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="~~">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyAlipayClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/dateTest_.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayCancel.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayCancel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayPay.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayPay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/test.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/MyLogHander.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/MyLogHander.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,26 +74,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="382">
               <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Timer_0.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Log/2017/12/11/Timer_0.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Timer_0.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Log/2017/12/12/Timer_0.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="332" column="0" lean-forward="false" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -341,49 +309,6 @@
               <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="12" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="12" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="12" type="462c0819:PsiDirectoryNode" />
-              <item name="11" type="462c0819:PsiDirectoryNode" />
-              <item name="ZDLogin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-              <item name="2017" type="462c0819:PsiDirectoryNode" />
-              <item name="12" type="462c0819:PsiDirectoryNode" />
-              <item name="12" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
@@ -1194,7 +1119,7 @@
       <workItem from="1512655681653" duration="6069000" />
       <workItem from="1512791109787" duration="33031000" />
       <workItem from="1512877825975" duration="28280000" />
-      <workItem from="1512987082723" duration="12763000" />
+      <workItem from="1512987082723" duration="12826000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1490,11 +1415,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512924443822</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="~~">
+      <created>1513010197702</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1513010197702</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="380568000" />
+    <option name="totallyTimeSpent" value="380631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
