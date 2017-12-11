@@ -11,7 +11,7 @@ import com.alipay.api.response.AlipayTradeCancelResponse;
 public class test {
     public static void main(String[] args) {
         AlipayTradeCancelRequest cancelRequest = new AlipayTradeCancelRequest();
-        AlipayClient alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
 
         cancelRequest.setBizContent("{" +

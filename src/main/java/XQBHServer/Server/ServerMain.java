@@ -18,8 +18,8 @@ public class ServerMain {
              Logger.sysLog("ServerInit Fail!!!");
              return;
          }
-//         String ip="172.18.38.19";
-        String ip="192.168.31.62";
+         String ip="172.18.38.19";
+//        String ip="192.168.31.62";
 //        try {
 //            ip= InetAddress.getLocalHost().getHostAddress();
 //        } catch (UnknownHostException e) {
@@ -29,7 +29,15 @@ public class ServerMain {
         Object implementor = new CommonTran();
         String address = "http://"+ip+":9000/CommonTran";
         Logger.sysLog("address:"+address);
-        Endpoint.publish(address, implementor);
+        try {
+            Endpoint.publish(address, implementor);
+        }catch (Exception e)
+        {
+            Logger.sysLog("平台启动异常");
+            Logger.sysLogException(e);
+            System.exit(0);
+        }
+
 
         Logger.sysLog("Server start successful!!!");
 

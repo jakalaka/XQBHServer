@@ -29,7 +29,7 @@ public class Logger {
 
     }
 
-    private static final DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss.SSS");
+    private static final DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
 
     public static void log(TranObj tranObj, String LogLV, String Msg) {
 
@@ -156,6 +156,27 @@ public class Logger {
         stringBuilder.append("\n");
         try {
             FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"SYSRun"),true);
+            fw.write(stringBuilder.toString());
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(stringBuilder.toString());
+
+    }
+    public static void timerLogException(Exception exception) {
+        StringWriter sw = new StringWriter();
+        exception.printStackTrace(new PrintWriter(sw, true));
+        String Msg=sw.toString();
+
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(df.format(new Date())).append("-");
+        stringBuilder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        stringBuilder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]-");
+        stringBuilder.append(Msg);
+        stringBuilder.append("\n");
+        try {
+            FileWriter fw=new FileWriter(getLogPath(stringBuilder.toString(),"Timer"),true);
             fw.write(stringBuilder.toString());
             fw.close();
         } catch (IOException e) {

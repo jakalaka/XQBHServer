@@ -7,6 +7,7 @@ import XQBHServer.Server.Table.Model.MDZSJ;
 import XQBHServer.Server.Table.Model.MDZSJKey;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
+import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayApiException;
@@ -34,40 +35,56 @@ public class AlipayQuery extends Tran {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
         String sYHTLS_ = tranObj.getString("YHTLS_");
         String sYHTRQ_ = tranObj.getString("YHTRQ_");
+        String sSFDDH_ = tranObj.getString("SFDDH_");
 
 
         Logger.log(tranObj, "LOG_IO", "sYHTLS_=" + sYHTLS_);
         Logger.log(tranObj, "LOG_IO", "sYHTRQ_=" + sYHTRQ_);
+        Logger.log(tranObj, "LOG_IO", "sSFDDH_" + sSFDDH_);
         /*==================================codeBegin=====================================*/
 
-        MDZSJKey mdzsjKey = new MDZSJKey();
+        String sSFDDH_FINAL = "";
+
         MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
-        mdzsjKey.setFRDM_U("9999");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        Date date = null;
-        try {
-            date = formatter.parse(sYHTRQ_);
-        } catch (ParseException e) {
-            Logger.logException(tranObj, "LOG_ERR", e);
-            Tran.runERR(tranObj, "TIMEER");
-            return false;
-        }
-        mdzsjKey.setHTRQ_U(date);
-        mdzsjKey.setHTLS_U(sYHTLS_);
         MDZSJ mdzsj = null;
-        try {
-            mdzsj = mdzsjMapper.selectByPrimaryKey(mdzsjKey);
-        } catch (Exception e) {
-            Logger.logException(tranObj, "LOG_ERR", e);
-            Tran.runERR(tranObj, "SQLSEL");
+        if (null != sYHTLS_ && !"".equals(sYHTLS_) && null != sYHTRQ_ && !"".equals(sYHTRQ_)) {
+            Logger.log(tranObj,"LOG_DEBUG","通过前台日期流水查询");
+
+            MDZSJKey mdzsjKey = new MDZSJKey();
+            mdzsjKey.setFRDM_U("9999");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            Date date = null;
+            try {
+                date = formatter.parse(sYHTRQ_);
+            } catch (ParseException e) {
+                Logger.logException(tranObj, "LOG_ERR", e);
+                Tran.runERR(tranObj, "TIMEER");
+                return false;
+            }
+            mdzsjKey.setHTRQ_U(date);
+            mdzsjKey.setHTLS_U(sYHTLS_);
+            try {
+                mdzsj = mdzsjMapper.selectByPrimaryKey(mdzsjKey);
+            } catch (Exception e) {
+                Logger.logException(tranObj, "LOG_ERR", e);
+                Tran.runERR(tranObj, "SQLSEL");
+                return false;
+            }
+            sSFDDH_FINAL=mdzsj.getSFDDH_();
+        }else if (null != sSFDDH_ && !"".equals(sSFDDH_)){//通过三方订单号直接查询
+            Logger.log(tranObj,"LOG_DEBUG","通过三方订单查询");
+            sSFDDH_FINAL=sSFDDH_;
+        }else {
+            Logger.log(tranObj,"LOG_ERR","传入参数错误!");
+            runERR(tranObj, "ERRPIN");
             return false;
         }
 
         AlipayClient alipayClient;
-        alipayClient = new DefaultAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
         request.setBizContent("{" +
-                "\"out_trade_no\":\"" + mdzsj.getSFDDH_() + "\"," +
+                "\"out_trade_no\":\"" + sSFDDH_FINAL+ "\"," +
                 "\"trade_no\":\"\"" +
                 "}");
 
@@ -91,7 +108,9 @@ public class AlipayQuery extends Tran {
         if (response.isSuccess()) {
             Logger.log(tranObj, "LOG_DEBUG", "response.getTradeStatus()=" + response.getTradeStatus());
 
-                if ("TRADE_CLOSED".equals(response.getTradeStatus())) {
+            if ("TRADE_CLOSED".equals(response.getTradeStatus())) {
+                if (null != sYHTLS_ && !"".equals(sYHTLS_) && null != sYHTRQ_ && !"".equals(sYHTRQ_)) {//正常前台调用更新mdzsj
+
                     if ("w".equals(mdzsj.getJYZT_U())) {
                         mdzsj.setJYZT_U("c");
                         try {
@@ -101,11 +120,14 @@ public class AlipayQuery extends Tran {
                             runERR(tranObj, "SQLUPD");
                             return false;
                         }
-                        tranObj.commitFlg = true;
                     }
-                    runERR(tranObj, "ZF0008");
-                    return false;
-                } else if ("TRADE_SUCCESS".equals(response.getTradeStatus()) || "TRADE_FINISHED".equals(response.getTradeStatus())) {
+                    tranObj.commitFlg = true;
+                }
+                runERR(tranObj, "ZF0008");
+                return false;
+            } else if ("TRADE_SUCCESS".equals(response.getTradeStatus()) || "TRADE_FINISHED".equals(response.getTradeStatus())) {
+                if (null != sYHTLS_ && !"".equals(sYHTLS_) && null != sYHTRQ_ && !"".equals(sYHTRQ_)) {//正常前台调用更新mdzsj
+
                     if ("w".equals(mdzsj.getJYZT_U())) {
                         mdzsj.setJYZT_U("1");
                         mdzsj.setSFLS_U(response.getTradeNo());
@@ -121,13 +143,14 @@ public class AlipayQuery extends Tran {
                         }
 
                     }
-                } else if ("WAIT_BUYER_PAY".equals(response.getTradeStatus())) {
-                    runERR(tranObj, "ZFWAIT");
-                    return false;
-                } else {
-                    runERR(tranObj, "ZFILEG", response.getTradeStatus());
-                    return false;
                 }
+            } else if ("WAIT_BUYER_PAY".equals(response.getTradeStatus())) {
+                runERR(tranObj, "ZFWAIT");
+                return false;
+            } else {
+                runERR(tranObj, "ZFILEG", response.getTradeStatus());
+                return false;
+            }
 
         } else {
             if ("ACQ.SYSTEM_ERROR".equals(response.getSubCode())) {
