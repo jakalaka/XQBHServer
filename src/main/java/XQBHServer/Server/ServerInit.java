@@ -11,6 +11,7 @@ import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -47,6 +48,7 @@ public class ServerInit {
 
 
         InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
+
         Com.ERRMap = readAll(inputStream);
 
         try {

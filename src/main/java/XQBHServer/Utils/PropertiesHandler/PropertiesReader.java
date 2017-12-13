@@ -51,6 +51,7 @@ public class PropertiesReader {
         }
         Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
         while (enum1.hasMoreElements()) {
+
             String strKey = (String) enum1.nextElement();
             String strValue = pps.getProperty(strKey);
 //                Logger.log(tranObj,"LOG_DEBUG",strKey + "=" +strValue);

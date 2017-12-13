@@ -350,7 +350,6 @@ public class MyAlipayClient implements AlipayClient {
         }
 
         String rsp = null;
-
         try {
             if (request instanceof AlipayUploadRequest) {
                 AlipayUploadRequest<T> uRequest = (AlipayUploadRequest) request;

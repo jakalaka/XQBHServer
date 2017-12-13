@@ -1,5 +1,6 @@
 package XQBHServer.ServerTran;
 
+import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
 import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
 import XQBHServer.Utils.XML.XmlUtils;
@@ -7,6 +8,7 @@ import XQBHServer.Utils.log.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 /**
@@ -24,6 +26,7 @@ public class SystemTran {
         Logger.log(tranObj, "LOG_IO", "XMLIn=" + XMLIn);
 
 
+
         /*
         ¹«¹²¼ì²é
          */
@@ -34,6 +37,7 @@ public class SystemTran {
                 Tran.runERR(tranObj, "ERR001");
             return getOut(tranObj);
         }
+
 
         Class c = null;
         boolean callRe = false;
@@ -59,6 +63,7 @@ public class SystemTran {
             tranObj.sqlSession.rollback();
             Logger.log(tranObj, "LOG_ERR", "Call ERR");
         }
+
         return getOut(tranObj);
     }
 

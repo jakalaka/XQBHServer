@@ -48,7 +48,7 @@ public class AlipayQuery extends Tran {
         MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
         MDZSJ mdzsj = null;
         if (null != sYHTLS_ && !"".equals(sYHTLS_) && null != sYHTRQ_ && !"".equals(sYHTRQ_)) {
-            Logger.log(tranObj,"LOG_DEBUG","通过前台日期流水查询");
+            Logger.log(tranObj, "LOG_DEBUG", "通过前台日期流水查询");
 
             MDZSJKey mdzsjKey = new MDZSJKey();
             mdzsjKey.setFRDM_U("9999");
@@ -70,21 +70,20 @@ public class AlipayQuery extends Tran {
                 Tran.runERR(tranObj, "SQLSEL");
                 return false;
             }
-            sSFDDH_FINAL=mdzsj.getSFDDH_();
-        }else if (null != sSFDDH_ && !"".equals(sSFDDH_)){//通过三方订单号直接查询
-            Logger.log(tranObj,"LOG_DEBUG","通过三方订单查询");
-            sSFDDH_FINAL=sSFDDH_;
-        }else {
-            Logger.log(tranObj,"LOG_ERR","传入参数错误!");
+            sSFDDH_FINAL = mdzsj.getSFDDH_();
+        } else if (null != sSFDDH_ && !"".equals(sSFDDH_)) {//通过三方订单号直接查询
+            Logger.log(tranObj, "LOG_DEBUG", "通过三方订单查询");
+            sSFDDH_FINAL = sSFDDH_;
+        } else {
+            Logger.log(tranObj, "LOG_ERR", "传入参数错误!");
             runERR(tranObj, "ERRPIN");
             return false;
         }
 
-        AlipayClient alipayClient;
-        alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
         request.setBizContent("{" +
-                "\"out_trade_no\":\"" + sSFDDH_FINAL+ "\"," +
+                "\"out_trade_no\":\"" + sSFDDH_FINAL + "\"," +
                 "\"trade_no\":\"\"" +
                 "}");
 
@@ -93,8 +92,11 @@ public class AlipayQuery extends Tran {
             runERR(tranObj, "ZF0005");
             return false;
         }
+
+
+
         try {
-            response = alipayClient.execute(request);
+            response = Com.alipayClient.execute(request);
         } catch (AlipayApiException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             runERR(tranObj, "ZF0004");
@@ -123,6 +125,7 @@ public class AlipayQuery extends Tran {
                     }
                     tranObj.commitFlg = true;
                 }
+
                 runERR(tranObj, "ZF0008");
                 return false;
             } else if ("TRADE_SUCCESS".equals(response.getTradeStatus()) || "TRADE_FINISHED".equals(response.getTradeStatus())) {
@@ -162,33 +165,35 @@ public class AlipayQuery extends Tran {
             }
         }
 
+
         /*==================================codeEnd=====================================*/
         Logger.log(tranObj, "LOG_IO", Com.getOut);
+
         return true;
     }
 
-    public static void main(String[] args) {
-        if (false == ServerInit.Init()) {
-            Logger.sysLog("ServerInit Fail!!!");
-            return;
-        }
-        Map XMLMapIn = new HashMap();
-        Map head = new HashMap();
-        head.put("ZDBH_U", "SVR00001");
-        head.put("ZDJYM_", "SERVER");
-        head.put("HTJYM_", "AlipayQuery");
-        head.put("QTRQ_U", Com.getDate());
-        head.put("QTLS_U", Com.getSYSQTLS());
-        XMLMapIn.put("head", head);
-        Map body = new HashMap();
-        body.put("YHTLS_", "SZD0000010001006");
-        body.put("YHTRQ_", "20171210");
-        XMLMapIn.put("body", body);
-        String XMLIn = XmlUtils.map2XML(XMLMapIn);
-        SystemTran systemTran = new SystemTran();
-        String XMLOut = systemTran.SystemTran(XMLIn);
-        Map out = XmlUtils.XML2map(XMLOut);
-        System.out.println(((Map) out.get("head")).get("CWDM_U"));
-        System.out.println(((Map) out.get("head")).get("CWXX_U"));
-    }
+//    public static void main(String[] args) {
+//        if (false == ServerInit.Init()) {
+//            Logger.sysLog("ServerInit Fail!!!");
+//            return;
+//        }
+//        Map XMLMapIn = new HashMap();
+//        Map head = new HashMap();
+//        head.put("ZDBH_U", "SVR00001");
+//        head.put("ZDJYM_", "SERVER");
+//        head.put("HTJYM_", "AlipayQuery");
+//        head.put("QTRQ_U", Com.getDate());
+//        head.put("QTLS_U", Com.getSYSQTLS());
+//        XMLMapIn.put("head", head);
+//        Map body = new HashMap();
+//        body.put("YHTLS_", "SZD0000010001006");
+//        body.put("YHTRQ_", "20171210");
+//        XMLMapIn.put("body", body);
+//        String XMLIn = XmlUtils.map2XML(XMLMapIn);
+//        SystemTran systemTran = new SystemTran();
+//        String XMLOut = systemTran.SystemTran(XMLIn);
+//        Map out = XmlUtils.XML2map(XMLOut);
+////        Logger.log(tranObj, "LOG_DEBUG", ((Map) out.get("head")).get("CWDM_U"));
+////        Logger.log(tranObj, "LOG_DEBUG", ((Map) out.get("head")).get("CWXX_U"));
+//    }
 }
