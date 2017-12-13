@@ -7,8 +7,6 @@ import XQBHServer.Utils.RSA.RSASignature;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -16,9 +14,7 @@ import java.lang.reflect.Method;
 /**
  * Created by Administrator on 2017/7/2 0002.
  */
-@WebService()
 public class CommonTran {
-    @WebMethod
     public String Comtran(String XMLIn) {
 
         //ÑéÇ©Ãû
