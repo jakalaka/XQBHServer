@@ -6,19 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
+    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="~~">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Com.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Com.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/basic/DBAccess.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/basic/DBAccess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SystemTran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SystemTran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyAlipayClient.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyAlipayClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/PropertiesHandler/PropertiesReader.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/PropertiesHandler/PropertiesReader.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1207,7 +1196,7 @@
       <workItem from="1512877825975" duration="28280000" />
       <workItem from="1512987082723" duration="12838000" />
       <workItem from="1513071950313" duration="9243000" />
-      <workItem from="1513158177468" duration="11103000" />
+      <workItem from="1513158177468" duration="11316000" />
     </task>
     <task id="LOCAL-00001" summary="20170713">
       <created>1499937467304</created>
@@ -1517,11 +1506,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513010258431</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="~~">
+      <created>1513174741298</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1513174741298</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="400989000" />
+    <option name="totallyTimeSpent" value="401202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
