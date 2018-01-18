@@ -23,5 +23,7 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.40" level="project" />
     <orderEntry type="library" name="alipay-sdk-java20171027120314" level="project" />
     <orderEntry type="library" name="commons-logging-1.1.1" level="project" />
+    <orderEntry type="library" name="alipay-sdk-java20161213173952" level="project" />
+    <orderEntry type="library" name="api" level="project" />
   </component>
 </module>

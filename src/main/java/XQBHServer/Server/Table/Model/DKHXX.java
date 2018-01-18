@@ -27,9 +27,17 @@ public class DKHXX extends DKHXXKey {
 
     private String ZFBH_U;
 
+    private String KHMM_U;
+
     private String EMAIL_;
 
     private String BZXX_U;
+
+    private String IP_UUU;
+
+    private Date SCDLRQ;
+
+    private Date SCDLSJ;
 
     private Date CJRQ_U;
 
@@ -143,6 +151,14 @@ public class DKHXX extends DKHXXKey {
         this.ZFBH_U = ZFBH_U;
     }
 
+    public String getKHMM_U() {
+        return KHMM_U;
+    }
+
+    public void setKHMM_U(String KHMM_U) {
+        this.KHMM_U = KHMM_U;
+    }
+
     public String getEMAIL_() {
         return EMAIL_;
     }
@@ -157,6 +173,30 @@ public class DKHXX extends DKHXXKey {
 
     public void setBZXX_U(String BZXX_U) {
         this.BZXX_U = BZXX_U;
+    }
+
+    public String getIP_UUU() {
+        return IP_UUU;
+    }
+
+    public void setIP_UUU(String IP_UUU) {
+        this.IP_UUU = IP_UUU;
+    }
+
+    public Date getSCDLRQ() {
+        return SCDLRQ;
+    }
+
+    public void setSCDLRQ(Date SCDLRQ) {
+        this.SCDLRQ = SCDLRQ;
+    }
+
+    public Date getSCDLSJ() {
+        return SCDLSJ;
+    }
+
+    public void setSCDLSJ(Date SCDLSJ) {
+        this.SCDLSJ = SCDLSJ;
     }
 
     public Date getCJRQ_U() {

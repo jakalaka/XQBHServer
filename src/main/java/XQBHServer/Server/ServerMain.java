@@ -22,8 +22,7 @@ public class ServerMain {
             Logger.sysLog("ServerInit Fail!!!");
             return;
         }
-         String ip="172.18.38.19";
-//        String ip = "192.168.31.62";
+
         int port = 9000;
 //        try {
 //            ip= InetAddress.getLocalHost().getHostAddress();
@@ -63,7 +62,6 @@ public class ServerMain {
                 ServerSocket serverSocket = null;
                 try {
                     serverSocket = new ServerSocket(port);
-                    serverSocket.setSoTimeout(15000);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -74,11 +72,11 @@ public class ServerMain {
 
                         Socket finalSocket = socket;
                         new Thread(new Runnable() {
+
                             @Override
                             public void run() {
+
                                 try {
-
-
                                     //3、获取输入流，并读取客户端信息
                                     InputStream is = null;
                                     is = finalSocket.getInputStream();
@@ -90,12 +88,13 @@ public class ServerMain {
                                     while((info=br.readLine())!=null){
                                         stringBuilder.append(info);
                                     }
+                                    finalSocket.shutdownInput();//关闭输入流
+
                                     String XMLIn=stringBuilder.toString();
                                     CommonTran commonTran=new CommonTran();
                                     String XMLOut=commonTran.Comtran(XMLIn);
 
 
-                                    finalSocket.shutdownInput();//关闭输入流
 
                                     //4、获取输出流，响应客户端的请求
                                     OutputStream os = null;

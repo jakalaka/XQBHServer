@@ -17,9 +17,9 @@ import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 
 public class GetTranStatus {
     public static void main(String[] args) {
-        while(true) {
-            Logger.tmpLog(Com.getIn);
+        Logger.tmpLog(Com.getIn);
 
+        while ( true) {
             if (args.length != 1) {
                 Logger.tmpLog("参数不对");
                 Logger.tmpLog("out_tran_no");
@@ -58,7 +58,17 @@ public class GetTranStatus {
                 Logger.tmpLog(" SUCCESS!");
 
 
-            Logger.tmpLog(Com.getOut);
+            try {
+                Thread.sleep(6000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (false)
+                break;
+
         }
+        Logger.tmpLog(Com.getOut);
+
+
     }
 }

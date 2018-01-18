@@ -5,6 +5,7 @@ import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -16,7 +17,6 @@ public abstract class Tran {
 
     public boolean execDo(TranObj tranObj) {
         try {
-            tranObj.sqlSession = Com.dbAccess.getSqlSession();
 
             if (false == exec(tranObj)) {
                 if (null == tranObj.getHead("CWDM_U") || "".equals(tranObj.getHead("CWDM_U"))) {
@@ -44,7 +44,7 @@ public abstract class Tran {
         }
     }
 
-    public static void runERRFinal(TranObj tranObj, String CWDM_U, String CWXX_U) {
+    public static void runERRFinal(TranObj tranObj, String CWDM_U, String CWXX_U,String sCallSource) {
 
         if (null!=tranObj.getHead("CWDM_U")&&!"".equals(tranObj.getHead("CWDM_U")))
         {
@@ -60,25 +60,46 @@ public abstract class Tran {
         tranObj.setHead("CWXX_U", CWXX_U);
 //        if (null!=tranObj.sqlSession)
 //            tranObj.sqlSession.rollback();
+
+
+        Logger.log(tranObj, "LOG_ERR", "CALL ERR's place:"+sCallSource);
         Logger.log(tranObj, "LOG_ERR", "rollback  tranObj.CWDM_U=" + tranObj.getHead("CWDM_U") + "  tranObj.CWXX_U" + tranObj.getHead("CWXX_U"));
     }
 
     public static void runERR(TranObj tranObj, String CWDM_U) {
         String sCWXX_U = Com.ERRMap.get(CWDM_U);
-        runERRFinal(tranObj, CWDM_U, sCWXX_U);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]");
+        String sCallSource=builder.toString();
+
+        runERRFinal(tranObj, CWDM_U, sCWXX_U,sCallSource);
     }
 
     public static void runERR(TranObj tranObj, String CWDM_U, Object parms1) {
         String sCWXX_U = Com.ERRMap.get(CWDM_U);
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms1.toString());
-        runERRFinal(tranObj, CWDM_U, sCWXX_U);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]");
+        String sCallSource=builder.toString();
+
+        runERRFinal(tranObj, CWDM_U, sCWXX_U,sCallSource);
     }
 
     public static void runERR(TranObj tranObj, String CWDM_U, Object parms1, Object parms2) {
         String sCWXX_U = Com.ERRMap.get(CWDM_U);
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms1.toString());
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms2.toString());
-        runERRFinal(tranObj, CWDM_U, sCWXX_U);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]");
+        String sCallSource=builder.toString();
+
+        runERRFinal(tranObj, CWDM_U, sCWXX_U,sCallSource);
     }
 
     public static void runERR(TranObj tranObj, String CWDM_U, Object parms1, Object parms2, Object parms3) {
@@ -86,7 +107,15 @@ public abstract class Tran {
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms1.toString());
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms2.toString());
         sCWXX_U = sCWXX_U.replaceFirst("%s", parms3.toString());
-        runERRFinal(tranObj, CWDM_U, sCWXX_U);
+
+
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[").append(Thread.currentThread().getStackTrace()[2].getClassName()).append(".");
+        builder.append(Thread.currentThread().getStackTrace()[2].getMethodName()).append(":" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]");
+        String sCallSource=builder.toString();
+
+        runERRFinal(tranObj, CWDM_U, sCWXX_U,sCallSource);
     }
 
 

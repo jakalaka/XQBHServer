@@ -24,6 +24,18 @@ public class DSHXX extends DSHXXKey {
 
     private BigDecimal DQYE_U;
 
+    private String SHMM_U;
+
+    private String IP_UUU;
+
+    private Date SCDLRQ;
+
+    private Date SCDLSJ;
+
+    private Date SCJYRQ;
+
+    private Integer SCJYXH;
+
     private Date CJRQ_U;
 
     private Date CJSJ_U;
@@ -118,6 +130,54 @@ public class DSHXX extends DSHXXKey {
 
     public void setDQYE_U(BigDecimal DQYE_U) {
         this.DQYE_U = DQYE_U;
+    }
+
+    public String getSHMM_U() {
+        return SHMM_U;
+    }
+
+    public void setSHMM_U(String SHMM_U) {
+        this.SHMM_U = SHMM_U;
+    }
+
+    public String getIP_UUU() {
+        return IP_UUU;
+    }
+
+    public void setIP_UUU(String IP_UUU) {
+        this.IP_UUU = IP_UUU;
+    }
+
+    public Date getSCDLRQ() {
+        return SCDLRQ;
+    }
+
+    public void setSCDLRQ(Date SCDLRQ) {
+        this.SCDLRQ = SCDLRQ;
+    }
+
+    public Date getSCDLSJ() {
+        return SCDLSJ;
+    }
+
+    public void setSCDLSJ(Date SCDLSJ) {
+        this.SCDLSJ = SCDLSJ;
+    }
+
+    public Date getSCJYRQ() {
+        return SCJYRQ;
+    }
+
+    public void setSCJYRQ(Date SCJYRQ) {
+        this.SCJYRQ = SCJYRQ;
+    }
+
+    public Integer getSCJYXH() {
+        return SCJYXH;
+    }
+
+    public void setSCJYXH(Integer SCJYXH) {
+        this.SCJYXH = SCJYXH;
     }
 
     public Date getCJRQ_U() {

@@ -1108,6 +1108,76 @@ public class DKHXXExample {
             return (Criteria) this;
         }
 
+        public Criteria andKHMM_UIsNull() {
+            addCriterion("KHMM_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UIsNotNull() {
+            addCriterion("KHMM_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UEqualTo(String value) {
+            addCriterion("KHMM_U =", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotEqualTo(String value) {
+            addCriterion("KHMM_U <>", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UGreaterThan(String value) {
+            addCriterion("KHMM_U >", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UGreaterThanOrEqualTo(String value) {
+            addCriterion("KHMM_U >=", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULessThan(String value) {
+            addCriterion("KHMM_U <", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULessThanOrEqualTo(String value) {
+            addCriterion("KHMM_U <=", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULike(String value) {
+            addCriterion("KHMM_U like", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotLike(String value) {
+            addCriterion("KHMM_U not like", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UIn(List<String> values) {
+            addCriterion("KHMM_U in", values, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotIn(List<String> values) {
+            addCriterion("KHMM_U not in", values, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UBetween(String value1, String value2) {
+            addCriterion("KHMM_U between", value1, value2, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotBetween(String value1, String value2) {
+            addCriterion("KHMM_U not between", value1, value2, "KHMM_U");
+            return (Criteria) this;
+        }
+
         public Criteria andEMAIL_IsNull() {
             addCriterion("EMAIL_ is null");
             return (Criteria) this;
@@ -1245,6 +1315,196 @@ public class DKHXXExample {
 
         public Criteria andBZXX_UNotBetween(String value1, String value2) {
             addCriterion("BZXX_U not between", value1, value2, "BZXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUIsNull() {
+            addCriterion("IP_UUU is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUIsNotNull() {
+            addCriterion("IP_UUU is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUEqualTo(String value) {
+            addCriterion("IP_UUU =", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUNotEqualTo(String value) {
+            addCriterion("IP_UUU <>", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUGreaterThan(String value) {
+            addCriterion("IP_UUU >", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUGreaterThanOrEqualTo(String value) {
+            addCriterion("IP_UUU >=", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUULessThan(String value) {
+            addCriterion("IP_UUU <", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUULessThanOrEqualTo(String value) {
+            addCriterion("IP_UUU <=", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUULike(String value) {
+            addCriterion("IP_UUU like", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUNotLike(String value) {
+            addCriterion("IP_UUU not like", value, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUIn(List<String> values) {
+            addCriterion("IP_UUU in", values, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUNotIn(List<String> values) {
+            addCriterion("IP_UUU not in", values, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUBetween(String value1, String value2) {
+            addCriterion("IP_UUU between", value1, value2, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andIP_UUUNotBetween(String value1, String value2) {
+            addCriterion("IP_UUU not between", value1, value2, "IP_UUU");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQIsNull() {
+            addCriterion("SCDLRQ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQIsNotNull() {
+            addCriterion("SCDLRQ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQEqualTo(Date value) {
+            addCriterionForJDBCDate("SCDLRQ =", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQNotEqualTo(Date value) {
+            addCriterionForJDBCDate("SCDLRQ <>", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQGreaterThan(Date value) {
+            addCriterionForJDBCDate("SCDLRQ >", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCDLRQ >=", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQLessThan(Date value) {
+            addCriterionForJDBCDate("SCDLRQ <", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCDLRQ <=", value, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQIn(List<Date> values) {
+            addCriterionForJDBCDate("SCDLRQ in", values, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQNotIn(List<Date> values) {
+            addCriterionForJDBCDate("SCDLRQ not in", values, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCDLRQ between", value1, value2, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLRQNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCDLRQ not between", value1, value2, "SCDLRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJIsNull() {
+            addCriterion("SCDLSJ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJIsNotNull() {
+            addCriterion("SCDLSJ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJEqualTo(Date value) {
+            addCriterionForJDBCTime("SCDLSJ =", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJNotEqualTo(Date value) {
+            addCriterionForJDBCTime("SCDLSJ <>", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJGreaterThan(Date value) {
+            addCriterionForJDBCTime("SCDLSJ >", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("SCDLSJ >=", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJLessThan(Date value) {
+            addCriterionForJDBCTime("SCDLSJ <", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("SCDLSJ <=", value, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJIn(List<Date> values) {
+            addCriterionForJDBCTime("SCDLSJ in", values, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJNotIn(List<Date> values) {
+            addCriterionForJDBCTime("SCDLSJ not in", values, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("SCDLSJ between", value1, value2, "SCDLSJ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCDLSJNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("SCDLSJ not between", value1, value2, "SCDLSJ");
             return (Criteria) this;
         }
 

@@ -11,7 +11,6 @@ import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.internal.util.AlipayUtils;
 import com.alipay.api.internal.util.RequestParametersHolder;
 import com.alipay.api.internal.util.StringUtils;
-import com.alipay.api.internal.util.WebUtils;
 import com.alipay.api.internal.util.json.JSONWriter;
 
 import java.io.IOException;
@@ -122,7 +121,7 @@ public class MyAlipayClient implements AlipayClient {
             rsp.setBody(this.getRedirectUrl(requestHolder));
         } else {
             String baseUrl = this.getRequestUrl(requestHolder);
-            rsp.setBody(WebUtils.buildForm(baseUrl, requestHolder.getApplicationParams()));
+            rsp.setBody(MyWebUtils.buildForm(baseUrl, requestHolder.getApplicationParams()));
         }
 
         return (T) rsp;
@@ -268,8 +267,8 @@ public class MyAlipayClient implements AlipayClient {
         StringBuffer urlSb = new StringBuffer(this.serverUrl);
 
         try {
-            String sysMustQuery = WebUtils.buildQuery(requestHolder.getProtocalMustParams(), this.charset);
-            String sysOptQuery = WebUtils.buildQuery(requestHolder.getProtocalOptParams(), this.charset);
+            String sysMustQuery = MyWebUtils.buildQuery(requestHolder.getProtocalMustParams(), this.charset);
+            String sysOptQuery = MyWebUtils.buildQuery(requestHolder.getProtocalOptParams(), this.charset);
             urlSb.append("?");
             urlSb.append(sysMustQuery);
             if (sysOptQuery != null & sysOptQuery.length() > 0) {
@@ -288,7 +287,7 @@ public class MyAlipayClient implements AlipayClient {
 
         try {
             Map<String, String> sortedMap = AlipaySignature.getSortedMap(requestHolder);
-            String sortedQuery = WebUtils.buildQuery(sortedMap, this.charset);
+            String sortedQuery = MyWebUtils.buildQuery(sortedMap, this.charset);
             urlSb.append("?");
             urlSb.append(sortedQuery);
         } catch (IOException var5) {
@@ -303,7 +302,7 @@ public class MyAlipayClient implements AlipayClient {
 
         try {
             Map<String, String> sortedMap = AlipaySignature.getSortedMap(requestHolder);
-            String sortedQuery = WebUtils.buildQuery(sortedMap, this.charset);
+            String sortedQuery = MyWebUtils.buildQuery(sortedMap, this.charset);
             urlSb.append(sortedQuery);
         } catch (IOException var5) {
             throw new AlipayApiException(var5);
@@ -344,6 +343,7 @@ public class MyAlipayClient implements AlipayClient {
     private <T extends AlipayResponse> Map<String, Object> doPost(AlipayRequest<T> request, String accessToken, String appAuthToken) throws AlipayApiException {
         Map<String, Object> result = new HashMap();
         RequestParametersHolder requestHolder = this.getRequestHolderWithSign(request, accessToken, appAuthToken);
+
         String url = this.getRequestUrl(requestHolder);
         if (AlipayLogger.isBizDebugEnabled().booleanValue()) {
             AlipayLogger.logBizDebug(this.getRedirectUrl(requestHolder));
@@ -354,9 +354,10 @@ public class MyAlipayClient implements AlipayClient {
             if (request instanceof AlipayUploadRequest) {
                 AlipayUploadRequest<T> uRequest = (AlipayUploadRequest) request;
                 Map<String, FileItem> fileParams = AlipayUtils.cleanupMap(uRequest.getFileParams());
-                rsp = WebUtils.doPost(url, requestHolder.getApplicationParams(), fileParams, this.charset, this.connectTimeout, this.readTimeout);
+                rsp = MyWebUtils.doPost(url, requestHolder.getApplicationParams(), fileParams, this.charset, this.connectTimeout, this.readTimeout);
+
             } else {
-                rsp = WebUtils.doPost(url, requestHolder.getApplicationParams(), this.charset, this.connectTimeout, this.readTimeout);
+                rsp = MyWebUtils.doPost(url, requestHolder.getApplicationParams(), this.charset, this.connectTimeout, this.readTimeout);
             }
         } catch (IOException var10) {
             throw new AlipayApiException(var10);
@@ -367,6 +368,7 @@ public class MyAlipayClient implements AlipayClient {
         result.put("protocalMustParams", requestHolder.getProtocalMustParams());
         result.put("protocalOptParams", requestHolder.getProtocalOptParams());
         result.put("url", url);
+
         return result;
     }
 

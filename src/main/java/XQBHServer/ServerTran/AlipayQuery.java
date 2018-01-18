@@ -16,12 +16,15 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradeQueryResponse;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 
 /**
  * 查询支付宝交易状态
@@ -42,6 +45,7 @@ public class AlipayQuery extends Tran {
         Logger.log(tranObj, "LOG_IO", "sYHTRQ_=" + sYHTRQ_);
         Logger.log(tranObj, "LOG_IO", "sSFDDH_" + sSFDDH_);
         /*==================================codeBegin=====================================*/
+        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
         String sSFDDH_FINAL = "";
 
@@ -61,6 +65,7 @@ public class AlipayQuery extends Tran {
                 Tran.runERR(tranObj, "TIMEER");
                 return false;
             }
+
             mdzsjKey.setHTRQ_U(date);
             mdzsjKey.setHTLS_U(sYHTLS_);
             try {
@@ -96,7 +101,7 @@ public class AlipayQuery extends Tran {
 
 
         try {
-            response = Com.alipayClient.execute(request);
+            response =alipayClient.execute(request);
         } catch (AlipayApiException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             runERR(tranObj, "ZF0004");
@@ -164,6 +169,12 @@ public class AlipayQuery extends Tran {
                 return false;
             }
         }
+
+
+
+
+
+
 
 
         /*==================================codeEnd=====================================*/

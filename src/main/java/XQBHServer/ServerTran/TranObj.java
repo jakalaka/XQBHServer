@@ -1,6 +1,7 @@
 package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
+import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerAPI.GetLogInfo;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
@@ -40,9 +41,10 @@ public class TranObj {
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
         date = new Date();
+        DBAccess dbAccess=new DBAccess();
         try {
-            sqlSession = Com.dbAccess.getSqlSession();
-            sqlSession_BW = Com.dbAccess.getSqlSession();
+            sqlSession = dbAccess.getSqlSession();
+            sqlSession_BW = dbAccess.getSqlSession();
         } catch (IOException e) {
             Logger.sysLogException(e);
             return;

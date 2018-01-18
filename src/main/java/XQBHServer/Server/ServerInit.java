@@ -27,14 +27,14 @@ import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
  */
 public class ServerInit {
     public static boolean Init() {
-
+        DBAccess dbAccess=new DBAccess();
         SqlSession sqlSession;
         /*
         尝试连接数据库
          */
 
         try {
-            sqlSession = Com.dbAccess.getSqlSession();
+            sqlSession = dbAccess.getSqlSession();
 
             DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
             DZDXXKey dzdxxKey = new DZDXXKey();

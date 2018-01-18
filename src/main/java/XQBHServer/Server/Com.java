@@ -28,7 +28,7 @@ public class Com {
     public static Map<String, String> ERRMap;
 
     public static boolean cancelThreadBusy =false;
-    public static long cancelThreadLoopTime =0;
+    public static long cancelThreadLoopTime =1000;
     /**
      * 日志等级
      * SYS,ERR,IO,DEBUG
@@ -47,10 +47,7 @@ public class Com {
      * 临时用于压力测试记录笔数
      */
     public static long tmpCount = 0;
-    /**
-     * 数据库DBAccess
-     */
-    public static DBAccess dbAccess = new DBAccess();
+
 
 
     /**

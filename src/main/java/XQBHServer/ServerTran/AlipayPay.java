@@ -55,6 +55,11 @@ public class AlipayPay extends Tran {
         Logger.log(tranObj, "LOG_IO", "sSPMC_U=" + sSPMC_U);
         Logger.log(tranObj, "LOG_IO", "bJYJE_U=" + bJYJE_U);
         /*==================================codeBegin=====================================*/
+        //终端号为空则取商户号，说明是在商户控制端做的交易
+        if(sZDBH_U==null||"".equals(sZDBH_U))
+            sZDBH_U=sSHBH_U;
+
+
         String rqTmp = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date dQTRQ_U = null;
@@ -90,13 +95,13 @@ public class AlipayPay extends Tran {
         String sZFBLS_ = tranObj.getHead("HTRQ_U") + tranObj.getHead("HTLS_U");
 
         //==============================查询商户信息合法性=========================
-        DSHXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
+        DSHXXMapper dshxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
         DSHXXKey dshxxKey = new DSHXXKey();
         dshxxKey.setSHBH_U(sSHBH_U);
         dshxxKey.setFRDM_U("9999");
         DSHXX dshxx = null;
         try {
-            dshxx = dzdxxMapper.selectByPrimaryKey(dshxxKey);
+            dshxx = dshxxMapper.selectByPrimaryKey(dshxxKey);
         } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLSEL");

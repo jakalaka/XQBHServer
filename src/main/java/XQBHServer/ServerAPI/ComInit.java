@@ -36,7 +36,6 @@ public class ComInit {
 
         try {
             if (true!= JCZDHFX.exec(tranObj)) {
-                Tran.runERR(tranObj,"ERR002");
                 return false;
             }
         } catch (IOException e) {
