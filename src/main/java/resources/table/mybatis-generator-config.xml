@@ -53,7 +53,7 @@
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="CZDSX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CZDSX">
+               enableUpdateByExample="true" domainObjectName="CZDSX" >
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="CXTCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
@@ -81,7 +81,7 @@
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="MDZSJ" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="MDZSJ">
+               enableUpdateByExample="true" domainObjectName="MDZSJ" >
             <property name="useActualColumnNames" value="true"/>
         </table>
 

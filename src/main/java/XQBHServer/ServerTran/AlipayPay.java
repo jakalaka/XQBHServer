@@ -152,7 +152,7 @@ public class AlipayPay extends Tran {
         mdzsj.setSHBH_U(sSHBH_U);
         mdzsj.setZDBH_U(sZDBH_U);
         mdzsj.setZFZHLX(sZFZHLX);
-        mdzsj.setSFDDH_(sZFBLS_);
+        mdzsj.setSFDH_U(sZFBLS_);
         mdzsj.setSFLS_U(null);//交易成功后更新
         mdzsj.setSFRQ_U(null);//交易成功后更新
         mdzsj.setFKRID_(null);//交易成功后更新
@@ -161,6 +161,8 @@ public class AlipayPay extends Tran {
         mdzsj.setQTLS_U(tranObj.getHead("QTLS_U"));
         mdzsj.setQTJYM_(tranObj.getHead("QTJYM_"));
         mdzsj.setJYZT_U("u");
+        mdzsj.setSPXX_U(sSPMC_U);
+        mdzsj.setFKM_UU(sQRCODE);
         mdzsj.setJLZT_U("0");
         try {
             mdzsjMapper.insert(mdzsj);
@@ -320,7 +322,9 @@ public class AlipayPay extends Tran {
         mdzsj.setSFRQ_U(response.getGmtPayment());
         mdzsj.setFKRID_(response.getBuyerUserId());
         mdzsj.setFKRZH_(response.getBuyerLogonId());
+
         mdzsj.setJYZT_U("1");
+
 
         try {
             mdzsjMapper.updateByPrimaryKey(mdzsj);

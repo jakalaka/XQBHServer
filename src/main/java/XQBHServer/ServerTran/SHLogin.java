@@ -8,6 +8,8 @@ import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Utils.log.Logger;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/7/4 0004.
  */
@@ -67,6 +69,28 @@ public class SHLogin extends Tran {
             Tran.runERR(tranObj, "SQLUPD");
             return false;
         }
+
+        //返回所有终端的列表
+        DZDXXExample dzdxxExample=new DZDXXExample();
+        dzdxxExample.or().andFRDM_UEqualTo("9999").andJLZT_UEqualTo("0").andSHBH_UEqualTo(dshxx.getSHBH_U());
+        DZDXXMapper dzdxxMapper=tranObj.sqlSession.getMapper(DZDXXMapper.class);
+        List<DZDXX> listDZDXX;
+        try {
+            listDZDXX = dzdxxMapper.selectByExample(dzdxxExample);
+        }catch (Exception e)
+        {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            Tran.runERR(tranObj, "SQLSEL");
+            return false;
+        }
+
+        String sZDXX_U="";
+        for (DZDXX dzdxx :
+                listDZDXX) {
+            sZDXX_U=sZDXX_U+dzdxx.getZDBH_U()+"|";
+        }
+
+        tranObj.TranMap.put("ZDXX_U", sZDXX_U);
 
         tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;

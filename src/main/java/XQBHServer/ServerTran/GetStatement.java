@@ -10,12 +10,12 @@ public class GetStatement extends Tran {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
         String sYHTLS_ = tranObj.getString("YHTLS_");
         String sYHTRQ_ = tranObj.getString("YHTRQ_");
-        String sSFDDH_ = tranObj.getString("SFDDH_");
+        String sSFDH_U = tranObj.getString("SFDH_U");
 
 
         Logger.log(tranObj, "LOG_IO", "sYHTLS_=" + sYHTLS_);
         Logger.log(tranObj, "LOG_IO", "sYHTRQ_=" + sYHTRQ_);
-        Logger.log(tranObj, "LOG_IO", "sSFDDH_" + sSFDDH_);
+        Logger.log(tranObj, "LOG_IO", "sSFDH_U" + sSFDH_U);
         /*==================================codeBegin=====================================*/
 
 

@@ -38,16 +38,16 @@ public class AlipayQuery extends Tran {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
         String sYHTLS_ = tranObj.getString("YHTLS_");
         String sYHTRQ_ = tranObj.getString("YHTRQ_");
-        String sSFDDH_ = tranObj.getString("SFDDH_");
+        String sSFDH_U = tranObj.getString("SFDH_U");
 
 
         Logger.log(tranObj, "LOG_IO", "sYHTLS_=" + sYHTLS_);
         Logger.log(tranObj, "LOG_IO", "sYHTRQ_=" + sYHTRQ_);
-        Logger.log(tranObj, "LOG_IO", "sSFDDH_" + sSFDDH_);
+        Logger.log(tranObj, "LOG_IO", "sSFDH_U" + sSFDH_U);
         /*==================================codeBegin=====================================*/
         AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
-        String sSFDDH_FINAL = "";
+        String sSFDH_UFINAL = "";
 
         MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
         MDZSJ mdzsj = null;
@@ -75,10 +75,10 @@ public class AlipayQuery extends Tran {
                 Tran.runERR(tranObj, "SQLSEL");
                 return false;
             }
-            sSFDDH_FINAL = mdzsj.getSFDDH_();
-        } else if (null != sSFDDH_ && !"".equals(sSFDDH_)) {//通过三方订单号直接查询
+            sSFDH_UFINAL = mdzsj.getSFDH_U();
+        } else if (null != sSFDH_U && !"".equals(sSFDH_U)) {//通过三方订单号直接查询
             Logger.log(tranObj, "LOG_DEBUG", "通过三方订单查询");
-            sSFDDH_FINAL = sSFDDH_;
+            sSFDH_UFINAL = sSFDH_U;
         } else {
             Logger.log(tranObj, "LOG_ERR", "传入参数错误!");
             runERR(tranObj, "ERRPIN");
@@ -88,7 +88,7 @@ public class AlipayQuery extends Tran {
 
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
         request.setBizContent("{" +
-                "\"out_trade_no\":\"" + sSFDDH_FINAL + "\"," +
+                "\"out_trade_no\":\"" + sSFDH_UFINAL + "\"," +
                 "\"trade_no\":\"\"" +
                 "}");
 

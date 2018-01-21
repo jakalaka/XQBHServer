@@ -829,73 +829,73 @@ public class MDZSJExample {
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_IsNull() {
-            addCriterion("SFDDH_ is null");
+        public Criteria andSFDH_UIsNull() {
+            addCriterion("SFDH_U is null");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_IsNotNull() {
-            addCriterion("SFDDH_ is not null");
+        public Criteria andSFDH_UIsNotNull() {
+            addCriterion("SFDH_U is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_EqualTo(String value) {
-            addCriterion("SFDDH_ =", value, "SFDDH_");
+        public Criteria andSFDH_UEqualTo(String value) {
+            addCriterion("SFDH_U =", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_NotEqualTo(String value) {
-            addCriterion("SFDDH_ <>", value, "SFDDH_");
+        public Criteria andSFDH_UNotEqualTo(String value) {
+            addCriterion("SFDH_U <>", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_GreaterThan(String value) {
-            addCriterion("SFDDH_ >", value, "SFDDH_");
+        public Criteria andSFDH_UGreaterThan(String value) {
+            addCriterion("SFDH_U >", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_GreaterThanOrEqualTo(String value) {
-            addCriterion("SFDDH_ >=", value, "SFDDH_");
+        public Criteria andSFDH_UGreaterThanOrEqualTo(String value) {
+            addCriterion("SFDH_U >=", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_LessThan(String value) {
-            addCriterion("SFDDH_ <", value, "SFDDH_");
+        public Criteria andSFDH_ULessThan(String value) {
+            addCriterion("SFDH_U <", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_LessThanOrEqualTo(String value) {
-            addCriterion("SFDDH_ <=", value, "SFDDH_");
+        public Criteria andSFDH_ULessThanOrEqualTo(String value) {
+            addCriterion("SFDH_U <=", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_Like(String value) {
-            addCriterion("SFDDH_ like", value, "SFDDH_");
+        public Criteria andSFDH_ULike(String value) {
+            addCriterion("SFDH_U like", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_NotLike(String value) {
-            addCriterion("SFDDH_ not like", value, "SFDDH_");
+        public Criteria andSFDH_UNotLike(String value) {
+            addCriterion("SFDH_U not like", value, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_In(List<String> values) {
-            addCriterion("SFDDH_ in", values, "SFDDH_");
+        public Criteria andSFDH_UIn(List<String> values) {
+            addCriterion("SFDH_U in", values, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_NotIn(List<String> values) {
-            addCriterion("SFDDH_ not in", values, "SFDDH_");
+        public Criteria andSFDH_UNotIn(List<String> values) {
+            addCriterion("SFDH_U not in", values, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_Between(String value1, String value2) {
-            addCriterion("SFDDH_ between", value1, value2, "SFDDH_");
+        public Criteria andSFDH_UBetween(String value1, String value2) {
+            addCriterion("SFDH_U between", value1, value2, "SFDH_U");
             return (Criteria) this;
         }
 
-        public Criteria andSFDDH_NotBetween(String value1, String value2) {
-            addCriterion("SFDDH_ not between", value1, value2, "SFDDH_");
+        public Criteria andSFDH_UNotBetween(String value1, String value2) {
+            addCriterion("SFDH_U not between", value1, value2, "SFDH_U");
             return (Criteria) this;
         }
 
@@ -1436,6 +1436,146 @@ public class MDZSJExample {
 
         public Criteria andJYZT_UNotBetween(String value1, String value2) {
             addCriterion("JYZT_U not between", value1, value2, "JYZT_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UIsNull() {
+            addCriterion("SPXX_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UIsNotNull() {
+            addCriterion("SPXX_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UEqualTo(String value) {
+            addCriterion("SPXX_U =", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UNotEqualTo(String value) {
+            addCriterion("SPXX_U <>", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UGreaterThan(String value) {
+            addCriterion("SPXX_U >", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UGreaterThanOrEqualTo(String value) {
+            addCriterion("SPXX_U >=", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_ULessThan(String value) {
+            addCriterion("SPXX_U <", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_ULessThanOrEqualTo(String value) {
+            addCriterion("SPXX_U <=", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_ULike(String value) {
+            addCriterion("SPXX_U like", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UNotLike(String value) {
+            addCriterion("SPXX_U not like", value, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UIn(List<String> values) {
+            addCriterion("SPXX_U in", values, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UNotIn(List<String> values) {
+            addCriterion("SPXX_U not in", values, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UBetween(String value1, String value2) {
+            addCriterion("SPXX_U between", value1, value2, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andSPXX_UNotBetween(String value1, String value2) {
+            addCriterion("SPXX_U not between", value1, value2, "SPXX_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUIsNull() {
+            addCriterion("FKM_UU is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUIsNotNull() {
+            addCriterion("FKM_UU is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUEqualTo(String value) {
+            addCriterion("FKM_UU =", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUNotEqualTo(String value) {
+            addCriterion("FKM_UU <>", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUGreaterThan(String value) {
+            addCriterion("FKM_UU >", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUGreaterThanOrEqualTo(String value) {
+            addCriterion("FKM_UU >=", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UULessThan(String value) {
+            addCriterion("FKM_UU <", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UULessThanOrEqualTo(String value) {
+            addCriterion("FKM_UU <=", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UULike(String value) {
+            addCriterion("FKM_UU like", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUNotLike(String value) {
+            addCriterion("FKM_UU not like", value, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUIn(List<String> values) {
+            addCriterion("FKM_UU in", values, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUNotIn(List<String> values) {
+            addCriterion("FKM_UU not in", values, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUBetween(String value1, String value2) {
+            addCriterion("FKM_UU between", value1, value2, "FKM_UU");
+            return (Criteria) this;
+        }
+
+        public Criteria andFKM_UUNotBetween(String value1, String value2) {
+            addCriterion("FKM_UU not between", value1, value2, "FKM_UU");
             return (Criteria) this;
         }
 

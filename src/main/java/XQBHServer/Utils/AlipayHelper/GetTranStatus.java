@@ -33,7 +33,7 @@ public class GetTranStatus {
             Map XMLMapIn = new HashMap();
             Map head = new HashMap();
             Map body = new HashMap();
-            body.put("SFDDH_", args[0]);
+            body.put("SFDH_U", args[0]);
 
 
             head.put("ZDBH_U", "SVR00001");

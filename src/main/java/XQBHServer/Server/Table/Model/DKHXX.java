@@ -27,9 +27,11 @@ public class DKHXX extends DKHXXKey {
 
     private String ZFBH_U;
 
-    private String KHMM_U;
-
     private String EMAIL_;
+
+    private String KHDLZH;
+
+    private String KHMM_U;
 
     private String BZXX_U;
 
@@ -151,20 +153,28 @@ public class DKHXX extends DKHXXKey {
         this.ZFBH_U = ZFBH_U;
     }
 
-    public String getKHMM_U() {
-        return KHMM_U;
-    }
-
-    public void setKHMM_U(String KHMM_U) {
-        this.KHMM_U = KHMM_U;
-    }
-
     public String getEMAIL_() {
         return EMAIL_;
     }
 
     public void setEMAIL_(String EMAIL_) {
         this.EMAIL_ = EMAIL_;
+    }
+
+    public String getKHDLZH() {
+        return KHDLZH;
+    }
+
+    public void setKHDLZH(String KHDLZH) {
+        this.KHDLZH = KHDLZH;
+    }
+
+    public String getKHMM_U() {
+        return KHMM_U;
+    }
+
+    public void setKHMM_U(String KHMM_U) {
+        this.KHMM_U = KHMM_U;
     }
 
     public String getBZXX_U() {

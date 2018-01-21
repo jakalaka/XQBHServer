@@ -18,7 +18,7 @@ public class MDZSJ extends MDZSJKey {
 
     private String ZFZHLX;
 
-    private String SFDDH_;
+    private String SFDH_U;
 
     private String SFLS_U;
 
@@ -35,6 +35,10 @@ public class MDZSJ extends MDZSJKey {
     private String QTJYM_;
 
     private String JYZT_U;
+
+    private String SPXX_U;
+
+    private String FKM_UU;
 
     private Date WHRQ_U;
 
@@ -102,12 +106,12 @@ public class MDZSJ extends MDZSJKey {
         this.ZFZHLX = ZFZHLX;
     }
 
-    public String getSFDDH_() {
-        return SFDDH_;
+    public String getSFDH_U() {
+        return SFDH_U;
     }
 
-    public void setSFDDH_(String SFDDH_) {
-        this.SFDDH_ = SFDDH_;
+    public void setSFDH_U(String SFDH_U) {
+        this.SFDH_U = SFDH_U;
     }
 
     public String getSFLS_U() {
@@ -172,6 +176,22 @@ public class MDZSJ extends MDZSJKey {
 
     public void setJYZT_U(String JYZT_U) {
         this.JYZT_U = JYZT_U;
+    }
+
+    public String getSPXX_U() {
+        return SPXX_U;
+    }
+
+    public void setSPXX_U(String SPXX_U) {
+        this.SPXX_U = SPXX_U;
+    }
+
+    public String getFKM_UU() {
+        return FKM_UU;
+    }
+
+    public void setFKM_UU(String FKM_UU) {
+        this.FKM_UU = FKM_UU;
     }
 
     public Date getWHRQ_U() {

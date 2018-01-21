@@ -81,7 +81,7 @@ public class AlipayCancel extends Tran {
 
 
             cancelRequest.setBizContent("{" +
-                    "\"out_trade_no\":\"" + mdzsjList.get(i).getSFDDH_() + "\"," +
+                    "\"out_trade_no\":\"" + mdzsjList.get(i).getSFDH_U() + "\"," +
                     "\"trade_no\":\"\"" +
                     "  }");
 

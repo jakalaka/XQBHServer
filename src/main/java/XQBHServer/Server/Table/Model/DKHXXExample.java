@@ -1108,76 +1108,6 @@ public class DKHXXExample {
             return (Criteria) this;
         }
 
-        public Criteria andKHMM_UIsNull() {
-            addCriterion("KHMM_U is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UIsNotNull() {
-            addCriterion("KHMM_U is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UEqualTo(String value) {
-            addCriterion("KHMM_U =", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UNotEqualTo(String value) {
-            addCriterion("KHMM_U <>", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UGreaterThan(String value) {
-            addCriterion("KHMM_U >", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UGreaterThanOrEqualTo(String value) {
-            addCriterion("KHMM_U >=", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_ULessThan(String value) {
-            addCriterion("KHMM_U <", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_ULessThanOrEqualTo(String value) {
-            addCriterion("KHMM_U <=", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_ULike(String value) {
-            addCriterion("KHMM_U like", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UNotLike(String value) {
-            addCriterion("KHMM_U not like", value, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UIn(List<String> values) {
-            addCriterion("KHMM_U in", values, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UNotIn(List<String> values) {
-            addCriterion("KHMM_U not in", values, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UBetween(String value1, String value2) {
-            addCriterion("KHMM_U between", value1, value2, "KHMM_U");
-            return (Criteria) this;
-        }
-
-        public Criteria andKHMM_UNotBetween(String value1, String value2) {
-            addCriterion("KHMM_U not between", value1, value2, "KHMM_U");
-            return (Criteria) this;
-        }
-
         public Criteria andEMAIL_IsNull() {
             addCriterion("EMAIL_ is null");
             return (Criteria) this;
@@ -1245,6 +1175,146 @@ public class DKHXXExample {
 
         public Criteria andEMAIL_NotBetween(String value1, String value2) {
             addCriterion("EMAIL_ not between", value1, value2, "EMAIL_");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHIsNull() {
+            addCriterion("KHDLZH is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHIsNotNull() {
+            addCriterion("KHDLZH is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHEqualTo(String value) {
+            addCriterion("KHDLZH =", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHNotEqualTo(String value) {
+            addCriterion("KHDLZH <>", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHGreaterThan(String value) {
+            addCriterion("KHDLZH >", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHGreaterThanOrEqualTo(String value) {
+            addCriterion("KHDLZH >=", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHLessThan(String value) {
+            addCriterion("KHDLZH <", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHLessThanOrEqualTo(String value) {
+            addCriterion("KHDLZH <=", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHLike(String value) {
+            addCriterion("KHDLZH like", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHNotLike(String value) {
+            addCriterion("KHDLZH not like", value, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHIn(List<String> values) {
+            addCriterion("KHDLZH in", values, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHNotIn(List<String> values) {
+            addCriterion("KHDLZH not in", values, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHBetween(String value1, String value2) {
+            addCriterion("KHDLZH between", value1, value2, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHDLZHNotBetween(String value1, String value2) {
+            addCriterion("KHDLZH not between", value1, value2, "KHDLZH");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UIsNull() {
+            addCriterion("KHMM_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UIsNotNull() {
+            addCriterion("KHMM_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UEqualTo(String value) {
+            addCriterion("KHMM_U =", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotEqualTo(String value) {
+            addCriterion("KHMM_U <>", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UGreaterThan(String value) {
+            addCriterion("KHMM_U >", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UGreaterThanOrEqualTo(String value) {
+            addCriterion("KHMM_U >=", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULessThan(String value) {
+            addCriterion("KHMM_U <", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULessThanOrEqualTo(String value) {
+            addCriterion("KHMM_U <=", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_ULike(String value) {
+            addCriterion("KHMM_U like", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotLike(String value) {
+            addCriterion("KHMM_U not like", value, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UIn(List<String> values) {
+            addCriterion("KHMM_U in", values, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotIn(List<String> values) {
+            addCriterion("KHMM_U not in", values, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UBetween(String value1, String value2) {
+            addCriterion("KHMM_U between", value1, value2, "KHMM_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHMM_UNotBetween(String value1, String value2) {
+            addCriterion("KHMM_U not between", value1, value2, "KHMM_U");
             return (Criteria) this;
         }
 
