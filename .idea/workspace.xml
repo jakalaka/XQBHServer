@@ -6,73 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="newpull">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSingleQuery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/Data/DataUtils.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CCPSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CSHSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CXTCSMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/CZDSXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DKHXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DSHXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DSHZHMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/DZDXXMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MDZSJMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Mapper/MJYBWMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CCPSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CSHSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCS.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CXTCSKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/CZDSXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DKHXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHZH.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHZHExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DSHZHKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXX.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/DZDXXKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJ.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBW.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWExample.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MJYBWKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CXTCSMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DSHZHMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MDZSJMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MJYBWMapper.xml" afterPath="" />
+    <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/JCZDHFX.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/JCZDHFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayCancel.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayCancel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayPay.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayPay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/GetStatement.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/GetStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml" afterPath="$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mybatis-generator-config.xml" afterPath="$PROJECT_DIR$/src/main/java/resources/table/mybatis-generator-config.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -90,54 +31,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ControllerStatementQuery.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java">
+      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="154" column="46" lean-forward="false" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+            <state relative-caret-position="182">
+              <caret line="163" column="8" lean-forward="false" selection-start-line="163" selection-start-column="8" selection-end-line="165" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mybatis-generator-config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/mybatis-generator-config.xml">
+      <file leaf-file-name="SHLogin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="40" />
+            <state relative-caret-position="-8">
+              <caret line="86" column="16" lean-forward="false" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Configuration.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml">
+      <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MDZSJExample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding>
-                <element signature="e#453#454#0" expanded="true" />
-                <element signature="e#503#504#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tran.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="68" column="23" lean-forward="false" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+            <state relative-caret-position="1159">
+              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,27 +65,27 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
-              <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="94" selection-end-column="9" />
+              <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="102" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerSingleQuery.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSingleQuery.java">
+      <file leaf-file-name="XmlUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="84" column="9" lean-forward="false" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+            <state relative-caret-position="171">
+              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="errmsg.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/errmsg.properties">
+      <file leaf-file-name="JSON.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.40/fastjson-1.2.40.jar!/com/alibaba/fastjson/JSON.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="44" column="6" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="6" />
+            <state relative-caret-position="6688">
+              <caret line="402" column="25" lean-forward="false" selection-start-line="402" selection-start-column="25" selection-end-line="402" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -185,10 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dkhxx</find>
-      <find>ERR002</find>
-      <find>sSHMM_U</find>
-      <find>zdxx</find>
       <find>zdbh</find>
       <find>LOG004</find>
       <find>校验码</find>
@@ -196,7 +110,6 @@
       <find>settings</find>
       <find>SQL</find>
       <find>examp</find>
-      <find>JYZT_U</find>
       <find>configuration</find>
       <find>shbh</find>
       <find>KHBH_U</find>
@@ -215,6 +128,11 @@
       <find>format</find>
       <find>起始</find>
       <find>date</find>
+      <find>new URL</find>
+      <find>JYZT_U</find>
+      <find>khxx</find>
+      <find>json</find>
+      <find>SHLIST</find>
     </findStrings>
     <replaceStrings>
       <replace>CXTCS</replace>
@@ -234,6 +152,7 @@
       <dir>E:\Github\XQBHServer</dir>
       <dir>F:\Github\XQBHServer\src</dir>
       <dir>E:\Github\XQBHServer\src</dir>
+      <dir>E:\Github\XQBHServer\src\main\java\XQBHServer\Utils\AlipayHelper</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -255,18 +174,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/alipay-sdk-java20171027120314.jar!/com/alipay/api/DefaultAlipayClient.class" />
-        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Test/dateTest_.java" />
-        <option value="$PROJECT_DIR$/Log/2017/12/11/Timer_0.log" />
-        <option value="$PROJECT_DIR$/Log/2017/12/12/Timer_0.log" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SystemTran.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/PropertiesHandler/PropertiesReader.java" />
         <option value="$PROJECT_DIR$/lib/alipay-sdk-java20171027120314.jar!/com/alipay/api/internal/util/WebUtils.class" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/basic/DBAccess.java" />
         <option value="$PROJECT_DIR$/Log/2017/12/13/AlipayQuery/AlipayQuery_1.log" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQueryLooptest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/TranObj.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Test/testdopost.java" />
         <option value="$PROJECT_DIR$/Log/2017/12/15/AlipayQuery/AlipayQuery_1.log" />
@@ -300,12 +213,18 @@
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/Data/DataUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSinglequery.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSingleQuery.java" />
         <option value="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml" />
         <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java" />
+        <option value="$PROJECT_DIR$/Log/2018/1/23/ControllerStatementQuery/ControllerStatementQuery_1.log" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Test/testModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml" />
+        <option value="$PROJECT_DIR$/Log/2018/1/27/KHLogin/KHLogin_1.log" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java" />
       </list>
     </option>
   </component>
@@ -399,6 +318,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -495,6 +415,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
+              <item name="Test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
               <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -505,7 +434,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="XQBHServer" type="462c0819:PsiDirectoryNode" />
               <item name="Utils" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="ClientConecter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="XQBHServer" type="b2602c69:ProjectViewProjectNode" />
@@ -540,7 +469,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -598,7 +526,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ServerMain (1)">
+  <component name="RunManager" selected="Application.Connector">
     <configuration name="AlipayCancel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1161,11 +1089,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.test" />
-        <item index="1" class="java.lang.String" itemvalue="Application.dateTest_" />
-        <item index="2" class="java.lang.String" itemvalue="Application.AlipayQuery" />
-        <item index="3" class="java.lang.String" itemvalue="Application.AlipayCancel" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Connector" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Connector" />
+        <item index="1" class="java.lang.String" itemvalue="Application.test" />
+        <item index="2" class="java.lang.String" itemvalue="Application.dateTest_" />
+        <item index="3" class="java.lang.String" itemvalue="Application.AlipayQuery" />
+        <item index="4" class="java.lang.String" itemvalue="Application.AlipayCancel" />
       </list>
     </recent_temporary>
   </component>
@@ -1249,14 +1177,15 @@
       <workItem from="1516113575610" duration="3334000" />
       <workItem from="1516185170932" duration="6006000" />
       <workItem from="1516271147631" duration="12127000" />
-      <workItem from="1516354620815" duration="38636000" />
-    </task>
-    <task id="LOCAL-00001" summary="20170713">
-      <created>1499937467304</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1499937467304</updated>
+      <workItem from="1516354620815" duration="38686000" />
+      <workItem from="1516627001809" duration="2647000" />
+      <workItem from="1516701617927" duration="4284000" />
+      <workItem from="1516885159747" duration="1328000" />
+      <workItem from="1516970719872" duration="1807000" />
+      <workItem from="1517037491614" duration="4264000" />
+      <workItem from="1517065480295" duration="60000" />
+      <workItem from="1517065593429" duration="65000" />
+      <workItem from="1517065783070" duration="6885000" />
     </task>
     <task id="LOCAL-00002" summary="20170713">
       <created>1499937605696</created>
@@ -1594,11 +1523,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516292678633</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="newpull">
+      <created>1516552406867</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1516552406867</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521758000" />
+    <option name="totallyTimeSpent" value="543148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -1616,9 +1552,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36819485" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35579515" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1637,6 +1572,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35579515" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1679,60 +1615,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Program Files (x86)/Java/jdk1.8.0_131/src.zip!/java/net/HttpURLConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="569" column="25" lean-forward="false" selection-start-line="569" selection-start-column="25" selection-end-line="569" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Log/2017/12/17/AlipayQuery/AlipayQuery_1.log" />
-    <entry file="jar://D:/Program Files (x86)/Java/jdk1.8.0_131/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17955">
-          <caret line="991" column="23" lean-forward="false" selection-start-line="991" selection-start-column="23" selection-end-line="991" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWAfterTran.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyAlipayClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/alipay-sdk-java20171027120314.jar!/com/alipay/api/internal/util/AlipayLogger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/com/alipay/demo/trade/com/alipay/demo/trade/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/com/alipay/demo/trade/model/hb/Type.java" />
     <entry file="jar://$PROJECT_DIR$/lib/alipay-sdk-java20161213173952-source.jar!/com/alipay/api/com/alipay/api/internal/util/AlipayLogger.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/com/alipay/demo/trade/config/Configs.java" />
@@ -1746,29 +1628,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Log/2018/1/16/AlipayPay/AlipayPay_1.log" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyWebUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="77" column="13" lean-forward="false" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SystemTran.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1784,7 +1648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1792,7 +1655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1800,7 +1662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1809,18 +1670,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="41" column="29" lean-forward="false" selection-start-line="35" selection-start-column="7" selection-end-line="41" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log/2018/1/19/KHLogin/KHLogin_1.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="200" column="128" lean-forward="false" selection-start-line="200" selection-start-column="128" selection-end-line="200" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/19/KHLogin/KHLogin_1.log" />
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerAPI/InsertMJYBWBeforeDSF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1829,14 +1682,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log/2018/1/20/AlipayPay/AlipayPay_1.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/20/AlipayPay/AlipayPay_1.log" />
     <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/mapper/MDZSJMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="916">
@@ -1845,27 +1691,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/log4j.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1873,7 +1703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1881,7 +1710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1889,18 +1717,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
           <caret line="142" column="59" lean-forward="false" selection-start-line="142" selection-start-column="59" selection-end-line="142" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log/2018/1/20/ControllerSinglequery/ControllerSinglequery_1.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="900" column="95" lean-forward="false" selection-start-line="900" selection-start-column="95" selection-end-line="900" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/20/ControllerSinglequery/ControllerSinglequery_1.log" />
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayPay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -1913,7 +1733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2348">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1921,7 +1740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1253">
           <caret line="51" column="12" lean-forward="false" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1929,47 +1747,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="72" column="8" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="92" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSingleQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="84" column="9" lean-forward="false" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="94" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/errmsg.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="44" column="6" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/Tran.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
+        <state relative-caret-position="1178">
           <caret line="68" column="23" lean-forward="false" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
           <folding />
         </state>
@@ -1979,41 +1762,146 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#453#454#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml">
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/21/ControllerStatementQuery/ControllerStatementQuery_1.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+        <state relative-caret-position="2698">
+          <caret line="154" column="46" lean-forward="false" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Test/MyWebUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/CommonTran.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="67" column="42" lean-forward="false" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/mybatis-generator-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="342">
           <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log/2018/1/21/ControllerStatementQuery/ControllerStatementQuery_1.log">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/errmsg.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="401" column="0" lean-forward="false" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
+        <state relative-caret-position="133">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/sysInfo.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/23/ControllerSinglequery/ControllerSinglequery_1.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4868">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/23/ControllerStatementQuery/ControllerStatementQuery_1.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8018">
+          <caret line="422" column="33" lean-forward="false" selection-start-line="422" selection-start-column="33" selection-end-line="422" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.40/fastjson-1.2.40.jar!/com/alibaba/fastjson/JSON.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="154" column="46" lean-forward="false" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+        <state relative-caret-position="6688">
+          <caret line="402" column="25" lean-forward="false" selection-start-line="402" selection-start-column="25" selection-end-line="402" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Test/testModel.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/XML/XmlUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/table/Configuration.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/27/SHLogin/SHLogin_1.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1159">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log/2018/1/27/KHLogin/KHLogin_1.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="476" column="52" lean-forward="false" selection-start-line="476" selection-start-column="52" selection-end-line="476" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerSingleQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="95" column="59" lean-forward="false" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/KHLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="102" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/SHLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="86" column="16" lean-forward="false" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="163" column="8" lean-forward="false" selection-start-line="163" selection-start-column="8" selection-end-line="165" selection-end-column="29" />
           <folding />
         </state>
       </provider>

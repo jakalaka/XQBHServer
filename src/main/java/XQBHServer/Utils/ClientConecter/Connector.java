@@ -116,7 +116,7 @@ public class Connector {
                     continue;
                 }
                 try {
-                    if (true == sendClient(str, CMD))
+                    if (true == sendClient(dzdxx.getIP_UUU(), CMD))
                         vResoult.add(new String[]{dzdxx.getZDBH_U(),dzdxx.getIP_UUU(),"SUCCESS"});
                     else
                         vResoult.add(new String[]{dzdxx.getZDBH_U(),dzdxx.getIP_UUU(),"FAIL"});
@@ -148,6 +148,7 @@ public class Connector {
             return false;
 //客户端
 //1、创建客户端Socket，指定服务器地址和端口
+        Logger.tmpLog("IP=["+IP+"] Port=["+9001+"]");
         Socket socket = new Socket(IP, 9001);
 //2、获取输出流，向服务器端发送信息
         OutputStream os = socket.getOutputStream();//字节输出流
@@ -180,6 +181,7 @@ public class Connector {
     }
 
     public static void main(String[] args) {
-        exec(args);
+        String []strs={"restart","ZD000001"};
+        exec(strs);
     }
 }

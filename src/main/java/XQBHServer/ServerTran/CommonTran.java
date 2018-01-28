@@ -62,17 +62,12 @@ public class CommonTran {
             Object obj = c.newInstance();
             Method m = obj.getClass().getMethod("execDo", TranObj.class);
             callRe = (Boolean) m.invoke(obj, tranObj);
-        } catch (InstantiationException e) {
-
-            Tran.runERR(tranObj, "SYSERR");
-        } catch (InvocationTargetException e) {
-            Tran.runERR(tranObj, "SYSERR");
-        } catch (NoSuchMethodException e) {
-            Tran.runERR(tranObj, "SYSERR");
-        } catch (IllegalAccessException e) {
-            Tran.runERR(tranObj, "SYSERR");
         } catch (ClassNotFoundException e) {
             Tran.runERR(tranObj, "ERR007");
+        } catch (NoClassDefFoundError e) {
+            Tran.runERR(tranObj, "ERR007");
+        } catch (Exception e) {
+            Tran.runERR(tranObj, "SYSERR");
         }
         if (true != callRe && !tranObj.commitFlg) {//不知状态的交易，需人工对账
             tranObj.sqlSession.rollback();

@@ -8,7 +8,10 @@ import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Utils.log.Logger;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
@@ -43,14 +46,12 @@ public class SHLogin extends Tran {
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
-        if(dshxx == null)
-        {
+        if (dshxx == null) {
             Tran.runERR(tranObj, "SQLNFD");
             return false;
         }
 
-        if (!sSHMM_U.equals(dshxx.getSHMM_U()))
-        {
+        if (!sSHMM_U.equals(dshxx.getSHMM_U())) {
             Tran.runERR(tranObj, "LOG004");
             return false;
 
@@ -63,34 +64,50 @@ public class SHLogin extends Tran {
 
         try {
             dshxxMapper.updateByPrimaryKey(dshxx);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLUPD");
             return false;
         }
 
         //返回所有终端的列表
-        DZDXXExample dzdxxExample=new DZDXXExample();
+        DZDXXExample dzdxxExample = new DZDXXExample();
         dzdxxExample.or().andFRDM_UEqualTo("9999").andJLZT_UEqualTo("0").andSHBH_UEqualTo(dshxx.getSHBH_U());
-        DZDXXMapper dzdxxMapper=tranObj.sqlSession.getMapper(DZDXXMapper.class);
+        DZDXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DZDXXMapper.class);
         List<DZDXX> listDZDXX;
         try {
             listDZDXX = dzdxxMapper.selectByExample(dzdxxExample);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
 
-        String sZDXX_U="";
+
+        List<Map> listSHBH_U = new ArrayList();
+
+
+
+        Map map_ = new HashMap();
+        map_.put("KHBH_U", dshxx.getKHBH_U());
+        map_.put("SHBH_U", dshxx.getSHBH_U());
+        listSHBH_U.add(map_);
+
+
+        List listZDBH_U = new ArrayList();
+
         for (DZDXX dzdxx :
                 listDZDXX) {
-            sZDXX_U=sZDXX_U+dzdxx.getZDBH_U()+"|";
+            Map map = new HashMap();
+            map.put("IP_UUU", dzdxx.getIP_UUU());
+            map.put("ZDBH_U", dzdxx.getZDBH_U());
+            map.put("SHBH_U", dzdxx.getSHBH_U());
+            listZDBH_U.add(map);
+
         }
 
-        tranObj.TranMap.put("ZDXX_U", sZDXX_U);
+        tranObj.TranMap.put("ZDLIST", listZDBH_U);
+        tranObj.TranMap.put("SHLIST", listSHBH_U);
 
         tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;

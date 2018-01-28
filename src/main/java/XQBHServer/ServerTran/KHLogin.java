@@ -9,7 +9,9 @@ import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Utils.log.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
@@ -85,11 +87,17 @@ public class KHLogin extends Tran {
             return false;
         }
 
-        String sSHXX_U="";
         List<String> listSHBH_U=new ArrayList();
+
+
+
+        List lLSSHXX=new ArrayList();
         for (DSHXX dshxx :
                 listDSHXX) {
-            sSHXX_U=sSHXX_U+dshxx.getSHBH_U()+"|";
+            Map map=new HashMap();
+            map.put("KHBH_U",dshxx.getKHBH_U());
+            map.put("SHBH_U",dshxx.getSHBH_U());
+            lLSSHXX.add(map);
             listSHBH_U.add(dshxx.getSHBH_U());
 
         }
@@ -108,13 +116,25 @@ public class KHLogin extends Tran {
             return false;
         }
 
-        String sZDXX_U="";
+
+        List lLSZDXX=new ArrayList();
         for (DZDXX dzdxx :
                 listDZDXX) {
-            sZDXX_U=sZDXX_U+dzdxx.getZDBH_U()+"|";
+            Map map=new HashMap();
+            map.put("IP_UUU",dzdxx.getIP_UUU());
+            map.put("ZDBH_U",dzdxx.getZDBH_U());
+            map.put("SHBH_U",dzdxx.getSHBH_U());
+            lLSZDXX.add(map);
+
         }
-        tranObj.TranMap.put("ZDXX_U", sZDXX_U);
-        tranObj.TranMap.put("SHXX_U", sSHXX_U);
+
+
+
+        tranObj.TranMap.put("ZDLIST", lLSZDXX);
+        tranObj.TranMap.put("SHLIST", lLSSHXX);
+
+
+
         tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;
         Logger.log(tranObj, "LOG_DEBUG", "" + Com.tmpCount);

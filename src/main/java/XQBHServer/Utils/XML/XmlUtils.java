@@ -3,17 +3,11 @@ package XQBHServer.Utils.XML; /**
  */
 
 import XQBHServer.ServerTran.TranObj;
-import XQBHServer.Utils.log.Logger;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.StringUtils;
 import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class XmlUtils {
