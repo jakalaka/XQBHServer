@@ -33,8 +33,9 @@ public class ControllerSingleQuery extends Tran {
         /*
         从报文头中找信息
          */
-        String sSHBH_U = tranObj.getHead("SHBH_U");
-        String sKHBH_U = tranObj.getHead("KHBH_U");
+        String sQTDX_U_head = tranObj.getHead("QTDX_U");
+        String sSHBH_U_head = tranObj.getHead("SHBH_U");
+        String sKHBH_U_head = tranObj.getHead("KHBH_U");
         String sCXFS_U = tranObj.getString("CXFS_U");
         String sZFBDDH = tranObj.getString("ZFBDDH");
         String sWXDH_U = tranObj.getString("WXDH_U");
@@ -42,8 +43,10 @@ public class ControllerSingleQuery extends Tran {
         String sHTLS_U = tranObj.getString("HTLS_U");
 
         Logger.log(tranObj, "LOG_IO", Com.getIn);
-        Logger.log(tranObj, "LOG_IO", "sSHBH_U=" + sSHBH_U);
-        Logger.log(tranObj, "LOG_IO", "sKHBH_U=" + sKHBH_U);
+
+        Logger.log(tranObj, "LOG_IO", "sQTDX_U_head=" + sQTDX_U_head);
+        Logger.log(tranObj, "LOG_IO", "sSHBH_U_head=" + sSHBH_U_head);
+        Logger.log(tranObj, "LOG_IO", "sKHBH_U_head=" + sKHBH_U_head);
         Logger.log(tranObj, "LOG_IO", "sCXFS_U=" + sCXFS_U);
         Logger.log(tranObj, "LOG_IO", "sZFBLS_=" + sZFBDDH);
         Logger.log(tranObj, "LOG_IO", "sWXLS_U=" + sWXDH_U);
@@ -57,8 +60,7 @@ public class ControllerSingleQuery extends Tran {
         criteria_mdzsj.andFRDM_UEqualTo("9999");
 
 
-
-        switch (sCXFS_U) {
+        switch (sCXFS_U) {//z-支付宝 w-微信 h-后台流水日期
             case "z":
                 criteria_mdzsj.andZFZHLXEqualTo("z");
                 criteria_mdzsj.andSFDH_UEqualTo(sZFBDDH);
@@ -84,34 +86,10 @@ public class ControllerSingleQuery extends Tran {
                 return false;
         }
 
-        if ( sSHBH_U.length()>0) {
-            criteria_mdzsj.andSHBH_UEqualTo(sSHBH_U);
-        } else if (sKHBH_U.length() >0) {//客户需查询出所有商户信息
-            DSHXXMapper dzdxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
-
-            DSHXXExample dshxxExample = new DSHXXExample();
-            dshxxExample.or().andFRDM_UEqualTo("9999").andKHBH_UEqualTo(sKHBH_U).andJLZT_UEqualTo("0");
-            List<DSHXX> dshxxList;
-            try {
-                dshxxList = dzdxxMapper.selectByExample(dshxxExample);
-
-            } catch (Exception e) {
-                Logger.logException(tranObj, "LOG_ERR", e);
-                Tran.runERR(tranObj, "SQLSEL");
-                return false;
-            }
-            if (dshxxList.size() == 0) {
-                Tran.runERR(tranObj, "SQLNFD");
-                return false;
-            }
-            List<String> SHBH_U_List = new ArrayList();
-            for (DSHXX dshxx :
-                    dshxxList) {
-                Logger.log(tranObj,"LOG_DEBUG","dshxx.getSHBH_U()="+dshxx.getSHBH_U());
-                SHBH_U_List.add(dshxx.getSHBH_U());
-            }
-            Logger.log(tranObj,"LOG_DEBUG","SHBH_U_List.size()="+SHBH_U_List.size());
-            criteria_mdzsj.andSHBH_UIn(SHBH_U_List);
+        if ("sh".equals(sQTDX_U_head) && sSHBH_U_head.length() > 0) {
+            criteria_mdzsj.andSHBH_UEqualTo(sSHBH_U_head);
+        } else if ("kh".equals(sQTDX_U_head) &&sKHBH_U_head.length() > 0) {//客户需查询出所有商户信息
+            criteria_mdzsj.andKHBH_UEqualTo(sKHBH_U_head);
         } else {
             Tran.runERR(tranObj, "CXCW01");
             return false;
@@ -138,18 +116,18 @@ public class ControllerSingleQuery extends Tran {
         MDZSJ mdzsj = mdzsjList.get(0);
 
 
-        tranObj.TranMap.put("YHTRQ_",Date2StringofYear(mdzsj.getHTRQ_U()) );
-        tranObj.TranMap.put("YHTSJ_",Date2StringofTime(mdzsj.getJYSJ_U()) );
-        tranObj.TranMap.put("YHTLS_",mdzsj.getHTLS_U() );
-        tranObj.TranMap.put("YHTJYM",mdzsj.getHTJYM_() );
-        tranObj.TranMap.put("ZFZHLX",mdzsj.getZFZHLX() );
-        tranObj.TranMap.put("JYJE_U",mdzsj.getJYJE_U() );
-        tranObj.TranMap.put("SFDH_U",mdzsj.getSFDH_U() );
-        tranObj.TranMap.put("SHBH_U",mdzsj.getSHBH_U() );
-        tranObj.TranMap.put("ZDBH_U",mdzsj.getZDBH_U() );
-        tranObj.TranMap.put("SPXX_U",mdzsj.getSPXX_U() );
-        tranObj.TranMap.put("FKM_UU",mdzsj.getFKM_UU() );
-        tranObj.TranMap.put("JYZT_U",mdzsj.getJYZT_U() );
+        tranObj.TranMap.put("YHTRQ_", Date2StringofYear(mdzsj.getHTRQ_U()));
+        tranObj.TranMap.put("YHTSJ_", Date2StringofTime(mdzsj.getJYSJ_U()));
+        tranObj.TranMap.put("YHTLS_", mdzsj.getHTLS_U());
+        tranObj.TranMap.put("YHTJYM", mdzsj.getHTJYM_());
+        tranObj.TranMap.put("ZFZHLX", mdzsj.getZFZHLX());
+        tranObj.TranMap.put("JYJE_U", mdzsj.getJYJE_U());
+        tranObj.TranMap.put("SFDH_U", mdzsj.getSFDH_U());
+        tranObj.TranMap.put("SHBH_U", mdzsj.getSHBH_U());
+        tranObj.TranMap.put("ZDBH_U", mdzsj.getZDBH_U());
+        tranObj.TranMap.put("SPXX_U", mdzsj.getSPXX_U());
+        tranObj.TranMap.put("FKM_UU", mdzsj.getFKM_UU());
+        tranObj.TranMap.put("JYZT_U", mdzsj.getJYZT_U());
 
          /*==================================codeEnd=====================================*/
 

@@ -9,6 +9,7 @@
     <result column="HTJYM_" property="HTJYM_" jdbcType="VARCHAR" />
     <result column="JYLX_U" property="JYLX_U" jdbcType="VARCHAR" />
     <result column="JYJE_U" property="JYJE_U" jdbcType="DECIMAL" />
+    <result column="KHBH_U" property="KHBH_U" jdbcType="VARCHAR" />
     <result column="SHBH_U" property="SHBH_U" jdbcType="VARCHAR" />
     <result column="ZDBH_U" property="ZDBH_U" jdbcType="VARCHAR" />
     <result column="ZFZHLX" property="ZFZHLX" jdbcType="VARCHAR" />
@@ -88,9 +89,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    FRDM_U, HTRQ_U, HTLS_U, JYSJ_U, HTJYM_, JYLX_U, JYJE_U, SHBH_U, ZDBH_U, ZFZHLX, SFDH_U, 
-    SFLS_U, SFRQ_U, FKRID_, FKRZH_, QTRQ_U, QTLS_U, QTJYM_, JYZT_U, SPXX_U, FKM_UU, WHRQ_U, 
-    WHSJ_U, WHR_UU, SJC_UU, JLZT_U
+    FRDM_U, HTRQ_U, HTLS_U, JYSJ_U, HTJYM_, JYLX_U, JYJE_U, KHBH_U, SHBH_U, ZDBH_U, ZFZHLX, 
+    SFDH_U, SFLS_U, SFRQ_U, FKRID_, FKRZH_, QTRQ_U, QTLS_U, QTJYM_, JYZT_U, SPXX_U, FKM_UU, 
+    WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, JLZT_U
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="XQBHServer.Server.Table.Model.MDZSJExample" >
     select
@@ -129,22 +130,22 @@
   <insert id="insert" parameterType="XQBHServer.Server.Table.Model.MDZSJ" >
     insert into mdzsj (FRDM_U, HTRQ_U, HTLS_U, 
       JYSJ_U, HTJYM_, JYLX_U, 
-      JYJE_U, SHBH_U, ZDBH_U, 
-      ZFZHLX, SFDH_U, SFLS_U, 
-      SFRQ_U, FKRID_, FKRZH_, 
-      QTRQ_U, QTLS_U, QTJYM_, 
-      JYZT_U, SPXX_U, FKM_UU, 
-      WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, 
-      JLZT_U)
+      JYJE_U, KHBH_U, SHBH_U, 
+      ZDBH_U, ZFZHLX, SFDH_U, 
+      SFLS_U, SFRQ_U, FKRID_, 
+      FKRZH_, QTRQ_U, QTLS_U, 
+      QTJYM_, JYZT_U, SPXX_U, 
+      FKM_UU, WHRQ_U, WHSJ_U, WHR_UU, 
+      SJC_UU, JLZT_U)
     values (#{FRDM_U,jdbcType=VARCHAR}, #{HTRQ_U,jdbcType=DATE}, #{HTLS_U,jdbcType=VARCHAR}, 
       #{JYSJ_U,jdbcType=TIME}, #{HTJYM_,jdbcType=VARCHAR}, #{JYLX_U,jdbcType=VARCHAR}, 
-      #{JYJE_U,jdbcType=DECIMAL}, #{SHBH_U,jdbcType=VARCHAR}, #{ZDBH_U,jdbcType=VARCHAR}, 
-      #{ZFZHLX,jdbcType=VARCHAR}, #{SFDH_U,jdbcType=VARCHAR}, #{SFLS_U,jdbcType=VARCHAR}, 
-      #{SFRQ_U,jdbcType=DATE}, #{FKRID_,jdbcType=VARCHAR}, #{FKRZH_,jdbcType=VARCHAR}, 
-      #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, #{QTJYM_,jdbcType=VARCHAR}, 
-      #{JYZT_U,jdbcType=VARCHAR}, #{SPXX_U,jdbcType=VARCHAR}, #{FKM_UU,jdbcType=VARCHAR}, 
-      #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, 
-      #{JLZT_U,jdbcType=VARCHAR})
+      #{JYJE_U,jdbcType=DECIMAL}, #{KHBH_U,jdbcType=VARCHAR}, #{SHBH_U,jdbcType=VARCHAR}, 
+      #{ZDBH_U,jdbcType=VARCHAR}, #{ZFZHLX,jdbcType=VARCHAR}, #{SFDH_U,jdbcType=VARCHAR}, 
+      #{SFLS_U,jdbcType=VARCHAR}, #{SFRQ_U,jdbcType=DATE}, #{FKRID_,jdbcType=VARCHAR}, 
+      #{FKRZH_,jdbcType=VARCHAR}, #{QTRQ_U,jdbcType=DATE}, #{QTLS_U,jdbcType=VARCHAR}, 
+      #{QTJYM_,jdbcType=VARCHAR}, #{JYZT_U,jdbcType=VARCHAR}, #{SPXX_U,jdbcType=VARCHAR}, 
+      #{FKM_UU,jdbcType=VARCHAR}, #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, 
+      #{SJC_UU,jdbcType=TIMESTAMP}, #{JLZT_U,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.MDZSJ" >
     insert into mdzsj
@@ -169,6 +170,9 @@
       </if>
       <if test="JYJE_U != null" >
         JYJE_U,
+      </if>
+      <if test="KHBH_U != null" >
+        KHBH_U,
       </if>
       <if test="SHBH_U != null" >
         SHBH_U,
@@ -249,6 +253,9 @@
       </if>
       <if test="JYJE_U != null" >
         #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="KHBH_U != null" >
+        #{KHBH_U,jdbcType=VARCHAR},
       </if>
       <if test="SHBH_U != null" >
         #{SHBH_U,jdbcType=VARCHAR},
@@ -339,6 +346,9 @@
       <if test="record.JYJE_U != null" >
         JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
       </if>
+      <if test="record.KHBH_U != null" >
+        KHBH_U = #{record.KHBH_U,jdbcType=VARCHAR},
+      </if>
       <if test="record.SHBH_U != null" >
         SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
       </if>
@@ -410,6 +420,7 @@
       HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
       JYLX_U = #{record.JYLX_U,jdbcType=VARCHAR},
       JYJE_U = #{record.JYJE_U,jdbcType=DECIMAL},
+      KHBH_U = #{record.KHBH_U,jdbcType=VARCHAR},
       SHBH_U = #{record.SHBH_U,jdbcType=VARCHAR},
       ZDBH_U = #{record.ZDBH_U,jdbcType=VARCHAR},
       ZFZHLX = #{record.ZFZHLX,jdbcType=VARCHAR},
@@ -447,6 +458,9 @@
       </if>
       <if test="JYJE_U != null" >
         JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      </if>
+      <if test="KHBH_U != null" >
+        KHBH_U = #{KHBH_U,jdbcType=VARCHAR},
       </if>
       <if test="SHBH_U != null" >
         SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
@@ -516,6 +530,7 @@
       HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
       JYLX_U = #{JYLX_U,jdbcType=VARCHAR},
       JYJE_U = #{JYJE_U,jdbcType=DECIMAL},
+      KHBH_U = #{KHBH_U,jdbcType=VARCHAR},
       SHBH_U = #{SHBH_U,jdbcType=VARCHAR},
       ZDBH_U = #{ZDBH_U,jdbcType=VARCHAR},
       ZFZHLX = #{ZFZHLX,jdbcType=VARCHAR},

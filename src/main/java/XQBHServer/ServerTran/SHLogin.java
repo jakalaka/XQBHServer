@@ -6,6 +6,7 @@ import XQBHServer.Server.Table.Mapper.DKHXXMapper;
 import XQBHServer.Server.Table.Mapper.DSHXXMapper;
 import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.*;
+import XQBHServer.Utils.Data.DataUtils;
 import XQBHServer.Utils.log.Logger;
 
 import java.util.ArrayList;
@@ -56,6 +57,11 @@ public class SHLogin extends Tran {
             return false;
 
         }
+        if (!"1".equals(dshxx.getSHDLBZ())) {
+            Tran.runERR(tranObj, "LOG008");
+            return false;
+
+        }
 
 
         dshxx.setIP_UUU(sIP_UUU);
@@ -82,6 +88,11 @@ public class SHLogin extends Tran {
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
+        if (listDZDXX.size()==0)
+        {
+            Tran.runERR(tranObj, "ZDMISS");
+            return false;
+        }
 
 
         List<Map> listSHBH_U = new ArrayList();
@@ -95,7 +106,6 @@ public class SHLogin extends Tran {
 
 
         List listZDBH_U = new ArrayList();
-
         for (DZDXX dzdxx :
                 listDZDXX) {
             Map map = new HashMap();
@@ -108,6 +118,7 @@ public class SHLogin extends Tran {
 
         tranObj.TranMap.put("ZDLIST", listZDBH_U);
         tranObj.TranMap.put("SHLIST", listSHBH_U);
+
 
         tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;

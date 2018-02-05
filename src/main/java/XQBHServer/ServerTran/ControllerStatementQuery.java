@@ -32,6 +32,7 @@ public class ControllerStatementQuery extends Tran {
          */
         String sSHBH_U_head = tranObj.getHead("SHBH_U");
         String sKHBH_U_head = tranObj.getHead("KHBH_U");
+        String sQTDX_U_head = tranObj.getHead("QTDX_U");
         String sQSRQ_U = tranObj.getString("QSRQ_U");
         String sZZRQ_U = tranObj.getString("ZZRQ_U");
         String sJYZT_U = tranObj.getString("JYZT_U");
@@ -92,47 +93,12 @@ public class ControllerStatementQuery extends Tran {
 
         //检查查询的商户或终端的权限合法性，前端有控制，但是本处也要控制
         //比较报文头中sSHBH_U_head、sKHBH_U_head和需要查询的SHBH_U、ZDBH_U的所属关系
-        if (sKHBH_U_head.length()>0)//为商户查询，先查询客户有多少商户
+        if ("kh".equals(sQTDX_U_head)&&sKHBH_U_head.length()>0)//为客户查询，先查询客户有多少商户
         {
-            sKHBH_U=sKHBH_U_head;
-            //返回所有商户的列表
-            DSHXXExample dshxxExample=new DSHXXExample();
-            dshxxExample.or().andFRDM_UEqualTo("9999").andJLZT_UEqualTo("0").andKHBH_UEqualTo(sKHBH_U_head);
-            DSHXXMapper dshxxMapper=tranObj.sqlSession.getMapper(DSHXXMapper.class);
-            List<DSHXX> listDSHXX;
-            try {
-                listDSHXX = dshxxMapper.selectByExample(dshxxExample);
-            }catch (Exception e)
-            {
-                Logger.logException(tranObj, "LOG_ERR", e);
-                Tran.runERR(tranObj, "SQLSEL");
-                return false;
-            }
-            List<String> listSHBH_U=new ArrayList();
-            for (DSHXX dshxx :
-                    listDSHXX) {
-                listSHBH_U.add(dshxx.getSHBH_U());
-
-            }
-            criteria_mdzsj.andSHBH_UIn(listSHBH_U);
-        }else if (sSHBH_U_head.length()>0)
+            criteria_mdzsj.andKHBH_UEqualTo(sKHBH_U_head);
+        }else if ("sh".equals(sQTDX_U_head)&&sSHBH_U_head.length()>0)
         {
-            DSHXXMapper dshxxMapper=tranObj.sqlSession.getMapper(DSHXXMapper.class);
-            DSHXXKey dshxxKey=new DSHXXKey();
-            dshxxKey.setFRDM_U("9999");
-            dshxxKey.setSHBH_U(sSHBH_U_head);
-
-            DSHXX dshxx;
-            try {
-                dshxx=dshxxMapper.selectByPrimaryKey(dshxxKey);
-            }catch (Exception e) {
-                Logger.logException(tranObj, "LOG_ERR", e);
-                Tran.runERR(tranObj, "SQLSEL");
-                return false;
-            }
-            sKHBH_U=dshxx.getKHBH_U();
-
-            criteria_mdzsj.andSHBH_UEqualTo(sKHBH_U_head);
+            criteria_mdzsj.andSHBH_UEqualTo(sSHBH_U_head);
         }else {
             Tran.runERR(tranObj, "CXCW05");
             return false;

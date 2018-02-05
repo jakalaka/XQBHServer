@@ -24,6 +24,8 @@ public class DSHXX extends DSHXXKey {
 
     private BigDecimal DQYE_U;
 
+    private String SHDLBZ;
+
     private String SHMM_U;
 
     private String IP_UUU;
@@ -130,6 +132,14 @@ public class DSHXX extends DSHXXKey {
 
     public void setDQYE_U(BigDecimal DQYE_U) {
         this.DQYE_U = DQYE_U;
+    }
+
+    public String getSHDLBZ() {
+        return SHDLBZ;
+    }
+
+    public void setSHDLBZ(String SHDLBZ) {
+        this.SHDLBZ = SHDLBZ;
     }
 
     public String getSHMM_U() {

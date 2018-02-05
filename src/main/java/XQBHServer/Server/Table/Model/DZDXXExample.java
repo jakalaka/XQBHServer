@@ -438,6 +438,76 @@ public class DZDXXExample {
             return (Criteria) this;
         }
 
+        public Criteria andKHBH_UIsNull() {
+            addCriterion("KHBH_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UIsNotNull() {
+            addCriterion("KHBH_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UEqualTo(String value) {
+            addCriterion("KHBH_U =", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotEqualTo(String value) {
+            addCriterion("KHBH_U <>", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UGreaterThan(String value) {
+            addCriterion("KHBH_U >", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UGreaterThanOrEqualTo(String value) {
+            addCriterion("KHBH_U >=", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULessThan(String value) {
+            addCriterion("KHBH_U <", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULessThanOrEqualTo(String value) {
+            addCriterion("KHBH_U <=", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULike(String value) {
+            addCriterion("KHBH_U like", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotLike(String value) {
+            addCriterion("KHBH_U not like", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UIn(List<String> values) {
+            addCriterion("KHBH_U in", values, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotIn(List<String> values) {
+            addCriterion("KHBH_U not in", values, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UBetween(String value1, String value2) {
+            addCriterion("KHBH_U between", value1, value2, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotBetween(String value1, String value2) {
+            addCriterion("KHBH_U not between", value1, value2, "KHBH_U");
+            return (Criteria) this;
+        }
+
         public Criteria andSHBH_UIsNull() {
             addCriterion("SHBH_U is null");
             return (Criteria) this;
@@ -1028,63 +1098,63 @@ public class DZDXXExample {
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHIsNull() {
-            addCriterion("SCLSXH is null");
+        public Criteria andSCJYXHIsNull() {
+            addCriterion("SCJYXH is null");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHIsNotNull() {
-            addCriterion("SCLSXH is not null");
+        public Criteria andSCJYXHIsNotNull() {
+            addCriterion("SCJYXH is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHEqualTo(Integer value) {
-            addCriterion("SCLSXH =", value, "SCLSXH");
+        public Criteria andSCJYXHEqualTo(Integer value) {
+            addCriterion("SCJYXH =", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHNotEqualTo(Integer value) {
-            addCriterion("SCLSXH <>", value, "SCLSXH");
+        public Criteria andSCJYXHNotEqualTo(Integer value) {
+            addCriterion("SCJYXH <>", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHGreaterThan(Integer value) {
-            addCriterion("SCLSXH >", value, "SCLSXH");
+        public Criteria andSCJYXHGreaterThan(Integer value) {
+            addCriterion("SCJYXH >", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHGreaterThanOrEqualTo(Integer value) {
-            addCriterion("SCLSXH >=", value, "SCLSXH");
+        public Criteria andSCJYXHGreaterThanOrEqualTo(Integer value) {
+            addCriterion("SCJYXH >=", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHLessThan(Integer value) {
-            addCriterion("SCLSXH <", value, "SCLSXH");
+        public Criteria andSCJYXHLessThan(Integer value) {
+            addCriterion("SCJYXH <", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHLessThanOrEqualTo(Integer value) {
-            addCriterion("SCLSXH <=", value, "SCLSXH");
+        public Criteria andSCJYXHLessThanOrEqualTo(Integer value) {
+            addCriterion("SCJYXH <=", value, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHIn(List<Integer> values) {
-            addCriterion("SCLSXH in", values, "SCLSXH");
+        public Criteria andSCJYXHIn(List<Integer> values) {
+            addCriterion("SCJYXH in", values, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHNotIn(List<Integer> values) {
-            addCriterion("SCLSXH not in", values, "SCLSXH");
+        public Criteria andSCJYXHNotIn(List<Integer> values) {
+            addCriterion("SCJYXH not in", values, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHBetween(Integer value1, Integer value2) {
-            addCriterion("SCLSXH between", value1, value2, "SCLSXH");
+        public Criteria andSCJYXHBetween(Integer value1, Integer value2) {
+            addCriterion("SCJYXH between", value1, value2, "SCJYXH");
             return (Criteria) this;
         }
 
-        public Criteria andSCLSXHNotBetween(Integer value1, Integer value2) {
-            addCriterion("SCLSXH not between", value1, value2, "SCLSXH");
+        public Criteria andSCJYXHNotBetween(Integer value1, Integer value2) {
+            addCriterion("SCJYXH not between", value1, value2, "SCJYXH");
             return (Criteria) this;
         }
 

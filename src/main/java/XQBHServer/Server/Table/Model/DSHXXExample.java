@@ -989,6 +989,76 @@ public class DSHXXExample {
             return (Criteria) this;
         }
 
+        public Criteria andSHDLBZIsNull() {
+            addCriterion("SHDLBZ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZIsNotNull() {
+            addCriterion("SHDLBZ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZEqualTo(String value) {
+            addCriterion("SHDLBZ =", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZNotEqualTo(String value) {
+            addCriterion("SHDLBZ <>", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZGreaterThan(String value) {
+            addCriterion("SHDLBZ >", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZGreaterThanOrEqualTo(String value) {
+            addCriterion("SHDLBZ >=", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZLessThan(String value) {
+            addCriterion("SHDLBZ <", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZLessThanOrEqualTo(String value) {
+            addCriterion("SHDLBZ <=", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZLike(String value) {
+            addCriterion("SHDLBZ like", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZNotLike(String value) {
+            addCriterion("SHDLBZ not like", value, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZIn(List<String> values) {
+            addCriterion("SHDLBZ in", values, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZNotIn(List<String> values) {
+            addCriterion("SHDLBZ not in", values, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZBetween(String value1, String value2) {
+            addCriterion("SHDLBZ between", value1, value2, "SHDLBZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSHDLBZNotBetween(String value1, String value2) {
+            addCriterion("SHDLBZ not between", value1, value2, "SHDLBZ");
+            return (Criteria) this;
+        }
+
         public Criteria andSHMM_UIsNull() {
             addCriterion("SHMM_U is null");
             return (Criteria) this;

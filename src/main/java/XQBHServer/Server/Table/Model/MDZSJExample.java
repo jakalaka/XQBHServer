@@ -619,6 +619,76 @@ public class MDZSJExample {
             return (Criteria) this;
         }
 
+        public Criteria andKHBH_UIsNull() {
+            addCriterion("KHBH_U is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UIsNotNull() {
+            addCriterion("KHBH_U is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UEqualTo(String value) {
+            addCriterion("KHBH_U =", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotEqualTo(String value) {
+            addCriterion("KHBH_U <>", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UGreaterThan(String value) {
+            addCriterion("KHBH_U >", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UGreaterThanOrEqualTo(String value) {
+            addCriterion("KHBH_U >=", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULessThan(String value) {
+            addCriterion("KHBH_U <", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULessThanOrEqualTo(String value) {
+            addCriterion("KHBH_U <=", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_ULike(String value) {
+            addCriterion("KHBH_U like", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotLike(String value) {
+            addCriterion("KHBH_U not like", value, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UIn(List<String> values) {
+            addCriterion("KHBH_U in", values, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotIn(List<String> values) {
+            addCriterion("KHBH_U not in", values, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UBetween(String value1, String value2) {
+            addCriterion("KHBH_U between", value1, value2, "KHBH_U");
+            return (Criteria) this;
+        }
+
+        public Criteria andKHBH_UNotBetween(String value1, String value2) {
+            addCriterion("KHBH_U not between", value1, value2, "KHBH_U");
+            return (Criteria) this;
+        }
+
         public Criteria andSHBH_UIsNull() {
             addCriterion("SHBH_U is null");
             return (Criteria) this;

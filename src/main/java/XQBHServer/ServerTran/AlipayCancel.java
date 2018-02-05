@@ -86,7 +86,7 @@ public class AlipayCancel extends Tran {
                     "  }");
 
             AlipayTradeCancelResponse calcelResponse = null;
-            if (true != InsertMJYBWBeforeDSF.exec(tranObj, cancelRequest.getBizContent())) {
+            if (true != InsertMJYBWBeforeDSF.exec(tranObj, cancelRequest.getBizContent(),"z")) {
                 runERR(tranObj, "ZF0005");
                 return false;
             }

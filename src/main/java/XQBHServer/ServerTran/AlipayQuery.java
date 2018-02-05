@@ -93,7 +93,7 @@ public class AlipayQuery extends Tran {
                 "}");
 
         AlipayTradeQueryResponse response = null;
-        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request.getBizContent())) {
+        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request.getBizContent(),"z")) {
             runERR(tranObj, "ZF0005");
             return false;
         }

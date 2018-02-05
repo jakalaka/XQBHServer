@@ -7,6 +7,8 @@ public class DZDXX extends DZDXXKey {
 
     private String CPBH_U;
 
+    private String KHBH_U;
+
     private String SHBH_U;
 
     private String ZDZT_U;
@@ -25,7 +27,7 @@ public class DZDXX extends DZDXXKey {
 
     private Date SCJYRQ;
 
-    private Integer SCLSXH;
+    private Integer SCJYXH;
 
     private Date CJRQ_U;
 
@@ -57,6 +59,14 @@ public class DZDXX extends DZDXXKey {
 
     public void setCPBH_U(String CPBH_U) {
         this.CPBH_U = CPBH_U;
+    }
+
+    public String getKHBH_U() {
+        return KHBH_U;
+    }
+
+    public void setKHBH_U(String KHBH_U) {
+        this.KHBH_U = KHBH_U;
     }
 
     public String getSHBH_U() {
@@ -131,12 +141,12 @@ public class DZDXX extends DZDXXKey {
         this.SCJYRQ = SCJYRQ;
     }
 
-    public Integer getSCLSXH() {
-        return SCLSXH;
+    public Integer getSCJYXH() {
+        return SCJYXH;
     }
 
-    public void setSCLSXH(Integer SCLSXH) {
-        this.SCLSXH = SCLSXH;
+    public void setSCJYXH(Integer SCJYXH) {
+        this.SCJYXH = SCJYXH;
     }
 
     public Date getCJRQ_U() {

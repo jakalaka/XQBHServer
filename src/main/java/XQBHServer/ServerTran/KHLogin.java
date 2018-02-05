@@ -101,6 +101,11 @@ public class KHLogin extends Tran {
             listSHBH_U.add(dshxx.getSHBH_U());
 
         }
+        if (listSHBH_U.size()==0)
+        {
+            Tran.runERR(tranObj, "SHMISS");
+            return false;
+        }
 
         //返回所有终端的列表
         DZDXXExample dzdxxExample=new DZDXXExample();
@@ -116,6 +121,11 @@ public class KHLogin extends Tran {
             return false;
         }
 
+        if (listDZDXX.size()==0)
+        {
+            Tran.runERR(tranObj, "ZDMISS");
+            return false;
+        }
 
         List lLSZDXX=new ArrayList();
         for (DZDXX dzdxx :
@@ -132,6 +142,7 @@ public class KHLogin extends Tran {
 
         tranObj.TranMap.put("ZDLIST", lLSZDXX);
         tranObj.TranMap.put("SHLIST", lLSSHXX);
+        tranObj.TranMap.put("KHBH_U", dkhxx.getKHBH_U());
 
 
 

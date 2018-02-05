@@ -41,6 +41,10 @@ public class DKHXX extends DKHXXKey {
 
     private Date SCDLSJ;
 
+    private Date SCJYRQ;
+
+    private Integer SCJYXH;
+
     private Date CJRQ_U;
 
     private Date CJSJ_U;
@@ -207,6 +211,22 @@ public class DKHXX extends DKHXXKey {
 
     public void setSCDLSJ(Date SCDLSJ) {
         this.SCDLSJ = SCDLSJ;
+    }
+
+    public Date getSCJYRQ() {
+        return SCJYRQ;
+    }
+
+    public void setSCJYRQ(Date SCJYRQ) {
+        this.SCJYRQ = SCJYRQ;
+    }
+
+    public Integer getSCJYXH() {
+        return SCJYXH;
+    }
+
+    public void setSCJYXH(Integer SCJYXH) {
+        this.SCJYXH = SCJYXH;
     }
 
     public Date getCJRQ_U() {

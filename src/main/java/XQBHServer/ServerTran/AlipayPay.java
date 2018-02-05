@@ -39,32 +39,43 @@ public class AlipayPay extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
-        String sZDJYM_ = tranObj.getHead("ZDJYM_");
-        String sSHBH_U = tranObj.getHead("SHBH_U");
-        String sZDBH_U = tranObj.getHead("ZDBH_U");
-        String sZFZHLX = tranObj.getString("ZFZHLX");
+        String sQTDX_U_head = tranObj.getHead("QTDX_U");
+        String sKHBH_U_head = tranObj.getHead("KHBH_U");
+        String sSHBH_U_head = tranObj.getHead("SHBH_U");
+        String sZDBH_U_head = tranObj.getHead("ZDBH_U");
+        String sQTRQ_U_head = tranObj.getHead("QTRQ_U");
         String sQRCODE = tranObj.getString("QRCODE");
         String sSPMC_U = tranObj.getString("SPMC_U");
         BigDecimal bJYJE_U = tranObj.getBigDecimal("JYJE_U");
 
-        Logger.log(tranObj, "LOG_IO", "sZDJYM_=" + sZDJYM_);
-        Logger.log(tranObj, "LOG_IO", "sSHBH_U=" + sSHBH_U);
-        Logger.log(tranObj, "LOG_IO", "sZDBH_U=" + sZDBH_U);
-        Logger.log(tranObj, "LOG_IO", "sZFZHLX=" + sZFZHLX);
+        Logger.log(tranObj, "LOG_IO", "sQTDX_U_head=" + sQTDX_U_head);
+        Logger.log(tranObj, "LOG_IO", "sKHBH_U_head=" + sKHBH_U_head);
+        Logger.log(tranObj, "LOG_IO", "sSHBH_U_head=" + sSHBH_U_head);
+        Logger.log(tranObj, "LOG_IO", "sZDBH_U_head=" + sZDBH_U_head);
+        Logger.log(tranObj, "LOG_IO", "sQTRQ_U_head=" + sQTRQ_U_head);
+
         Logger.log(tranObj, "LOG_IO", "sQRCODE=" + sQRCODE);
         Logger.log(tranObj, "LOG_IO", "sSPMC_U=" + sSPMC_U);
         Logger.log(tranObj, "LOG_IO", "bJYJE_U=" + bJYJE_U);
         /*==================================codeBegin=====================================*/
         //终端号为空则取商户号，说明是在商户控制端做的交易
-        if(sZDBH_U==null||"".equals(sZDBH_U))
-            sZDBH_U=sSHBH_U;
+        if ("kh".equals(sQTDX_U_head))
+        {
+            sZDBH_U_head=sKHBH_U_head;
+        }else if ("sh".equals(sQTDX_U_head))
+        {
+            Tran.runERR(tranObj, "PAY001");
+            return false;
+        }else if ("zd".equals(sQTDX_U_head))
+        {
+
+        }
 
 
-        String rqTmp = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date dQTRQ_U = null;
         try {
-            dQTRQ_U = formatter.parse(rqTmp);
+            dQTRQ_U = formatter.parse(sQTRQ_U_head);
         } catch (ParseException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "TIMEER");
@@ -97,7 +108,7 @@ public class AlipayPay extends Tran {
         //==============================查询商户信息合法性=========================
         DSHXXMapper dshxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
         DSHXXKey dshxxKey = new DSHXXKey();
-        dshxxKey.setSHBH_U(sSHBH_U);
+        dshxxKey.setSHBH_U(sSHBH_U_head);
         dshxxKey.setFRDM_U("9999");
         DSHXX dshxx = null;
         try {
@@ -125,7 +136,7 @@ public class AlipayPay extends Tran {
         DSHZHKey dshzhKey = new DSHZHKey();
         dshzhKey.setFRDM_U("9999");
         dshzhKey.setSHBH_U(dshxx.getSHBH_U());
-        dshzhKey.setZFZHLX(sZFZHLX);
+        dshzhKey.setZFZHLX("z");
         DSHZH dshzh = null;
         try {
             dshzh = dshzhMapper.selectByPrimaryKey(dshzhKey);
@@ -135,7 +146,7 @@ public class AlipayPay extends Tran {
             return false;
         }
         if (null == dshzh) {
-            runERR(tranObj, "ZF0001", sZFZHLX);
+            runERR(tranObj, "ZF0001", "z");
             return false;
         }
 
@@ -149,9 +160,11 @@ public class AlipayPay extends Tran {
         mdzsj.setHTJYM_(tranObj.getHead("HTJYM_"));
         mdzsj.setJYLX_U("0");
         mdzsj.setJYJE_U(bJYJE_U);
-        mdzsj.setSHBH_U(sSHBH_U);
-        mdzsj.setZDBH_U(sZDBH_U);
-        mdzsj.setZFZHLX(sZFZHLX);
+        mdzsj.setKHBH_U(sKHBH_U_head);
+        mdzsj.setSHBH_U(sSHBH_U_head);
+        mdzsj.setZDBH_U(sZDBH_U_head);
+
+        mdzsj.setZFZHLX("z");
         mdzsj.setSFDH_U(sZFBLS_);
         mdzsj.setSFLS_U(null);//交易成功后更新
         mdzsj.setSFRQ_U(null);//交易成功后更新
@@ -203,9 +216,9 @@ public class AlipayPay extends Tran {
                 "\"body\":\"" + "商品描述" + "\"," +
                 "\"show_url\":\"" + show_url + "\"" +
                 "}]," +
-                "\"operator_id\":\"" + sZDBH_U + "\"," +
-                "\"store_id\":\"" + sSHBH_U + "\"," +
-                "\"terminal_id\":\"" + sZDBH_U + "\"," +
+                "\"operator_id\":\"" + sZDBH_U_head + "\"," +
+                "\"store_id\":\"" + sSHBH_U_head + "\"," +
+                "\"terminal_id\":\"" + sZDBH_U_head + "\"," +
                 "\"extend_params\":{" +
                 "\"sys_service_provider_id\":\"" + Com.alipaySys_service_provider_id + "\"" +
                 "}," +
@@ -213,7 +226,7 @@ public class AlipayPay extends Tran {
                 "}");
 
         AlipayTradePayResponse response = null;
-        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request.getBizContent())) {
+        if (true != InsertMJYBWBeforeDSF.exec(tranObj, request.getBizContent(),"z")) {
             runERR(tranObj, "ZF0005");
             return false;
         }

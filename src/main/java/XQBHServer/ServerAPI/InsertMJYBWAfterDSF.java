@@ -21,14 +21,28 @@ import java.util.Date;
 public class InsertMJYBWAfterDSF {
     public static boolean exec(TranObj tranObj, AlipayResponse response) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
+
+        String sQTRQ_U_head = tranObj.getHead("QTRQ_U");
+        String sQTLS_U_head = tranObj.getHead("QTLS_U");
+        String sQTJYM__head = tranObj.getHead("QTJYM_");
+        String sHTJYM__head = tranObj.getHead("HTJYM_");
+        String sZDBH_U_head = tranObj.getHead("ZDBH_U");
+        String sIP_UUU_head = tranObj.getHead("IP_UUU");
+        Logger.log(tranObj, "LOG_DEBUG", "sQTRQ_U_head=" + sQTRQ_U_head);
+        Logger.log(tranObj, "LOG_DEBUG", "sQTLS_U_head=" + sQTLS_U_head);
+        Logger.log(tranObj, "LOG_DEBUG", "sQTJYM__head=" + sQTJYM__head);
+        Logger.log(tranObj, "LOG_DEBUG", "sHTJYM__head=" + sHTJYM__head);
+        Logger.log(tranObj, "LOG_DEBUG", "sZDBH_U_head=" + sZDBH_U_head);
+        Logger.log(tranObj, "LOG_DEBUG", "sIP_UUU_head=" + sIP_UUU_head);
+
+
         String sSFFHBW = response.getBody();
         Logger.log(tranObj, "LOG_IO", "sSFFHBW=" + sSFFHBW);
 
-        String sQTRQ_U = tranObj.getHead("QTRQ_U");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = null;
         try {
-            date = formatter.parse(sQTRQ_U);
+            date = formatter.parse(sQTRQ_U_head);
         } catch (ParseException e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "TIMEER");
@@ -38,11 +52,13 @@ public class InsertMJYBWAfterDSF {
         MJYBW mjybw = new MJYBW();
         mjybw.setFRDM_U("9999");
         mjybw.setQTRQ_U(date);
-        mjybw.setQTLS_U(tranObj.getHead("QTLS_U"));
+        mjybw.setQTLS_U(sQTLS_U_head);
         mjybw.setXH_UUU(tranObj.iBWXH);
-        mjybw.setQTJYM_(tranObj.getHead("QTJYM_"));
-        mjybw.setDYJYM_(tranObj.getHead("HTJYM_"));
+        mjybw.setQTJYM_(sQTJYM__head);
+        mjybw.setDYJYM_(sHTJYM__head);
+
         mjybw.setBWLX_U("ZI");
+        mjybw.setIP_UUU(Com.alipayGateway);
 
         try {
             mjybw.setBW_UUU(sSFFHBW.getBytes("GBK"));//非要GBK才能看到中文，艹
@@ -55,10 +71,9 @@ public class InsertMJYBWAfterDSF {
         mjybw.setZCWDM_(response.getSubCode());
         mjybw.setCWXX_U(response.getSubMsg());
 
-        mjybw.setIP_UUU(Com.alipayGateway);
 
 
-        mjybw.setZDBH_U(tranObj.getHead("ZDBH_U"));
+        mjybw.setZDBH_U(sZDBH_U_head);
         mjybw.setJLZT_U("0");
         try {
             mjybwMapper.insert(mjybw);

@@ -79,6 +79,9 @@ public class JCZDHFX {
                 }
 
             tranObj.setHead("SHBH_U", dzdxx.getSHBH_U()); //将所属商户编号写入报文头，避免二次查询
+            tranObj.setHead("KHBH_U",dzdxx.getKHBH_U());
+            tranObj.setHead("QTDX_U", "zd");
+
         } else {
             if (sSHBH_U != null && !"".equals(sSHBH_U)) //商户编号不为空则验证商户信息
             {
@@ -109,8 +112,11 @@ public class JCZDHFX {
                         Tran.runERR(tranObj, "LOG003", dshxx.getIP_UUU(), sIP_UUU);
                         return false;
                     }
+                tranObj.setHead("QTDX_U", "sh");
+                tranObj.setHead("KHBH_U",dshxx.getKHBH_U());  //将所属客户编号写入报文头，避免二次查询
 
             } else {
+                //客户登录需要通过客户登录账号来登录
                 DKHXXMapper dkhxxMapper = tranObj.sqlSession.getMapper(DKHXXMapper.class);
                 DKHXXExample dkhxxExample = new DKHXXExample();
                 dkhxxExample.or().andFRDM_UEqualTo("9999").andKHDLZHEqualTo(sKHDLZH);
@@ -140,7 +146,8 @@ public class JCZDHFX {
                         return false;
                     }
 
-                tranObj.setHead("KHBH_U", dkhxx.getKHBH_U()); //将所属商户编号写入报文头，避免二次查询
+                tranObj.setHead("KHBH_U", dkhxx.getKHBH_U()); //将所属客户编号写入报文头，避免二次查询
+                tranObj.setHead("QTDX_U", "kh");
 
             }
 

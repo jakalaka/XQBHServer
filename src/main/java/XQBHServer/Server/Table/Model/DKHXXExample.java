@@ -1578,6 +1578,126 @@ public class DKHXXExample {
             return (Criteria) this;
         }
 
+        public Criteria andSCJYRQIsNull() {
+            addCriterion("SCJYRQ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQIsNotNull() {
+            addCriterion("SCJYRQ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ =", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQNotEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <>", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQGreaterThan(Date value) {
+            addCriterionForJDBCDate("SCJYRQ >", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ >=", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQLessThan(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("SCJYRQ <=", value, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQIn(List<Date> values) {
+            addCriterionForJDBCDate("SCJYRQ in", values, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQNotIn(List<Date> values) {
+            addCriterionForJDBCDate("SCJYRQ not in", values, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCJYRQ between", value1, value2, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYRQNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("SCJYRQ not between", value1, value2, "SCJYRQ");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHIsNull() {
+            addCriterion("SCJYXH is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHIsNotNull() {
+            addCriterion("SCJYXH is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHEqualTo(Integer value) {
+            addCriterion("SCJYXH =", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHNotEqualTo(Integer value) {
+            addCriterion("SCJYXH <>", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHGreaterThan(Integer value) {
+            addCriterion("SCJYXH >", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHGreaterThanOrEqualTo(Integer value) {
+            addCriterion("SCJYXH >=", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHLessThan(Integer value) {
+            addCriterion("SCJYXH <", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHLessThanOrEqualTo(Integer value) {
+            addCriterion("SCJYXH <=", value, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHIn(List<Integer> values) {
+            addCriterion("SCJYXH in", values, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHNotIn(List<Integer> values) {
+            addCriterion("SCJYXH not in", values, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHBetween(Integer value1, Integer value2) {
+            addCriterion("SCJYXH between", value1, value2, "SCJYXH");
+            return (Criteria) this;
+        }
+
+        public Criteria andSCJYXHNotBetween(Integer value1, Integer value2) {
+            addCriterion("SCJYXH not between", value1, value2, "SCJYXH");
+            return (Criteria) this;
+        }
+
         public Criteria andCJRQ_UIsNull() {
             addCriterion("CJRQ_U is null");
             return (Criteria) this;
