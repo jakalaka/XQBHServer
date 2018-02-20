@@ -63,7 +63,9 @@ public class ServerMain {
                 try {
                     serverSocket = new ServerSocket(port);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Logger.sysLogException(e);
+                    Logger.sysLog("创建ServerSocket对象失败!!!");
+                    System.exit(0);
                 }
                 while (true) {
                     try {
@@ -113,7 +115,7 @@ public class ServerMain {
                                     is.close();
                                     finalSocket.close();
                                 } catch (Exception e) {
-
+                                    Logger.sysLogException(e);
                                 }
                             }
                         }).start();

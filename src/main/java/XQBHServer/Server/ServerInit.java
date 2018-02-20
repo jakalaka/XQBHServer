@@ -27,24 +27,11 @@ import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
  */
 public class ServerInit {
     public static boolean Init() {
-        DBAccess dbAccess=new DBAccess();
+        DBAccess dbAccess = new DBAccess();
         SqlSession sqlSession;
         /*
         尝试连接数据库
          */
-
-        try {
-            sqlSession = dbAccess.getSqlSession();
-
-            DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
-            DZDXXKey dzdxxKey = new DZDXXKey();
-            dzdxxKey.setZDBH_U("SVR0000001");
-            dzdxxKey.setFRDM_U("9999");
-            DZDXX dzdxx = dzdxxMapper.selectByPrimaryKey(dzdxxKey);
-        } catch (Exception e) {
-            Logger.sysLogException(e);
-            return false;
-        }
 
 
         InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
@@ -52,6 +39,7 @@ public class ServerInit {
         Com.ERRMap = readAll(inputStream);
 
         try {
+            sqlSession = dbAccess.getSqlSession();
             CXTCSMapper cxtcsMapper = sqlSession.getMapper(CXTCSMapper.class);
             CXTCSKey cxtcsKey = new CXTCSKey();
             cxtcsKey.setKEY_UU("LoopSleep");
@@ -65,33 +53,31 @@ public class ServerInit {
         sqlSession.close();
 
 
-
         //创建撤销进程
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (!Com.cancelThreadBusy) {
-                    Com.cancelThreadBusy=true;
+                    Com.cancelThreadBusy = true;
 
                     try {
                         Thread.sleep(Com.cancelThreadLoopTime);
                     } catch (InterruptedException e) {
                         Logger.sysLogException(e);
-                        Com.cancelThreadBusy=false;
+                        Com.cancelThreadBusy = false;
                         continue;
                     }
 
                     Logger.timerLog("===========================================================");
                     Logger.timerLog(Com.getIn);
 
-                    DBAccess dbAccess=new DBAccess();
-                    SqlSession sqlSession_thread= null;
+                    DBAccess dbAccess = new DBAccess();
+                    SqlSession sqlSession_thread = null;
                     try {
                         sqlSession_thread = dbAccess.getSqlSession();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     CXTCSMapper cxtcsMapper = sqlSession_thread.getMapper(CXTCSMapper.class);
                     CXTCSKey cxtcsKey = new CXTCSKey();
                     cxtcsKey.setFRDM_U("9999");
@@ -102,7 +88,7 @@ public class ServerInit {
                     } catch (Exception e) {
                         Logger.timerLogException(e);
                         Logger.timerLog("获取超时时间失败 ERR");
-                        Com.cancelThreadBusy=false;
+                        Com.cancelThreadBusy = false;
                         continue;
                     }
 
@@ -112,7 +98,7 @@ public class ServerInit {
                     } catch (Exception e) {
                         Logger.timerLogException(e);
                         Logger.timerLog("转换string2long出错 ERR");
-                        Com.cancelThreadBusy=false;
+                        Com.cancelThreadBusy = false;
                         continue;
                     }
 
@@ -124,7 +110,7 @@ public class ServerInit {
                     } catch (ParseException e) {
                         Logger.timerLogException(e);
                         Logger.timerLog("获取当前日期、时间出错 ERR");
-                        Com.cancelThreadBusy=false;
+                        Com.cancelThreadBusy = false;
                         continue;
                     }
 
@@ -141,41 +127,55 @@ public class ServerInit {
                     } catch (Exception e) {
                         Logger.timerLogException(e);
                         Logger.timerLog("查询总笔数异常 ERR");
-                        Com.cancelThreadBusy=false;
+                        Com.cancelThreadBusy = false;
                         continue;
                     }
 
 
-
-                    Logger.timerLog(" dArrary[0]=" +  dArrary[0]);
-                    Logger.timerLog(" dArrary[1]=" +  dArrary[1]);
+                    Logger.timerLog(" dArrary[0]=" + dArrary[0]);
+                    Logger.timerLog(" dArrary[1]=" + dArrary[1]);
 
                     if (iCount > 0) {
                         Logger.timerLog("开始调用 iCount=" + iCount);
-                        Map XMLMapIn = new HashMap();
-                        Map head = new HashMap();
-                        head.put("ZDBH_U", "SVR00001");
-                        head.put("ZDJYM_", "SERVER");
-                        head.put("HTJYM_", "AlipayCancel");
-                        head.put("QTRQ_U", Com.getDate());
-                        head.put("QTLS_U", Com.getSYSQTLS());
-                        XMLMapIn.put("head", head);
-                        String XMLIn = XmlUtils.map2XML(XMLMapIn);
-                        SystemTran systemTran = new SystemTran();
-                        String XMLOut = systemTran.SystemTran(XMLIn);
-                        Map XMLMapOut = XmlUtils.XML2map(XMLOut);
-                        Logger.timerLog("CALL " + head.get("HTJYM_"));
-                        if (!"AAAAAA".equals(((Map) XMLMapOut.get("head")).get("CWDM_U")))
-                            Logger.timerLog(" FAIL!");
-                        else
-                            Logger.timerLog(" SUCCESS!");
+                        String sZDBH_U = Com.getSYSZDBH_U();
+                        if (sZDBH_U == null || "".equals(sZDBH_U)) {
+                            Logger.timerLog("获取终端信息失败!!!");
+                            Com.cancelThreadBusy = false;
+                            continue;
+                        } else {
+                            Logger.timerLog("获取终端编号=" + sZDBH_U);
+                        }
+                        try {
+                            Map XMLMapIn = new HashMap();
+                            Map head = new HashMap();
+                            head.put("ZDBH_U", sZDBH_U);
+                            head.put("ZDJYM_", "SERVER");
+                            head.put("HTJYM_", "AlipayCancel");
+                            head.put("QTRQ_U", Com.getDate());
+                            head.put("QTLS_U", Com.getSYSQTLS(sZDBH_U));
+                            XMLMapIn.put("head", head);
+                            String XMLIn = XmlUtils.map2XML(XMLMapIn);
+                            SystemTran systemTran = new SystemTran();
+                            String XMLOut = systemTran.SystemTran(XMLIn);
+                            Map XMLMapOut = XmlUtils.XML2map(XMLOut);
+                            Logger.timerLog("CALL " + head.get("HTJYM_"));
+                            if (!"AAAAAA".equals(((Map) XMLMapOut.get("head")).get("CWDM_U")))
+                                Logger.timerLog(" FAIL!");
+                            else
+                                Logger.timerLog(" SUCCESS!");
+                        }finally {
+                            if (!Com.releaseSYSZHBH_U(sZDBH_U))
+                            {
+                                Logger.timerLog("释放柜员时出错!!!");
+                            }
+                        }
                     } else
                         Logger.timerLog("iCount=" + iCount);
 
                     sqlSession_thread.close();
                     Logger.timerLog(Com.getOut);
                     Logger.timerLog("===========================================================");
-                    Com.cancelThreadBusy=false;
+                    Com.cancelThreadBusy = false;
                 }
 
             }

@@ -38,6 +38,8 @@ public class MDZSJ extends MDZSJKey {
 
     private String JYZT_U;
 
+    private BigDecimal YTHJE_;
+
     private String SPXX_U;
 
     private String FKM_UU;
@@ -186,6 +188,14 @@ public class MDZSJ extends MDZSJKey {
 
     public void setJYZT_U(String JYZT_U) {
         this.JYZT_U = JYZT_U;
+    }
+
+    public BigDecimal getYTHJE_() {
+        return YTHJE_;
+    }
+
+    public void setYTHJE_(BigDecimal YTHJE_) {
+        this.YTHJE_ = YTHJE_;
     }
 
     public String getSPXX_U() {

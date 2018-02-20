@@ -1509,6 +1509,66 @@ public class MDZSJExample {
             return (Criteria) this;
         }
 
+        public Criteria andYTHJE_IsNull() {
+            addCriterion("YTHJE_ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_IsNotNull() {
+            addCriterion("YTHJE_ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_EqualTo(BigDecimal value) {
+            addCriterion("YTHJE_ =", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_NotEqualTo(BigDecimal value) {
+            addCriterion("YTHJE_ <>", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_GreaterThan(BigDecimal value) {
+            addCriterion("YTHJE_ >", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_GreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("YTHJE_ >=", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_LessThan(BigDecimal value) {
+            addCriterion("YTHJE_ <", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_LessThanOrEqualTo(BigDecimal value) {
+            addCriterion("YTHJE_ <=", value, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_In(List<BigDecimal> values) {
+            addCriterion("YTHJE_ in", values, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_NotIn(List<BigDecimal> values) {
+            addCriterion("YTHJE_ not in", values, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_Between(BigDecimal value1, BigDecimal value2) {
+            addCriterion("YTHJE_ between", value1, value2, "YTHJE_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYTHJE_NotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("YTHJE_ not between", value1, value2, "YTHJE_");
+            return (Criteria) this;
+        }
+
         public Criteria andSPXX_UIsNull() {
             addCriterion("SPXX_U is null");
             return (Criteria) this;

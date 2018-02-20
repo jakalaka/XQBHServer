@@ -115,9 +115,6 @@ public class ControllerStatementQuery extends Tran {
             criteria_mdzsj.andZFZHLXEqualTo(sZFZHLX);
 
 
-
-
-
         mdzsjExample.setOrderByClause(" HTRQ_U  desc,JYSJ_U  desc");
         List<MDZSJ> mdzsjList = null;
 

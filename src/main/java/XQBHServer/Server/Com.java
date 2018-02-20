@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -84,7 +85,7 @@ public class Com {
     public static final String wechatpayGateway = "we don't know";
 
     /**
-     * 获取后台流水=S+10位终端编号+5位序号
+     * 获取后台流水=S+12位终端编号+7位序号
      *
      * @return
      */
@@ -100,7 +101,7 @@ public class Com {
         Logger.log(tranObj, "LOG_DEBUG", "QTDX_U_head=" + sQTDX_U_head);
 
         int iSCJYXH = 0;
-        String sTmp="";
+        String sTmp = "";
 
 
         String sHTLS_U_head = tranObj.getHead("HTLS_U");
@@ -140,8 +141,8 @@ public class Com {
                     Tran.runERR(tranObj, "SQLUPD");
                     return false;
                 }
-                sTmp=sZDBH_U_head;
-            }else if ("sh".equals(sQTDX_U_head)) {//商户取流水
+                sTmp = sZDBH_U_head;
+            } else if ("sh".equals(sQTDX_U_head)) {//商户取流水
                 DSHXXMapper dshxxMapper = tranObj.sqlSession.getMapper(DSHXXMapper.class);
                 DSHXXKey dshxxKey = new DSHXXKey();
                 dshxxKey.setSHBH_U(sSHBH_U_head);
@@ -175,8 +176,8 @@ public class Com {
                     Tran.runERR(tranObj, "SQLUPD");
                     return false;
                 }
-                sTmp=sSHBH_U_head;
-            }else if ("kh".equals(sQTDX_U_head)) {//客户取流水
+                sTmp = sSHBH_U_head;
+            } else if ("kh".equals(sQTDX_U_head)) {//客户取流水
                 DKHXXMapper dkhxxMapper = tranObj.sqlSession.getMapper(DKHXXMapper.class);
                 DKHXXKey dkhxxKey = new DKHXXKey();
                 dkhxxKey.setKHBH_U(sKHBH_U_head);
@@ -210,7 +211,7 @@ public class Com {
                     Tran.runERR(tranObj, "SQLUPD");
                     return false;
                 }
-                sTmp=sKHBH_U_head;
+                sTmp = sKHBH_U_head;
             }
 
             tranObj.setHead("HTLS_U", "S" + sTmp + String.format("%07d", iSCJYXH));
@@ -226,7 +227,7 @@ public class Com {
     }
 
     /**
-     * 获取后台机器日期
+     * @apiNote 获取后台机器日期yyyyMMdd
      *
      * @return
      */
@@ -250,11 +251,11 @@ public class Com {
     }
 
     /**
-     * 自动生成后台的前台流水
+     * @apiNote 生成后台的前台流水,用于自动发起的交易，规则:C+12位终端号+7位序号
      *
      * @return
      */
-    public static String getSYSQTLS() {
+    public static String getSYSQTLS(String sZDBH_U) {
         Logger.timerLog(Com.getIn);
         String sSYSQTLS = "";
         int XH = 1;
@@ -269,7 +270,7 @@ public class Com {
 
         CXTCSKey cxtcsKey = new CXTCSKey();
         CXTCSMapper cxtcsMapper = sqlSession.getMapper(CXTCSMapper.class);
-        cxtcsKey.setKEY_UU("SYSQTRQ");
+        cxtcsKey.setKEY_UU(sZDBH_U+"_QTRQ");
         cxtcsKey.setFRDM_U("9999");
         CXTCS cxtcs = null;
         try {
@@ -278,13 +279,45 @@ public class Com {
             Logger.sysLogException(e);
             return "";
         }
+        if (cxtcs==null)
+        {
+            cxtcs=new CXTCS();
+            cxtcs.setJLZT_U("0");
+            cxtcs.setVALUE_(Com.getDate());
+            cxtcs.setFRDM_U("9999");
+            cxtcs.setKEY_UU(sZDBH_U+"_QTRQ");
+            try {
+                cxtcsMapper.insert(cxtcs);
+            }catch (Exception e)
+            {
+                Logger.sysLogException(e);
+                return "";
+            }
+        }
+
+
         if (cxtcs.getVALUE_().equals(Com.getDate())) {//日期相同，取流水并更新流水
-            cxtcsKey.setKEY_UU("SYSQTLSXH");
+            cxtcsKey.setKEY_UU(sZDBH_U+"_QTLSXH");
             try {
                 cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
             } catch (Exception e) {
                 Logger.sysLogException(e);
                 return "";
+            }
+            if (cxtcs==null)
+            {
+                cxtcs=new CXTCS();
+                cxtcs.setKEY_UU(sZDBH_U+"_QTLSXH");
+                cxtcs.setFRDM_U("9999");
+                cxtcs.setVALUE_("1");
+                cxtcs.setJLZT_U("0");
+                try {
+                    cxtcsMapper.insert(cxtcs);
+                }catch (Exception e)
+                {
+                    Logger.sysLogException(e);
+                    return "";
+                }
             }
             XH = Integer.parseInt(cxtcs.getVALUE_());
         } else {
@@ -298,10 +331,10 @@ public class Com {
                 return "";
             }
         }
-        sSYSQTLS = "CSVR00001" + String.format("%07d", XH);
+        sSYSQTLS = "C"+sZDBH_U + String.format("%07d", XH);
 
         XH++;
-        cxtcs.setKEY_UU("SYSQTLSXH");
+        cxtcs.setKEY_UU(sZDBH_U+"_QTLSXH");
         cxtcs.setFRDM_U("9999");
         cxtcs.setVALUE_(XH + "");
         cxtcs.setJLZT_U("0");
@@ -316,6 +349,84 @@ public class Com {
         Logger.timerLog("sSYSQTLS=" + sSYSQTLS);
         Logger.timerLog(Com.getOut);
         return sSYSQTLS;
+    }
+
+    /**
+     * @return
+     * @apiNote 获取系统终端编号
+     */
+    public static String getSYSZDBH_U() {
+        String re = "";
+        DBAccess dbAccess = new DBAccess();
+        SqlSession sqlSession=null;
+        try {
+            sqlSession = dbAccess.getSqlSession();
+        } catch (IOException e) {
+            Logger.sysLogException(e);
+            return "";
+        }
+
+        try {
+
+            DZDXXExample dzdxxExample = new DZDXXExample();
+            dzdxxExample.or().andFRDM_UEqualTo("9999").andZDLXBHEqualTo("SERVER").andJLZT_UEqualTo("0").andZDDLZTEqualTo("0");
+
+            DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
+            List<DZDXX> dzdxxList = null;
+
+            dzdxxList = dzdxxMapper.selectByExample(dzdxxExample);
+            if (dzdxxList.size() == 0)
+                re = "";
+            else {
+                DZDXX dzdxx = dzdxxList.get(0);
+                dzdxx.setZDDLZT("1");
+                dzdxxMapper.updateByPrimaryKey(dzdxx);
+                re=dzdxxList.get(0).getZDBH_U();
+            }
+            sqlSession.commit();
+        } catch (Exception e) {
+            Logger.sysLogException(e);
+        }finally {
+            sqlSession.close();
+        }
+
+        return re;
+    }
+
+    /**
+     * @param sZDBH_U
+     * @return
+     * @apiNote 将指定终端编号释放
+     */
+    public static boolean releaseSYSZHBH_U( String sZDBH_U) {
+        boolean re=false;
+        DBAccess dbAccess = new DBAccess();
+        SqlSession sqlSession=null;
+        try {
+            sqlSession = dbAccess.getSqlSession();
+        } catch (IOException e) {
+            Logger.sysLogException(e);
+            return re;
+        }
+
+        try {
+            DZDXXKey dzdxxKey=new DZDXXKey();
+            dzdxxKey.setFRDM_U("9999");
+            dzdxxKey.setZDBH_U(sZDBH_U);
+
+            DZDXXMapper dzdxxMapper=sqlSession.getMapper(DZDXXMapper.class);
+            DZDXX dzdxx=dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+            dzdxx.setZDDLZT("0");
+            dzdxxMapper.updateByPrimaryKey(dzdxx);
+            sqlSession.commit();
+            re=true;
+        }catch (Exception e)
+        {
+            Logger.sysLogException(e);
+        }finally {
+            sqlSession.close();
+        }
+        return re;
     }
 
     public static Date[] getRQSJ(Date date) throws ParseException {

@@ -8,6 +8,8 @@ import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
+import XQBHServer.ServerTran.Tran;
+import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayClient;

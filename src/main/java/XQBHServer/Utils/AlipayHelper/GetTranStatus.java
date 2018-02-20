@@ -19,15 +19,24 @@ public class GetTranStatus {
     public static void main(String[] args) {
         Logger.tmpLog(Com.getIn);
 
-        while ( true) {
-            if (args.length != 1) {
-                Logger.tmpLog("参数不对");
-                Logger.tmpLog("out_tran_no");
-                Logger.tmpLog(Com.getOut);
-            }
-            InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
+        if (args.length != 1) {
+            Logger.tmpLog("参数不对");
+            Logger.tmpLog("out_tran_no");
+            Logger.tmpLog(Com.getOut);
+        }
+        InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
+        Com.ERRMap = readAll(inputStream);
 
-            Com.ERRMap = readAll(inputStream);
+        String sSYSZDBH = Com.getSYSZDBH_U();
+        if (sSYSZDBH==null||"".equals(sSYSZDBH))
+        {
+            Logger.tmpLog("获取终端信息失败!!!");
+            Com.cancelThreadBusy=false;
+            return;
+        }else {
+            Logger.tmpLog("获取终端编号="+sSYSZDBH);
+        }
+        try {
 
 
             Map XMLMapIn = new HashMap();
@@ -35,12 +44,11 @@ public class GetTranStatus {
             Map body = new HashMap();
             body.put("SFDH_U", args[0]);
 
-
-            head.put("ZDBH_U", "SVR00001");
+            head.put("ZDBH_U", sSYSZDBH);
             head.put("ZDJYM_", "SERVER");
             head.put("HTJYM_", "AlipayQuery");
             head.put("QTRQ_U", Com.getDate());
-            head.put("QTLS_U", Com.getSYSQTLS());
+            head.put("QTLS_U", Com.getSYSQTLS(sSYSZDBH));
             XMLMapIn.put("head", head);
             XMLMapIn.put("body", body);
             String XMLIn = XmlUtils.map2XML(XMLMapIn);
@@ -56,17 +64,19 @@ public class GetTranStatus {
                 Logger.tmpLog(" 查询失败!返回错误码[" + headOut.get("CWDM_U") + "]  错误信息[" + headOut.get("CWXX_U") + "]");
             } else
                 Logger.tmpLog(" SUCCESS!");
-
-
-            try {
-                Thread.sleep(6000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        }finally {
+            if (!Com.releaseSYSZHBH_U(sSYSZDBH))
+            {
+                Logger.tmpLog("释放柜员时出错!!!");
             }
-            if (false)
-                break;
-
         }
+
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Logger.tmpLog(Com.getOut);
 
 

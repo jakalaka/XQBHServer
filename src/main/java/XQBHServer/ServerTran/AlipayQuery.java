@@ -7,6 +7,8 @@ import XQBHServer.Server.Table.Model.MDZSJ;
 import XQBHServer.Server.Table.Model.MDZSJKey;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
+import XQBHServer.ServerTran.Tran;
+import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
@@ -31,6 +33,7 @@ import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
  * 如为已支付，返回成功，前端出货
  * 如为待支付，返回失败，错误代码ZFWAIT
  * 如为已关闭，返回失败，返回码CLOSED
+ *
  */
 public class AlipayQuery extends Tran {
     @Override
