@@ -41,8 +41,6 @@ public class ControllerStatementQuery extends Tran {
         String sZFZHLX = tranObj.getString("ZFZHLX");
 
 
-
-
         Logger.log(tranObj, "LOG_IO", Com.getIn);
 
         Logger.log(tranObj, "LOG_IO", "sSHBH_U_head=" + sSHBH_U_head);
@@ -54,7 +52,6 @@ public class ControllerStatementQuery extends Tran {
         Logger.log(tranObj, "LOG_IO", "sZDBH_U=" + sZDBH_U);
         Logger.log(tranObj, "LOG_IO", "sZFZHLX=" + sZFZHLX);
 
-        String sKHBH_U="";
 
         /*==================================codeBegin=====================================*/
         MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
@@ -63,7 +60,7 @@ public class ControllerStatementQuery extends Tran {
         criteria_mdzsj.andFRDM_UEqualTo("9999").andJLZT_UEqualTo("0");
 
         /*合法性检查*/
-        if(sQSRQ_U.equals("")) {
+        if (sQSRQ_U.equals("")) {
             Tran.runERR(tranObj, "CXCW03");
             return false;
         }
@@ -77,7 +74,7 @@ public class ControllerStatementQuery extends Tran {
             return false;
         }
 
-        if(sZZRQ_U.equals("")) {
+        if (sZZRQ_U.equals("")) {
             Tran.runERR(tranObj, "CXCW04");
             return false;
         }
@@ -89,29 +86,40 @@ public class ControllerStatementQuery extends Tran {
             Tran.runERR(tranObj, "TIMEER");
             return false;
         }
-        criteria_mdzsj.andHTRQ_UBetween(dQSRQ_U,dZZRQ_U);
+        criteria_mdzsj.andHTRQ_UBetween(dQSRQ_U, dZZRQ_U);
 
         //检查查询的商户或终端的权限合法性，前端有控制，但是本处也要控制
         //比较报文头中sSHBH_U_head、sKHBH_U_head和需要查询的SHBH_U、ZDBH_U的所属关系
-        if ("kh".equals(sQTDX_U_head)&&sKHBH_U_head.length()>0)//为客户查询，先查询客户有多少商户
+        if ("kh".equals(sQTDX_U_head) && sKHBH_U_head.length() > 0)//为客户查询，先查询客户有多少商户
         {
             criteria_mdzsj.andKHBH_UEqualTo(sKHBH_U_head);
-        }else if ("sh".equals(sQTDX_U_head)&&sSHBH_U_head.length()>0)
-        {
+        } else if ("sh".equals(sQTDX_U_head) && sSHBH_U_head.length() > 0) {
             criteria_mdzsj.andSHBH_UEqualTo(sSHBH_U_head);
-        }else {
+        } else {
             Tran.runERR(tranObj, "CXCW05");
             return false;
         }
 
-        if (sSHBH_U.length()>0)
+        if (sSHBH_U.length() > 0)
             criteria_mdzsj.andSHBH_UEqualTo(sSHBH_U);
-        if (sZDBH_U.length()>0)
+        if (sZDBH_U.length() > 0)
             criteria_mdzsj.andZDBH_UEqualTo(sZDBH_U);
 
-        if (sJYZT_U.length()>0)
-            criteria_mdzsj.andJYZT_UEqualTo(sJYZT_U);
-        if (sZFZHLX.length()>0)
+        //以","拆分交易状态
+        if (sJYZT_U.length() > 0) {
+            List<String> listJYZT_U = new ArrayList<>();
+            String[] sJYZT_Us = sJYZT_U.split(",");
+            for (int i = 0; i < sJYZT_Us.length; i++) {
+                listJYZT_U.add(sJYZT_Us[i]);
+            }
+            criteria_mdzsj.andJYZT_UIn(listJYZT_U);
+        } else {
+            Tran.runERR(tranObj, "COMMIS", "交易状态");
+            return false;
+        }
+
+
+        if (sZFZHLX.length() > 0)
             criteria_mdzsj.andZFZHLXEqualTo(sZFZHLX);
 
 
@@ -130,27 +138,31 @@ public class ControllerStatementQuery extends Tran {
             Tran.runERR(tranObj, "SQLNFD");
             return false;
         }
-        List<Map> listResoult=new ArrayList();
+        List<Map> listResoult = new ArrayList();
 
         for (MDZSJ mdzsj :
                 mdzsjList) {
-            Map detail=new HashMap<String ,String>();
+            Map detail = new HashMap<String, String>();
             detail.put("HTRQ_U", DataUtils.Date2StringofYear(mdzsj.getHTRQ_U()));
             detail.put("HTSJ_U", DataUtils.Date2StringofTime(mdzsj.getJYSJ_U()));
             detail.put("HTLS_U", mdzsj.getHTLS_U());
             detail.put("JYJE_U", mdzsj.getJYJE_U());
             detail.put("ZFZHLX", mdzsj.getZFZHLX());
             detail.put("SFDH_U", mdzsj.getSFDH_U());
-            detail.put("KHBH_U", sKHBH_U);
+            detail.put("KHBH_U", sKHBH_U_head);
             detail.put("SHBH_U", mdzsj.getSHBH_U());
             detail.put("ZDBH_U", mdzsj.getZDBH_U());
             detail.put("SPXX_U", mdzsj.getSPXX_U());
             detail.put("JYZT_U", mdzsj.getJYZT_U());
+            detail.put("YTHJE_", mdzsj.getYTHJE_());
+            detail.put("YHTRQ_",DataUtils.Date2StringofYear( mdzsj.getYHTRQ_()));
+            detail.put("YHTLS_", mdzsj.getYHTLS_());
+
             listResoult.add(detail);
         }
 
 
-        tranObj.TranMap.put("RELIST",listResoult );
+        tranObj.TranMap.put("RELIST", listResoult);
 
 
          /*==================================codeEnd=====================================*/

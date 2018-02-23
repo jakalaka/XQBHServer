@@ -89,6 +89,8 @@ public class ControllerRefund extends Tran {
             runERR(tranObj, "REF002");
             return false;
         }
+        if (mdzsj_old.getYTHJE_()==null)
+            mdzsj_old.setYTHJE_(new BigDecimal(0));
         //只允许一次退货
         if (mdzsj_old.getJYJE_U().compareTo(bTHJYJE) != 0 || mdzsj_old.getYTHJE_().compareTo(new BigDecimal(0)) != 0) {
             runERR(tranObj, "REF003");
@@ -119,7 +121,7 @@ public class ControllerRefund extends Tran {
         mdzsj_new.setJYSJ_U(tranObj.date);
         mdzsj_new.setHTJYM_(tranObj.getHead("HTJYM_"));
         mdzsj_new.setJYLX_U("1");
-        mdzsj_new.setJYJE_U(bTHJYJE);
+        mdzsj_new.setJYJE_U(bTHJYJE.multiply(new BigDecimal(-1)));
         mdzsj_new.setKHBH_U(sKHBH_U_head);
         mdzsj_new.setSHBH_U(sSHBH_U_head);
         mdzsj_new.setZDBH_U(sZDBH_U_head);
@@ -185,7 +187,6 @@ public class ControllerRefund extends Tran {
                 response = alipayClient.execute(request);
             } catch (Exception e) {
                 //标记为未知交易
-                tranObj.commitFlg = true;
                 Logger.logException(tranObj, "LOG_ERR", e);
                 runERR(tranObj, "ZF0004");
                 return false;
@@ -204,7 +205,9 @@ public class ControllerRefund extends Tran {
                 mdzsj_new.setSFRQ_U(response.getGmtRefundPay());//交易成功后更新
                 mdzsj_new.setFKRID_(response.getBuyerUserId());//交易成功后更新
                 mdzsj_new.setFKRZH_(response.getBuyerLogonId());//交易成功后更新
-                mdzsj_new.setJYZT_U("1");
+                mdzsj_new.setJYZT_U("t");
+                mdzsj_new.setYHTRQ_(mdzsj_old.getHTRQ_U());
+                mdzsj_new.setYHTLS_(mdzsj_old.getHTLS_U());
                 try {
                     mdzsjMapper.updateByPrimaryKey(mdzsj_new);
                 } catch (Exception e) {
@@ -213,7 +216,7 @@ public class ControllerRefund extends Tran {
                     return false;
                 }
 
-                mdzsj_old.setJYZT_U("c");
+                mdzsj_old.setJYZT_U("b");
                 mdzsj_old.setYTHJE_(bTHJYJE);
                 try {
                     mdzsjMapper.updateByPrimaryKey(mdzsj_old);

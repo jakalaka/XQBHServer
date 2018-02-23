@@ -139,11 +139,11 @@ public class ServerInit {
                         Logger.timerLog("开始调用 iCount=" + iCount);
                         String sZDBH_U = Com.getSYSZDBH_U();
                         if (sZDBH_U == null || "".equals(sZDBH_U)) {
-                            Logger.timerLog("获取终端信息失败!!!");
+                            Logger.timerLog("获取临时系统终端信息失败!!!");
                             Com.cancelThreadBusy = false;
                             continue;
                         } else {
-                            Logger.timerLog("获取终端编号=" + sZDBH_U);
+                            Logger.timerLog("获取临时系统终端编号=" + sZDBH_U);
                         }
                         try {
                             Map XMLMapIn = new HashMap();

@@ -69,10 +69,7 @@ public class ServerMain {
                 }
                 while (true) {
                     try {
-                        Socket socket = null;
-                        socket = serverSocket.accept();
-
-                        Socket finalSocket = socket;
+                        Socket finalSocket =  serverSocket.accept();
                         new Thread(new Runnable() {
 
                             @Override

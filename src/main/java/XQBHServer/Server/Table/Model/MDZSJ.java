@@ -40,6 +40,10 @@ public class MDZSJ extends MDZSJKey {
 
     private BigDecimal YTHJE_;
 
+    private Date YHTRQ_;
+
+    private String YHTLS_;
+
     private String SPXX_U;
 
     private String FKM_UU;
@@ -196,6 +200,22 @@ public class MDZSJ extends MDZSJKey {
 
     public void setYTHJE_(BigDecimal YTHJE_) {
         this.YTHJE_ = YTHJE_;
+    }
+
+    public Date getYHTRQ_() {
+        return YHTRQ_;
+    }
+
+    public void setYHTRQ_(Date YHTRQ_) {
+        this.YHTRQ_ = YHTRQ_;
+    }
+
+    public String getYHTLS_() {
+        return YHTLS_;
+    }
+
+    public void setYHTLS_(String YHTLS_) {
+        this.YHTLS_ = YHTLS_;
     }
 
     public String getSPXX_U() {

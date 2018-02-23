@@ -1569,6 +1569,136 @@ public class MDZSJExample {
             return (Criteria) this;
         }
 
+        public Criteria andYHTRQ_IsNull() {
+            addCriterion("YHTRQ_ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_IsNotNull() {
+            addCriterion("YHTRQ_ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_EqualTo(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ =", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_NotEqualTo(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ <>", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_GreaterThan(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ >", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_GreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ >=", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_LessThan(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ <", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_LessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("YHTRQ_ <=", value, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_In(List<Date> values) {
+            addCriterionForJDBCDate("YHTRQ_ in", values, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_NotIn(List<Date> values) {
+            addCriterionForJDBCDate("YHTRQ_ not in", values, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_Between(Date value1, Date value2) {
+            addCriterionForJDBCDate("YHTRQ_ between", value1, value2, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTRQ_NotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("YHTRQ_ not between", value1, value2, "YHTRQ_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_IsNull() {
+            addCriterion("YHTLS_ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_IsNotNull() {
+            addCriterion("YHTLS_ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_EqualTo(String value) {
+            addCriterion("YHTLS_ =", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_NotEqualTo(String value) {
+            addCriterion("YHTLS_ <>", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_GreaterThan(String value) {
+            addCriterion("YHTLS_ >", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_GreaterThanOrEqualTo(String value) {
+            addCriterion("YHTLS_ >=", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_LessThan(String value) {
+            addCriterion("YHTLS_ <", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_LessThanOrEqualTo(String value) {
+            addCriterion("YHTLS_ <=", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_Like(String value) {
+            addCriterion("YHTLS_ like", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_NotLike(String value) {
+            addCriterion("YHTLS_ not like", value, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_In(List<String> values) {
+            addCriterion("YHTLS_ in", values, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_NotIn(List<String> values) {
+            addCriterion("YHTLS_ not in", values, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_Between(String value1, String value2) {
+            addCriterion("YHTLS_ between", value1, value2, "YHTLS_");
+            return (Criteria) this;
+        }
+
+        public Criteria andYHTLS_NotBetween(String value1, String value2) {
+            addCriterion("YHTLS_ not between", value1, value2, "YHTLS_");
+            return (Criteria) this;
+        }
+
         public Criteria andSPXX_UIsNull() {
             addCriterion("SPXX_U is null");
             return (Criteria) this;

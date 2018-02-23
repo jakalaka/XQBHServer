@@ -4,6 +4,7 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Model.MDZSJ;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerTran.SystemTran;
+import XQBHServer.Utils.Data.DataUtils;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
@@ -30,11 +31,11 @@ public class GetTranStatus {
         String sSYSZDBH = Com.getSYSZDBH_U();
         if (sSYSZDBH==null||"".equals(sSYSZDBH))
         {
-            Logger.tmpLog("获取终端信息失败!!!");
+            Logger.tmpLog("获取临时系统终端信息失败!!!");
             Com.cancelThreadBusy=false;
             return;
         }else {
-            Logger.tmpLog("获取终端编号="+sSYSZDBH);
+            Logger.tmpLog("获取临时系统终端编号="+sSYSZDBH);
         }
         try {
 
@@ -59,11 +60,16 @@ public class GetTranStatus {
             Map XMLMapOut = XmlUtils.XML2map(XMLOut);
             Logger.tmpLog("CALL " + head.get("HTJYM_"));
             Map headOut = (Map) XMLMapOut.get("head");
+            Map bodyOut=(Map)XMLMapOut.get("body");
             if (!"AAAAAA".equals((headOut.get("CWDM_U")))) {
-                Logger.tmpLog(" FAIL!");
+                Logger.tmpLog("Call FAIL!");
                 Logger.tmpLog(" 查询失败!返回错误码[" + headOut.get("CWDM_U") + "]  错误信息[" + headOut.get("CWXX_U") + "]");
-            } else
-                Logger.tmpLog(" SUCCESS!");
+            } else {
+                Logger.tmpLog("Call SUCCESS!");
+                Logger.tmpLog("Code=["+ DataUtils.getValue(bodyOut,"CODE_U")+"]");
+                Logger.tmpLog("Subcode=["+ DataUtils.getValue(bodyOut,"SUBCOD")+"]");
+
+            }
         }finally {
             if (!Com.releaseSYSZHBH_U(sSYSZDBH))
             {
@@ -71,11 +77,6 @@ public class GetTranStatus {
             }
         }
 
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Logger.tmpLog(Com.getOut);
 

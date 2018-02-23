@@ -148,8 +148,12 @@ public class Connector {
             return false;
 //客户端
 //1、创建客户端Socket，指定服务器地址和端口
-        Logger.tmpLog("IP=["+IP+"] Port=["+9001+"]");
-        Socket socket = new Socket(IP, 9001);
+        String sIP=IP.split(":")[0];
+        int port=Integer.parseInt(IP.split(":")[1]);
+
+
+        Logger.tmpLog("sIP=["+sIP+"] port=["+port+"]");
+        Socket socket = new Socket(sIP, port);
 //2、获取输出流，向服务器端发送信息
         OutputStream os = socket.getOutputStream();//字节输出流
         PrintWriter pw = new PrintWriter(os);//将输出流包装成打印流
@@ -181,7 +185,6 @@ public class Connector {
     }
 
     public static void main(String[] args) {
-        String []strs={"restart","ZD000001"};
-        exec(strs);
+        exec(args);
     }
 }

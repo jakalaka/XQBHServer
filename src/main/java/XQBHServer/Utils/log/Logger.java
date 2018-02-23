@@ -95,12 +95,14 @@ public class Logger {
         int year = now.get(Calendar.YEAR);
         int month = now.get(Calendar.MONTH) + 1;
         int day = now.get(Calendar.DAY_OF_MONTH);
+
+
         StringBuffer logFilePath = new StringBuffer();
         logFilePath.append(LOG_FOLDER_NAME);
         logFilePath.append(File.separatorChar);
         logFilePath.append(year);
         logFilePath.append(File.separatorChar);
-        logFilePath.append(month);
+        logFilePath.append(String.format("%02d", month));
         logFilePath.append(File.separatorChar);
         logFilePath.append(day);
         logFilePath.append(File.separatorChar);
@@ -307,7 +309,7 @@ public class Logger {
         logFilePath.append(File.separatorChar);
         logFilePath.append(year);
         logFilePath.append(File.separatorChar);
-        logFilePath.append(month);
+        logFilePath.append(String.format("%02d", month));
         logFilePath.append(File.separatorChar);
         logFilePath.append(day);
 

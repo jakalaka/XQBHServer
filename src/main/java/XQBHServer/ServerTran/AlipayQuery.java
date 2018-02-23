@@ -172,6 +172,8 @@ public class AlipayQuery extends Tran {
                 return false;
             }
         }
+        tranObj.TranMap.put("CODE_U",response.getCode());
+        tranObj.TranMap.put("SUBCOD",response.getSubCode());
 
 
 
