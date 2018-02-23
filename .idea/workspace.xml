@@ -7,30 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1622b5-267c-4f5e-ad65-717165d8ae7f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayRefund.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CCPSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CSHSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CXTCSMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/CZDSXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DKHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DSHXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DSHZHMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/DZDXXMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MDZSJMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/resources/table/mapper/MJYBWMapper.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/ServerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJ.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJExample.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Server/Table/Model/MDZSJExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/AlipayQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerRefund.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerRefund.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/ServerTran/ControllerStatementQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/AlipayHelper/GetTranStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/ClientConecter/Connector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/Data/DataUtils.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/Data/DataUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" afterPath="$PROJECT_DIR$/src/main/java/XQBHServer/Utils/log/Logger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" afterPath="$PROJECT_DIR$/src/main/java/resources/errmsg.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1216,14 +1193,7 @@
       <workItem from="1519053902593" duration="7494000" />
       <workItem from="1519224343567" duration="717000" />
       <workItem from="1519307141895" duration="6795000" />
-      <workItem from="1519388537148" duration="8389000" />
-    </task>
-    <task id="LOCAL-00004" summary="20170720">
-      <created>1500553637904</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1500553637904</updated>
+      <workItem from="1519388537148" duration="8440000" />
     </task>
     <task id="LOCAL-00005" summary="20170720">
       <created>1500554418252</created>
@@ -1561,11 +1531,18 @@
       <option name="project" value="LOCAL" />
       <updated>1517242252563</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="newpull">
+      <created>1519403850170</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1519403850170</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="624347000" />
+    <option name="totallyTimeSpent" value="624398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
