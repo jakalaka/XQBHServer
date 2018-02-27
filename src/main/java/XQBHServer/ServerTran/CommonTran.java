@@ -3,12 +3,14 @@ package XQBHServer.ServerTran;
 import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
 import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
-import XQBHServer.Utils.RSA.RSASignature;
+import XQBHServer.Utils.RSA.RSAHandler;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 
 
 /**
@@ -17,21 +19,33 @@ import java.lang.reflect.Method;
 public class CommonTran {
     public String Comtran(String XMLIn) {
 
-        //验签名
-        String[] str = XMLIn.split("sign=");
+
+        Logger.sysLog("catch message =["+XMLIn+"]");
+        Logger.sysLog("catch message length =["+XMLIn.length()+"]");
+        Logger.sysLog(" Com.upPublicKey =["+Com.upPublicKey+"]");
+
+
+        //解密
+        PublicKey uppublicKey=null;
         try {
-            if (true != RSASignature.doCheck(str[0], str[1], Com.upPublicKey)) {
-                Logger.sysLog(XMLIn);
-                Logger.sysLog("报文验签失败!!!");
-                return "非法报文";
-            } else {
-                XMLIn = str[0];
-            }
+            uppublicKey= RSAHandler.getPublicKey(Com.upPublicKey);
         } catch (Exception e) {
-            Logger.sysLog(XMLIn);
             Logger.sysLogException(e);
-            return "非法报文";
+            return "";
         }
+        byte []decrypt=null;
+        try {
+            decrypt=RSAHandler.decrypt(XMLIn.getBytes(),uppublicKey);
+        }catch (Exception e)
+        {
+            Logger.sysLogException(e);
+            return "";
+        }
+        XMLIn=new String(decrypt);
+        Logger.sysLog("decrypt message =["+XMLIn+"]");
+
+
+
 
         TranObj tranObj = new TranObj(XMLIn);
         if (false == tranObj.buildSUCCESS) {
@@ -92,11 +106,32 @@ public class CommonTran {
         Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
         Logger.writte(tranObj);
 
+
+        Logger.sysLog("before encrypt XMLOut" + XMLOut + "\n\n\n");
+
         /*
-        加签名
+        加密
          */
-        String signstr = RSASignature.sign(XMLOut, Com.rePrivatebKey);
-        XMLOut = XMLOut + "sign=" + signstr;
+        PrivateKey rePrivatebKey=null;
+        try {
+            rePrivatebKey = RSAHandler.getPrivateKey(Com.rePrivatebKey);
+        } catch (Exception e) {
+            Logger.sysLogException(e);
+            return "";
+        }
+
+        byte[] encrypt=null;
+        try {
+            encrypt = RSAHandler.encrypt(XMLOut.getBytes(),rePrivatebKey);
+        } catch (Exception e) {
+            Logger.sysLogException(e);
+            return "";
+        }
+
+
+        XMLOut = new String(encrypt);
+        Logger.sysLog("after encrypt XMLOut" + XMLOut + "\n\n\n");
+
         return XMLOut;
     }
 

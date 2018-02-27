@@ -8,9 +8,7 @@ import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
 import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 
@@ -154,7 +152,7 @@ public class ControllerRefund extends Tran {
         */
         if (sZFZHLX.equals("z")) {
 
-            AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+            AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
             AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
             request.setBizContent("{" +
                     "\"out_trade_no\":\"" + mdzsj_old.getSFDH_U() + "\"," +

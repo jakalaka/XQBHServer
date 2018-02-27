@@ -1,32 +1,21 @@
 package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.ServerInit;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.MDZSJ;
 import XQBHServer.Server.Table.Model.MDZSJKey;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.ServerTran.Tran;
-import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Test.MyAlipayClient;
-import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradeQueryResponse;
 
-import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 
 /**
  * 查询支付宝交易状态
@@ -48,7 +37,7 @@ public class AlipayQuery extends Tran {
         Logger.log(tranObj, "LOG_IO", "sYHTRQ_=" + sYHTRQ_);
         Logger.log(tranObj, "LOG_IO", "sSFDH_U" + sSFDH_U);
         /*==================================codeBegin=====================================*/
-        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
         String sSFDH_UFINAL = "";
 

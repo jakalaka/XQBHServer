@@ -8,12 +8,9 @@ import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.ServerTran.Tran;
-import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePayRequest;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradePayResponse;
@@ -195,7 +192,7 @@ public class AlipayPay extends Tran {
         AlipayClient alipayClient;
         String seller_id = dshzh.getZFZH_U();
 
-        alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizContent("{" +

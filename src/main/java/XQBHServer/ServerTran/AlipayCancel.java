@@ -7,12 +7,9 @@ import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.ServerTran.Tran;
-import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradeCancelRequest;
 import com.alipay.api.response.AlipayTradeCancelResponse;
 
@@ -75,7 +72,7 @@ public class AlipayCancel extends Tran {
             return false;
         }
 
-        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
         for (int i = 0; i < mdzsjList.size(); i++) {
             //call cancel

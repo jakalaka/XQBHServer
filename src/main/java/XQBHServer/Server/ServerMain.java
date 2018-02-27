@@ -86,9 +86,10 @@ public class ServerMain {
                                     StringBuilder stringBuilder=new StringBuilder();
                                     while((info=br.readLine())!=null){
                                         stringBuilder.append(info);
+                                        System.out.println(info.length());
                                     }
                                     finalSocket.shutdownInput();//πÿ±’ ‰»Î¡˜
-
+                                    System.out.println("stringBuilder.length"+stringBuilder.length());
                                     String XMLIn=stringBuilder.toString();
                                     CommonTran commonTran=new CommonTran();
                                     String XMLOut=commonTran.Comtran(XMLIn);

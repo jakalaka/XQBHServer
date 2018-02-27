@@ -24,6 +24,7 @@ public class GetTranStatus {
             Logger.tmpLog("参数不对");
             Logger.tmpLog("out_tran_no");
             Logger.tmpLog(Com.getOut);
+            return;
         }
         InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
         Com.ERRMap = readAll(inputStream);
