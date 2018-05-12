@@ -20,6 +20,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/alipay-sdk-java20171027120314.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-logging-1.1.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.40/fastjson-1.2.40.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.11/commons-codec-1.11.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

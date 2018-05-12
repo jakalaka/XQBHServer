@@ -315,7 +315,8 @@ public class Logger {
 
         File dir = new File(logFilePath.toString());
         if (!dir.exists()) {
-            dir.mkdirs();
+            if (!dir.mkdirs())
+                System.out.println("make dir "+dir.getAbsolutePath()+" fail");
         }
         StringBuffer tmplogFilePath = new StringBuffer();
 

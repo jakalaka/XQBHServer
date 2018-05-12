@@ -3,7 +3,6 @@ package XQBHServer.ServerTran;
 import XQBHServer.Server.Com;
 import XQBHServer.ServerAPI.ComInit;
 import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
-import XQBHServer.Utils.RSA.RSAHandler;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
@@ -20,41 +19,18 @@ public class CommonTran {
     public String Comtran(String XMLIn) {
 
 
-        Logger.sysLog("catch message =["+XMLIn+"]");
-        Logger.sysLog("catch message length =["+XMLIn.length()+"]");
-        Logger.sysLog(" Com.upPublicKey =["+Com.upPublicKey+"]");
-
-
-        //Ω‚√‹
-        PublicKey uppublicKey=null;
-        try {
-            uppublicKey= RSAHandler.getPublicKey(Com.upPublicKey);
-        } catch (Exception e) {
-            Logger.sysLogException(e);
-            return "";
-        }
-        byte []decrypt=null;
-        try {
-            decrypt=RSAHandler.decrypt(XMLIn.getBytes(),uppublicKey);
-        }catch (Exception e)
-        {
-            Logger.sysLogException(e);
-            return "";
-        }
-        XMLIn=new String(decrypt);
-        Logger.sysLog("decrypt message =["+XMLIn+"]");
-
-
-
 
         TranObj tranObj = new TranObj(XMLIn);
         if (false == tranObj.buildSUCCESS) {
             Tran.runERR(tranObj, "ERR003");
             return getOut(tranObj);
         }
+        Logger.log(tranObj, "LOG_IO", "======================================================================================");
+
 
         Logger.log(tranObj, "LOG_IO", "flLogLV = [" + tranObj.flLogLV + "] ");
-        Logger.log(tranObj, "LOG_IO", "XMLIn=" + XMLIn);
+        Logger.log(tranObj, "LOG_SYS", "XMLIn=" + XMLIn);
+
 
 
         /*
@@ -103,35 +79,10 @@ public class CommonTran {
             tranObj.sqlSession.commit();
             tranObj.sqlSession.close();
         }
-        Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
+        Logger.log(tranObj, "LOG_SYS", "XMLOut" + XMLOut);
+        Logger.log(tranObj, "LOG_IO", "======================================================================================");
+
         Logger.writte(tranObj);
-
-
-        Logger.sysLog("before encrypt XMLOut" + XMLOut + "\n\n\n");
-
-        /*
-        º”√‹
-         */
-        PrivateKey rePrivatebKey=null;
-        try {
-            rePrivatebKey = RSAHandler.getPrivateKey(Com.rePrivatebKey);
-        } catch (Exception e) {
-            Logger.sysLogException(e);
-            return "";
-        }
-
-        byte[] encrypt=null;
-        try {
-            encrypt = RSAHandler.encrypt(XMLOut.getBytes(),rePrivatebKey);
-        } catch (Exception e) {
-            Logger.sysLogException(e);
-            return "";
-        }
-
-
-        XMLOut = new String(encrypt);
-        Logger.sysLog("after encrypt XMLOut" + XMLOut + "\n\n\n");
-
         return XMLOut;
     }
 
