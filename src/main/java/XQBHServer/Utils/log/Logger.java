@@ -311,7 +311,7 @@ public class Logger {
         logFilePath.append(File.separatorChar);
         logFilePath.append(String.format("%02d", month));
         logFilePath.append(File.separatorChar);
-        logFilePath.append(day);
+        logFilePath.append(String.format("%02d", day));
 
         File dir = new File(logFilePath.toString());
         if (!dir.exists()) {
