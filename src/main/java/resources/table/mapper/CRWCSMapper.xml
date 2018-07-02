@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="XQBHServer.Server.Table.Mapper.CRWCSMapper" >
+  <resultMap id="BaseResultMap" type="XQBHServer.Server.Table.Model.CRWCS" >
+    <id column="FRDM_U" property="FRDM_U" jdbcType="VARCHAR" />
+    <id column="DSRWBH" property="DSRWBH" jdbcType="VARCHAR" />
+    <id column="DSRWXH" property="DSRWXH" jdbcType="INTEGER" />
+    <result column="SFCF_U" property="SFCF_U" jdbcType="VARCHAR" />
+    <result column="CFBS_U" property="CFBS_U" jdbcType="INTEGER" />
+    <result column="HTJYM_" property="HTJYM_" jdbcType="VARCHAR" />
+    <result column="WHRQ_U" property="WHRQ_U" jdbcType="DATE" />
+    <result column="WHSJ_U" property="WHSJ_U" jdbcType="TIME" />
+    <result column="WHR_UU" property="WHR_UU" jdbcType="VARCHAR" />
+    <result column="SJC_UU" property="SJC_UU" jdbcType="TIMESTAMP" />
+    <result column="JLZT_U" property="JLZT_U" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FRDM_U, DSRWBH, DSRWXH, SFCF_U, CFBS_U, HTJYM_, WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, JLZT_U
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="XQBHServer.Server.Table.Model.CRWCSExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crwcs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="XQBHServer.Server.Table.Model.CRWCSKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from crwcs
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and DSRWBH = #{DSRWBH,jdbcType=VARCHAR}
+      and DSRWXH = #{DSRWXH,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.CRWCSKey" >
+    delete from crwcs
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and DSRWBH = #{DSRWBH,jdbcType=VARCHAR}
+      and DSRWXH = #{DSRWXH,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="XQBHServer.Server.Table.Model.CRWCSExample" >
+    delete from crwcs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="XQBHServer.Server.Table.Model.CRWCS" >
+    insert into crwcs (FRDM_U, DSRWBH, DSRWXH, 
+      SFCF_U, CFBS_U, HTJYM_, 
+      WHRQ_U, WHSJ_U, WHR_UU, SJC_UU, 
+      JLZT_U)
+    values (#{FRDM_U,jdbcType=VARCHAR}, #{DSRWBH,jdbcType=VARCHAR}, #{DSRWXH,jdbcType=INTEGER}, 
+      #{SFCF_U,jdbcType=VARCHAR}, #{CFBS_U,jdbcType=INTEGER}, #{HTJYM_,jdbcType=VARCHAR}, 
+      #{WHRQ_U,jdbcType=DATE}, #{WHSJ_U,jdbcType=TIME}, #{WHR_UU,jdbcType=VARCHAR}, #{SJC_UU,jdbcType=TIMESTAMP}, 
+      #{JLZT_U,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="XQBHServer.Server.Table.Model.CRWCS" >
+    insert into crwcs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="FRDM_U != null" >
+        FRDM_U,
+      </if>
+      <if test="DSRWBH != null" >
+        DSRWBH,
+      </if>
+      <if test="DSRWXH != null" >
+        DSRWXH,
+      </if>
+      <if test="SFCF_U != null" >
+        SFCF_U,
+      </if>
+      <if test="CFBS_U != null" >
+        CFBS_U,
+      </if>
+      <if test="HTJYM_ != null" >
+        HTJYM_,
+      </if>
+      <if test="WHRQ_U != null" >
+        WHRQ_U,
+      </if>
+      <if test="WHSJ_U != null" >
+        WHSJ_U,
+      </if>
+      <if test="WHR_UU != null" >
+        WHR_UU,
+      </if>
+      <if test="SJC_UU != null" >
+        SJC_UU,
+      </if>
+      <if test="JLZT_U != null" >
+        JLZT_U,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="FRDM_U != null" >
+        #{FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="DSRWBH != null" >
+        #{DSRWBH,jdbcType=VARCHAR},
+      </if>
+      <if test="DSRWXH != null" >
+        #{DSRWXH,jdbcType=INTEGER},
+      </if>
+      <if test="SFCF_U != null" >
+        #{SFCF_U,jdbcType=VARCHAR},
+      </if>
+      <if test="CFBS_U != null" >
+        #{CFBS_U,jdbcType=INTEGER},
+      </if>
+      <if test="HTJYM_ != null" >
+        #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null" >
+        #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null" >
+        #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null" >
+        #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null" >
+        #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null" >
+        #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="XQBHServer.Server.Table.Model.CRWCSExample" resultType="java.lang.Integer" >
+    select count(*) from crwcs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update crwcs
+    <set >
+      <if test="record.FRDM_U != null" >
+        FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.DSRWBH != null" >
+        DSRWBH = #{record.DSRWBH,jdbcType=VARCHAR},
+      </if>
+      <if test="record.DSRWXH != null" >
+        DSRWXH = #{record.DSRWXH,jdbcType=INTEGER},
+      </if>
+      <if test="record.SFCF_U != null" >
+        SFCF_U = #{record.SFCF_U,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CFBS_U != null" >
+        CFBS_U = #{record.CFBS_U,jdbcType=INTEGER},
+      </if>
+      <if test="record.HTJYM_ != null" >
+        HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="record.WHRQ_U != null" >
+        WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="record.WHSJ_U != null" >
+        WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="record.WHR_UU != null" >
+        WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SJC_UU != null" >
+        SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.JLZT_U != null" >
+        JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update crwcs
+    set FRDM_U = #{record.FRDM_U,jdbcType=VARCHAR},
+      DSRWBH = #{record.DSRWBH,jdbcType=VARCHAR},
+      DSRWXH = #{record.DSRWXH,jdbcType=INTEGER},
+      SFCF_U = #{record.SFCF_U,jdbcType=VARCHAR},
+      CFBS_U = #{record.CFBS_U,jdbcType=INTEGER},
+      HTJYM_ = #{record.HTJYM_,jdbcType=VARCHAR},
+      WHRQ_U = #{record.WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{record.WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{record.WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{record.SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{record.JLZT_U,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="XQBHServer.Server.Table.Model.CRWCS" >
+    update crwcs
+    <set >
+      <if test="SFCF_U != null" >
+        SFCF_U = #{SFCF_U,jdbcType=VARCHAR},
+      </if>
+      <if test="CFBS_U != null" >
+        CFBS_U = #{CFBS_U,jdbcType=INTEGER},
+      </if>
+      <if test="HTJYM_ != null" >
+        HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      </if>
+      <if test="WHRQ_U != null" >
+        WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      </if>
+      <if test="WHSJ_U != null" >
+        WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      </if>
+      <if test="WHR_UU != null" >
+        WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      </if>
+      <if test="SJC_UU != null" >
+        SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      </if>
+      <if test="JLZT_U != null" >
+        JLZT_U = #{JLZT_U,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and DSRWBH = #{DSRWBH,jdbcType=VARCHAR}
+      and DSRWXH = #{DSRWXH,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="XQBHServer.Server.Table.Model.CRWCS" >
+    update crwcs
+    set SFCF_U = #{SFCF_U,jdbcType=VARCHAR},
+      CFBS_U = #{CFBS_U,jdbcType=INTEGER},
+      HTJYM_ = #{HTJYM_,jdbcType=VARCHAR},
+      WHRQ_U = #{WHRQ_U,jdbcType=DATE},
+      WHSJ_U = #{WHSJ_U,jdbcType=TIME},
+      WHR_UU = #{WHR_UU,jdbcType=VARCHAR},
+      SJC_UU = #{SJC_UU,jdbcType=TIMESTAMP},
+      JLZT_U = #{JLZT_U,jdbcType=VARCHAR}
+    where FRDM_U = #{FRDM_U,jdbcType=VARCHAR}
+      and DSRWBH = #{DSRWBH,jdbcType=VARCHAR}
+      and DSRWXH = #{DSRWXH,jdbcType=INTEGER}
+  </update>
+</mapper>
