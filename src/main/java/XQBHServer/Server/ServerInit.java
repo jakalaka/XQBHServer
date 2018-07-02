@@ -1,23 +1,27 @@
 package XQBHServer.Server;
 
+import XQBHServer.Server.Table.Mapper.CDSRWMapper;
 import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerTran.SystemTran;
-import XQBHServer.ServerTran.Tran;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 
@@ -28,159 +32,107 @@ import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
 public class ServerInit {
     public static boolean Init() {
         DBAccess dbAccess = new DBAccess();
-        SqlSession sqlSession;
+        SqlSession sqlSession = null;
+
+
         /*
         尝试连接数据库
          */
-
-
-        InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
-
-        Com.ERRMap = readAll(inputStream);
+        List<CDSRW> cdsrwList;
 
         try {
+
+
+
+            InputStream inputStream = Class.class.getResourceAsStream("/resources/errmsg.properties");
+
+            Com.ERRMap = readAll(inputStream);
+
             sqlSession = dbAccess.getSqlSession();
-            CXTCSMapper cxtcsMapper = sqlSession.getMapper(CXTCSMapper.class);
-            CXTCSKey cxtcsKey = new CXTCSKey();
-            cxtcsKey.setKEY_UU("LoopSleep");
-            cxtcsKey.setFRDM_U("9999");
-            CXTCS cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
-            Com.cancelThreadLoopTime = Long.parseLong(cxtcs.getVALUE_());
+            CDSRWMapper cxtcsMapper = sqlSession.getMapper(CDSRWMapper.class);
+            CDSRWExample cdsrwExample = new CDSRWExample();
+            cdsrwExample.or().andJLZT_UEqualTo("0");
+            cdsrwList = cxtcsMapper.selectByExample(cdsrwExample);
         } catch (Exception e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR", e);
             return false;
         }
         sqlSession.close();
 
+        if (cdsrwList != null) {
+            for (int i = 0; i < cdsrwList.size(); i++) {
+                final int no = i;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String loggerFile = Logger.getLogPath("Timer" + "_" + cdsrwList.get(no).getHTJYM_());
+                        MDC.put("logFileName", loggerFile); //获取日志文件
 
-        //创建撤销进程
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!Com.cancelThreadBusy) {
-                    Com.cancelThreadBusy = true;
-
-                    try {
-                        Thread.sleep(Com.cancelThreadLoopTime);
-                    } catch (InterruptedException e) {
-                        Logger.sysLogException(e);
-                        Com.cancelThreadBusy = false;
-                        continue;
-                    }
-
-                    Logger.timerLog("===========================================================");
-                    Logger.timerLog(Com.getIn);
-
-                    DBAccess dbAccess = new DBAccess();
-                    SqlSession sqlSession_thread = null;
-                    try {
-                        sqlSession_thread = dbAccess.getSqlSession();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    CXTCSMapper cxtcsMapper = sqlSession_thread.getMapper(CXTCSMapper.class);
-                    CXTCSKey cxtcsKey = new CXTCSKey();
-                    cxtcsKey.setFRDM_U("9999");
-                    cxtcsKey.setKEY_UU("AlipayTOut");
-                    CXTCS cxtcs = null;
-                    try {
-                        cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
-                    } catch (Exception e) {
-                        Logger.timerLogException(e);
-                        Logger.timerLog("获取超时时间失败 ERR");
-                        Com.cancelThreadBusy = false;
-                        continue;
-                    }
-
-                    long sTimeOut = 0;
-                    try {
-                        sTimeOut = Long.parseLong(cxtcs.getVALUE_());
-                    } catch (Exception e) {
-                        Logger.timerLogException(e);
-                        Logger.timerLog("转换string2long出错 ERR");
-                        Com.cancelThreadBusy = false;
-                        continue;
-                    }
-
-                    Date dateLimit = new Date();
-                    dateLimit.setTime(dateLimit.getTime() - sTimeOut);//CXTCS中定义的支付宝超时时间
-                    Date[] dArrary;
-                    try {
-                        dArrary = Com.getRQSJ(dateLimit);
-                    } catch (ParseException e) {
-                        Logger.timerLogException(e);
-                        Logger.timerLog("获取当前日期、时间出错 ERR");
-                        Com.cancelThreadBusy = false;
-                        continue;
-                    }
-
-                    MDZSJMapper mdzsjMapper = sqlSession_thread.getMapper(MDZSJMapper.class);
-                    MDZSJExample mdzsjExample = new MDZSJExample();
-                    mdzsjExample.or().andFRDM_UEqualTo("9999");
-                    mdzsjExample.or().andJYZT_UEqualTo("w");
-                    mdzsjExample.clear();
-                    mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_UEqualTo(dArrary[0]).andJYSJ_ULessThan(dArrary[1]);
-                    mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_ULessThan(dArrary[0]);
-                    int iCount = 0;
-                    try {
-                        iCount = mdzsjMapper.countByExample(mdzsjExample);
-                    } catch (Exception e) {
-                        Logger.timerLogException(e);
-                        Logger.timerLog("查询总笔数异常 ERR");
-                        Com.cancelThreadBusy = false;
-                        continue;
-                    }
+                        while (true) {
+                            String sZDBH_U = Com.getSYSZDBH_U();
+                            if (sZDBH_U != null && !sZDBH_U.equals("")) {
+                                try {
+                                    Logger.comLog("LOG_IO", "===========================================================");
+                                    Logger.comLog("LOG_IO", Com.getIn);
 
 
-                    Logger.timerLog(" dArrary[0]=" + dArrary[0]);
-                    Logger.timerLog(" dArrary[1]=" + dArrary[1]);
+                                    //按固定时间跑的，可以在这里先计算出时间差，然后先sleep，暂无需求，不做
 
-                    if (iCount > 0) {
-                        Logger.timerLog("开始调用 iCount=" + iCount);
-                        String sZDBH_U = Com.getSYSZDBH_U();
-                        if (sZDBH_U == null || "".equals(sZDBH_U)) {
-                            Logger.timerLog("获取临时系统终端信息失败!!!");
-                            Com.cancelThreadBusy = false;
-                            continue;
-                        } else {
-                            Logger.timerLog("获取临时系统终端编号=" + sZDBH_U);
-                        }
-                        try {
-                            Map XMLMapIn = new HashMap();
-                            Map head = new HashMap();
-                            head.put("ZDBH_U", sZDBH_U);
-                            head.put("ZDJYM_", "SERVER");
-                            head.put("HTJYM_", "AlipayCancel");
-                            head.put("QTRQ_U", Com.getDate());
-                            head.put("QTLS_U", Com.getSYSQTLS(sZDBH_U));
-                            XMLMapIn.put("head", head);
-                            String XMLIn = XmlUtils.map2XML(XMLMapIn);
-                            SystemTran systemTran = new SystemTran();
-                            String XMLOut = systemTran.SystemTran(XMLIn);
-                            Map XMLMapOut = XmlUtils.XML2map(XMLOut);
-                            Logger.timerLog("CALL " + head.get("HTJYM_"));
-                            if (!"AAAAAA".equals(((Map) XMLMapOut.get("head")).get("CWDM_U")))
-                                Logger.timerLog(" FAIL!");
-                            else
-                                Logger.timerLog(" SUCCESS!");
-                        }finally {
-                            if (!Com.releaseSYSZHBH_U(sZDBH_U))
-                            {
-                                Logger.timerLog("释放柜员时出错!!!");
+
+                                    Map XMLMapIn = new HashMap();
+                                    Map head = new HashMap();
+                                    head.put("ZDBH_U", sZDBH_U);
+                                    head.put("ZDJYM_", "SERVER");
+                                    head.put("HTJYM_", cdsrwList.get(no).getHTJYM_());
+                                    head.put("QTRQ_U", Com.getDate());
+                                    head.put("QTLS_U", Com.getSYSQTLS(sZDBH_U));
+                                    XMLMapIn.put("head", head);
+                                    String XMLIn = XmlUtils.map2XML(XMLMapIn);
+                                    SystemTran systemTran = new SystemTran();
+                                    String XMLOut = systemTran.SystemTran(XMLIn);
+                                    MDC.put("logFileName", loggerFile); //获取日志文件
+                                    Map XMLMapOut = XmlUtils.XML2map(XMLOut);
+                                    Logger.comLog("LOG_IO", "CALL " + head.get("HTJYM_"));
+                                    if (!"AAAAAA".equals(((Map) XMLMapOut.get("head")).get("CWDM_U")))
+                                        Logger.comLog("LOG_ERR", " FAIL!");
+                                    else
+                                        Logger.comLog("LOG_IO", " SUCCESS!");
+
+
+                                    Logger.comLog("LOG_IO", Com.getOut);
+                                    Logger.comLog("LOG_IO", "===========================================================\n\n\n");
+
+                                } catch (Exception e) {
+                                    Logger.comLogException("LOG_ERR", e);
+                                } finally {
+                                    if (Com.releaseSYSZHBH_U(sZDBH_U)) {
+                                        Logger.comLog("LOG_IO", "释放系统终端[" + sZDBH_U + "]");
+
+                                    } else {
+                                        Logger.comLog("LOG_ERR", "释放系统终端[" + sZDBH_U + "]失败!");
+                                    }
+                                }
+                            } else {
+                                Logger.comLog("LOG_ERR", "获取系统终端失败!");
                             }
+
+
+                            if ("0".equals(cdsrwList.get(no).getRWKZZL())) {
+                                long baseTime = Long.parseLong(cdsrwList.get(no).getRWJGS_());
+                                baseTime *= 1000;
+                                try {
+                                    Thread.sleep(baseTime);
+                                } catch (InterruptedException e) {
+                                    Logger.comLogException("LOG_ERR", e);
+                                }
+                            }
+
                         }
-                    } else
-                        Logger.timerLog("iCount=" + iCount);
 
-                    sqlSession_thread.close();
-                    Logger.timerLog(Com.getOut);
-                    Logger.timerLog("===========================================================");
-                    Com.cancelThreadBusy = false;
-                }
-
+                    }
+                }).start();
             }
-        });
-        thread.start();
+        }
 
 
         return true;

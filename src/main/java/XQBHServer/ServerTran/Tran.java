@@ -4,6 +4,8 @@ import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import java.util.Date;
 import java.util.Map;
@@ -12,6 +14,7 @@ import java.util.Map;
  * Created by Administrator on 2017/7/4 0004.
  */
 public abstract class Tran {
+
 
     public abstract boolean exec(TranObj tranObj);
 

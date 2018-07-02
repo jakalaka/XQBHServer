@@ -319,7 +319,7 @@ public class AlipayPay extends Tran {
                 mdzsjMapper.updateByPrimaryKey(mdzsj);
             }catch (Exception e)
             {
-                Logger.sysLogException(e);
+                Logger.logException(tranObj,"LOG_ERR",e);
             }
             runERR(tranObj, "ZFWAIT");//前端做一个轮循
             tranObj.commitFlg=true;
@@ -342,7 +342,7 @@ public class AlipayPay extends Tran {
             mdzsjMapper.updateByPrimaryKey(mdzsj);
         } catch (Exception e) {
             //不操作，认为成功，需人工核对状态为u的情况
-            Logger.sysLogException(e);
+            Logger.logException(tranObj,"LOG_ERR",e);
         }
 
 

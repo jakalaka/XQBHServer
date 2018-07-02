@@ -8,7 +8,6 @@ import XQBHServer.Utils.log.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
@@ -21,8 +20,9 @@ public class SystemTran {
             Tran.runERR(tranObj, "ERR003");
             return getOut(tranObj);
         }
+        Logger.log(tranObj, "LOG_IO", "======================================================================================");
 
-        Logger.log(tranObj, "LOG_IO", "flLogLV = [" + tranObj.flLogLV + "] ");
+        Logger.log(tranObj, "LOG_IO", "tranLogLV = [" + tranObj.tranLogLV + "] ");
         Logger.log(tranObj, "LOG_IO", "XMLIn=" + XMLIn);
 
 
@@ -59,7 +59,7 @@ public class SystemTran {
         } catch (ClassNotFoundException e) {
             Tran.runERR(tranObj, "ERR007");
         }
-        if (true != callRe&&!tranObj.commitFlg) {//不知状态的交易，需人工对账
+        if (true != callRe && !tranObj.commitFlg) {//不知状态的交易，需人工对账
             tranObj.sqlSession.rollback();
             Logger.log(tranObj, "LOG_ERR", "Call ERR");
         }
@@ -79,7 +79,10 @@ public class SystemTran {
             tranObj.sqlSession.close();
         }
         Logger.log(tranObj, "LOG_IO", "XMLOut" + XMLOut + "\n\n\n");
-        Logger.writte(tranObj);
+        Logger.log(tranObj, "LOG_IO", "======================================================================================\n\n\n");
+
+        Com.logFile.remove(tranObj.loggerFile);
+
 
         return XMLOut;
     }

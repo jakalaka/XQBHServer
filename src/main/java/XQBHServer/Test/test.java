@@ -5,31 +5,37 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradeCancelRequest;
 import com.alipay.api.response.AlipayTradeCancelResponse;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class test {
     public static void main(String[] args) {
-        AlipayTradeCancelRequest cancelRequest = new AlipayTradeCancelRequest();
-        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+//        Map map=new HashMap<String ,String>();
+//
+//        map.put("Log\\2018\\05\\28\\System_0.log","");
+//
+//        map.put("Log\\2018\\05\\28\\ZDLogin/ZDLogin_0.log",null);
+//        System.out.println(map.get("Log\\2018\\05\\28\\ZDLogin/ZDLogin_0.log"));
 
-
-        cancelRequest.setBizContent("{" +
-                "\"out_trade_no\":\""+"20171209SZD0000010000011"+"\"," +
-                "\"trade_no\":\"\"" +
-                "  }");
-        AlipayTradeCancelResponse calcelResponse = null;
-
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("in");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
         try {
-            calcelResponse = alipayClient.execute(cancelRequest);
-        } catch (Exception e) {
-            //标记为未知交易
-            System.out.println(e);
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        if (calcelResponse.isSuccess()) {
-            System.out.println("调用成功");
 
-        }else {
-            System.out.println("调用失败");
-        }
-        System.out.println(        calcelResponse.getBody());
+        System.out.println("over");
 
     }
 }

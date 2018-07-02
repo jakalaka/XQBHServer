@@ -3,9 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--<settings>&lt;!&ndash;打sql日志 回头需要研究&ndash;&gt;-->
-        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
-    <!--</settings>-->
+    <settings><!--打sql日志 回头需要研究-->
+        <setting name="logPrefix" value="dao."/>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
     <!-- 对事务的管理和连接池的配置 -->
     <environments default="development">
         <environment id="development">
@@ -26,12 +27,15 @@
         <mapper resource="resources/table/mapper/CSHSXMapper.xml"/>
         <mapper resource="resources/table/mapper/CZDSXMapper.xml"/>
         <mapper resource="resources/table/mapper/CXTCSMapper.xml"/>
+        <mapper resource="resources/table/mapper/CDSRWMapper.xml"/>
+        <mapper resource="resources/table/mapper/CRWCSMapper.xml"/>
         <mapper resource="resources/table/mapper/DSHZHMapper.xml"/>
         <mapper resource="resources/table/mapper/DKHXXMapper.xml"/>
         <mapper resource="resources/table/mapper/DSHXXMapper.xml"/>
         <mapper resource="resources/table/mapper/DZDXXMapper.xml"/>
         <mapper resource="resources/table/mapper/MJYBWMapper.xml"/>
         <mapper resource="resources/table/mapper/MDZSJMapper.xml"/>
+        <mapper resource="resources/table/mapper/MRWDJMapper.xml"/>
     </mappers>
 
 

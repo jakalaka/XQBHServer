@@ -1,6 +1,5 @@
 package XQBHServer.ServerAPI;
 
-import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Model.CXTCS;
 import XQBHServer.Server.Table.Model.CXTCSKey;
@@ -26,7 +25,7 @@ public class GetLogInfo {
         CXTCSMapper cxtcsMapper = tranObj.sqlSession.getMapper(CXTCSMapper.class);
         CXTCSKey cxtcsKey = new CXTCSKey();
         cxtcsKey.setFRDM_U("9999");
-        cxtcsKey.setKEY_UU("flLogLV");
+        cxtcsKey.setKEY_UU("tranLogLV");
         CXTCS cxtcs=null;
 
         try{
@@ -38,19 +37,19 @@ public class GetLogInfo {
             return false;
         }
         if (null == cxtcs) {
-            tranObj.flLogLV="DEBUG";
-        }
-        if("SYS".equals(cxtcs.getVALUE_()))
-            tranObj.flLogLV="SYS";
+            tranObj.tranLogLV ="DEBUG";
+        }else if("SYS".equals(cxtcs.getVALUE_()))
+            tranObj.tranLogLV ="SYS";
         else if("ERR".equals(cxtcs.getVALUE_()))
-            tranObj.flLogLV="ERR";
+            tranObj.tranLogLV ="ERR";
         else if("IO".equals(cxtcs.getVALUE_()))
-            tranObj.flLogLV="IO";
+            tranObj.tranLogLV ="IO";
         else if("DEBUG".equals(cxtcs.getVALUE_()))
-            tranObj.flLogLV="DEBUG";
+            tranObj.tranLogLV ="DEBUG";
         else {
             //查出有问题，如何处理？
-            tranObj.flLogLV="DEBUG";
+            tranObj.tranLogLV ="DEBUG";
+            Logger.log(tranObj,"LOG_ERR","查询数据库错误");
         }
 
 

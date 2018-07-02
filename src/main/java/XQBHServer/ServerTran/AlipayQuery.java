@@ -115,7 +115,7 @@ public class AlipayQuery extends Tran {
                         try {
                             mdzsjMapper.updateByPrimaryKey(mdzsj);
                         } catch (Exception e) {
-                            Logger.sysLogException(e);
+                            Logger.logException(tranObj,"LOG_ERR",e);
                             runERR(tranObj, "SQLUPD");
                             return false;
                         }
@@ -137,7 +137,7 @@ public class AlipayQuery extends Tran {
                         try {
                             mdzsjMapper.updateByPrimaryKey(mdzsj);
                         } catch (Exception e) {
-                            Logger.sysLogException(e);
+                            Logger.logException(tranObj,"LOG_ERR",e);
                             runERR(tranObj, "SQLUPD");
                             return false;
                         }

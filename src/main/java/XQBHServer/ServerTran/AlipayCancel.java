@@ -20,6 +20,7 @@ import java.util.*;
  * 扫描并取消交易状态，由其他轮循调用
  */
 public class AlipayCancel extends Tran {
+
     @Override
     public boolean exec(TranObj tranObj) {
         Logger.log(tranObj, "LOG_IO", Com.getIn);
@@ -54,7 +55,7 @@ public class AlipayCancel extends Tran {
         try {
             dArrary = Com.getRQSJ(dateLimit);
         } catch (ParseException e) {
-            Logger.sysLogException(e);
+            Logger.logException(tranObj,"LOG_ERR",e);
             Tran.runERR(tranObj, "TIMEER");
             return false;
         }
@@ -155,7 +156,7 @@ public class AlipayCancel extends Tran {
 
     public static void main(String[] args) {
         if (false == ServerInit.Init()) {
-            Logger.sysLog("ServerInit Fail!!!");
+            Logger.comLog("LOG_ERR","ServerInit Fail!!!");
             return;
         }
 

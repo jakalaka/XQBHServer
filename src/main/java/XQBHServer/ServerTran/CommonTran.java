@@ -6,10 +6,7 @@ import XQBHServer.ServerAPI.InsertMJYBWAfterTran;
 import XQBHServer.Utils.XML.XmlUtils;
 import XQBHServer.Utils.log.Logger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 
 
 /**
@@ -17,7 +14,6 @@ import java.security.PublicKey;
  */
 public class CommonTran {
     public String Comtran(String XMLIn) {
-
 
 
         TranObj tranObj = new TranObj(XMLIn);
@@ -28,7 +24,7 @@ public class CommonTran {
         Logger.log(tranObj, "LOG_IO", "======================================================================================");
 
 
-        Logger.log(tranObj, "LOG_IO", "flLogLV = [" + tranObj.flLogLV + "] ");
+        Logger.log(tranObj, "LOG_IO", "tranLogLV = [" + tranObj.tranLogLV + "] ");
         Logger.log(tranObj, "LOG_SYS", "XMLIn=" + XMLIn);
 
 
@@ -80,9 +76,9 @@ public class CommonTran {
             tranObj.sqlSession.close();
         }
         Logger.log(tranObj, "LOG_SYS", "XMLOut" + XMLOut);
-        Logger.log(tranObj, "LOG_IO", "======================================================================================");
+        Logger.log(tranObj, "LOG_IO", "======================================================================================\n\n\n");
 
-        Logger.writte(tranObj);
+        Com.logFile.remove(tranObj.loggerFile);
         return XMLOut;
     }
 

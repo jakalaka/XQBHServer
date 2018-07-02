@@ -1,6 +1,5 @@
 package XQBHServer.ServerTran;
 
-import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerAPI.GetLogInfo;
 import XQBHServer.Utils.XML.XmlUtils;
@@ -8,6 +7,8 @@ import XQBHServer.Utils.log.Logger;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.util.TypeUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -27,11 +28,14 @@ public class TranObj {
     public SqlSession sqlSession_BW = null;
 
     public StringBuilder filePrinter = null;
-    public String flLogLV = null;
+    public String tranLogLV = null;
     public String bwIn;
     public String bwOut;
     public boolean commitFlg;
     public int iBWXH = 0;
+    public org.slf4j.Logger logger = LoggerFactory.getLogger("XQBHServer");
+    public String loggerFile = "";
+
 
     public TranObj(String XMLIn) {
         iBWXH = 0;
@@ -41,21 +45,25 @@ public class TranObj {
         HeadMap = (Map) XMLMapIn.get("head");
         TranMap = (Map) XMLMapIn.get("body");
         date = new Date();
-        DBAccess dbAccess=new DBAccess();
+        DBAccess dbAccess = new DBAccess();
         try {
             sqlSession = dbAccess.getSqlSession();
             sqlSession_BW = dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR", e);
             return;
         }
         commitFlg = false;
 
 
+        loggerFile = Logger.getLogPath(HeadMap.get("HTJYM_").toString() + "/" + HeadMap.get("HTJYM_").toString());
+        MDC.put("logFileName", loggerFile); //获取日志文件
         if (true != GetLogInfo.exec(this)) {
             Logger.log(this, "LOG_ERR", "获取日志等级失败");
             return;
         }
+
+
         buildSUCCESS = true;
 
     }

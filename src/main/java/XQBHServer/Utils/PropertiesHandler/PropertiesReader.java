@@ -19,7 +19,7 @@ public class PropertiesReader {
         Properties propertie;
         FileInputStream inputFile;
         if (!file.exists()) {
-            Logger.sysLog( "file not found");
+            Logger.comLog("LOG_ERR", "file not found");
             return null;
         }
 
@@ -30,13 +30,13 @@ public class PropertiesReader {
 //            propertie.loadFromXML(inputFile);//读取XML文件
             inputFile.close();
         } catch (FileNotFoundException ex) {
-            Logger.sysLog("文件无法找到");
-            Logger.sysLogException(ex);
+            Logger.comLog("LOG_ERR","文件无法找到");
+            Logger.comLogException("LOG_ERR",ex);
 
 
         } catch (IOException ex) {
-            Logger.sysLog("读取文件失败");
-            Logger.sysLogException(ex);
+            Logger.comLog("LOG_ERR","读取文件失败");
+            Logger.comLogException("LOG_ERR",ex);
         }
 
         return propertie.getProperty(Key);
@@ -47,7 +47,7 @@ public class PropertiesReader {
         try {
             pps.load(inputStream);
         } catch (IOException e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
         }
         Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
         while (enum1.hasMoreElements()) {

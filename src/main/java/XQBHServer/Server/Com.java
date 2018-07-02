@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,8 +28,6 @@ import java.util.Map;
 public class Com {
     public static Map<String, String> ERRMap;
 
-    public static boolean cancelThreadBusy = false;
-    public static long cancelThreadLoopTime = 1000;
     /**
      * 日志等级
      * SYS,ERR,IO,DEBUG
@@ -80,6 +79,8 @@ public class Com {
     public static final AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
     public static final String charset="GBK";
+
+    public static Map<String,String > logFile=new HashMap<String,String>();
 
     /**
      * 微信网关_测试专用
@@ -258,7 +259,8 @@ public class Com {
      * @return
      */
     public static String getSYSQTLS(String sZDBH_U) {
-        Logger.timerLog(Com.getIn);
+
+        Logger.comLog("LOG_IO",Com.getIn);
         String sSYSQTLS = "";
         int XH = 1;
         DBAccess dbAccess = new DBAccess();
@@ -266,7 +268,8 @@ public class Com {
         try {
             sqlSession = dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
+
             return "";
         }
 
@@ -278,7 +281,7 @@ public class Com {
         try {
             cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
         } catch (Exception e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
             return "";
         }
         if (cxtcs==null)
@@ -292,7 +295,7 @@ public class Com {
                 cxtcsMapper.insert(cxtcs);
             }catch (Exception e)
             {
-                Logger.sysLogException(e);
+                Logger.comLogException("LOG_ERR",e);
                 return "";
             }
         }
@@ -303,7 +306,7 @@ public class Com {
             try {
                 cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
             } catch (Exception e) {
-                Logger.sysLogException(e);
+                Logger.comLogException("LOG_ERR",e);
                 return "";
             }
             if (cxtcs==null)
@@ -317,7 +320,7 @@ public class Com {
                     cxtcsMapper.insert(cxtcs);
                 }catch (Exception e)
                 {
-                    Logger.sysLogException(e);
+                    Logger.comLogException("LOG_ERR",e);
                     return "";
                 }
             }
@@ -329,7 +332,7 @@ public class Com {
             try {
                 cxtcsMapper.updateByPrimaryKey(cxtcs);
             } catch (Exception e) {
-                Logger.sysLogException(e);
+                Logger.comLogException("LOG_ERR",e);
                 return "";
             }
         }
@@ -343,13 +346,13 @@ public class Com {
         try {
             cxtcsMapper.updateByPrimaryKey(cxtcs);
         } catch (Exception e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
             return "";
         }
         sqlSession.commit();
         sqlSession.close();
-        Logger.timerLog("sSYSQTLS=" + sSYSQTLS);
-        Logger.timerLog(Com.getOut);
+        Logger.comLog("LOG_IO","sSYSQTLS=" + sSYSQTLS);
+        Logger.comLog("LOG_IO",Com.getOut);
         return sSYSQTLS;
     }
 
@@ -364,7 +367,7 @@ public class Com {
         try {
             sqlSession = dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
             return "";
         }
 
@@ -387,7 +390,7 @@ public class Com {
             }
             sqlSession.commit();
         } catch (Exception e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
         }finally {
             sqlSession.close();
         }
@@ -407,7 +410,7 @@ public class Com {
         try {
             sqlSession = dbAccess.getSqlSession();
         } catch (IOException e) {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
             return re;
         }
 
@@ -424,7 +427,7 @@ public class Com {
             re=true;
         }catch (Exception e)
         {
-            Logger.sysLogException(e);
+            Logger.comLogException("LOG_ERR",e);
         }finally {
             sqlSession.close();
         }
