@@ -366,34 +366,36 @@ public class Com {
         SqlSession sqlSession=null;
         try {
             sqlSession = dbAccess.getSqlSession();
+            try {
+
+                DZDXXExample dzdxxExample = new DZDXXExample();
+                dzdxxExample.or().andFRDM_UEqualTo("9999").andZDLXBHEqualTo("SERVER").andJLZT_UEqualTo("0").andZDDLZTEqualTo("0");
+
+                DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
+                List<DZDXX> dzdxxList = null;
+
+                dzdxxList = dzdxxMapper.selectByExample(dzdxxExample);
+                if (dzdxxList.size() == 0)
+                    re = "";
+                else {
+                    DZDXX dzdxx = dzdxxList.get(0);
+                    dzdxx.setZDDLZT("1");
+                    dzdxxMapper.updateByPrimaryKey(dzdxx);
+                    re=dzdxxList.get(0).getZDBH_U();
+                }
+                sqlSession.commit();
+            } catch (Exception e) {
+                Logger.comLogException("LOG_ERR",e);
+            }finally {
+                sqlSession.close();
+            }
         } catch (IOException e) {
             Logger.comLogException("LOG_ERR",e);
             return "";
         }
 
-        try {
 
-            DZDXXExample dzdxxExample = new DZDXXExample();
-            dzdxxExample.or().andFRDM_UEqualTo("9999").andZDLXBHEqualTo("SERVER").andJLZT_UEqualTo("0").andZDDLZTEqualTo("0");
 
-            DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
-            List<DZDXX> dzdxxList = null;
-
-            dzdxxList = dzdxxMapper.selectByExample(dzdxxExample);
-            if (dzdxxList.size() == 0)
-                re = "";
-            else {
-                DZDXX dzdxx = dzdxxList.get(0);
-                dzdxx.setZDDLZT("1");
-                dzdxxMapper.updateByPrimaryKey(dzdxx);
-                re=dzdxxList.get(0).getZDBH_U();
-            }
-            sqlSession.commit();
-        } catch (Exception e) {
-            Logger.comLogException("LOG_ERR",e);
-        }finally {
-            sqlSession.close();
-        }
 
         return re;
     }
@@ -409,27 +411,26 @@ public class Com {
         SqlSession sqlSession=null;
         try {
             sqlSession = dbAccess.getSqlSession();
+            try {
+                DZDXXKey dzdxxKey=new DZDXXKey();
+                dzdxxKey.setFRDM_U("9999");
+                dzdxxKey.setZDBH_U(sZDBH_U);
+
+                DZDXXMapper dzdxxMapper=sqlSession.getMapper(DZDXXMapper.class);
+                DZDXX dzdxx=dzdxxMapper.selectByPrimaryKey(dzdxxKey);
+                dzdxx.setZDDLZT("0");
+                dzdxxMapper.updateByPrimaryKey(dzdxx);
+                sqlSession.commit();
+                re=true;
+            }catch (Exception e)
+            {
+                Logger.comLogException("LOG_ERR",e);
+            }finally {
+                sqlSession.close();
+            }
         } catch (IOException e) {
             Logger.comLogException("LOG_ERR",e);
             return re;
-        }
-
-        try {
-            DZDXXKey dzdxxKey=new DZDXXKey();
-            dzdxxKey.setFRDM_U("9999");
-            dzdxxKey.setZDBH_U(sZDBH_U);
-
-            DZDXXMapper dzdxxMapper=sqlSession.getMapper(DZDXXMapper.class);
-            DZDXX dzdxx=dzdxxMapper.selectByPrimaryKey(dzdxxKey);
-            dzdxx.setZDDLZT("0");
-            dzdxxMapper.updateByPrimaryKey(dzdxx);
-            sqlSession.commit();
-            re=true;
-        }catch (Exception e)
-        {
-            Logger.comLogException("LOG_ERR",e);
-        }finally {
-            sqlSession.close();
         }
         return re;
     }
