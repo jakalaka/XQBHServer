@@ -4,8 +4,6 @@ import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Model.CXTCS;
 import XQBHServer.Server.Table.Model.CXTCSKey;
 import XQBHServer.Server.Table.basic.DBAccess;
-import XQBHServer.ServerTran.Tran;
-import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.*;

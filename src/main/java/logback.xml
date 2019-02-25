@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <jmxConfigurator/>
+
+
+    <!-- This is MDC value -->
+    <!-- We will assign a value to 'logFileName' via Java code -->
+    <appender name="TranLog" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>logFileName</key>
+            <defaultValue>System</defaultValue>
+        </discriminator>
+
+        <sift>
+            <!-- A standard RollingFileAppender, the log file is based on 'logFileName' at runtime  -->
+            <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>${logFileName}</file>
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <Pattern>
+                        [%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level ]%msg%n
+                    </Pattern>
+                </encoder>
+                <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                    <FileNamePattern>logback.log.%i</FileNamePattern>
+                    <!--<MinIndex>1</MinIndex>-->
+                    <!--<MaxIndex>12</MaxIndex>-->
+                </rollingPolicy>
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <MaxFileSize>10MB</MaxFileSize>
+                    <maxHistory>360</maxHistory>
+                    <totalSizeCap>20GB</totalSizeCap>
+                </triggeringPolicy>
+            </appender>
+
+        </sift>
+    </appender>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                
+        <encoder>
+                        
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                    
+        </encoder>
+            
+    </appender>
+
+    <!--<logger name="qos" level="debug" additivity="false">-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
+
+
+    <!--将mybatis 设置为错误才打印-->
+    <logger name="org.apache.ibatis" level="error" addtivity="false">
+        <appender-ref ref="TranLog"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!--调整时动这里就行  ,cxtcs中tranLogLV可单独调整交易日志登记，到时候可拓展-->
+    <root level="debug">
+        <appender-ref ref="TranLog"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

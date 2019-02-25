@@ -27,7 +27,7 @@ public class KHLogin extends Tran {
         String sKHDLZH = tranObj.getHead("KHDLZH");
         String sIP_UUU = tranObj.getHead("IP_UUU");
         String sKHMM_U = tranObj.getString("KHMM_U");
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         Logger.log(tranObj, "LOG_IO", "sKHDLZH=" + sKHDLZH);
         Logger.log(tranObj, "LOG_IO", "sIP_UUU=" + sIP_UUU);
         Logger.log(tranObj, "LOG_IO", "sKHMM_U=" + sKHMM_U);
@@ -140,18 +140,18 @@ public class KHLogin extends Tran {
 
 
 
-        tranObj.TranMap.put("ZDLIST", lLSZDXX);
-        tranObj.TranMap.put("SHLIST", lLSSHXX);
-        tranObj.TranMap.put("KHBH_U", dkhxx.getKHBH_U());
+        tranObj.BodyMap.put("ZDLIST", lLSZDXX);
+        tranObj.BodyMap.put("SHLIST", lLSSHXX);
+        tranObj.BodyMap.put("KHBH_U", dkhxx.getKHBH_U());
 
 
 
-        tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
+        tranObj.BodyMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;
         Logger.log(tranObj, "LOG_DEBUG", "" + Com.tmpCount);
          /*==================================codeEnd=====================================*/
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package XQBHServer.Utils.PropertiesHandler;
 
+import XQBHServer.Server.Com;
 import XQBHServer.Utils.log.Logger;
 
 import java.io.*;
@@ -15,10 +16,11 @@ public class PropertiesReader {
     private static final String encode = "GBK";//文件的编码格式
     private static Properties pps = new Properties();
 
-    public static String readKeyFromXML(File file, String Key) {
+    public static String readFromProperties(File file, String Key) {
         Properties propertie;
         FileInputStream inputFile;
         if (!file.exists()) {
+            Logger.comLog("LOG_ERR",file.getAbsolutePath());
             Logger.comLog("LOG_ERR", "file not found");
             return null;
         }

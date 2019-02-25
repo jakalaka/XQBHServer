@@ -36,6 +36,8 @@ public class Logger {
 
     public static void log(TranObj tranObj, String LogLV, String Msg) {
 
+        //交易日志等级随着全局交易日志等级变换，日后可以做成按交易控制
+
         if (("LOG_ERR".equals(LogLV))) {
             logger.error("{}.{}:{}", new Object[]{Thread.currentThread().getStackTrace()[2].getClassName(), Thread.currentThread().getStackTrace()[2].getLineNumber(), Msg});
         } else if (("LOG_SYS".equals(LogLV)) && (!"ERR".equals(tranObj.tranLogLV))) {

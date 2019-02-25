@@ -5,12 +5,14 @@
 <generatorConfiguration>
 
     <!-- !!!! Driver Class Path !!!! -->
-    <classPathEntry location="C:\Users\jakal\.m2\repository\mysql\mysql-connector-java\5.1.29\mysql-connector-java-5.1.29.jar"/>
+    <!--<classPathEntry location="mysql-connector-java.jar"/>-->
 
 
     <context id="context"  targetRuntime="MyBatis3">
 
         <property name="javaFileEncoding" value="GBK"/>
+
+        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin" />
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="false"/>
@@ -41,59 +43,64 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+
+
         <!-- !!!! Table Configurations !!!! -->
         <!--<table tableName="CCPSX" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--enableUpdateByExample="false" domainObjectName="CCPSX" />-->
-        <table tableName="CCPSX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CCPSX">
+        <table tableName="CCPSX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CCPSX">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CSHSX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CSHSX">
+        <table tableName="CSHSX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CSHSX">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CZDSX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CZDSX" >
+        <table tableName="CZDSX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CZDSX" >
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CXTCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CXTCS">
+        <table tableName="CXTCS" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CXTCS">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CDSRW" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CDSRW">
+        <table tableName="CDSRW" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CDSRW">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="CRWCS" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="CRWCS">
+        <table tableName="CRWCS" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="CRWCS">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="DKHXX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="DKHXX">
+        <table tableName="DKHXX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="DKHXX">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="DSHXX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="DSHXX">
+        <table tableName="DSHXX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="DSHXX">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="DZDXX" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="DZDXX">
+        <table tableName="DZDXX" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="DZDXX">
+            <property name="useActualColumnNames" value="true"/>
+            <property name="optimisticLockColumn" value="SJC_UU"/>
+        </table>
+        <table tableName="DSHZH" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="DSHZH">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="DSHZH" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="DSHZH">
+        <table tableName="MJYBW" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="MJYBW" enableInsert="true">
+            <property name="useActualColumnNames" value="true"/>
+
+
+        </table>
+        <table tableName="MDZSJ" enableCountByExample="true"  enableSelectByExample="true"
+                domainObjectName="MDZSJ" >
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="MJYBW" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="MJYBW" enableInsert="true">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="MDZSJ" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="MDZSJ" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="MRWDJ" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true" domainObjectName="MRWDJ" >
+        <table tableName="MRWDJ" enableCountByExample="true"  enableSelectByExample="true"
+               domainObjectName="MRWDJ" >
             <property name="useActualColumnNames" value="true"/>
         </table>
 

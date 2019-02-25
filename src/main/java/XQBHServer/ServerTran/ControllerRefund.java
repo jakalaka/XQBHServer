@@ -6,7 +6,7 @@ import XQBHServer.Server.Table.Model.MDZSJ;
 import XQBHServer.Server.Table.Model.MDZSJKey;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.Test.MyAlipayClient;
+import XQBHServer.Utils.AlipayHelper.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradeRefundRequest;
@@ -20,7 +20,7 @@ import java.util.Date;
 public class ControllerRefund extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         String sQTDX_U_head = tranObj.getHead("QTDX_U");
         String sKHBH_U_head = tranObj.getHead("KHBH_U");
         String sSHBH_U_head = tranObj.getHead("SHBH_U");
@@ -152,7 +152,7 @@ public class ControllerRefund extends Tran {
         */
         if (sZFZHLX.equals("z")) {
 
-            AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+            AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppID, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
             AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
             request.setBizContent("{" +
                     "\"out_trade_no\":\"" + mdzsj_old.getSFDH_U() + "\"," +
@@ -190,7 +190,7 @@ public class ControllerRefund extends Tran {
                 return false;
             }
 
-            if (true != InsertMJYBWAfterDSF.exec(tranObj, response))//完成交易更新报文表，直接插入，报错不返回
+            if (true != InsertMJYBWAfterDSF.exec(tranObj, response.getBody(),response.getCode(),response.getMsg(),response.getSubCode(),response.getSubMsg()))//完成交易更新报文表，直接插入，报错不返回
             {
                 //标记为未知交易
                 Logger.log(tranObj, "LOG_ERR", "上完第三方插入报文失败");
@@ -246,7 +246,7 @@ public class ControllerRefund extends Tran {
 
 
         /*==================================codeEnd=====================================*/
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
 
         return true;
     }

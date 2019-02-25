@@ -5,8 +5,6 @@ import XQBHServer.Server.Table.Model.CXTCS;
 import XQBHServer.Server.Table.Model.CXTCSKey;
 import XQBHServer.Server.Table.basic.DBAccess;
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import java.io.IOException;

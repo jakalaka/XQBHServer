@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="wxpay-sdk-v3.0 (2)">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/wxpay-sdk-v3.0.9.jar!/wxpay-sdk-v3.0.9" />
+    </SOURCES>
+  </library>
+</component>

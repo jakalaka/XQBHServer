@@ -21,11 +21,12 @@ public class CommonTran {
             Tran.runERR(tranObj, "ERR003");
             return getOut(tranObj);
         }
-        Logger.log(tranObj, "LOG_IO", "======================================================================================");
-
-
-        Logger.log(tranObj, "LOG_IO", "tranLogLV = [" + tranObj.tranLogLV + "] ");
         Logger.log(tranObj, "LOG_SYS", "XMLIn=" + XMLIn);
+
+
+
+
+
 
 
 
@@ -53,10 +54,14 @@ public class CommonTran {
         } catch (NoClassDefFoundError e) {
             Tran.runERR(tranObj, "ERR007");
         } catch (Exception e) {
-            Tran.runERR(tranObj, "SYSERR");
+            Tran.runERR(tranObj, "SYSERR");//属于实例化抽象类错误
         }
         if (true != callRe && !tranObj.commitFlg) {//不知状态的交易，需人工对账
+            Logger.log(tranObj, "LOG_IO", "rollback");
+
             tranObj.sqlSession.rollback();
+            Logger.log(tranObj, "LOG_IO", "rollback");
+
             Logger.log(tranObj, "LOG_ERR", "Call ERR");
         }
 
@@ -65,6 +70,7 @@ public class CommonTran {
     }
 
     public static String getOut(TranObj tranObj) {
+
         String XMLOut = "";
         XMLOut = XmlUtils.tranObj2XML(tranObj);
         tranObj.bwOut = XMLOut;
@@ -76,10 +82,13 @@ public class CommonTran {
             tranObj.sqlSession.close();
         }
         Logger.log(tranObj, "LOG_SYS", "XMLOut" + XMLOut);
-        Logger.log(tranObj, "LOG_IO", "======================================================================================\n\n\n");
+        Logger.log(tranObj, "LOG_IO", Com.TRAN_OUT);
 
         Com.logFile.remove(tranObj.loggerFile);
         return XMLOut;
+
+
+
     }
 
 

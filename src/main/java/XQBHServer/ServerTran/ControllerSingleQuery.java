@@ -1,17 +1,13 @@
 package XQBHServer.ServerTran;
-
+/*本交易不上第三方*/
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.DSHXXMapper;
-import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Utils.log.Logger;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +38,7 @@ public class ControllerSingleQuery extends Tran {
         String sHTRQ_U = tranObj.getString("HTRQ_U");
         String sHTLS_U = tranObj.getString("HTLS_U");
 
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
 
         Logger.log(tranObj, "LOG_IO", "sQTDX_U_head=" + sQTDX_U_head);
         Logger.log(tranObj, "LOG_IO", "sSHBH_U_head=" + sSHBH_U_head);
@@ -116,22 +112,22 @@ public class ControllerSingleQuery extends Tran {
         MDZSJ mdzsj = mdzsjList.get(0);
 
 
-        tranObj.TranMap.put("YHTRQ_", Date2StringofYear(mdzsj.getHTRQ_U()));
-        tranObj.TranMap.put("YHTSJ_", Date2StringofTime(mdzsj.getJYSJ_U()));
-        tranObj.TranMap.put("YHTLS_", mdzsj.getHTLS_U());
-        tranObj.TranMap.put("YHTJYM", mdzsj.getHTJYM_());
-        tranObj.TranMap.put("ZFZHLX", mdzsj.getZFZHLX());
-        tranObj.TranMap.put("JYJE_U", mdzsj.getJYJE_U());
-        tranObj.TranMap.put("SFDH_U", mdzsj.getSFDH_U());
-        tranObj.TranMap.put("SHBH_U", mdzsj.getSHBH_U());
-        tranObj.TranMap.put("ZDBH_U", mdzsj.getZDBH_U());
-        tranObj.TranMap.put("SPXX_U", mdzsj.getSPXX_U());
-        tranObj.TranMap.put("FKM_UU", mdzsj.getFKM_UU());
-        tranObj.TranMap.put("JYZT_U", mdzsj.getJYZT_U());
+        tranObj.BodyMap.put("YHTRQ_", Date2StringofYear(mdzsj.getHTRQ_U()));
+        tranObj.BodyMap.put("YHTSJ_", Date2StringofTime(mdzsj.getJYSJ_U()));
+        tranObj.BodyMap.put("YHTLS_", mdzsj.getHTLS_U());
+        tranObj.BodyMap.put("YHTJYM", mdzsj.getHTJYM_());
+        tranObj.BodyMap.put("ZFZHLX", mdzsj.getZFZHLX());
+        tranObj.BodyMap.put("JYJE_U", mdzsj.getJYJE_U());
+        tranObj.BodyMap.put("SFDH_U", mdzsj.getSFDH_U());
+        tranObj.BodyMap.put("SHBH_U", mdzsj.getSHBH_U());
+        tranObj.BodyMap.put("ZDBH_U", mdzsj.getZDBH_U());
+        tranObj.BodyMap.put("SPXX_U", mdzsj.getSPXX_U());
+        tranObj.BodyMap.put("FKM_UU", mdzsj.getFKM_UU());
+        tranObj.BodyMap.put("JYZT_U", mdzsj.getJYZT_U());
 
          /*==================================codeEnd=====================================*/
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

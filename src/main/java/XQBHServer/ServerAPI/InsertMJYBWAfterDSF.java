@@ -6,9 +6,6 @@ import XQBHServer.Server.Table.Model.MJYBW;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayResponse;
-import com.alipay.api.response.AlipayTradePayResponse;
-import org.apache.ibatis.session.SqlSession;
 
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -19,8 +16,8 @@ import java.util.Date;
 暂时写死为支付宝，到时候在加微信
  */
 public class InsertMJYBWAfterDSF {
-    public static boolean exec(TranObj tranObj, AlipayResponse response) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+    public static boolean exec(TranObj tranObj,String SFFHBW,String WGCWM_,String WGCWXX,String YWCWM_,String YWCWXX) {
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
 
         String sQTRQ_U_head = tranObj.getHead("QTRQ_U");
         String sQTLS_U_head = tranObj.getHead("QTLS_U");
@@ -36,7 +33,7 @@ public class InsertMJYBWAfterDSF {
         Logger.log(tranObj, "LOG_DEBUG", "sIP_UUU_head=" + sIP_UUU_head);
 
 
-        String sSFFHBW = response.getBody();
+        String sSFFHBW = SFFHBW;
         Logger.log(tranObj, "LOG_IO", "sSFFHBW=" + sSFFHBW);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -67,9 +64,10 @@ public class InsertMJYBWAfterDSF {
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-        mjybw.setCWDM_U(response.getCode());
-        mjybw.setZCWDM_(response.getSubCode());
-        mjybw.setCWXX_U(response.getSubMsg());
+        mjybw.setWGCWM_(WGCWM_);
+        mjybw.setWGCWXX(WGCWXX);
+        mjybw.setYWCWM_(YWCWM_);
+        mjybw.setYWCWXX(YWCWXX);
 
 
 
@@ -84,7 +82,7 @@ public class InsertMJYBWAfterDSF {
         }
 //        tranObj.sqlSession_BW.commit();
         tranObj.iBWXH++;
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
 
         return true;
     }

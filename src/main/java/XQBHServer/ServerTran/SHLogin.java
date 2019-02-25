@@ -2,11 +2,9 @@ package XQBHServer.ServerTran;
 
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.DKHXXMapper;
 import XQBHServer.Server.Table.Mapper.DSHXXMapper;
 import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Model.*;
-import XQBHServer.Utils.Data.DataUtils;
 import XQBHServer.Utils.log.Logger;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public class SHLogin extends Tran {
         String sSHBH_U = tranObj.getHead("SHBH_U");
         String sIP_UUU = tranObj.getHead("IP_UUU");
         String sSHMM_U = tranObj.getString("SHMM_U");
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         Logger.log(tranObj, "LOG_IO", "sSHBH_U=" + sSHBH_U);
         Logger.log(tranObj, "LOG_IO", "sIP_UUU=" + sIP_UUU);
         Logger.log(tranObj, "LOG_IO", "sSHMM_U=" + sSHMM_U);
@@ -116,16 +114,16 @@ public class SHLogin extends Tran {
 
         }
 
-        tranObj.TranMap.put("ZDLIST", listZDBH_U);
-        tranObj.TranMap.put("SHLIST", listSHBH_U);
+        tranObj.BodyMap.put("ZDLIST", listZDBH_U);
+        tranObj.BodyMap.put("SHLIST", listSHBH_U);
 
 
-        tranObj.TranMap.put("re", "Jakalaka Technology Co. Ltd");
+        tranObj.BodyMap.put("re", "Jakalaka Technology Co. Ltd");
         Com.tmpCount++;
         Logger.log(tranObj, "LOG_DEBUG", "" + Com.tmpCount);
          /*==================================codeEnd=====================================*/
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

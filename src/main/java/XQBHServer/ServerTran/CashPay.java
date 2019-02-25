@@ -1,20 +1,9 @@
 package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.CXTCSMapper;
-import XQBHServer.Server.Table.Mapper.DSHXXMapper;
-import XQBHServer.Server.Table.Mapper.DSHZHMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
-import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
-import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.request.AlipayTradePayRequest;
-import com.alipay.api.request.AlipayTradeQueryRequest;
-import com.alipay.api.response.AlipayTradePayResponse;
-import com.alipay.api.response.AlipayTradeQueryResponse;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -37,7 +26,7 @@ u-δ֪
 public class CashPay extends Tran {
     @Override
     public boolean exec(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         String sQTDX_U_head = tranObj.getHead("QTDX_U");
         String sKHBH_U_head = tranObj.getHead("KHBH_U");
         String sSHBH_U_head = tranObj.getHead("SHBH_U");
@@ -127,7 +116,7 @@ public class CashPay extends Tran {
 
 
         /*==================================codeEnd=====================================*/
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 

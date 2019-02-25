@@ -1,8 +1,11 @@
 package XQBHServer.ServerTran;
+/**
+ * 本交易不上第三方
+ */
+
 
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.DSHXXMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Utils.Data.DataUtils;
@@ -12,8 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static XQBHServer.Utils.Data.DataUtils.Date2StringofTime;
-import static XQBHServer.Utils.Data.DataUtils.Date2StringofYear;
+import static XQBHServer.Utils.Data.DataUtils.YearString2Date;
 
 /**
  * Created by Administrator on 2017/7/4 0004.
@@ -26,7 +28,7 @@ public class ControllerStatementQuery extends Tran {
 
 
     @Override
-    public boolean exec(TranObj tranObj) {
+    public boolean exec(TranObj tranObj) throws ParseException {
         /*
         从报文头中找信息
          */
@@ -41,7 +43,7 @@ public class ControllerStatementQuery extends Tran {
         String sZFZHLX = tranObj.getString("ZFZHLX");
 
 
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
 
         Logger.log(tranObj, "LOG_IO", "sSHBH_U_head=" + sSHBH_U_head);
         Logger.log(tranObj, "LOG_IO", "sKHBH_U_head=" + sKHBH_U_head);
@@ -78,14 +80,10 @@ public class ControllerStatementQuery extends Tran {
             Tran.runERR(tranObj, "CXCW04");
             return false;
         }
-        Date dZZRQ_U = null;
-        try {
-            dZZRQ_U = formatter.parse(sZZRQ_U);
-        } catch (ParseException e) {
-            Logger.logException(tranObj, "LOG_ERR", e);
-            Tran.runERR(tranObj, "TIMEER");
-            return false;
-        }
+        Date dZZRQ_U = YearString2Date(tranObj,sZZRQ_U);
+
+
+
         criteria_mdzsj.andHTRQ_UBetween(dQSRQ_U, dZZRQ_U);
 
         //检查查询的商户或终端的权限合法性，前端有控制，但是本处也要控制
@@ -162,12 +160,12 @@ public class ControllerStatementQuery extends Tran {
         }
 
 
-        tranObj.TranMap.put("RELIST", listResoult);
+        tranObj.BodyMap.put("RELIST", listResoult);
 
 
          /*==================================codeEnd=====================================*/
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

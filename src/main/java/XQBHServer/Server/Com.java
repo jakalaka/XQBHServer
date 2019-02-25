@@ -8,12 +8,11 @@ import XQBHServer.Server.Table.Model.*;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
-import XQBHServer.Test.MyAlipayClient;
 import XQBHServer.Utils.log.Logger;
-import com.alipay.api.AlipayClient;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,11 +21,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static XQBHServer.Utils.PropertiesHandler.PropertiesReader.readAll;
+
 /**
  * Created by Administrator on 2017/7/1 0001.
  */
 public class Com {
     public static Map<String, String> ERRMap;
+
 
     /**
      * 日志等级
@@ -34,49 +36,162 @@ public class Com {
      */
     public static String LOGLV = "";
 
+
+    /**
+     * 交易开始标志
+     */
+    public static final String TRAN_IN = "================================BEGIN======================================";
+
+
+    /**
+     * 交易结束标志
+     */
+    public static final String TRAN_OUT = "==================================END=======================================\n\n\n";
+
     /**
      * 接口接入标志
      */
-    public static final String getIn = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+    public static final String METHOD_IN = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     /**
      * 接口退出标志
      */
-    public static final String getOut = "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+    public static final String METHOD_OUT = "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     /**
      * 临时用于压力测试记录笔数
      */
     public static long tmpCount = 0;
 
 
-    /**
-     * 支付宝网关_测试专用
-     */
-    public static final String alipayGateway = "https://openapi.alipaydev.com/gateway.do";
+    private static final File config_file=new File("resources/sysInfo.properties");
+
+
+    private static final Map<String, String> ConfigMap;
+    static
+    {
+        ConfigMap = readAll(Class.class.getResourceAsStream("/resources/sysInfo.properties"));
+        alipayGateway= ConfigMap.get("alipayGateway");
+        alipayAppID= ConfigMap.get("alipayAppID");
+        alipayPrivateKey= ConfigMap.get("alipayPrivateKey");
+        alipayPulicKey= ConfigMap.get("alipayPulicKey");
+        alipayConnectTimeout= Integer.parseInt(ConfigMap.get("alipayConnectTimeout"));
+        alipayReadTimeout= Integer.parseInt(ConfigMap.get("alipayReadTimeout"));
+        alipayCancelTimeThreshold=Integer.parseInt(ConfigMap.get("alipayCancelTimeThreshold"));
+
+
+        wxpayUseSandbox= "true".equals(ConfigMap.get("wxpayUseSandbox"));
+        wxpayAppID= ConfigMap.get("wxpayAppID");
+        wxpayKey= ConfigMap.get("wxpayKey");
+        wxpayConnectTimeout= Integer.parseInt(ConfigMap.get("wxpayConnectTimeout"));
+        wxpayReadTimeout= Integer.parseInt(ConfigMap.get("wxpayReadTimeout"));
+        wxpayCancelTimeThreshold= Integer.parseInt(ConfigMap.get("wxpayCancelTimeThreshold"));
+        wxpayCertPath= ConfigMap.get("wxpayCertPath");
+        WxTitle= ConfigMap.get("WxTitle");
+
+
+        clientEncryptPublicKey= ConfigMap.get("clientEncryptPublicKey");
+        serverSignPrivatebKey= ConfigMap.get("serverSignPrivatebKey");
+        clientSignPublicKey= ConfigMap.get("clientSignPublicKey");
+
+
+
+
+    }
+
+
+
+
+
 
     /**
-     * 支付宝APPID_测试专用
+     * 支付宝网关 用作沙箱判断
      */
-    public static final String alipayAppid = "2016080500173689";
+    public static final String alipayGateway ;
 
     /**
-     * 应用私钥_测试专用
+     * 支付宝APPID
      */
-    public static final String appPrivateKey = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClV7IkP/AOnHD+rL/+sAZjsowKXCSiLAKXILoIO/TrDYChNbmxrEZ3AsGwshRIUre332khPWfcKG04rwVns6RnYj4A6BaJ2WwrPHnA0NllKXCzq0RrPxaTFltlcXQm2funbIJjxCwlHXrJzzzi7dAsu1QIf5EYQbELN/dHIAtarZge8fbAsBkkqYD3xSMuZq0K0kmhybCqSWjYFFfvlWVyR+7i4K3dPiUeC69OHdhfsaP+BtKoPgtlXxtQN/H4yn88oIdL05nXwqLVrqCr53UVXssbnZ0iwTw5X8r6/RYdMSGOAo8aQPmtsP8HBfT0Y0xFVjODo2FfYmtFXjCsYtBDAgMBAAECggEAd8bTshbvXGZQJO4YF/SEbGzHrimaEDE5nymCGrz0a+LYL/CvmNpoIYbJsasPrmTd2kHp8r59IqvWk52WmM02Z/5vVFDNIwdyqM+ik9+33OTsU/vaEKcfP2aOxyotLofzGhItUwClyi1U6iVKwkns6Lq74XwoLB5KlwnwBIJeN00nji3jacUOahZPn8472In5dtM+PqKtm6vJFVYpfwtTKoxblmpOqsTTSAqx50o3Y/ilVxvZo1f34xo+gXkGQ/i4NH8qRgg+L/FOG4VKAATDP72l8tpjUOxpbkuzhattP6MBCeY+RWg+9xlt174zqkGB19HBSJorqicgYXaqnLghwQKBgQDbzHf01vvU5tGGBmaOVrjWvhqvfE1W9CEpQWUGH576Vc3IwxUuMqA6ed4t8N51THYAVNh6kcDwQoBNSdBERabwQoxVaazzEhtnLOgzZPP5PE04GfeWdlzglUDH5iIzB1sa07gKSUNrsTP6PlR+f/ijdVX/eCaFBOJawoN8jqU3GwKBgQDAkydTYUzzeJfY1Mfh1ACmhT7EmvHFBnNIO01Ls65z90YG9sLHcQ1wD6p8ag8O93PBFP8729AbW157vdmgu0abWc35Nznuyg5Xpq+p4N9oPTqyYuaBS7NaDU5YghBBC0QWk22RMuCsCP8CO4Z1LgKA0RpcPIQ8YEQA2VmtvDEV+QKBgBn382hDCifiSXj7QpyolFgSx9ZZ6k1OtKhKKKRrkf3jq1d/7P2zT4j5Iw3semwDZ6GsZJM+qzv3r27yPKAEVq/mPOxOeveQ+RncjWadE9IrlLf/IWhufZSvLaMwhnPe952YzBKzCzsrCYgUWylC915gm5N+X5axuAifGKfbtptnAoGADxp7dxqmgmHu5t6pXpjWBDlnFtxgIefDmuKryUgqYoX+RAWOeT3wo91WrbNTwwS9W2NeMT+oLr0Xx/S34NdPTlfYw7cFIClQvqcgF96/JtnGhL8k/PcG9gUdI+vvgmpzyKF/cmffHx8FgRNSFFarc5byzlEgvet+6eIiGnIsF2ECgYEAvaBB3ncRzXHFaBRD6k/VSzJEA+BWEeD0gplBMATRSieofwIEi9gunD9+DAkc3WIrXEMvCMaAtasjcx2Z/HHEwuPm+T1otyJZZJWVLQrUs8mcG3xLOoYx6XTtooT1q6kdOCa5d5qVQ2IOWQzCdG2y44t2TNgDkP3Xvo960sXCfeY=";
+    public static final String alipayAppID ;
+
+    /**
+     * 应用私钥
+     */
+    public static final String alipayPrivateKey ;
 
     /*
-     * 支付宝公钥_测试专用
+     * 支付宝公钥
      */
-    public static final String alipayPulicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtm13QopHlAfSUtMkRHy/fUt+sV0dFaLJXyX5y2j/Ic/YxctgrrzkHt5eL5KTrPFKvhue7t/cEV+adblAcw1JWVRjci9xu7LMRgU+qeKqSowr3VYZKLpQJTlJsULEFsDn5b6DQyX7xPB4CpIGtnHizqCthwvKP/P5e0rYDcqsU4Ccmn1/DAxboV/tFpz/UO7kMA6G8tCtUKwn8tNITEQd6r2DWjidg3tNtg4WbvjxtzCU43HnvREqonDnO6R+InSP+9VBMqz+5b0QcQ71ql0GpS8ecZhhGrZRTTJqowxtZ2Grs44dAzP4G514LC2+3Z8+LeWbsB6Mk3an0AhpUbGXcQIDAQAB";
+    public static final String alipayPulicKey ;
 
-
+    /*
+     * 支付宝三方ID
+     */
     public static final String alipaySys_service_provider_id = "";
 
+    /*
+     * 支付宝链接超时时间
+     */
+    public static final int alipayConnectTimeout;
 
-    public static final String clientEncryptPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhdpfIPubUqSL8COWgg9dKXeOn4UQTSYi5HRi4ds7pWnwUgHklRpwwIYxtxeN8xTL/gQXwOJMILV5C2O3Z6dnJIhKcthyzQVKeqpsfwVVYoeTzhsf7o2ZvFgxOlTt5VnNlIuIJJjcYr+L5j0zbmdT8+ZRhAU6O4zyKojzT8+Mf1noh/wpiPeWMNOs78xw2L7uqcXbRX4PCqBm7k67hh2WxNHNYLet4Z/hWmLZG5PX73Cmca95TC7fATHRH4UYYBX7A6OvwpEMkt5RS9A6QrVxemMiOL8H0T+c4Ix8dUpiqtubCuzEoWjrc1R5ELU3erMxa9FnWWLLMHC0eNtjmzYwXwIDAQAB";
-    public static final String serverSignPrivatebKey = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAI+Pz+lG+zrHaUO7hzGhvQrRSL+CbuQAgQRDp9PhofRcTM4tv0kTIUGFxqDo+o3s9j8pi1kHB4xFrh8ZHXGLYNJqajUYsZz2hkqk3whhlXJro+zRGC9IHacfDoXr1wWGbke47TUUzffWV/Vq9mTFqh9RJdrgLLTLxpyOwK++g6SfAgMBAAECgYBhpMAV+2he90i6f+8ZK9fnZqdjUnTX8RvPabDZpSrBiJHY3javnipNZY7O3QelxplKJpiXyfcxSid/EVb8Zn9INvWHLmrg6dNSkkUuFxcuGxgDcxaDPFBdop3gYSlF6luk+xHF+ZPJfFoIhLZRk4NalzTdO9AaBLoWdVy9ZKw22QJBAN3XBOgghb3tT2K3G9rl6Qkw6RuN2LN6glC2saz2UzyuTwa8BkgT69MJwwQJypdgjEGeiRXXh5ID5SqwZ3M8P6MCQQClqwzV15pbDJyCt0U3OOHp0GxiAbxrNWj7mgwhvTQVvh1PZnSxC9Wf6ukQUZrjX9n5Ph1zB4w5RZb5XGFZVabVAkB5nxqnkL0CJYqyWiVBW27phREn9BpsO6waSC8c3mdAC2h0Dr164sEVkHKEUkHpwBrlFt+dQ+6llNEdGF1/Bfb1AkEAklKNt6ICN0DgS6PLgoa/ImBwGfAmlxpJa1AYPwR5qGqOQL7hei5VtDUrPLqW7xSN1VJDeIHGHB+WxRAO+3RnMQJBAJ9ucNZ2EBUGPq4mYmSgBzJK34bYjQZfWEgrGIYTCVzvnV4Lfp34oSVZW0ywhjwclbYeH3cgMf9yPlCAn7enEVw=";
-    public static final String clientSignPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2EcJVFk614PYz4lPSQ6vH4dqXzcLU+iqRNfIT36OconABlFLHn8S/aAuYqFnD5Ffl7vvtqMXZmhi6/7o49ptVownDu9DruEq22zW5rXCQcuzhBpYDan+7ZdWaMNJmIU+ro3ILWOe4ZbvExhUFeJBkH/FykGCe5HlZGNdu2F7ilOgpixqlwmHkCSR4Lj/SdE6jS58ugTpTo0kuOHUqZ19FD1ODYa6DUuRyw7/YmpssYHLXoUjfYYj2PPdaQfNgtKlwePRsToV5mysnYT7bu+bFhHhKkAwKdWJ6Gmqrhew2URQII0tJJK3FMJFdj8T5nmEYYudooZ+PHryQhojeh7PVQIDAQAB";
+    /*
+     * 支付宝读取超时时间
+     */
+    public static final int alipayReadTimeout ;
 
-    public static final AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+    public static final int alipayCancelTimeThreshold;
+
+    /*
+     * 微信是否为沙箱
+     */
+    public static final boolean wxpayUseSandbox ;
+
+    /*
+     * 微信 APPID
+     */
+    public static final String wxpayAppID ;
+
+
+
+    /*
+     * 微信 Key
+     */
+    public static  String wxpayKey ;
+
+    /*
+     * 微信 链接超时时间
+     */
+    public static final int wxpayConnectTimeout ;
+
+    /*
+     * 微信 读取超时时间
+     */
+    public static final int wxpayReadTimeout ;
+
+
+    /*
+     * 微信 回滚证书路径
+     */
+    public static final String wxpayCertPath;
+
+    /*
+     * 微信支付抬头
+     */
+    public static final String WxTitle;
+
+    /*
+     * 微信支付超时撤销时间
+     */
+    public static final int wxpayCancelTimeThreshold;
+
+
+
+
+    public static final String clientEncryptPublicKey;
+    public static final String serverSignPrivatebKey;
+    public static final String clientSignPublicKey ;
+
+
+
+
 
     public static final String charset="GBK";
 
@@ -93,7 +208,8 @@ public class Com {
      * @return
      */
     public static boolean getHTLS(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         String sZDBH_U_head = tranObj.getHead("ZDBH_U");
         String sSHBH_U_head = tranObj.getHead("SHBH_U");
         String sKHBH_U_head = tranObj.getHead("KHBH_U");
@@ -225,7 +341,7 @@ public class Com {
             Logger.log(tranObj, "LOG_IO", "已经生成后台流水[" + sHTLS_U_head + "],不再重复生成");
 
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 
@@ -258,9 +374,9 @@ public class Com {
      *
      * @return
      */
-    public static String getSYSQTLS(String sZDBH_U) {
+    public  static   String getSYSQTLS(String sZDBH_U) {
 
-        Logger.comLog("LOG_IO",Com.getIn);
+        Logger.comLog("LOG_IO",Com.METHOD_IN);
         String sSYSQTLS = "";
         int XH = 1;
         DBAccess dbAccess = new DBAccess();
@@ -352,7 +468,7 @@ public class Com {
         sqlSession.commit();
         sqlSession.close();
         Logger.comLog("LOG_IO","sSYSQTLS=" + sSYSQTLS);
-        Logger.comLog("LOG_IO",Com.getOut);
+        Logger.comLog("LOG_IO",Com.METHOD_OUT);
         return sSYSQTLS;
     }
 
@@ -360,7 +476,7 @@ public class Com {
      * @return
      * @apiNote 获取系统终端编号
      */
-    public static String getSYSZDBH_U() {
+    public static  String  getSYSZDBH_U() {
         String re = "";
         DBAccess dbAccess = new DBAccess();
         SqlSession sqlSession=null;
@@ -375,6 +491,8 @@ public class Com {
                 List<DZDXX> dzdxxList = null;
 
                 dzdxxList = dzdxxMapper.selectByExample(dzdxxExample);
+
+
                 if (dzdxxList.size() == 0)
                     re = "";
                 else {
@@ -386,12 +504,12 @@ public class Com {
                 sqlSession.commit();
             } catch (Exception e) {
                 Logger.comLogException("LOG_ERR",e);
-            }finally {
-                sqlSession.close();
             }
         } catch (IOException e) {
             Logger.comLogException("LOG_ERR",e);
             return "";
+        }finally {
+            sqlSession.close();
         }
 
 
@@ -435,20 +553,7 @@ public class Com {
         return re;
     }
 
-    public static Date[] getRQSJ(Date date) throws ParseException {
-        SimpleDateFormat myFmt = new SimpleDateFormat("yyyyMMdd,HHmmss");
-        String[] str = myFmt.format(date).split(",");
 
-
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
-        Date d1 = sdf1.parse(str[0]);
-
-        SimpleDateFormat sdf2 = new SimpleDateFormat("HHmmss");
-        Date d2 = sdf2.parse(str[1]);
-        Date[] reDate = {d1, d2};
-
-        return reDate;
-    }
 
 //    public static void main(String[] args) {
 //        Logger.log(tranObj,"LOG_DEBUG",);

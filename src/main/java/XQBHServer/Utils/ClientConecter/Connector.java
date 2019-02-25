@@ -24,7 +24,7 @@ public class Connector {
         Vector<String []> vResoult=new Vector();
          org.slf4j.Logger tmplogger = LoggerFactory.getLogger("XQBHServer");
 
-        Logger.comLog("LOG_IO",Com.getIn);
+        Logger.comLog("LOG_IO",Com.METHOD_IN);
         String logfile=Logger.getLogPath("Temp");
         MDC.put("logFileName",logfile ); //获取日志文件
 
@@ -32,7 +32,7 @@ public class Connector {
         if (i < 2) {
             Logger.comLog("LOG_IO","参数个数过少");
             Logger.comLog("LOG_IO","restart|pause ALL|ZD1 ZD2 ZD3 ...");
-            Logger.comLog("LOG_IO",Com.getOut);
+            Logger.comLog("LOG_IO",Com.METHOD_OUT);
             return;
         }
         int j = 0;
@@ -43,7 +43,7 @@ public class Connector {
                 if (!"pause".equals(str) && !"restart".equals(str)) {
                     Logger.comLog("LOG_IO","错误的命令" + str);
                     Logger.comLog("LOG_IO","restart|pause ALL|ZD1 ZD2 ZD3 ...");
-                    Logger.comLog("LOG_IO",Com.getOut);
+                    Logger.comLog("LOG_IO",Com.METHOD_OUT);
                     return;
 
                 } else {
@@ -62,7 +62,7 @@ public class Connector {
                     sqlSession = dbAccess.getSqlSession();
                 } catch (IOException e) {
                     Logger.comLogException("LOG_ERR",e);
-                    Logger.comLog("LOG_IO",Com.getOut);
+                    Logger.comLog("LOG_IO",Com.METHOD_OUT);
                     return;
                 }
                 DZDXXMapper dzdxxMapper = sqlSession.getMapper(DZDXXMapper.class);
@@ -73,7 +73,7 @@ public class Connector {
                     lDZDXX = dzdxxMapper.selectByExample(dzdxxExample);
                 } catch (Exception e) {
                     Logger.comLogException("LOG_ERR",e);
-                    Logger.comLog("LOG_IO",Com.getOut);
+                    Logger.comLog("LOG_IO",Com.METHOD_OUT);
                     return;
                 }
                 if (!(lDZDXX.size() > 0)) {
@@ -106,7 +106,7 @@ public class Connector {
                     sqlSession = dbAccess.getSqlSession();
                 } catch (IOException e) {
                     Logger.comLogException("LOG_ERR",e);
-                    Logger.comLog("LOG_IO",Com.getOut);
+                    Logger.comLog("LOG_IO",Com.METHOD_OUT);
                     return;
                 }
                 DZDXXKey dzdxxKey=new DZDXXKey();
@@ -146,7 +146,7 @@ public class Connector {
         Com.logFile.remove(logfile);
 
 
-        Logger.comLog("LOG_IO",Com.getOut);
+        Logger.comLog("LOG_IO",Com.METHOD_OUT);
 
     }
 

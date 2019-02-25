@@ -1,5 +1,6 @@
 package XQBHServer.ServerTran;
 
+import XQBHServer.Server.Com;
 import XQBHServer.Server.Table.basic.DBAccess;
 import XQBHServer.ServerAPI.GetLogInfo;
 import XQBHServer.Utils.XML.XmlUtils;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 public class TranObj {
     public Map<String, Object> HeadMap = null;
-    public Map<String, Object> TranMap = null;
+    public Map<String, Object> BodyMap = null;
 
     public boolean buildSUCCESS = false;
     public Date date;
@@ -43,7 +44,7 @@ public class TranObj {
         filePrinter = new StringBuilder();
         Map XMLMapIn = XmlUtils.XML2map(XMLIn);
         HeadMap = (Map) XMLMapIn.get("head");
-        TranMap = (Map) XMLMapIn.get("body");
+        BodyMap = (Map) XMLMapIn.get("body");
         date = new Date();
         DBAccess dbAccess = new DBAccess();
         try {
@@ -56,12 +57,19 @@ public class TranObj {
         commitFlg = false;
 
 
+
+
+
         loggerFile = Logger.getLogPath(HeadMap.get("HTJYM_").toString() + "/" + HeadMap.get("HTJYM_").toString());
         MDC.put("logFileName", loggerFile); //获取日志文件
+        Logger.log(this, "LOG_IO", Com.TRAN_IN);
+
+
         if (true != GetLogInfo.exec(this)) {
             Logger.log(this, "LOG_ERR", "获取日志等级失败");
             return;
         }
+        Logger.log(this, "LOG_IO", "tranLogLV = [" + this.tranLogLV + "] ");
 
 
         buildSUCCESS = true;
@@ -71,7 +79,9 @@ public class TranObj {
     public void setHead(String Key, String Value) {
         HeadMap.put(Key, Value);
     }
-
+    public Map getHeadMap(){
+        return HeadMap;
+    }
     public String getHead(String Key) {
         if (null == HeadMap.get(Key))
             return "";
@@ -80,46 +90,47 @@ public class TranObj {
     }
 
     public void setValue(String Key, Object value) {
-        TranMap.put(Key, value);
+        BodyMap.put(Key, value);
     }
 
     public BigDecimal getBigDecimal(String sKey) {
-        Object result = TranMap.get(sKey);
+        Object result = BodyMap.get(sKey);
         if (null == result)
             return TypeUtils.castToBigDecimal(0);
-        return TypeUtils.castToBigDecimal(TranMap.get(sKey));
+        return TypeUtils.castToBigDecimal(BodyMap.get(sKey));
     }
 
     public Long getLong(String sKey) {
-        Object result = TranMap.get(sKey);
+        Object result = BodyMap.get(sKey);
         if (null == result)
             return TypeUtils.castToLong(0);
         return TypeUtils.castToLong(result);
     }
 
     public String getString(String sKey) {
-        Object result = TranMap.get(sKey);
+        Object result = BodyMap.get(sKey);
         if (null == result)
             return TypeUtils.castToString("");
         return TypeUtils.castToString(result);
     }
 
+
     public String getGridString(String sGridName, int iIndex, String sKey) {
-        Object object = TranMap.get(sGridName);
+        Object object = BodyMap.get(sGridName);
         if (null == object)
             return null;
         return TypeUtils.castToString(((Map) ((JSONArray) object).get(iIndex)).get(sKey));
     }
 
     public Long getGridLong(String sGridName, int iIndex, String sKey) {
-        Object object = TranMap.get(sGridName);
+        Object object = BodyMap.get(sGridName);
         if (null == object)
             return TypeUtils.castToLong(0);
         return TypeUtils.castToLong(((Map) ((JSONArray) object).get(iIndex)).get(sKey));
     }
 
     public BigDecimal getGridBigDecimal(String sGridName, int iIndex, String sKey) {
-        Object object = TranMap.get(sGridName);
+        Object object = BodyMap.get(sGridName);
         if (null == object)
             return TypeUtils.castToBigDecimal(0);
         return TypeUtils.castToBigDecimal(((Map) ((JSONArray) object).get(iIndex)).get(sKey));

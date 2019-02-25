@@ -16,16 +16,12 @@
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.3.0</version>
-        </dependency>
         <!-- mysqlÇý¶¯°ü -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
+            <version>5.1.38</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- junit²âÊÔ°ü -->
         <dependency>
@@ -54,11 +50,6 @@
 
 
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.40</version>
@@ -68,16 +59,18 @@
             <artifactId>commons-codec</artifactId>
             <version>1.11</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.3.0</version>
-        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.6.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.0.2</version>
+        </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -85,9 +78,31 @@
         </dependency>
 
 
+
+
+
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
+
+
+
+
+
+
     </dependencies>
     <build>
-        <finalName>xxx</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
@@ -95,10 +110,33 @@
                 <version>1.3.2</version>
                 <configuration>
                     <configurationFile>src/main/java/resources/table/mybatis-generator-config.xml</configurationFile>
-                    <verbose>true</verbose>
                     <overwrite>true</overwrite>
+                    <verbose>true</verbose>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.38</version>
+                    </dependency>
+                    <!--<dependency>-->
+                        <!--<groupId>com.github.oceanc</groupId>-->
+                        <!--<artifactId>mybatis3-generator-plugin</artifactId>-->
+                        <!--<version>0.4.0</version>-->
+                    <!--</dependency>-->
+                    <dependency>
+                        <groupId>com.github.oceanc</groupId>
+                        <artifactId>mybatis3-generator-plugin</artifactId>
+                        <version>0.4.0</version>
+                        <scope>system</scope>
+                        <systemPath>${project.basedir}/lib/mybatis3-generator-plugins-master.jar</systemPath>
+                    </dependency>
+                </dependencies>
+
+
             </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -114,6 +152,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.p12</include>
                 </includes>
             </resource>
 

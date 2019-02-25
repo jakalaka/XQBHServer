@@ -2,12 +2,12 @@ package XQBHServer.ServerTran;
 
 import XQBHServer.Server.Com;
 import XQBHServer.Server.ServerInit;
-import XQBHServer.Server.Table.Mapper.CXTCSMapper;
 import XQBHServer.Server.Table.Mapper.MDZSJMapper;
 import XQBHServer.Server.Table.Model.*;
 import XQBHServer.ServerAPI.InsertMJYBWAfterDSF;
 import XQBHServer.ServerAPI.InsertMJYBWBeforeDSF;
-import XQBHServer.Test.MyAlipayClient;
+import XQBHServer.Utils.AlipayHelper.MyAlipayClient;
+import XQBHServer.Utils.CallUtils.CallResult;
 import XQBHServer.Utils.log.Logger;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradeCancelRequest;
@@ -16,151 +16,168 @@ import com.alipay.api.response.AlipayTradeCancelResponse;
 import java.text.ParseException;
 import java.util.*;
 
+import static XQBHServer.Utils.Data.DataUtils.YearString2Date;
+
 /**
  * 扫描并取消交易状态，由其他轮循调用
  */
 public class AlipayCancel extends Tran {
 
     @Override
-    public boolean exec(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
-        String sZDBH_U = tranObj.getHead("ZDBH_U");
+    public boolean exec(TranObj tranObj) throws ParseException {
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
+        String sYHTLS_ = tranObj.getString("YHTLS_");
+        String sYHTRQ_ = tranObj.getString("YHTRQ_");
 
         /*==================================codeBegin=====================================*/
-        CXTCSMapper cxtcsMapper = tranObj.sqlSession.getMapper(CXTCSMapper.class);
-        CXTCSKey cxtcsKey = new CXTCSKey();
-        cxtcsKey.setFRDM_U("9999");
-        cxtcsKey.setKEY_UU("AlipayTOut");
-        CXTCS cxtcs = null;
-        try {
-            cxtcs = cxtcsMapper.selectByPrimaryKey(cxtcsKey);
-        } catch (Exception e) {
-            Logger.logException(tranObj, "LOG_ERR", e);
-            Tran.runERR(tranObj, "SQLSEL");
-            return false;
-        }
-        long sTimeOut = 0;
-        try {
-            sTimeOut = Long.parseLong(cxtcs.getVALUE_());
-        } catch (Exception e) {
-            Logger.logException(tranObj, "LOG_ERR", e);
-            Tran.runERR(tranObj, "SYSTRS");
-            return false;
-        }
 
-
-        Date dateLimit = new Date();
-        dateLimit.setTime(dateLimit.getTime() - sTimeOut);//CXTCS中定义的支付宝超时时间
-        Date []dArrary;
-        try {
-            dArrary = Com.getRQSJ(dateLimit);
-        } catch (ParseException e) {
-            Logger.logException(tranObj,"LOG_ERR",e);
-            Tran.runERR(tranObj, "TIMEER");
-            return false;
-        }
-        MDZSJExample mdzsjExample = new MDZSJExample();
+        //查询
         MDZSJMapper mdzsjMapper = tranObj.sqlSession.getMapper(MDZSJMapper.class);
-        mdzsjExample.clear();
-        mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_UEqualTo(dArrary[0]).andJYSJ_ULessThan(dArrary[1]);
-        mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_ULessThan(dArrary[0]);
-        List<MDZSJ> mdzsjList = null;
+        MDZSJ mdzsj = null;
+
+        MDZSJKey mdzsjKey = new MDZSJKey();
+        mdzsjKey.setFRDM_U("9999");
+
+        Date date=YearString2Date(tranObj,sYHTRQ_);
+
+        mdzsjKey.setHTRQ_U(date);
+        mdzsjKey.setHTLS_U(sYHTLS_);
         try {
-            mdzsjList = mdzsjMapper.selectByExample(mdzsjExample);
+            mdzsj = mdzsjMapper.selectByPrimaryKey(mdzsjKey);
         } catch (Exception e) {
             Logger.logException(tranObj, "LOG_ERR", e);
             Tran.runERR(tranObj, "SQLSEL");
             return false;
         }
+        if(mdzsj==null)
+        {
+            Tran.runERR(tranObj,"SQLNFD");
+            return false;
+        }
+        String sSFDH_U = mdzsj.getSFDH_U();
 
-        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppid, Com.appPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
 
-        for (int i = 0; i < mdzsjList.size(); i++) {
-            //call cancel
-            AlipayTradeCancelRequest cancelRequest = new AlipayTradeCancelRequest();
+        //取消
+        AlipayClient alipayClient = new MyAlipayClient(Com.alipayGateway, Com.alipayAppID, Com.alipayPrivateKey, "json", "GBK", Com.alipayPulicKey, "RSA2");
+        //call cancel
+        AlipayTradeCancelRequest cancelRequest = new AlipayTradeCancelRequest();
 
 
-            cancelRequest.setBizContent("{" +
-                    "\"out_trade_no\":\"" + mdzsjList.get(i).getSFDH_U() + "\"," +
-                    "\"trade_no\":\"\"" +
-                    "  }");
+        cancelRequest.setBizContent("{" +
+                "\"out_trade_no\":\"" + sSFDH_U + "\"," +
+                "\"trade_no\":\"\"" +
+                "  }");
 
-            AlipayTradeCancelResponse calcelResponse = null;
-            if (true != InsertMJYBWBeforeDSF.exec(tranObj, cancelRequest.getBizContent(),"z")) {
-                runERR(tranObj, "ZF0005");
-                return false;
-            }
-            try {
-                calcelResponse = alipayClient.execute(cancelRequest);
-            } catch (Exception e) {
-                //标记为未知交易
-                Logger.logException(tranObj, "LOG_ERR", e);
+        AlipayTradeCancelResponse response = null;
+        if (true != InsertMJYBWBeforeDSF.exec(tranObj, cancelRequest.getBizContent(), "z")) {
+            runERR(tranObj, "ZF0005");
+            return false;
+        }
+        boolean insert_flg=true;
+        try {
+            response = alipayClient.execute(cancelRequest);
+        } catch (Exception e) {
+            Logger.logException(tranObj, "LOG_ERR", e);
+            CallResult callResult=new CallResult();
+            String query_result=judgeSuccess(tranObj,sSFDH_U,callResult);
+            Logger.log(tranObj,"LOG_DEBUG","query_result="+query_result);
+            if(query_result.equals("TRADE_CLOSED"))
+            {
+                Logger.log(tranObj, "LOG_DEBUG", "调用撤销异常，但是查询得知该笔已撤销，处理成功");
+                insert_flg=false;
+            }else {
                 runERR(tranObj, "ZF0004");
                 return false;
             }
-            if (true != InsertMJYBWAfterDSF.exec(tranObj, calcelResponse))//完成交易更新报文表，直接插入，报错不返回
+
+        }
+        if(insert_flg) {
+            if (true != InsertMJYBWAfterDSF.exec(tranObj, response.getBody(), response.getCode(), response.getMsg(), response.getSubCode(), response.getSubMsg()))//完成交易更新报文表，直接插入，报错不返回
             {
-                //标记为未知交易
+
                 Logger.log(tranObj, "LOG_ERR", "上完第三方插入报文失败");
             }
 
-            if (calcelResponse.isSuccess()) {
-                if ("N".equals(calcelResponse.getRetryFlag())) {
-                    mdzsjList.get(i).setJYZT_U("c");
-                    try {
-                        mdzsjMapper.updateByPrimaryKey(mdzsjList.get(i));
-                    } catch (Exception e) {
-                        //标记为未知交易
-                        Logger.logException(tranObj, "LOG_ERR", e);
-                        runERR(tranObj, "SQLUPD");
-                        return false;
-                    }
-                    tranObj.sqlSession.commit();
-
+            if (response.isSuccess()) {
+                if ("N".equals(response.getRetryFlag())) {
                     Logger.log(tranObj, "LOG_DEBUG", "调用cancel成功");
                 } else {
-                    Logger.log(tranObj, "LOG_ERR", "调用cancel成功，但是需要retry,getRetryFlag=" + calcelResponse.getRetryFlag());
+                    Logger.log(tranObj, "LOG_ERR", "调用cancel成功，但是需要retry,getRetryFlag=" + response.getRetryFlag());
+                    return true;
                 }
             } else {
-                if ("ACQ.SYSTEM_ERROR".equals(calcelResponse.getSubCode())) {
-                    Logger.log(tranObj, "LOG_ERR", "ACQ.TRADE_STATUS_ERROR");
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTRQ_U" + mdzsjList.get(i).getHTRQ_U());
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTLS_U" + mdzsjList.get(i).getHTLS_U());
-                    continue;
-                } else if ("ACQ.SELLER_BALANCE_NOT_ENOUGH".equals(calcelResponse.getSubCode())) {
-                    //调用查询交易
-                    Logger.log(tranObj, "LOG_ERR", "ACQ.SELLER_BALANCE_NOT_ENOUGH");
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTRQ_U" + mdzsjList.get(i).getHTRQ_U());
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTLS_U" + mdzsjList.get(i).getHTLS_U());
-                    continue;
-                } else if ("ACQ.REASON_TRADE_BEEN_FREEZEN".equals(calcelResponse.getSubCode())) {
-                    //调用查询交易
-                    Logger.log(tranObj, "LOG_ERR", "ACQ.REASON_TRADE_BEEN_FREEZEN");
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTRQ_U" + mdzsjList.get(i).getHTRQ_U());
-                    Logger.log(tranObj, "LOG_ERR", "mdzsjList.get(i).getHTLS_U" + mdzsjList.get(i).getHTLS_U());
-                    continue;
+                if ("AQC.SYSTEM_ERROR".equals(response.getSubCode())) {
+                    CallResult callResult = new CallResult();
+                    String query_result = judgeSuccess(tranObj, sSFDH_U, callResult);
+                    if (!"TRADE_CLOSED".equals(query_result)) {
+                        runERR(tranObj, "ZF0002");
+                        return false;
+                    }
+                    Logger.log(tranObj, "LOG_DEBUG", "调用撤销异常，但是查询得知该笔已撤销，处理成功");
+                } else {
+                    runERR(tranObj, "ZF0002");
+                    return false;
                 }
 
+            }
+        }
+        if(!"c".equals(mdzsj.getJYZT_U())) {
+            mdzsj.setJYZT_U("c");
+            try {
+                mdzsjMapper.updateByPrimaryKey(mdzsj);
+            } catch (Exception e) {
+                Logger.logException(tranObj, "LOG_ERR", e);
+                runERR(tranObj, "SQLUPD");
                 return false;
             }
-
         }
+
+
+
+
 
 
 
 
         /*==================================codeEnd=====================================*/
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
+    public String judgeSuccess(TranObj tranObj, String sSFDH_U, CallResult callResult){
+        String result="";
+        try {
+            Map XMLMapIn = new HashMap();
+            Map head = null;
+            Map body = new HashMap();
+            head=tranObj.getHeadMap();
+            head.put("HTJYM_", "AlipayQuery");
 
-    public static void main(String[] args) {
-        if (false == ServerInit.Init()) {
-            Logger.comLog("LOG_ERR","ServerInit Fail!!!");
-            return;
+            body.put("SFDH_U",sSFDH_U);
+            body.put("SFGX_U","0");
+            XMLMapIn.put("head",head);
+            XMLMapIn.put("body",body);
+            boolean call_success=false;
+            try {
+                if(SystemTran.call(tranObj,XMLMapIn,callResult)!=true) {
+                    Logger.log(tranObj, "LOG_ERR", "call failed!");
+                    return result;
+                }
+
+            } catch (Exception e) {
+                Logger.logException(tranObj,"LOG_ERR",e);
+                return result;
+            }
+
+
+            result=callResult.getBody().get("TSTAT_").trim();
+        }catch (Exception e)
+        {
+            Logger.logException(tranObj,"LOG_ERR",e);
         }
 
+        return result;
     }
+
 
 
 }

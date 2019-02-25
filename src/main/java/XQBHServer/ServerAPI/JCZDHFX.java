@@ -8,7 +8,6 @@ import XQBHServer.Server.Table.Model.*;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
-import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
  */
 public class JCZDHFX {
     public static boolean exec(TranObj tranObj) throws IOException {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         String sZDBH_U = tranObj.getHead("ZDBH_U");
         String sZDJYM_ = tranObj.getHead("ZDJYM_");
         String sKHDLZH = tranObj.getHead("KHDLZH");
@@ -154,7 +153,7 @@ public class JCZDHFX {
         }
 
 
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 

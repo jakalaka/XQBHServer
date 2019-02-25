@@ -1,19 +1,16 @@
 package XQBHServer.ServerAPI;
 
 import XQBHServer.Server.Com;
-import XQBHServer.Server.Table.Mapper.DZDXXMapper;
 import XQBHServer.Server.Table.Mapper.MJYBWMapper;
 import XQBHServer.Server.Table.Model.MJYBW;
 import XQBHServer.ServerTran.Tran;
 import XQBHServer.ServerTran.TranObj;
 import XQBHServer.Utils.log.Logger;
-import org.apache.ibatis.session.SqlSession;
 
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/21 0021.
@@ -23,7 +20,7 @@ import java.util.Map;
  */
 public class InsertMJYBWBeforeTran {
     public static boolean exec(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
 
         String sQTRQ_U_head = tranObj.getHead("QTRQ_U");
         String sQTLS_U_head = tranObj.getHead("QTLS_U");
@@ -79,7 +76,7 @@ public class InsertMJYBWBeforeTran {
         }
 //        tranObj.sqlSession_BW.commit();
         tranObj.iBWXH++;
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

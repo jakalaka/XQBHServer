@@ -7,12 +7,13 @@ import XQBHServer.Server.Table.Model.CXTCS;
 import XQBHServer.Server.Table.Model.CXTCSKey;
 import XQBHServer.Server.Table.Model.MDZSJExample;
 import XQBHServer.Server.Table.basic.DBAccess;
-import XQBHServer.Utils.log.Logger;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
+
+import static XQBHServer.Utils.Data.DataUtils.splitDate;
 
 public class dateTest_ {
     public static void main(String[] args)  {
@@ -38,7 +39,7 @@ public class dateTest_ {
         dateLimit.setTime(dateLimit.getTime() - sTimeOut);//CXTCS中定义的支付宝超时时间
         Date[] dArrary=null;
         try {
-            dArrary = Com.getRQSJ(dateLimit);
+            dArrary = splitDate(null,dateLimit);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -51,7 +52,7 @@ public class dateTest_ {
         mdzsjExample.clear();
         mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_UEqualTo(dArrary[0]).andJYSJ_ULessThan(dArrary[1]);
         mdzsjExample.or().andZFZHLXEqualTo("z").andJYZT_UEqualTo("w").andFRDM_UEqualTo("9999").andHTRQ_ULessThan(dArrary[0]);
-        int iCount = 0;
+        long iCount = 0;
 
         iCount = mdzsjMapper.countByExample(mdzsjExample);
         System.out.println(iCount);

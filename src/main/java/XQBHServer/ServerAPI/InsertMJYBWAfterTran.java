@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class InsertMJYBWAfterTran {
     public static boolean exec(TranObj tranObj) {
-        Logger.log(tranObj, "LOG_IO", Com.getIn);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_IN);
         String sQTRQ_U_head = tranObj.getHead("QTRQ_U");
         String sQTLS_U_head = tranObj.getHead("QTLS_U");
         String sQTJYM__head = tranObj.getHead("QTJYM_");
@@ -64,8 +64,8 @@ public class InsertMJYBWAfterTran {
             Tran.runERR(tranObj, "SQLINS");
             return false;
         }
-        mjybw.setCWDM_U(sCWDM_U_head);
-        mjybw.setCWXX_U(sCWXX_U_head);
+        mjybw.setYWCWM_(sCWDM_U_head);
+        mjybw.setYWCWXX(sCWXX_U_head);
 
         mjybw.setZDBH_U(sZDBH_U_head);
         mjybw.setIP_UUU(sIP_UUU_head);
@@ -80,7 +80,7 @@ public class InsertMJYBWAfterTran {
         tranObj.iBWXH++;
         tranObj.sqlSession_BW.commit();
         tranObj.sqlSession_BW.close();
-        Logger.log(tranObj, "LOG_IO", Com.getOut);
+        Logger.log(tranObj, "LOG_IO", Com.METHOD_OUT);
         return true;
     }
 }

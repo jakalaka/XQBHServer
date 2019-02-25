@@ -24,7 +24,7 @@ public class XmlUtils {
     public static String tranObj2XML(TranObj tranObj) {
         Map XMLMap=new HashMap();
         XMLMap.put("head",tranObj.HeadMap);
-        XMLMap.put("body",tranObj.TranMap);
+        XMLMap.put("body",tranObj.BodyMap);
         return map2XML(XMLMap);
     }
 

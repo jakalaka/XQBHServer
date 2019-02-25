@@ -162,7 +162,7 @@ public class ServerMain {
 
                                         CommonTran commonTran = new CommonTran();
                                         XMLOut = commonTran.Comtran(XMLIn);
-                                        MDC.put("logFileName",platFormFile ); //获取日志文件
+                                        MDC.put("logFileName",platFormFile ); //回复日志文件
 
                                     } else {
                                         XMLOut = "验签失败,本服务已备案,请自重!!!";
